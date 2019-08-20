@@ -1,6 +1,7 @@
 # Define connections to JobRouter systems from TYPO3 installations
 
 [![TYPO3](https://img.shields.io/badge/TYPO3-9%20LTS-orange.svg)](https://typo3.org/)
+[![Build Status](https://travis-ci.org/brotkrueml/typo3-jobrouter-connector.svg?branch=master)](https://travis-ci.org/brotkrueml/typo3-jobrouter-connector)
 
 
 ## Requirements
