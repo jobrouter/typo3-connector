@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-08-14T13:32:12Z" product-name="jobrouter_connector">
+		<header/>
+		<body>
+			<trans-unit id="tx_jobrouterconnector_domain_model_connection">
+				<source><![CDATA[JobRouter Connection]]></source>
+			</trans-unit>
+			<trans-unit id="tx_jobrouterconnector_domain_model_connection.identifier">
+				<source><![CDATA[Identifier]]></source>
+			</trans-unit>
+			<trans-unit id="tx_jobrouterconnector_domain_model_connection.base_url">
+				<source><![CDATA[Base URL]]></source>
+			</trans-unit>
+			<trans-unit id="tx_jobrouterconnector_domain_model_connection.username">
+				<source><![CDATA[Username]]></source>
+			</trans-unit>
+			<trans-unit id="tx_jobrouterconnector_domain_model_connection.password">
+				<source><![CDATA[Password]]></source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

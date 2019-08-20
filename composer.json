@@ -1,0 +1,48 @@
+{
+    "name": "brotkrueml/jobrouter-connector",
+    "type": "typo3-cms-extension",
+    "description": "Define connections from TYPO3 to JobRouter systems",
+    "authors": [
+        {
+            "name": "Chris Müller",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "ext-sodium": "*",
+        "typo3/cms-backend": "^9.5",
+        "typo3/cms-core": "^9.5",
+        "typo3/cms-extbase": "^9.5",
+        "typo3/cms-fluid": "^9.5"
+    },
+    "require-dev": {
+        "mikey179/vfsstream": "^1.6",
+        "phpunit/phpunit": "^8.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Brotkrueml\\JobRouterConnector\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Brotkrueml\\JobRouterConnector\\Tests\\": "Tests"
+        }
+    },
+    "replace": {
+        "typo3-ter/jobrouter-connector": "self.version"
+    },
+    "config": {
+        "sort-packages" : true,
+        "vendor-dir": ".Build/vendor",
+        "bin-dir": ".Build/bin"
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "jobrouter_connector",
+            "cms-package-dir": "{$vendor-dir}/typo3/cms",
+            "web-dir": ".Build/web"
+        }
+    }
+}

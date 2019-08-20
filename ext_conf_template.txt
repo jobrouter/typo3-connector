@@ -1,0 +1,2 @@
+# cat=Basic; type=string; label=LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_conf.xlf:keyPath
+keyPath = .jobrouterkey
