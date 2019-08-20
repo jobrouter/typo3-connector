@@ -1,7 +1,8 @@
 {
-    "name": "brotkrueml/jobrouter-connector",
+    "name": "brotkrueml/typo3-jobrouter-connector",
     "type": "typo3-cms-extension",
     "description": "Define connections from TYPO3 to JobRouter systems",
+    "license": "GPL-2.0-or-later",
     "authors": [
         {
             "name": "Chris Müller",
@@ -31,7 +32,7 @@
         }
     },
     "replace": {
-        "typo3-ter/jobrouter-connector": "self.version"
+        "typo3-ter/typo3-jobrouter-connector": "self.version"
     },
     "config": {
         "sort-packages" : true,
