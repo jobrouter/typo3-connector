@@ -49,17 +49,19 @@
                 <f:for each="{connections}" as="connection">
                     <tr>
                         <td>
-                            <f:if condition="{connection.disabled}">
-                                <f:then><core:icon identifier="actions-ban"/></f:then>
-                                <f:else><core:icon identifier="actions-check"/></f:else>
-                            </f:if>
                             {connection.identifier}
+                            <f:if condition="{connection.disabled}">
+                                ({f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_module.xlf:status.disabled')})
+                            </f:if>
                         </td>
                         <td><f:link.external uri="{connection.baseUrl}" target="_blank">{connection.baseUrl}</f:link.external></td>
                         <td>{connection.username}</td>
                         <td>
                             <div class="btn-group">
-                                <be:link.editRecord class="btn btn-default" table="tx_jobrouterconnector_domain_model_connection" uid="{connection.uid}" title="{f:translate(key: 'LLL:EXT:core/Resources/Private/Language/locallang_mod_web_list.xlf:edit')}">
+                                <f:link.external class="btn btn-default" uri="{connection.baseUrl}" target="_blank" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_module.xlf:action.open_jobrouter_system')}">
+                                    <core:icon identifier="actions-window-open" />
+                                </f:link.external>
+                                <be:link.editRecord class="btn btn-default" table="tx_jobrouterconnector_domain_model_connection" uid="{connection.uid}" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_module.xlf:action.edit_connection')}">
                                     <core:icon identifier="actions-open"/>
                                 </be:link.editRecord>
                             </div>

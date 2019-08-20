@@ -71,7 +71,7 @@ class BackendController extends ActionController
         $uriBuilder = $this->objectManager->get(UriBuilder::class);
         $iconFactory = GeneralUtility::makeInstance(IconFactory::class);
 
-        $title = $this->getLanguageService()->sL('LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_module.xlf:connection_add');
+        $title = $this->getLanguageService()->sL('LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_module.xlf:action.add_connection');
 
         $newRecordButton = $buttonBar->makeLinkButton()
             ->setHref((string)$uriBuilder->buildUriFromRoute(
