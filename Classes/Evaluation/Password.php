@@ -3,12 +3,14 @@ declare(strict_types = 1);
 
 namespace Brotkrueml\JobRouterConnector\Evaluation;
 
-/**
+/*
  * This file is part of the "jobrouter_connector" extension for TYPO3 CMS.
  *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+
+use Brotkrueml\JobRouterConnector\Exception\CryptException;
 use Brotkrueml\JobRouterConnector\Service\Crypt;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -29,7 +31,8 @@ final class Password
 
             // The password is already encrypted
             return $value;
-        } catch (\RuntimeException $e) {
+        } catch (CryptException $e) {
+            // Do nothing
         }
 
         return $this->cryptService->encrypt($value);

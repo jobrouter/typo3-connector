@@ -4,6 +4,7 @@ declare(strict_types = 1);
 namespace Brotkrueml\JobRouterConnector\Tests\Unit\Evaluation;
 
 use Brotkrueml\JobRouterConnector\Evaluation\Password;
+use Brotkrueml\JobRouterConnector\Exception\CryptException;
 use Brotkrueml\JobRouterConnector\Service\Crypt;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -28,18 +29,20 @@ class PasswordTest extends TestCase
      */
     public function evaluateFieldValueReturnsSameEncryptedValueIfItsAlreadyEncrypted(): void
     {
+        $encryptedValue = 'encrypted-value';
+
         $this->cryptMock
             ->expects($this->once())
             ->method('decrypt')
-            ->with('encrypted-value');
+            ->with($encryptedValue);
 
         $this->cryptMock
             ->expects($this->never())
             ->method('encrypt');
 
-        $actual = $this->subject->evaluateFieldValue('encrypted-value');
+        $actual = $this->subject->evaluateFieldValue($encryptedValue);
 
-        $this->assertSame('encrypted-value', $actual);
+        $this->assertSame($encryptedValue, $actual);
     }
 
     /**
@@ -47,20 +50,23 @@ class PasswordTest extends TestCase
      */
     public function evaluateFieldValueWithClearTextValueReturnsEncryptedValue(): void
     {
+        $encryptedValue = 'encrypted-value';
+        $cleartextValue = 'cleartext-value';
+
         $this->cryptMock
             ->expects($this->once())
             ->method('decrypt')
-            ->with('cleartext-value')
-            ->willThrowException(new \RuntimeException());
+            ->with($cleartextValue)
+            ->willThrowException(new CryptException());
 
         $this->cryptMock
             ->expects($this->once())
             ->method('encrypt')
-            ->with('cleartext-value')
-            ->willReturn('encrypted-value');
+            ->with($cleartextValue)
+            ->willReturn($encryptedValue);
 
-        $actual = $this->subject->evaluateFieldValue('cleartext-value');
+        $actual = $this->subject->evaluateFieldValue($cleartextValue);
 
-        $this->assertSame('encrypted-value', $actual);
+        $this->assertSame($encryptedValue, $actual);
     }
 }

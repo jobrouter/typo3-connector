@@ -10,6 +10,7 @@ namespace Brotkrueml\JobRouterConnector\Utility;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\JobRouterConnector\Exception\KeyFileException;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -25,7 +26,7 @@ class FileUtility
         $keyPath = $configuration->get('jobrouter_connector', 'keyPath');
 
         if (!$keyPath) {
-            throw new \RuntimeException(
+            throw new KeyFileException(
                 'The key file path is not defined correctly in the extension configuration!',
                 1565992922
             );
@@ -34,7 +35,7 @@ class FileUtility
         $absoluteKeyPath = Environment::getProjectPath() . DIRECTORY_SEPARATOR . $keyPath;
 
         if ($errorOnNonExistingFile && !\file_exists($absoluteKeyPath)) {
-            throw new \RuntimeException(
+            throw new KeyFileException(
                 'The key file is not available!',
                 1565992923
             );

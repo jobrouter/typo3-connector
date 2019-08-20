@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace Brotkrueml\JobRouterConnector\Tests\Unit\Service;
 
+use Brotkrueml\JobRouterConnector\Exception\CryptException;
 use Brotkrueml\JobRouterConnector\Service\Crypt;
 use Brotkrueml\JobRouterConnector\Utility\FileUtility;
 use org\bovigo\vfs\vfsStream;
@@ -56,7 +57,7 @@ class CryptTest extends TestCase
      */
     public function encryptShouldThrowExceptionIfKeyDoesNotExist(): void
     {
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(CryptException::class);
         $this->expectExceptionCode(1565993703);
 
         $this->initialiseSubjectWithKeyPath(false);
@@ -69,7 +70,7 @@ class CryptTest extends TestCase
      */
     public function decryptThrowsExceptionOnNotBase64EncodedValueGiven(): void
     {
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(CryptException::class);
         $this->expectExceptionCode(1565993704);
 
         $this->initialiseSubjectWithKeyPath();
@@ -82,7 +83,7 @@ class CryptTest extends TestCase
      */
     public function decryptThrowsExceptionOnDecryptionFailure(): void
     {
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(CryptException::class);
         $this->expectExceptionCode(1565993704);
 
         $this->initialiseSubjectWithKeyPath();

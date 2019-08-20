@@ -10,6 +10,7 @@ namespace Brotkrueml\JobRouterConnector\Service;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\JobRouterConnector\Exception\CryptException;
 use Brotkrueml\JobRouterConnector\Utility\FileUtility;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -33,7 +34,7 @@ class Crypt implements SingletonInterface
             $nonce = \random_bytes(SODIUM_CRYPTO_SECRETBOX_NONCEBYTES);
             $cipherText = \sodium_crypto_secretbox($value, $nonce, $this->getKey());
         } catch (\Exception $e) {
-            throw new \RuntimeException(
+            throw new CryptException(
                 'The value could not be encrypted!',
                 1565993703,
                 $e
@@ -52,7 +53,7 @@ class Crypt implements SingletonInterface
         try {
             $clearText = \sodium_crypto_secretbox_open($cipherText, $nonce, $this->getKey());
         } catch (\Exception $e) {
-            throw new \RuntimeException(
+            throw new CryptException(
                 'The value could not be decrypted!',
                 1565993704,
                 $e
@@ -60,7 +61,7 @@ class Crypt implements SingletonInterface
         }
 
         if (false === $clearText) {
-            throw new \RuntimeException(
+            throw new CryptException(
                 'The value could not be decrypted!',
                 1565993705
             );
@@ -74,7 +75,7 @@ class Crypt implements SingletonInterface
         try {
             return \base64_encode(\random_bytes(SODIUM_CRYPTO_SECRETBOX_KEYBYTES));
         } catch (\Exception $e) {
-            throw new \RuntimeException(
+            throw new CryptException(
                 'The key could not be generated!',
                 1565993706,
                 $e
@@ -86,7 +87,7 @@ class Crypt implements SingletonInterface
     {
         $key = \file_get_contents($this->fileUtility->getAbsoluteKeyPath());
         if (false === $key) {
-            throw new \RuntimeException(
+            throw new CryptException(
                 'The key could not be retrieved!',
                 1565993707
             );
