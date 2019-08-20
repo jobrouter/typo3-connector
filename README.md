@@ -13,7 +13,7 @@ The extension works with TYPO3 9 LTS.
 
 ## Introduction
 
-This is the base extension for connecting JobRouter systems to TYPO3 installations.
+This is the base extension for connecting [TYPO3](https://typo3.org/) installations to [JobRouter](https://www.jobrouter.com/) systems.
 
 The extension is work in progress - forthcoming extensions rely on this extension and
 add functionality like synchronising JobData tables or start instances.
