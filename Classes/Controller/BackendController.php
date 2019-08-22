@@ -25,6 +25,8 @@ use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
 
 class BackendController extends ActionController
 {
+    private const MODULE_NAME = 'tools_JobRouterConnectorJobrouterconnector';
+
     protected $defaultViewObjectName = BackendTemplateView::class;
 
     /** @var ConnectionRepository */
@@ -97,7 +99,7 @@ class BackendController extends ActionController
                     'edit' => [
                         'tx_jobrouterconnector_domain_model_connection' => ['new'],
                     ],
-                    'returnUrl' => (string)$uriBuilder->buildUriFromRoute('tools_JobRouterConnectorTxJobrouterConnector'),
+                    'returnUrl' => (string)$uriBuilder->buildUriFromRoute(self::MODULE_NAME),
                 ]
             ))
             ->setTitle($title)
@@ -114,7 +116,7 @@ class BackendController extends ActionController
 
         if ($this->getBackendUser()->mayMakeShortcut()) {
             $shortcutButton = $buttonBar->makeShortcutButton()
-                ->setModuleName('tools_JobRouterConnectorTxJobrouterConnector')
+                ->setModuleName(self::MODULE_NAME)
                 ->setGetVariables(['route', 'module', 'id'])
                 ->setDisplayName('Shortcut');
             $buttonBar->addButton($shortcutButton, ButtonBar::BUTTON_POSITION_RIGHT);

@@ -7,7 +7,7 @@ call_user_func(
             \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
                 'Brotkrueml.JobRouterConnector',
                 'tools',
-                'tx_jobrouter_connector',
+                'jobrouterconnector',
                 '',
                 [
                     'Backend' => 'list',
