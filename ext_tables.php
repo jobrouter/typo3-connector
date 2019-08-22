@@ -13,7 +13,7 @@ call_user_func(
                     'Backend' => 'list',
                 ],
                 [
-                    'access' => 'index',
+                    'access' => 'admin',
                     'icon' => 'EXT:' . $extensionKey . '/Resources/Public/Icons/Extension.svg',
                     'labels' => 'LLL:EXT:' . $extensionKey . '/Resources/Private/Language/locallang_module.xlf',
                 ]
