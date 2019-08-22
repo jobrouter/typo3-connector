@@ -19,9 +19,9 @@ class ConnectionTest extends TestCase
     /**
      * @test
      */
-    public function initialIdentifierIsEmptyString(): void
+    public function initialNameIsEmptyString(): void
     {
-        $actual = $this->subject->getIdentifier();
+        $actual = $this->subject->getName();
 
         $this->assertSame('', $actual);
     }
@@ -29,13 +29,13 @@ class ConnectionTest extends TestCase
     /**
      * @test
      */
-    public function setAndGetIdentifier(): void
+    public function setAndGetName(): void
     {
-        $this->subject->setIdentifier('some-identifier');
+        $this->subject->setName('some-name');
 
-        $actual = $this->subject->getIdentifier();
+        $actual = $this->subject->getName();
 
-        $this->assertSame('some-identifier', $actual);
+        $this->assertSame('some-name', $actual);
     }
 
     /**

@@ -6,8 +6,8 @@
 			<trans-unit id="tx_jobrouterconnector_domain_model_connection">
 				<source><![CDATA[JobRouter Connection]]></source>
 			</trans-unit>
-			<trans-unit id="tx_jobrouterconnector_domain_model_connection.identifier">
-				<source><![CDATA[Identifier]]></source>
+			<trans-unit id="tx_jobrouterconnector_domain_model_connection.name">
+				<source><![CDATA[Name]]></source>
 			</trans-unit>
 			<trans-unit id="tx_jobrouterconnector_domain_model_connection.base_url">
 				<source><![CDATA[Base URL]]></source>

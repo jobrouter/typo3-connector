@@ -2,7 +2,7 @@
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_db.xlf:tx_jobrouterconnector_domain_model_connection',
-        'label' => 'identifier',
+        'label' => 'name',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -11,11 +11,11 @@ return [
             'disabled' => 'disabled',
         ],
         'rootLevel' => 1,
-        'searchFields' => 'identifier,base_url,username',
+        'searchFields' => 'name,base_url,username',
         'iconfile' => 'EXT:jobrouter_connector/Resources/Public/Icons/tx_jobrouterconnector_domain_model_connection.svg'
     ],
     'interface' => [
-        'showRecordFieldList' => 'disabled, identifier, base_url, username, password',
+        'showRecordFieldList' => 'disabled, name, base_url, username, password',
     ],
     'columns' => [
         'disabled' => [
@@ -34,9 +34,9 @@ return [
             ]
         ],
 
-        'identifier' => [
+        'name' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_db.xlf:tx_jobrouterconnector_domain_model_connection.identifier',
+            'label' => 'LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_db.xlf:tx_jobrouterconnector_domain_model_connection.name',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -76,7 +76,7 @@ return [
     ],
     'types' => [
         '1' => ['showitem' => '
-            identifier, base_url, username, password,
+            name, base_url, username, password,
             --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
             disabled,
             --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.extended,

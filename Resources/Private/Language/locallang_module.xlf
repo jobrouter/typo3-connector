@@ -20,6 +20,9 @@
 			<trans-unit id="action.add_connection">
 				<source><![CDATA[Add connection]]></source>
 			</trans-unit>
+			<trans-unit id="action.check_connection">
+				<source><![CDATA[Check connection]]></source>
+			</trans-unit>
 			<trans-unit id="action.edit_connection">
 				<source><![CDATA[Edit connection]]></source>
 			</trans-unit>
@@ -35,6 +38,12 @@
 			</trans-unit>
 			<trans-unit id="connection_create">
 				<source><![CDATA[Create new connection]]></source>
+			</trans-unit>
+			<trans-unit id="connection_check_for">
+				<source><![CDATA[Connection check for]]></source>
+			</trans-unit>
+			<trans-unit id="connection_successful">
+				<source><![CDATA[Connection established successfully]]></source>
 			</trans-unit>
 
 			<trans-unit id="keyfile_not_exists.title">

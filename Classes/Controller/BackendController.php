@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Brotkrueml\JobRouterConnector\Controller;
 
-/**
+/*
  * This file is part of the "jobrouter_connector" extension for TYPO3 CMS.
  *
  * For the full copyright and license information, please read the
@@ -13,6 +13,7 @@ use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
 use Brotkrueml\JobRouterConnector\Utility\FileUtility;
 use TYPO3\CMS\Backend\Routing\UriBuilder;
 use TYPO3\CMS\Backend\Template\Components\ButtonBar;
+use TYPO3\CMS\Backend\Template\ModuleTemplate;
 use TYPO3\CMS\Backend\View\BackendTemplateView;
 use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
 use TYPO3\CMS\Core\Imaging\Icon;
@@ -29,6 +30,9 @@ class BackendController extends ActionController
     /** @var ConnectionRepository */
     private $connectionRepository;
 
+    /** @var ModuleTemplate */
+    private $moduleTemplate;
+
     public function injectConnectionRepository(ConnectionRepository $connectionRepository)
     {
         $this->connectionRepository = $connectionRepository;
@@ -43,18 +47,31 @@ class BackendController extends ActionController
     {
         parent::initializeView($view);
 
+        $this->moduleTemplate = $this->view->getModuleTemplate();
+
         $this->createDocumentHeaderButtons();
     }
 
     public function listAction(): void
     {
-        $connections = $this->connectionRepository->findAll();
+        $pageRenderer = $this->moduleTemplate->getPageRenderer();
+        $pageRenderer->addInlineLanguageLabelFile(
+            'EXT:jobrouter_connector/Resources/Private/Language/locallang_module.xlf'
+        );
+        $pageRenderer->loadRequireJsModule(
+            'TYPO3/CMS/JobrouterConnector/ConnectionCheck'
+        );
 
         try {
             (new FileUtility())->getAbsoluteKeyPath();
             $keyFileExists = true;
         } catch (\RuntimeException $e) {
             $keyFileExists = false;
+        }
+
+        $connections = null;
+        if ($keyFileExists) {
+            $connections = $this->connectionRepository->findAllWithHidden();
         }
 
         $this->view->assignMultiple([
@@ -66,7 +83,7 @@ class BackendController extends ActionController
     protected function createDocumentHeaderButtons(): void
     {
         /** @var ButtonBar $buttonBar */
-        $buttonBar = $this->view->getModuleTemplate()->getDocHeaderComponent()->getButtonBar();
+        $buttonBar = $this->moduleTemplate->getDocHeaderComponent()->getButtonBar();
 
         $uriBuilder = $this->objectManager->get(UriBuilder::class);
         $iconFactory = GeneralUtility::makeInstance(IconFactory::class);

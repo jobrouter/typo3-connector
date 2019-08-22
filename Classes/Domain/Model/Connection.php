@@ -17,7 +17,7 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 class Connection extends AbstractEntity
 {
     /** @var string */
-    protected $identifier = '';
+    protected $name = '';
 
     /** @var string */
     protected $baseUrl = '';
@@ -31,14 +31,14 @@ class Connection extends AbstractEntity
     /** @var bool */
     protected $disabled = false;
 
-    public function getIdentifier(): string
+    public function getName(): string
     {
-        return $this->identifier;
+        return $this->name;
     }
 
-    public function setIdentifier(string $identifier): void
+    public function setName(string $name): void
     {
-        $this->identifier = $identifier;
+        $this->name = $name;
     }
 
     public function getBaseUrl(): string
