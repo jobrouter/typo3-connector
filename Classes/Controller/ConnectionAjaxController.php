@@ -10,11 +10,8 @@ namespace Brotkrueml\JobRouterConnector\Controller;
  * LICENSE.txt file that was distributed with this source code.
  */
 
-use Brotkrueml\JobRouterClient\Client\RestClient;
-use Brotkrueml\JobRouterClient\Configuration\ClientConfiguration;
 use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
 use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
-use Brotkrueml\JobRouterConnector\Service\Crypt;
 use Brotkrueml\JobRouterConnector\Service\Rest;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -39,17 +36,11 @@ class ConnectionAjaxController
         $result = ['check' => 'ok'];
         try {
             $connectionRepository = $this->objectManager->get(ConnectionRepository::class);
-            /** @var Connection $record */
-            $record = $connectionRepository->findByIdentifierWithHidden($connectionId);
+            /** @var Connection $connection */
+            $connection = $connectionRepository->findByIdentifierWithHidden($connectionId);
 
-            if ($record) {
-                $decryptedPassword = (new Crypt())->decrypt($record->getPassword());
-
-                $checkResult = (new Rest())->checkConnection(
-                    $record->getBaseUrl(),
-                    $record->getUsername(),
-                    $decryptedPassword
-                );
+            if ($connection) {
+                $checkResult = (new Rest())->checkConnection($connection);
 
                 if ($checkResult) {
                     $result = ['error' => $checkResult];

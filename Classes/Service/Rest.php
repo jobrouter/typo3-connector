@@ -13,16 +13,26 @@ namespace Brotkrueml\JobRouterConnector\Service;
 use Brotkrueml\JobRouterClient\Client\RestClient;
 use Brotkrueml\JobRouterClient\Configuration\ClientConfiguration;
 use Brotkrueml\JobRouterClient\Exception\RestException;
+use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
 
 class Rest
 {
-    public function getRestClient(
-        string $baseUrl,
-        string $username,
-        string $password,
-        ?int $lifetime = null
-    ): RestClient {
-        $configuration = new ClientConfiguration($baseUrl, $username, $password);
+    /**
+     * Get the Rest client for the given connection
+     *
+     * @param Connection $connection The connection model
+     * @param int|null $lifetime Optional lifetime argument
+     * @return RestClient
+     */
+    public function getRestClient(Connection $connection, ?int $lifetime = null): RestClient
+    {
+        $decryptedPassword = (new Crypt())->decrypt($connection->getPassword());
+
+        $configuration = new ClientConfiguration(
+            $connection->getBaseUrl(),
+            $connection->getUsername(),
+            $decryptedPassword
+        );
 
         if ($lifetime) {
             $configuration->setLifetime($lifetime);
@@ -31,22 +41,41 @@ class Rest
         return new RestClient($configuration);
     }
 
-    public function checkConnection(string $baseUrl, string $username, string $password): string
+    /**
+     * Check the connectivity for the given connection
+     *
+     * @param Connection $connection The connection model
+     * @return string
+     */
+    public function checkConnection(Connection $connection): string
     {
         try {
-            $this->getRestClient($baseUrl, $username, $password, 10);
+            $this->getRestClient($connection, 10);
         } catch (RestException $e) {
             if (method_exists($e->getPrevious(), 'getResponse')) {
-                $result = \json_decode($e->getPrevious()->getResponse()->getContent(false), true);
-
-                if ($result && isset($result['errors']['-']) && \is_array($result['errors']['-'])) {
-                    return implode(' / ', $result['errors']['-']);
-                }
+                return $this->getReadableErrorMessage($e->getPrevious()->getResponse()->getContent(false));
             }
 
             return $e->getMessage();
         }
 
         return '';
+    }
+
+    /**
+     * Get the readable error message from a JSON string
+     *
+     * @param string $errorMessageAsJsonString JobRouter error message as JSON string
+     * @return string
+     */
+    public function getReadableErrorMessage(string $errorMessageAsJsonString): string
+    {
+        $errorMessage = \json_decode($errorMessageAsJsonString, true);
+
+        if ($errorMessage && isset($errorMessage['errors']['-']) && \is_array($errorMessage['errors']['-'])) {
+            return implode(' / ', $errorMessage['errors']['-']);
+        }
+
+        return $errorMessageAsJsonString;
     }
 }
