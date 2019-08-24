@@ -12,7 +12,6 @@ namespace Brotkrueml\JobRouterConnector\Service;
 
 use Brotkrueml\JobRouterClient\Client\RestClient;
 use Brotkrueml\JobRouterClient\Configuration\ClientConfiguration;
-use Brotkrueml\JobRouterClient\Exception\RestException;
 use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
 
 class Rest
@@ -39,43 +38,5 @@ class Rest
         }
 
         return new RestClient($configuration);
-    }
-
-    /**
-     * Check the connectivity for the given connection
-     *
-     * @param Connection $connection The connection model
-     * @return string
-     */
-    public function checkConnection(Connection $connection): string
-    {
-        try {
-            $this->getRestClient($connection, 10);
-        } catch (RestException $e) {
-            if (method_exists($e->getPrevious(), 'getResponse')) {
-                return $this->getReadableErrorMessage($e->getPrevious()->getResponse()->getContent(false));
-            }
-
-            return $e->getMessage();
-        }
-
-        return '';
-    }
-
-    /**
-     * Get the readable error message from a JSON string
-     *
-     * @param string $errorMessageAsJsonString JobRouter error message as JSON string
-     * @return string
-     */
-    public function getReadableErrorMessage(string $errorMessageAsJsonString): string
-    {
-        $errorMessage = \json_decode($errorMessageAsJsonString, true);
-
-        if ($errorMessage && isset($errorMessage['errors']['-']) && \is_array($errorMessage['errors']['-'])) {
-            return implode(' / ', $errorMessage['errors']['-']);
-        }
-
-        return $errorMessageAsJsonString;
     }
 }

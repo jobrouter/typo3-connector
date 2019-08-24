@@ -40,13 +40,9 @@ class ConnectionAjaxController
             $connection = $connectionRepository->findByIdentifierWithHidden($connectionId);
 
             if ($connection) {
-                $checkResult = (new Rest())->checkConnection($connection);
-
-                if ($checkResult) {
-                    $result = ['error' => $checkResult];
-                }
+                (new Rest())->getRestClient($connection, 10);
             } else {
-                $result = ['error' => 'Connection with id ' . $connectionId . ' not found!'];
+                $result = ['error' => sprintf('Connection with id "%d" not found!', $connectionId)];
             }
         } catch (\Exception $e) {
             $result = ['error' => $e->getMessage()];
