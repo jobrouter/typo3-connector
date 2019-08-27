@@ -1,27 +1,44 @@
 <?php
 defined('TYPO3_MODE') || die('Access denied.');
 
-call_user_func(
-    function ($extensionKey) {
-        if (TYPO3_MODE === 'BE') {
-            \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
-                'Brotkrueml.JobRouterConnector',
-                'tools',
-                'jobrouterconnector',
-                '',
-                [
-                    'Backend' => 'list',
-                ],
-                [
-                    'access' => 'admin',
-                    'icon' => 'EXT:' . $extensionKey . '/Resources/Public/Icons/Extension.svg',
-                    'labels' => 'LLL:EXT:' . $extensionKey . '/Resources/Private/Language/locallang_module.xlf',
-                ]
-            );
+(function ($moduleContainerKey, $extensionKey) {
+    $moduleContainerIcon = 'module-' . $moduleContainerKey;
+    \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class)
+        ->registerIcon(
+            $moduleContainerIcon,
+            \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+            ['source' => 'EXT:' . $extensionKey . '/Resources/Public/Icons/jobrouter-module-container.svg']
+        );
 
-            // Add validation call for form field connection password
-            $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tce']['formevals'][\Brotkrueml\JobRouterConnector\Evaluation\Password::class] = '';
-        }
-    },
-    'jobrouter_connector'
-);
+    // Place new module container before "tools"
+    $position = array_search('tools', array_keys($GLOBALS['TBE_MODULES']));
+
+    $GLOBALS['TBE_MODULES'] = array_slice($GLOBALS['TBE_MODULES'], 0, $position, true) +
+        [$moduleContainerKey => ''] +
+        array_slice($GLOBALS['TBE_MODULES'], $position, count($GLOBALS['TBE_MODULES']) - 1, true);
+
+    $GLOBALS['TBE_MODULES']['_configuration'][$moduleContainerKey] = [
+        'iconIdentifier' => $moduleContainerIcon,
+        'labels' => 'LLL:EXT:' . $extensionKey . '/Resources/Private/Language/BackendModuleContainer.xlf',
+        'name' => $moduleContainerKey
+    ];
+
+    // Register new module
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
+        'Brotkrueml.JobRouterConnector',
+        'jobrouter',
+        'jobrouterconnector',
+        '',
+        [
+            'Backend' => 'list',
+        ],
+        [
+            'access' => 'admin',
+            'icon' => 'EXT:' . $extensionKey . '/Resources/Public/Icons/jobrouter-connector-module.svg',
+            'labels' => 'LLL:EXT:' . $extensionKey . '/Resources/Private/Language/BackendModule.xlf',
+        ]
+    );
+
+    // Add validation call for form field connection password
+    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tce']['formevals'][\Brotkrueml\JobRouterConnector\Evaluation\Password::class] = '';
+})('jobrouter', 'jobrouter_connector');

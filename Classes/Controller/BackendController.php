@@ -25,7 +25,7 @@ use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
 
 class BackendController extends ActionController
 {
-    private const MODULE_NAME = 'tools_JobRouterConnectorJobrouterconnector';
+    private const MODULE_NAME = 'jobrouter_JobRouterConnectorJobrouterconnector';
 
     protected $defaultViewObjectName = BackendTemplateView::class;
 
@@ -58,7 +58,7 @@ class BackendController extends ActionController
     {
         $pageRenderer = $this->moduleTemplate->getPageRenderer();
         $pageRenderer->addInlineLanguageLabelFile(
-            'EXT:jobrouter_connector/Resources/Private/Language/locallang_module.xlf'
+            'EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf'
         );
         $pageRenderer->loadRequireJsModule(
             'TYPO3/CMS/JobrouterConnector/ConnectionCheck'
@@ -90,7 +90,7 @@ class BackendController extends ActionController
         $uriBuilder = $this->objectManager->get(UriBuilder::class);
         $iconFactory = GeneralUtility::makeInstance(IconFactory::class);
 
-        $title = $this->getLanguageService()->sL('LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_module.xlf:action.add_connection');
+        $title = $this->getLanguageService()->sL('LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.add_connection');
 
         $newRecordButton = $buttonBar->makeLinkButton()
             ->setHref((string)$uriBuilder->buildUriFromRoute(

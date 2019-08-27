@@ -12,6 +12,7 @@ namespace Brotkrueml\JobRouterConnector\Service;
 
 use Brotkrueml\JobRouterClient\Client\RestClient;
 use Brotkrueml\JobRouterClient\Configuration\ClientConfiguration;
+use Brotkrueml\JobRouterClient\Exception\RestException;
 use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
 
 class Rest
@@ -38,5 +39,19 @@ class Rest
         }
 
         return new RestClient($configuration);
+    }
+
+    /**
+     * Check the connectivity for the given connection
+     *
+     * @param Connection $connection The connection model
+     * @return bool
+     * @throws RestException
+     */
+    public function checkConnection(Connection $connection): bool
+    {
+        $this->getRestClient($connection, 10);
+
+        return true;
     }
 }

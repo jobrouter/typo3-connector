@@ -7,7 +7,7 @@
     <f:layout name="BackendAdministration" />
 
     <f:section name="headline">
-        <h1><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_module.xlf:heading_text"/></h1>
+        <h1><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:heading_text"/></h1>
     </f:section>
 
     <f:section name="content">
@@ -18,18 +18,18 @@
                         <f:render section="table" arguments="{_all}" />
                     </f:then>
                     <f:else>
-                        <f:be.infobox state="-1" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_module.xlf:connections_not_found.title')}">
-                            <p><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_module.xlf:connections_not_found.message"/></p>
+                        <f:be.infobox state="-1" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:connections_not_found.title')}">
+                            <p><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:connections_not_found.message"/></p>
                             <be:link.newRecord class="btn btn-primary" table="tx_jobrouterconnector_domain_model_connection">
-                                <f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_module.xlf:connection_create"/>
+                                <f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:connection_create"/>
                             </be:link.newRecord>
                         </f:be.infobox>
                     </f:else>
                 </f:if>
             </f:then>
             <f:else>
-                <f:be.infobox state="2" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_module.xlf:keyfile_not_exists.title')}">
-                    <p><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_module.xlf:keyfile_not_exists.message"/></p>
+                <f:be.infobox state="2" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:keyfile_not_exists.title')}">
+                    <p><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:keyfile_not_exists.message"/></p>
                 </f:be.infobox>
             </f:else>
         </f:if>
@@ -39,9 +39,9 @@
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th scope="col"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_db.xlf:tx_jobrouterconnector_domain_model_connection.name"/></th>
-                    <th scope="col"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_db.xlf:tx_jobrouterconnector_domain_model_connection.base_url"/></th>
-                    <th scope="col"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_db.xlf:tx_jobrouterconnector_domain_model_connection.username"/></th>
+                    <th scope="col"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.name"/></th>
+                    <th scope="col"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.base_url"/></th>
+                    <th scope="col"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.username"/></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -51,20 +51,20 @@
                         <td>
                             {connection.name}
                             <f:if condition="{connection.disabled}">
-                                ({f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_module.xlf:status.disabled')})
+                                ({f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:status.disabled')})
                             </f:if>
                         </td>
                         <td><f:link.external uri="{connection.baseUrl}" target="_blank">{connection.baseUrl}</f:link.external></td>
                         <td>{connection.username}</td>
                         <td>
                             <div class="btn-group">
-                                <be:link.editRecord class="btn btn-default" table="tx_jobrouterconnector_domain_model_connection" uid="{connection.uid}" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_module.xlf:action.edit_connection')}">
+                                <be:link.editRecord class="btn btn-default" table="tx_jobrouterconnector_domain_model_connection" uid="{connection.uid}" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.edit_connection')}">
                                     <core:icon identifier="actions-open"/>
                                 </be:link.editRecord>
-                                <a class="btn btn-default jobrouter-connection-check" data-connection-uid="{connection.uid}" data-connection-name="{connection.name}" href="#" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_module.xlf:action.check_connection')}">
+                                <a class="btn btn-default jobrouter-connection-check" data-connection-uid="{connection.uid}" data-connection-name="{connection.name}" href="#" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.check_connection')}">
                                     <core:icon identifier="actions-debug"/>
                                 </a>
-                                <f:link.external class="btn btn-default" uri="{connection.baseUrl}" target="_blank" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_module.xlf:action.open_jobrouter_system')}">
+                                <f:link.external class="btn btn-default" uri="{connection.baseUrl}" target="_blank" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.open_jobrouter_system')}">
                                     <core:icon identifier="actions-window-open" />
                                 </f:link.external>
                             </div>

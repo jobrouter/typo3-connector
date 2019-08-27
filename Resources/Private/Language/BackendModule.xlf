@@ -10,7 +10,7 @@
 				<source><![CDATA[Manage JobRouter connections]]></source>
 			</trans-unit>
 			<trans-unit id="mlang_tabs_tab">
-				<source><![CDATA[JobRouter]]></source>
+				<source><![CDATA[Connections]]></source>
 			</trans-unit>
 
 			<trans-unit id="heading_text">

@@ -1,7 +1,7 @@
 <?php
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_db.xlf:tx_jobrouterconnector_domain_model_connection',
+        'title' => 'LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection',
         'label' => 'name',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -36,7 +36,7 @@ return [
 
         'name' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_db.xlf:tx_jobrouterconnector_domain_model_connection.name',
+            'label' => 'LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.name',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -46,7 +46,7 @@ return [
         ],
         'base_url' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_db.xlf:tx_jobrouterconnector_domain_model_connection.base_url',
+            'label' => 'LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.base_url',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -56,7 +56,7 @@ return [
         ],
         'username' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_db.xlf:tx_jobrouterconnector_domain_model_connection.username',
+            'label' => 'LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.username',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -66,7 +66,7 @@ return [
         ],
         'password' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:jobrouter_connector/Resources/Private/Language/locallang_db.xlf:tx_jobrouterconnector_domain_model_connection.password',
+            'label' => 'LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.password',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
