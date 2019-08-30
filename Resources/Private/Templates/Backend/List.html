@@ -54,7 +54,7 @@
                                 ({f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:status.disabled')})
                             </f:if>
                         </td>
-                        <td><f:link.external uri="{connection.baseUrl}" target="_blank">{connection.baseUrl}</f:link.external></td>
+                        <td><f:link.external uri="{connection.baseUrl}" target="_blank" rel="noopener noreferrer">{connection.baseUrl}</f:link.external></td>
                         <td>{connection.username}</td>
                         <td>
                             <div class="btn-group">
@@ -64,7 +64,7 @@
                                 <a class="btn btn-default jobrouter-connection-check" data-connection-uid="{connection.uid}" data-connection-name="{connection.name}" href="#" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.check_connection')}">
                                     <core:icon identifier="actions-debug"/>
                                 </a>
-                                <f:link.external class="btn btn-default" uri="{connection.baseUrl}" target="_blank" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.open_jobrouter_system')}">
+                                <f:link.external class="btn btn-default" uri="{connection.baseUrl}" target="_blank" rel="noopener noreferrer" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.open_jobrouter_system')}">
                                     <core:icon identifier="actions-window-open" />
                                 </f:link.external>
                             </div>
