@@ -40,8 +40,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'max' => 30,
-                'eval' => 'alphanum_x,required,trim,unique'
+                'max' => 255,
+                'eval' => 'required,trim'
             ],
         ],
         'base_url' => [
