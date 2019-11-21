@@ -60,7 +60,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'max' => 50,
+                'max' => 255,
                 'eval' => 'nospace,required'
             ],
         ],
