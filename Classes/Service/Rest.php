@@ -14,6 +14,7 @@ use Brotkrueml\JobRouterClient\Client\RestClient;
 use Brotkrueml\JobRouterClient\Configuration\ClientConfiguration;
 use Brotkrueml\JobRouterClient\Exception\RestClientException;
 use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 class Rest
 {
@@ -33,6 +34,7 @@ class Rest
             $connection->getUsername(),
             $decryptedPassword
         );
+        $configuration->setUserAgentAddition($this->getUserAgentAddition());
 
         if ($lifetime) {
             $configuration->setLifetime($lifetime);
@@ -53,5 +55,13 @@ class Rest
         $this->getRestClient($connection, 10);
 
         return true;
+    }
+
+    private function getUserAgentAddition(): string
+    {
+        include ExtensionManagementUtility::extPath('jobrouter_connector') . '/ext_emconf.php';
+        $version = \array_pop($EM_CONF)['version'];
+
+        return \sprintf('TYPO3Connector/%s', $version);
     }
 }
