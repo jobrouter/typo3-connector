@@ -18,7 +18,7 @@ class CryptTest extends TestCase
     /** @var Crypt */
     private $subject;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->root = vfsStream::setup('project-dir');
     }
@@ -33,8 +33,8 @@ class CryptTest extends TestCase
         $actual = $subject->generateKey();
         $actualBase64Decoded = \base64_decode($actual);
 
-        $this->assertNotEmpty($actual);
-        $this->assertSame(32, strlen($actualBase64Decoded));
+        self::assertNotEmpty($actual);
+        self::assertSame(32, strlen($actualBase64Decoded));
     }
 
     /**
@@ -49,7 +49,7 @@ class CryptTest extends TestCase
         $actualEncrypted = $this->subject->encrypt($value);
         $actualDecrypted = $this->subject->decrypt($actualEncrypted);
 
-        $this->assertSame($value, $actualDecrypted);
+        self::assertSame($value, $actualDecrypted);
     }
 
     /**

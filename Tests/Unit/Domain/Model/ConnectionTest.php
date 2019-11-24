@@ -11,7 +11,7 @@ class ConnectionTest extends TestCase
     /** @var Connection */
     protected $subject;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->subject = new Connection();
     }
@@ -23,7 +23,7 @@ class ConnectionTest extends TestCase
     {
         $actual = $this->subject->getName();
 
-        $this->assertSame('', $actual);
+        self::assertSame('', $actual);
     }
 
     /**
@@ -35,7 +35,7 @@ class ConnectionTest extends TestCase
 
         $actual = $this->subject->getName();
 
-        $this->assertSame('some-name', $actual);
+        self::assertSame('some-name', $actual);
     }
 
     /**
@@ -45,7 +45,7 @@ class ConnectionTest extends TestCase
     {
         $actual = $this->subject->getBaseUrl();
 
-        $this->assertSame('', $actual);
+        self::assertSame('', $actual);
     }
 
     /**
@@ -57,7 +57,7 @@ class ConnectionTest extends TestCase
 
         $actual = $this->subject->getBaseUrl();
 
-        $this->assertSame('http://example.org/', $actual);
+        self::assertSame('http://example.org/', $actual);
     }
 
     /**
@@ -67,7 +67,7 @@ class ConnectionTest extends TestCase
     {
         $actual = $this->subject->getUsername();
 
-        $this->assertSame('', $actual);
+        self::assertSame('', $actual);
     }
 
     /**
@@ -79,7 +79,7 @@ class ConnectionTest extends TestCase
 
         $actual = $this->subject->getUsername();
 
-        $this->assertSame('some-username', $actual);
+        self::assertSame('some-username', $actual);
     }
 
     /**
@@ -89,7 +89,7 @@ class ConnectionTest extends TestCase
     {
         $actual = $this->subject->getPassword();
 
-        $this->assertSame('', $actual);
+        self::assertSame('', $actual);
     }
 
     /**
@@ -101,7 +101,7 @@ class ConnectionTest extends TestCase
 
         $actual = $this->subject->getPassword();
 
-        $this->assertSame('some-password', $actual);
+        self::assertSame('some-password', $actual);
     }
 
     /**
@@ -111,7 +111,7 @@ class ConnectionTest extends TestCase
     {
         $actual = $this->subject->isDisabled();
 
-        $this->assertFalse($actual);
+        self::assertFalse($actual);
     }
 
     /**
@@ -123,6 +123,6 @@ class ConnectionTest extends TestCase
 
         $actual = $this->subject->isDisabled();
 
-        $this->assertTrue($actual);
+        self::assertTrue($actual);
     }
 }

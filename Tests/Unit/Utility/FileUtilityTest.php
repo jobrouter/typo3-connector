@@ -27,7 +27,7 @@ class FileUtilityTest extends TestCase
     /** @var FileUtility */
     protected $subject;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->root = vfsStream::setup(self::ROOT_DIR);
         $this->subject = new FileUtility();
@@ -85,7 +85,7 @@ class FileUtilityTest extends TestCase
 
         $actual = $this->subject->getAbsoluteKeyPath(false);
 
-        $this->assertSame('vfs://' . self::ROOT_DIR . '/.non-existing-file', $actual);
+        self::assertSame('vfs://' . self::ROOT_DIR . '/.non-existing-file', $actual);
     }
 
     /**
@@ -106,7 +106,7 @@ class FileUtilityTest extends TestCase
 
         $actual = $this->subject->getAbsoluteKeyPath();
 
-        $this->assertSame('vfs://' . self::ROOT_DIR . '/.jobrouter-key', $actual);
+        self::assertSame('vfs://' . self::ROOT_DIR . '/.jobrouter-key', $actual);
     }
 
     protected function getExtensionConfigurationMock($returnedKeyPath): MockObject
@@ -114,7 +114,7 @@ class FileUtilityTest extends TestCase
         /** @var MockObject|ExtensionConfiguration $extensionConfigurationMock */
         $extensionConfigurationMock = $this->createMock(ExtensionConfiguration::class);
         $extensionConfigurationMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('get')
             ->with('jobrouter_connector', 'keyPath')
             ->willReturn($returnedKeyPath);

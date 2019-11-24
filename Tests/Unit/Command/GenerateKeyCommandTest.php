@@ -19,7 +19,7 @@ class GenerateKeyCommandTest extends TestCase
 
     private $keyPath = '';
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->root = vfsStream::setup('project-dir');
         $this->keyPath = vfsStream::url('project-dir') . '/.key';
@@ -39,8 +39,8 @@ class GenerateKeyCommandTest extends TestCase
 
         $actual = $this->commandTester->getDisplay();
 
-        $this->assertStringStartsWith('[OK]', trim($actual));
-        $this->assertFileExists($this->keyPath);
+        self::assertStringStartsWith('[OK]', trim($actual));
+        self::assertFileExists($this->keyPath);
     }
 
     /**
@@ -54,7 +54,7 @@ class GenerateKeyCommandTest extends TestCase
 
         $actual = $this->commandTester->getDisplay();
 
-        $this->assertStringStartsWith('[ERROR]', trim($actual));
-        $this->assertStringEndsWith('already exists!', trim($actual));
+        self::assertStringStartsWith('[ERROR]', trim($actual));
+        self::assertStringEndsWith('already exists!', trim($actual));
     }
 }

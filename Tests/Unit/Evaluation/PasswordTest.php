@@ -17,7 +17,7 @@ class PasswordTest extends TestCase
     /** @var MockObject|Crypt */
     private $cryptMock;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->cryptMock = $this->createMock(Crypt::class);
 
@@ -32,17 +32,17 @@ class PasswordTest extends TestCase
         $encryptedValue = 'encrypted-value';
 
         $this->cryptMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('decrypt')
             ->with($encryptedValue);
 
         $this->cryptMock
-            ->expects($this->never())
+            ->expects(self::never())
             ->method('encrypt');
 
         $actual = $this->subject->evaluateFieldValue($encryptedValue);
 
-        $this->assertSame($encryptedValue, $actual);
+        self::assertSame($encryptedValue, $actual);
     }
 
     /**
@@ -54,19 +54,19 @@ class PasswordTest extends TestCase
         $cleartextValue = 'cleartext-value';
 
         $this->cryptMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('decrypt')
             ->with($cleartextValue)
             ->willThrowException(new CryptException());
 
         $this->cryptMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('encrypt')
             ->with($cleartextValue)
             ->willReturn($encryptedValue);
 
         $actual = $this->subject->evaluateFieldValue($cleartextValue);
 
-        $this->assertSame($encryptedValue, $actual);
+        self::assertSame($encryptedValue, $actual);
     }
 }
