@@ -1,7 +1,7 @@
 <?php
 defined('TYPO3_MODE') || die('Access denied.');
 
-(function ($moduleContainerKey, $extensionKey) {
+(function ($moduleContainerKey = 'jobrouter', $extensionKey = 'jobrouter_connector') {
     $moduleContainerIcon = 'module-' . $moduleContainerKey;
     \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class)
         ->registerIcon(
@@ -41,4 +41,4 @@ defined('TYPO3_MODE') || die('Access denied.');
 
     // Add validation call for form field connection password
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tce']['formevals'][\Brotkrueml\JobRouterConnector\Evaluation\Password::class] = '';
-})('jobrouter', 'jobrouter_connector');
+})();
