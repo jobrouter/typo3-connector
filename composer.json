@@ -20,6 +20,7 @@
         "typo3/cms-fluid": "^9.5"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.16",
         "mikey179/vfsstream": "^1.6",
         "phpunit/phpunit": "^8.3"
     },
@@ -47,5 +48,8 @@
             "cms-package-dir": "{$vendor-dir}/typo3/cms",
             "web-dir": ".Build/web"
         }
+    },
+    "scripts": {
+        "fix-cs": ".Build/bin/php-cs-fixer fix"
     }
 }
