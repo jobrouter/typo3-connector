@@ -12,7 +12,8 @@ namespace Brotkrueml\JobRouterConnector\Service;
 
 use Brotkrueml\JobRouterClient\Client\RestClient;
 use Brotkrueml\JobRouterClient\Configuration\ClientConfiguration;
-use Brotkrueml\JobRouterClient\Exception\RestClientException;
+use Brotkrueml\JobRouterClient\Exception\AuthenticationException;
+use Brotkrueml\JobRouterClient\Exception\HttpException;
 use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
@@ -48,7 +49,8 @@ class Rest
      *
      * @param Connection $connection The connection model
      * @return bool true, if connection can be established successfully
-     * @throws RestClientException
+     * @throws AuthenticationException
+     * @throws HttpException
      */
     public function checkConnection(Connection $connection): bool
     {
