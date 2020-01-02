@@ -18,8 +18,13 @@ use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
 use Brotkrueml\JobRouterConnector\Service\Crypt;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
-class RestClientFactory
+final class RestClientFactory
 {
+    /**
+     * @var string
+     */
+    private static $version;
+
     /**
      * Creates the Rest client for the given connection
      *
@@ -49,9 +54,11 @@ class RestClientFactory
 
     private function getUserAgentAddition(): string
     {
-        include ExtensionManagementUtility::extPath('jobrouter_connector') . '/ext_emconf.php';
-        $version = \array_pop($EM_CONF)['version'];
+        if (!static::$version) {
+            include ExtensionManagementUtility::extPath('jobrouter_connector') . '/ext_emconf.php';
+            static::$version = \array_pop($EM_CONF)['version'];
+        }
 
-        return \sprintf('TYPO3Connector/%s', $version);
+        return \sprintf('TYPO3Connector/%s', static::$version);
     }
 }
