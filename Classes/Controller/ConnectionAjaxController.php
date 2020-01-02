@@ -12,7 +12,7 @@ namespace Brotkrueml\JobRouterConnector\Controller;
 
 use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
 use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
-use Brotkrueml\JobRouterConnector\Service\Rest;
+use Brotkrueml\JobRouterConnector\RestClient\RestClientFactory;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Http\JsonResponse;
@@ -40,7 +40,7 @@ class ConnectionAjaxController
             $connection = $connectionRepository->findByIdentifierWithHidden($connectionId);
 
             if ($connection) {
-                (new Rest())->getRestClient($connection, 10);
+                (new RestClientFactory())->create($connection, 10);
             } else {
                 $result = ['error' => sprintf('Connection with id "%d" not found!', $connectionId)];
             }

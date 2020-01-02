@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Brotkrueml\JobRouterConnector\Service;
+namespace Brotkrueml\JobRouterConnector\RestClient;
 
 /*
  * This file is part of the "jobrouter_connector" extension for TYPO3 CMS.
@@ -15,18 +15,21 @@ use Brotkrueml\JobRouterClient\Configuration\ClientConfiguration;
 use Brotkrueml\JobRouterClient\Exception\AuthenticationException;
 use Brotkrueml\JobRouterClient\Exception\HttpException;
 use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
+use Brotkrueml\JobRouterConnector\Service\Crypt;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
-class Rest
+class RestClientFactory
 {
     /**
-     * Get the Rest client for the given connection
+     * Creates the Rest client for the given connection
      *
      * @param Connection $connection The connection model
      * @param int|null $lifetime Optional lifetime argument
      * @return RestClient
+     * @throws AuthenticationException
+     * @throws HttpException
      */
-    public function getRestClient(Connection $connection, ?int $lifetime = null): RestClient
+    public function create(Connection $connection, ?int $lifetime = null): RestClient
     {
         $decryptedPassword = (new Crypt())->decrypt($connection->getPassword());
 
@@ -42,21 +45,6 @@ class Rest
         }
 
         return new RestClient($configuration);
-    }
-
-    /**
-     * Check the connectivity for the given connection
-     *
-     * @param Connection $connection The connection model
-     * @return bool true, if connection can be established successfully
-     * @throws AuthenticationException
-     * @throws HttpException
-     */
-    public function checkConnection(Connection $connection): bool
-    {
-        $this->getRestClient($connection, 10);
-
-        return true;
     }
 
     private function getUserAgentAddition(): string
