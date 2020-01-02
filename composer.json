@@ -34,9 +34,6 @@
             "Brotkrueml\\JobRouterConnector\\Tests\\": "Tests"
         }
     },
-    "replace": {
-        "typo3-ter/typo3-jobrouter-connector": "self.version"
-    },
     "config": {
         "sort-packages" : true,
         "vendor-dir": ".Build/vendor",
