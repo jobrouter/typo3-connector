@@ -12,8 +12,7 @@ namespace Brotkrueml\JobRouterConnector\RestClient;
 
 use Brotkrueml\JobRouterClient\Client\RestClient;
 use Brotkrueml\JobRouterClient\Configuration\ClientConfiguration;
-use Brotkrueml\JobRouterClient\Exception\AuthenticationException;
-use Brotkrueml\JobRouterClient\Exception\HttpException;
+use Brotkrueml\JobRouterClient\Exception\ExceptionInterface;
 use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
 use Brotkrueml\JobRouterConnector\Service\Crypt;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
@@ -31,8 +30,7 @@ final class RestClientFactory
      * @param Connection $connection The connection model
      * @param int|null $lifetime Optional lifetime argument
      * @return RestClient
-     * @throws AuthenticationException
-     * @throws HttpException
+     * @throws ExceptionInterface
      */
     public function create(Connection $connection, ?int $lifetime = null): RestClient
     {
