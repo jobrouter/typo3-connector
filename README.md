@@ -1,9 +1,8 @@
 # Define connections to JobRouter systems from TYPO3 installations
 
-[![TYPO3](https://img.shields.io/badge/TYPO3-9%20LTS-orange.svg)](https://typo3.org/)
-[![Build Status](https://travis-ci.org/brotkrueml/typo3-jobrouter-connector.svg?branch=master)](https://travis-ci.org/brotkrueml/typo3-jobrouter-connector)
+[![CI Status](https://github.com/brotkrueml/typo3-jobrouter-connector/workflows/CI/badge.svg?branch=master)](https://github.com/brotkrueml/typo3-jobrouter-connector/actions?query=workflow%3ACI)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=typo3-jobrouter-connector&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=typo3-jobrouter-connector)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=typo3-jobrouter-connector&metric=coverage)](https://sonarcloud.io/dashboard?id=typo3-jobrouter-connector)
+[![Coverage Status](https://coveralls.io/repos/github/brotkrueml/typo3-jobrouter-connector/badge.svg?branch=master)](https://coveralls.io/github/brotkrueml/typo3-jobrouter-connector?branch=master)
 
 
 ## Requirements
