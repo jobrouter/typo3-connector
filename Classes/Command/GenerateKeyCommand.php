@@ -19,8 +19,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class GenerateKeyCommand extends Command
 {
-    protected $absoluteKeyPath = '';
-
     protected function configure(): void
     {
         $this->setDescription('Generates a random key for encrypting and decrypting connection passwords');
@@ -59,22 +57,8 @@ class GenerateKeyCommand extends Command
 
     protected function getAbsoluteKeyPath(): string
     {
-        if ($this->absoluteKeyPath) {
-            return $this->absoluteKeyPath;
-        }
+        $fileUtility = GeneralUtility::makeInstance(FileUtility::class);
 
-        return (new FileUtility())->getAbsoluteKeyPath(false);
-    }
-
-    /**
-     * For testing purposes only!
-     *
-     * @param string $path
-     *
-     * @internal
-     */
-    public function setAbsoluteKeyPath(string $path): void
-    {
-        $this->absoluteKeyPath = $path;
+        return $fileUtility->getAbsoluteKeyPath(false);
     }
 }

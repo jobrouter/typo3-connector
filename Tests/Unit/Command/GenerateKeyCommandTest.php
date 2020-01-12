@@ -4,10 +4,14 @@ declare(strict_types=1);
 namespace Brotkrueml\JobRouterConnector\Tests\Unit\Command;
 
 use Brotkrueml\JobRouterConnector\Command\GenerateKeyCommand;
+use Brotkrueml\JobRouterConnector\Exception\KeyFileException;
+use Brotkrueml\JobRouterConnector\Utility\FileUtility;
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
 use PHPUnit\Framework\TestCase;
+use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\Console\Tester\CommandTester;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class GenerateKeyCommandTest extends TestCase
 {
@@ -17,6 +21,9 @@ class GenerateKeyCommandTest extends TestCase
     /** @var CommandTester */
     private $commandTester;
 
+    /** @var ObjectProphecy */
+    private $fileUtility;
+
     private $keyPath = '';
 
     protected function setUp(): void
@@ -24,8 +31,10 @@ class GenerateKeyCommandTest extends TestCase
         $this->root = vfsStream::setup('project-dir');
         $this->keyPath = vfsStream::url('project-dir') . '/.key';
 
+        $this->fileUtility = $this->prophesize(FileUtility::class);
+        GeneralUtility::addInstance(FileUtility::class, $this->fileUtility->reveal());
+
         $command = new GenerateKeyCommand();
-        $command->setAbsoluteKeyPath($this->keyPath);
 
         $this->commandTester = new CommandTester($command);
     }
@@ -35,26 +44,40 @@ class GenerateKeyCommandTest extends TestCase
      */
     public function keyIsSuccessfullyStored(): void
     {
+        $this->fileUtility->getAbsoluteKeyPath(false)->willReturn($this->keyPath);
+
         $this->commandTester->execute([]);
 
-        $actual = $this->commandTester->getDisplay();
-
-        self::assertStringStartsWith('[OK]', trim($actual));
+        self::assertStringStartsWith('[OK]', trim($this->commandTester->getDisplay()));
+        self::assertSame(0, $this->commandTester->getStatusCode());
         self::assertFileExists($this->keyPath);
     }
 
     /**
      * @test
      */
-    public function keyFileAlreadyExists(): void
+    public function returnErrorWhenExtensionConfigurationIsNotDefinedCorrectly(): void
     {
-        \touch($this->keyPath);
+        $this->fileUtility->getAbsoluteKeyPath(false)->willThrow(KeyFileException::class);
 
         $this->commandTester->execute([]);
 
-        $actual = $this->commandTester->getDisplay();
+        self::assertStringStartsWith('[ERROR]', trim($this->commandTester->getDisplay()));
+        self::assertSame(1, $this->commandTester->getStatusCode());
+    }
 
-        self::assertStringStartsWith('[ERROR]', trim($actual));
-        self::assertStringEndsWith('already exists!', trim($actual));
+    /**
+     * @test
+     */
+    public function returnErrorWhenKeyFileAlreadyExists(): void
+    {
+        \touch($this->keyPath);
+
+        $this->fileUtility->getAbsoluteKeyPath(false)->willReturn($this->keyPath);
+
+        $this->commandTester->execute([]);
+
+        self::assertStringStartsWith('[ERROR]', trim($this->commandTester->getDisplay()));
+        self::assertSame(2, $this->commandTester->getStatusCode());
     }
 }
