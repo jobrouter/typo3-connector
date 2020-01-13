@@ -55,7 +55,7 @@ Explanation:
 #. Lines 11-13: Retrieve the :php:`Connection` model with uid `42`, which holds
    the base URL of the JobRouter installation and the credentials. Of course,
    the connection must be registered first in the :guilabel:`Connections`
-   :ref:`module <usage.module>`. But you can also instantiate a new model
+   :ref:`module <usage-module>`. But you can also instantiate a new model
    object.
 #. Lines 15-17: It can be the case that there is no model available: There is
    no connection with uid 42 or the connection is disabled. So you have to

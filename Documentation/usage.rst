@@ -28,7 +28,7 @@ screen:
 .. note::
 
    If you see an error that the key file does not exist, :ref:`generate the key
-   <configuration.key-generation>` first.
+   <configuration-key-generation>` first.
 
 
 .. _usage-create-connection:
