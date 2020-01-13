@@ -47,7 +47,7 @@ Since the access data of a JobRouter installation is encrypted, an encryption
 key is required to encrypt and decrypt the password. The extension provides a
 console command for creating a key. So log on to your server and go to the
 project path. To generate the key, you need write permissions for this path.
-Run the following command:
+Run the following command in the project directory:
 
 .. code-block:: shell
 
