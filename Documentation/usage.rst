@@ -114,5 +114,5 @@ menu bar you will find the :guilabel:`delete` button.
 
 .. note::
 
-   Currently, It is currently not checked during deletion whether this
-   connection is used in other records.
+   Currently, there is no check during deletion whether a connection is used
+   in other records.

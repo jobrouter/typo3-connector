@@ -21,7 +21,7 @@ TYPO3 with the JobRouter platform.
 What does it do?
 ================
 
-The TYPO3 JobRouter Connector is a base extension for definining connections
+The TYPO3 JobRouter Connector is a base extension for defining connections
 from TYPO3 to JobRouter. Other extensions rely on this extension to add further
 functionality:
 
