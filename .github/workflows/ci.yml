@@ -3,6 +3,7 @@ name: CI
 on:
   push:
     paths-ignore:
+      - 'Documentation/**'
       - .editorconfig
       - .gitattributes
       - .gitignore
@@ -10,6 +11,7 @@ on:
       - README.md
   pull_request:
     paths-ignore:
+      - 'Documentation/**'
       - .editorconfig
       - .gitattributes
       - .gitignore
