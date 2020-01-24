@@ -3,7 +3,9 @@ name: CI
 on:
   push:
     paths-ignore:
+      - 'Configuration/TypoScript/**'
       - 'Documentation/**'
+      - 'Resources/**'
       - .editorconfig
       - .gitattributes
       - .gitignore
@@ -11,7 +13,9 @@ on:
       - README.md
   pull_request:
     paths-ignore:
+      - 'Configuration/TypoScript/**'
       - 'Documentation/**'
+      - 'Resources/**'
       - .editorconfig
       - .gitattributes
       - .gitignore
