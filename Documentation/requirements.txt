@@ -1,0 +1,1 @@
+sphinx_typo3_theme

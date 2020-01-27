@@ -6,5 +6,6 @@
 /.github/ export-ignore
 /.gitignore export-ignore
 /.php_cs export-ignore
+/.readthedocs.yml export-ignore
 /README.md export-ignore
 /sonar-project.properties export-ignore
