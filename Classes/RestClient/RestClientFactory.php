@@ -41,10 +41,10 @@ final class RestClientFactory
             $connection->getUsername(),
             $decryptedPassword
         );
-        $configuration->setUserAgentAddition($this->getUserAgentAddition());
+        $configuration = $configuration->withUserAgentAddition($this->getUserAgentAddition());
 
         if ($lifetime) {
-            $configuration->setLifetime($lifetime);
+            $configuration = $configuration->withLifetime($lifetime);
         }
 
         return new RestClient($configuration);
