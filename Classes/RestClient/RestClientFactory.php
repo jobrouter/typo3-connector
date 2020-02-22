@@ -34,11 +34,15 @@ final class RestClientFactory
      *
      * @param Connection $connection The connection model
      * @param int|null $lifetime Optional lifetime argument
+     * @param string|null $userAgentAddition Addition to the user agent
      * @return ClientInterface
      * @throws ExceptionInterface
      */
-    public function create(Connection $connection, ?int $lifetime = null): ClientInterface
-    {
+    public function create(
+        Connection $connection,
+        ?int $lifetime = null,
+        ?string $userAgentAddition = null
+    ): ClientInterface {
         $decryptedPassword = (new Crypt())->decrypt($connection->getPassword());
 
         $configuration = new ClientConfiguration(
@@ -46,7 +50,8 @@ final class RestClientFactory
             $connection->getUsername(),
             $decryptedPassword
         );
-        $configuration = $configuration->withUserAgentAddition($this->getUserAgentAddition());
+
+        $configuration = $configuration->withUserAgentAddition($userAgentAddition ?? $this->getUserAgentAddition());
 
         if ($lifetime) {
             $configuration = $configuration->withLifetime($lifetime);
@@ -66,7 +71,10 @@ final class RestClientFactory
             static::$version = \array_pop($EM_CONF)['version'];
         }
 
-        return \sprintf('TYPO3Connector/%s', static::$version);
+        return \sprintf(
+            'TYPO3-JobRouter-Connector/%s (https://github.com/brotkrueml/typo3-jobrouter-connector)',
+            static::$version
+        );
     }
 
     private function updateJobRouterVersion(ClientInterface $client, Connection $connection): void
