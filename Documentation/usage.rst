@@ -46,6 +46,9 @@ bar, which displays a form:
 
 The following fields are available:
 
+General
+-------
+
 :aspect:`Name`
 
    Use a name you recognise. This can be the name of the JobRouter installation
@@ -62,6 +65,17 @@ The following fields are available:
 :aspect:`Password`
 
    The password to be used. It will be stored encrypted in the database.
+
+Information
+-----------
+
+:aspect:`JobRouter Version`
+
+   The version of the JobRouter installation. The version is automatically
+   detected when a connection is established and therefore cannot be changed.
+
+Access
+------
 
 :aspect:`Enabled`
 
@@ -100,7 +114,8 @@ There are three buttons available for each connection:
 .. image:: _images/connection-buttons.png
 
 - You can edit a connection with the pencil.
-- Click on the bug icon to test a connection.
+- Click on the bug icon to test a connection. This will also update the
+  JobRouter version if necessary.
 - The last icon is a link to the JobRouter installation.
 
 

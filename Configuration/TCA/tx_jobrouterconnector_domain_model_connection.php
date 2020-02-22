@@ -15,7 +15,7 @@ return [
         'iconfile' => 'EXT:jobrouter_connector/Resources/Public/Icons/tx_jobrouterconnector_domain_model_connection.svg'
     ],
     'interface' => [
-        'showRecordFieldList' => 'disabled, name, base_url, username, password',
+        'showRecordFieldList' => 'disabled, name, base_url, username, password, jobrouter_version',
     ],
     'columns' => [
         'disabled' => [
@@ -73,13 +73,33 @@ return [
                 'eval' => 'nospace,password,required,' . \Brotkrueml\JobRouterConnector\Evaluation\Password::class
             ]
         ],
+        'jobrouter_version' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.jobrouter_version',
+            'description' => 'LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.jobrouter_version.description',
+            'config' => [
+                'type' => 'input',
+                'size' => 10,
+                'max' => 10,
+                'readOnly' => true,
+            ],
+        ],
     ],
     'types' => [
         '1' => ['showitem' => '
-            name, base_url, username, password,
+            name, base_url,
+            --palette--;;credentials,
+            --div--;LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tab.information,
+            jobrouter_version,
             --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
             disabled,
             --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.extended,
         '],
+    ],
+    'palettes' => [
+        'credentials' => [
+            'label' => 'LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:palette.credentials',
+            'showitem' => 'username, password',
+        ],
     ],
 ];

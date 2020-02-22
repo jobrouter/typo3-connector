@@ -28,6 +28,9 @@ class Connection extends AbstractEntity
     /** @var string */
     protected $password = '';
 
+    /** @var string */
+    protected $jobrouterVersion = '';
+
     /** @var bool */
     protected $disabled = false;
 
@@ -69,6 +72,16 @@ class Connection extends AbstractEntity
     public function setPassword(string $password): void
     {
         $this->password = $password;
+    }
+
+    public function getJobrouterVersion(): string
+    {
+        return $this->jobrouterVersion;
+    }
+
+    public function setJobrouterVersion(string $jobrouterVersion): void
+    {
+        $this->jobrouterVersion = $jobrouterVersion;
     }
 
     public function isDisabled(): bool

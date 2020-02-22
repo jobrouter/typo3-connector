@@ -10,12 +10,17 @@ namespace Brotkrueml\JobRouterConnector\RestClient;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\JobRouterClient\Client\ClientInterface;
 use Brotkrueml\JobRouterClient\Client\RestClient;
 use Brotkrueml\JobRouterClient\Configuration\ClientConfiguration;
 use Brotkrueml\JobRouterClient\Exception\ExceptionInterface;
 use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
+use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
 use Brotkrueml\JobRouterConnector\Service\Crypt;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
+use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 
 final class RestClientFactory
 {
@@ -29,10 +34,10 @@ final class RestClientFactory
      *
      * @param Connection $connection The connection model
      * @param int|null $lifetime Optional lifetime argument
-     * @return RestClient
+     * @return ClientInterface
      * @throws ExceptionInterface
      */
-    public function create(Connection $connection, ?int $lifetime = null): RestClient
+    public function create(Connection $connection, ?int $lifetime = null): ClientInterface
     {
         $decryptedPassword = (new Crypt())->decrypt($connection->getPassword());
 
@@ -47,7 +52,11 @@ final class RestClientFactory
             $configuration = $configuration->withLifetime($lifetime);
         }
 
-        return new RestClient($configuration);
+        $client = new RestClient($configuration);
+
+        $this->updateJobRouterVersion($client, $connection);
+
+        return $client;
     }
 
     private function getUserAgentAddition(): string
@@ -58,5 +67,22 @@ final class RestClientFactory
         }
 
         return \sprintf('TYPO3Connector/%s', static::$version);
+    }
+
+    private function updateJobRouterVersion(ClientInterface $client, Connection $connection): void
+    {
+        if ($client->getJobRouterVersion() === $connection->getJobrouterVersion()) {
+            return;
+        }
+
+        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+
+        $connection->setJobrouterVersion($client->getJobRouterVersion());
+
+        $connectionRepository = $objectManager->get(ConnectionRepository::class);
+        $connectionRepository->update($connection);
+
+        $persistenceManager = $objectManager->get(PersistenceManager::class);
+        $persistenceManager->persistAll();
     }
 }
