@@ -27,6 +27,7 @@ class BackendController extends ActionController
 {
     private const MODULE_NAME = 'jobrouter_JobRouterConnectorJobrouterconnector';
 
+    /** @var string */
     protected $defaultViewObjectName = BackendTemplateView::class;
 
     /** @var ConnectionRepository */
@@ -35,7 +36,7 @@ class BackendController extends ActionController
     /** @var ModuleTemplate */
     private $moduleTemplate;
 
-    public function injectConnectionRepository(ConnectionRepository $connectionRepository)
+    public function injectConnectionRepository(ConnectionRepository $connectionRepository): void
     {
         $this->connectionRepository = $connectionRepository;
     }

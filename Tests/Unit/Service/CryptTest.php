@@ -7,20 +7,16 @@ use Brotkrueml\JobRouterConnector\Exception\CryptException;
 use Brotkrueml\JobRouterConnector\Service\Crypt;
 use Brotkrueml\JobRouterConnector\Utility\FileUtility;
 use org\bovigo\vfs\vfsStream;
-use org\bovigo\vfs\vfsStreamDirectory;
 use PHPUnit\Framework\TestCase;
 
 class CryptTest extends TestCase
 {
-    /** @var vfsStreamDirectory */
-    private $root;
-
     /** @var Crypt */
     private $subject;
 
     protected function setUp(): void
     {
-        $this->root = vfsStream::setup('project-dir');
+        vfsStream::setup('project-dir');
     }
 
     /**

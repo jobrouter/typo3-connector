@@ -18,11 +18,15 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  */
 class ConnectionRepository extends Repository
 {
+    /** @var string[] */
     protected $defaultOrderings = [
         'disabled' => QueryInterface::ORDER_ASCENDING,
         'name' => QueryInterface::ORDER_ASCENDING,
     ];
 
+    /**
+     * @return mixed[]|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
     public function findAllWithHidden()
     {
         $query = $this->createQuery();
@@ -31,7 +35,7 @@ class ConnectionRepository extends Repository
         return $query->execute();
     }
 
-    public function findByIdentifierWithHidden($identifier)
+    public function findByIdentifierWithHidden($identifier): object
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setIgnoreEnableFields(true);

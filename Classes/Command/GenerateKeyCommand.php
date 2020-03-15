@@ -50,6 +50,10 @@ class GenerateKeyCommand extends Command
         return 0;
     }
 
+    /**
+     * @return Crypt
+     * @norector Rector\TypeDeclaration\Rector\FunctionLike\ReturnTypeDeclarationRector
+     */
     protected function getCrypt(): Crypt
     {
         return GeneralUtility::makeInstance(Crypt::class);

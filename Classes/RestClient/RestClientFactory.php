@@ -64,9 +64,13 @@ final class RestClientFactory
         return $client;
     }
 
+    /**
+     * @return string
+     * @norector Rector\Php56\Rector\FunctionLike\AddDefaultValueForUndefinedVariableRector
+     */
     private function getUserAgentAddition(): string
     {
-        if (!static::$version) {
+        if (empty(static::$version)) {
             include ExtensionManagementUtility::extPath('jobrouter_connector') . '/ext_emconf.php';
             static::$version = \array_pop($EM_CONF)['version'];
         }

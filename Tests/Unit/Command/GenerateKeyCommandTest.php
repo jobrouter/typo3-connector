@@ -24,6 +24,7 @@ class GenerateKeyCommandTest extends TestCase
     /** @var ObjectProphecy */
     private $fileUtility;
 
+    /** @var string */
     private $keyPath = '';
 
     protected function setUp(): void
