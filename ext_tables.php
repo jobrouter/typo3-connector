@@ -25,12 +25,12 @@ defined('TYPO3_MODE') || die('Access denied.');
 
     // Register new module
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
-        'Brotkrueml.JobRouterConnector',
+        'JobRouterConnector',
         'jobrouter',
         'jobrouterconnector',
         '',
         [
-            'Backend' => 'list',
+            \Brotkrueml\JobRouterConnector\Controller\BackendController::class => 'list',
         ],
         [
             'access' => 'admin',
