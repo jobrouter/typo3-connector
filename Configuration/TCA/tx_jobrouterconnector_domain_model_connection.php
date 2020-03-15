@@ -14,9 +14,6 @@ return [
         'searchFields' => 'name,base_url,username',
         'iconfile' => 'EXT:jobrouter_connector/Resources/Public/Icons/tx_jobrouterconnector_domain_model_connection.svg'
     ],
-    'interface' => [
-        'showRecordFieldList' => 'disabled, name, base_url, username, password, jobrouter_version',
-    ],
     'columns' => [
         'disabled' => [
             'exclude' => true,
