@@ -51,7 +51,7 @@ Run the following command in the project directory:
 
 .. code-block:: shell
 
-   vendor/bin/typo3 jobrouter:crypt:generatekey
+   vendor/bin/typo3 jobrouter:connector:generatekey
 
 Hopefully you will receive a successful response:
 

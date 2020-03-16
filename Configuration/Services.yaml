@@ -10,5 +10,5 @@ services:
   Brotkrueml\JobRouterConnector\Command\GenerateKeyCommand:
     tags:
       - name: 'console.command'
-        command: 'jobrouter:crypt:generatekey'
+        command: 'jobrouter:connector:generatekey'
         schedulable: false
