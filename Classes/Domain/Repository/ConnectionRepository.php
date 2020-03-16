@@ -35,7 +35,7 @@ class ConnectionRepository extends Repository
         return $query->execute();
     }
 
-    public function findByIdentifierWithHidden($identifier): object
+    public function findByIdentifierWithHidden($identifier)
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setIgnoreEnableFields(true);
