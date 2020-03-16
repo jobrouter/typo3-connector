@@ -24,10 +24,7 @@ use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 
 final class RestClientFactory
 {
-    /**
-     * @var string
-     */
-    private static $version;
+    private static string $version;
 
     /**
      * Creates the Rest client for the given connection
@@ -42,7 +39,7 @@ final class RestClientFactory
         Connection $connection,
         ?int $lifetime = null,
         ?string $userAgentAddition = null
-    ): ClientInterface {
+    ): RestClient {
         $decryptedPassword = (new Crypt())->decrypt($connection->getPassword());
 
         $configuration = new ClientConfiguration(

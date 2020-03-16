@@ -15,17 +15,10 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class GenerateKeyCommandTest extends TestCase
 {
-    /** @var vfsStreamDirectory */
-    protected $root;
-
-    /** @var CommandTester */
-    private $commandTester;
-
-    /** @var ObjectProphecy */
-    private $fileUtility;
-
-    /** @var string */
-    private $keyPath = '';
+    private vfsStreamDirectory $root;
+    private CommandTester $commandTester;
+    private ObjectProphecy $fileUtility;
+    private string $keyPath = '';
 
     protected function setUp(): void
     {

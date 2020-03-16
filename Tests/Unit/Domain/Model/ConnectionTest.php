@@ -8,8 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class ConnectionTest extends TestCase
 {
-    /** @var Connection */
-    protected $subject;
+    private Connection $subject;
 
     protected function setUp(): void
     {

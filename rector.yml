@@ -1,5 +1,5 @@
 parameters:
-  php_version_features: '7.2'
+  php_version_features: '7.4'
   paths:
     - 'Classes/'
     - 'Configuration/'
@@ -17,4 +17,8 @@ parameters:
     - 'php70'
     - 'php71'
     - 'php72'
+    - 'php73'
+    - 'php74'
     - 'type-declaration'
+  exclude_rectors:
+    - Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector

@@ -8,18 +8,14 @@ Installation
 
 Target group: **Administrators**
 
-.. note::
-
-   The extension works with TYPO3 version 10.3+.
-
 
 .. _installation-requirements:
 
 Requirements
 ============
 
-In addition to the TYPO3 requirements this extension needs some more PHP
-extensions: `curl` and `sodium`.
+The extension runs on TYPO3 10.3+ and PHP 7.4. In addition to the TYPO3
+requirements the following PHP extensions are needed: `curl` and `sodium`.
 
 
 .. _installation-composer:

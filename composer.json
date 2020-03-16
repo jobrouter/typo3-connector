@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "php": "^7.2",
+        "php": "^7.4",
         "ext-json": "*",
         "ext-sodium": "*",
         "brotkrueml/jobrouter-client": "^0.9",
@@ -37,7 +37,7 @@
         }
     },
     "config": {
-        "sort-packages" : true,
+        "sort-packages": true,
         "vendor-dir": ".Build/vendor",
         "bin-dir": ".Build/bin"
     },
