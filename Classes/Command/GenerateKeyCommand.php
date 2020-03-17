@@ -18,6 +18,11 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 final class GenerateKeyCommand extends Command
 {
+    public const EXIT_CODE_OK = 0;
+    public const EXIT_CODE_KEY_FILE_WRONG_PATH = 1;
+    public const EXIT_CODE_KEY_FILE_EXISTS = 2;
+    public const EXIT_CODE_KEY_FILE_CANNOT_BE_WRITTEN = 3;
+
     private Crypt $crypt;
     private FileUtility $fileUtility;
 
@@ -42,21 +47,21 @@ final class GenerateKeyCommand extends Command
             $absolutePath = $this->fileUtility->getAbsoluteKeyPath(false);
         } catch (\Throwable $e) {
             $outputStyle->error(sprintf('The key file path is not defined correctly in the extension configuration!'));
-            return 1;
+            return self::EXIT_CODE_KEY_FILE_WRONG_PATH;
         }
 
         if (\file_exists($absolutePath)) {
             $outputStyle->error(sprintf('The key file "%s" already exists!', $absolutePath));
-            return 2;
+            return self::EXIT_CODE_KEY_FILE_EXISTS;
         }
 
         if (false === \file_put_contents($absolutePath, $this->crypt->generateKey())) {
             $outputStyle->error(sprintf('The key file "%s" could not be written!', $absolutePath));
-            return 3;
+            return self::EXIT_CODE_KEY_FILE_CANNOT_BE_WRITTEN;
         }
 
         $outputStyle->success(sprintf('Key was generated and stored into "%s"', $absolutePath));
 
-        return 0;
+        return self::EXIT_CODE_OK;
     }
 }

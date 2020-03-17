@@ -39,7 +39,7 @@ class GenerateKeyCommandTest extends TestCase
         $this->commandTester->execute([]);
 
         self::assertStringStartsWith('[OK]', trim($this->commandTester->getDisplay()));
-        self::assertSame(0, $this->commandTester->getStatusCode());
+        self::assertSame(GenerateKeyCommand::EXIT_CODE_OK, $this->commandTester->getStatusCode());
         self::assertFileExists($this->keyPath);
     }
 
@@ -53,7 +53,7 @@ class GenerateKeyCommandTest extends TestCase
         $this->commandTester->execute([]);
 
         self::assertStringStartsWith('[ERROR]', trim($this->commandTester->getDisplay()));
-        self::assertSame(1, $this->commandTester->getStatusCode());
+        self::assertSame(GenerateKeyCommand::EXIT_CODE_KEY_FILE_WRONG_PATH, $this->commandTester->getStatusCode());
     }
 
     /**
@@ -68,6 +68,6 @@ class GenerateKeyCommandTest extends TestCase
         $this->commandTester->execute([]);
 
         self::assertStringStartsWith('[ERROR]', trim($this->commandTester->getDisplay()));
-        self::assertSame(2, $this->commandTester->getStatusCode());
+        self::assertSame(GenerateKeyCommand::EXIT_CODE_KEY_FILE_EXISTS, $this->commandTester->getStatusCode());
     }
 }
