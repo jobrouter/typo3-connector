@@ -5,10 +5,12 @@ on:
     paths:
       - '**.php'
       - '.github/workflows/ci.yml'
+      - 'composer.json'
   pull_request:
     paths:
       - '**.php'
       - '.github/workflows/ci.yml'
+      - 'composer.json'
 
 jobs:
   build:
