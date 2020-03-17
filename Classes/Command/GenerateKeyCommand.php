@@ -15,10 +15,20 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class GenerateKeyCommand extends Command
+final class GenerateKeyCommand extends Command
 {
+    private Crypt $crypt;
+    private FileUtility $fileUtility;
+
+    public function __construct(Crypt $crypt, FileUtility $fileUtility)
+    {
+        $this->crypt = $crypt;
+        $this->fileUtility = $fileUtility;
+
+        parent::__construct();
+    }
+
     protected function configure(): void
     {
         $this->setDescription('Generates a random key for encrypting and decrypting connection passwords');
@@ -29,7 +39,7 @@ class GenerateKeyCommand extends Command
         $outputStyle = new SymfonyStyle($input, $output);
 
         try {
-            $absolutePath = $this->getAbsoluteKeyPath();
+            $absolutePath = $this->fileUtility->getAbsoluteKeyPath(false);
         } catch (\Throwable $e) {
             $outputStyle->error(sprintf('The key file path is not defined correctly in the extension configuration!'));
             return 1;
@@ -40,7 +50,7 @@ class GenerateKeyCommand extends Command
             return 2;
         }
 
-        if (false === \file_put_contents($absolutePath, $this->getCrypt()->generateKey())) {
+        if (false === \file_put_contents($absolutePath, $this->crypt->generateKey())) {
             $outputStyle->error(sprintf('The key file "%s" could not be written!', $absolutePath));
             return 3;
         }
@@ -48,21 +58,5 @@ class GenerateKeyCommand extends Command
         $outputStyle->success(sprintf('Key was generated and stored into "%s"', $absolutePath));
 
         return 0;
-    }
-
-    /**
-     * @return Crypt
-     * @norector Rector\TypeDeclaration\Rector\FunctionLike\ReturnTypeDeclarationRector
-     */
-    protected function getCrypt(): Crypt
-    {
-        return GeneralUtility::makeInstance(Crypt::class);
-    }
-
-    protected function getAbsoluteKeyPath(): string
-    {
-        $fileUtility = GeneralUtility::makeInstance(FileUtility::class);
-
-        return $fileUtility->getAbsoluteKeyPath(false);
     }
 }

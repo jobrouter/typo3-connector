@@ -7,6 +7,9 @@ services:
   Brotkrueml\JobRouterConnector\:
     resource: '../Classes/*'
 
+  Brotkrueml\JobRouterConnector\Utility\FileUtility:
+    public: true
+
   Brotkrueml\JobRouterConnector\Command\GenerateKeyCommand:
     tags:
       - name: 'console.command'

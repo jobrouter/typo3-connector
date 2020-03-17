@@ -5,31 +5,27 @@ namespace Brotkrueml\JobRouterConnector\Tests\Unit\Command;
 
 use Brotkrueml\JobRouterConnector\Command\GenerateKeyCommand;
 use Brotkrueml\JobRouterConnector\Exception\KeyFileException;
+use Brotkrueml\JobRouterConnector\Service\Crypt;
 use Brotkrueml\JobRouterConnector\Utility\FileUtility;
 use org\bovigo\vfs\vfsStream;
-use org\bovigo\vfs\vfsStreamDirectory;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\Console\Tester\CommandTester;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class GenerateKeyCommandTest extends TestCase
 {
-    private vfsStreamDirectory $root;
     private CommandTester $commandTester;
     private ObjectProphecy $fileUtility;
     private string $keyPath = '';
 
     protected function setUp(): void
     {
-        $this->root = vfsStream::setup('project-dir');
+        vfsStream::setup('project-dir');
         $this->keyPath = vfsStream::url('project-dir') . '/.key';
 
         $this->fileUtility = $this->prophesize(FileUtility::class);
-        GeneralUtility::addInstance(FileUtility::class, $this->fileUtility->reveal());
 
-        $command = new GenerateKeyCommand();
-
+        $command = new GenerateKeyCommand(new Crypt(), $this->fileUtility->reveal());
         $this->commandTester = new CommandTester($command);
     }
 
