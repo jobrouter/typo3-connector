@@ -19,10 +19,13 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class FileUtilityTest extends TestCase
 {
-    private const ROOT_DIR = 'project-dir';
+    protected const ROOT_DIR = 'project-dir';
 
-    private vfsStreamDirectory $root;
-    private FileUtility $subject;
+    /** @var vfsStreamDirectory */
+    protected $root;
+
+    /** @var FileUtility */
+    protected $subject;
 
     protected function setUp(): void
     {

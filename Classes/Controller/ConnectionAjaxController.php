@@ -13,6 +13,7 @@ namespace Brotkrueml\JobRouterConnector\Controller;
 use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
 use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
 use Brotkrueml\JobRouterConnector\RestClient\RestClientFactory;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Http\JsonResponse;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -20,14 +21,15 @@ use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 class ConnectionAjaxController
 {
-    private ObjectManager $objectManager;
+    /** @var ObjectManager */
+    private $objectManager;
 
     public function __construct()
     {
         $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
     }
 
-    public function checkAction(ServerRequestInterface $request): JsonResponse
+    public function checkAction(ServerRequestInterface $request): ResponseInterface
     {
         $connectionId = (int)$request->getParsedBody()['connectionId'];
 

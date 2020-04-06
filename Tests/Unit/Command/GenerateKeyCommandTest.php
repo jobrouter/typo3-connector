@@ -14,9 +14,14 @@ use Symfony\Component\Console\Tester\CommandTester;
 
 class GenerateKeyCommandTest extends TestCase
 {
-    private CommandTester $commandTester;
-    private ObjectProphecy $fileUtility;
-    private string $keyPath = '';
+    /** @var CommandTester */
+    private $commandTester;
+
+    /** @var ObjectProphecy */
+    private $fileUtility;
+
+    /** @var string */
+    private $keyPath = '';
 
     protected function setUp(): void
     {

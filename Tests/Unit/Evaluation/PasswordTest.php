@@ -11,7 +11,8 @@ use PHPUnit\Framework\TestCase;
 
 class PasswordTest extends TestCase
 {
-    private Password $subject;
+    /** @var Password */
+    private $subject;
 
     /** @var MockObject|Crypt */
     private $cryptMock;

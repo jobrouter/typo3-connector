@@ -16,7 +16,8 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 final class Password
 {
-    private Crypt $cryptService;
+    /** @var Crypt */
+    private $cryptService;
 
     public function __construct(Crypt $crypt = null)
     {

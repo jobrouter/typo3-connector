@@ -23,8 +23,11 @@ final class GenerateKeyCommand extends Command
     public const EXIT_CODE_KEY_FILE_EXISTS = 2;
     public const EXIT_CODE_KEY_FILE_CANNOT_BE_WRITTEN = 3;
 
-    private Crypt $crypt;
-    private FileUtility $fileUtility;
+    /** @var Crypt */
+    private $crypt;
+
+    /** @var FileUtility */
+    private $fileUtility;
 
     public function __construct(Crypt $crypt, FileUtility $fileUtility)
     {

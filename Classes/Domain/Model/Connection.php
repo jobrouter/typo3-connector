@@ -16,12 +16,23 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
  */
 class Connection extends AbstractEntity
 {
-    protected string $name = '';
-    protected string $baseUrl = '';
-    protected string $username = '';
-    protected string $password = '';
-    protected string $jobrouterVersion = '';
-    protected bool $disabled = false;
+    /** @var string */
+    protected $name = '';
+
+    /** @var string */
+    protected $baseUrl = '';
+
+    /** @var string */
+    protected $username = '';
+
+    /** @var string */
+    protected $password = '';
+
+    /** @var string */
+    protected $jobrouterVersion = '';
+
+    /** @var bool */
+    protected $disabled = false;
 
     public function getName(): string
     {

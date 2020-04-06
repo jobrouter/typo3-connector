@@ -30,8 +30,11 @@ class BackendController extends ActionController
     /** @var string */
     protected $defaultViewObjectName = BackendTemplateView::class;
 
-    private ConnectionRepository $connectionRepository;
-    private ModuleTemplate $moduleTemplate;
+    /** @var ConnectionRepository */
+    private $connectionRepository;
+
+    /** @var ModuleTemplate */
+    private $moduleTemplate;
 
     public function injectConnectionRepository(ConnectionRepository $connectionRepository): void
     {
