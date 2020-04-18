@@ -15,7 +15,7 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 /**
  * Connection model
  */
-class Connection extends AbstractEntity
+final class Connection extends AbstractEntity
 {
     /** @var string */
     protected $name = '';

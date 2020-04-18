@@ -10,6 +10,6 @@ declare(strict_types=1);
 
 namespace Brotkrueml\JobRouterConnector\Exception;
 
-class KeyFileException extends \RuntimeException
+final class KeyFileException extends \RuntimeException
 {
 }

@@ -16,7 +16,7 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 /**
  * The repository for connections
  */
-class ConnectionRepository extends Repository
+final class ConnectionRepository extends Repository
 {
     /** @var string[] */
     protected $defaultOrderings = [

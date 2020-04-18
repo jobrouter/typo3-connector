@@ -19,7 +19,10 @@ use TYPO3\CMS\Core\Http\JsonResponse;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
-class ConnectionAjaxController
+/**
+ @internal
+ */
+final class ConnectionAjaxController
 {
     /** @var ObjectManager */
     private $objectManager;
