@@ -48,6 +48,28 @@ class ConnectionTest extends TestCase
     /**
      * @test
      */
+    public function initialHandleIsEmptyString(): void
+    {
+        $actual = $this->subject->getHandle();
+
+        self::assertSame('', $actual);
+    }
+
+    /**
+     * @test
+     */
+    public function setAndGetHandle(): void
+    {
+        $this->subject->setHandle('some-handle');
+
+        $actual = $this->subject->getHandle();
+
+        self::assertSame('some-handle', $actual);
+    }
+
+    /**
+     * @test
+     */
     public function initialBaseUrlIsEmptyString(): void
     {
         $actual = $this->subject->getBaseUrl();

@@ -14,7 +14,7 @@ Target group: **Integrators, Administrators**
 Module
 ======
 
-The connections to JobRouter installations are managed in the module
+The connections to JobRouter systems are managed in the module
 :guilabel:`JobRouter` > :guilabel:`Connections`.
 
 On your first visit after installing the extension you should see the following
@@ -50,11 +50,15 @@ General
 -------
 
 Name
-   Use a name you recognise. This can be the name of the JobRouter installation
-   or the purpose for which it is used. It is only descriptive.
+   Use a name you recognise. This can be the name of the JobRouter system or the
+   purpose for which it is used. It is only descriptive.
+
+Handle
+   Enter a unique short handle. It can be used to create a connection
+   independently of the internal uid.
 
 Base URL
-   The base URL of the JobRouter installation.
+   The base URL of the JobRouter system.
 
 Username
    The username to login over the REST API.
@@ -66,8 +70,8 @@ Information
 -----------
 
 JobRouter Version
-   The version of the JobRouter installation. The version is automatically
-   detected when a connection is established and therefore cannot be changed.
+   The version of the JobRouter system. The version is automatically detected
+   when a connection is established and therefore cannot be changed.
 
 Access
 ------
@@ -80,11 +84,12 @@ Enabled
 
    For security reasons, use a JobRouter user who only has the access rights
    required for the purpose. It is also possible to create two connections to
-   the same JobRouter installation with different users.
+   the same JobRouter system with different users.
 
 .. caution::
 
-   The JobRouter installation should be accessible only over TLS (https).
+   The JobRouter system should be accessible only over TLS (https), so that the
+   credentials are transmitted encrypted.
 
 
 .. _usage-connection-list:
@@ -110,7 +115,7 @@ There are three buttons available for each connection:
 - You can edit a connection with the pencil.
 - Click on the bug icon to test a connection. This will also update the
   JobRouter version if necessary.
-- The last icon is a link to the JobRouter installation.
+- The last icon is a link to the JobRouter system.
 
 
 .. _usage-delete-connection:

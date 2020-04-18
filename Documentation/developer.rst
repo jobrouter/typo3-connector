@@ -38,7 +38,7 @@ Let's have a look at an example in the TYPO3 context:
 
    $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
    $connectionRepository = $objectManager->get(ConnectionRepository::class);
-   $connection = $connectionRepository->findByIdentifier(42);
+   $connection = $connectionRepository->findOneByHandle('example');
 
    if (!$connection) {
       die('The connection is not found or is disabled!');

@@ -40,6 +40,7 @@
             <thead>
                 <tr>
                     <th scope="col"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.name"/></th>
+                    <th scope="col"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.handle"/></th>
                     <th scope="col"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.base_url"/></th>
                     <th scope="col"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.username"/></th>
                     <th scope="col"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.jobrouter_version"/></th>
@@ -50,12 +51,19 @@
                 <f:for each="{connections}" as="connection">
                     <tr>
                         <td>
-                            {connection.name}
-                            <f:if condition="{connection.disabled}">
-                                ({f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:status.disabled')})
-                            </f:if>
+                            <be:link.editRecord table="tx_jobrouterconnector_domain_model_connection" uid="{connection.uid}" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.edit_connection')}">
+                                {connection.name}
+                                <f:if condition="{connection.disabled}">
+                                    ({f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:status.disabled')})
+                                </f:if>
+                            </be:link.editRecord>
                         </td>
-                        <td><f:link.external uri="{connection.baseUrl}" target="_blank" rel="noopener noreferrer">{connection.baseUrl}</f:link.external></td>
+                        <td>
+                            <be:link.editRecord table="tx_jobrouterconnector_domain_model_connection" uid="{connection.uid}" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.edit_connection')}">
+                                {connection.handle}
+                            </be:link.editRecord>
+                        </td>
+                        <td><f:link.external uri="{connection.baseUrl}" target="_blank" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.open_jobrouter_system')}" rel="noopener noreferrer">{connection.baseUrl}</f:link.external></td>
                         <td>{connection.username}</td>
                         <td>{connection.jobrouterVersion}</td>
                         <td>

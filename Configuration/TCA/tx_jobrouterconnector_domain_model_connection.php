@@ -19,7 +19,7 @@ return [
             'disabled' => 'disabled',
         ],
         'rootLevel' => 1,
-        'searchFields' => 'name,base_url,username',
+        'searchFields' => 'name,handle,base_url,username',
         'iconfile' => 'EXT:jobrouter_connector/Resources/Public/Icons/tx_jobrouterconnector_domain_model_connection.svg'
     ],
     'columns' => [
@@ -47,6 +47,16 @@ return [
                 'size' => 30,
                 'max' => 255,
                 'eval' => 'required,trim'
+            ],
+        ],
+        'handle' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.handle',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'max' => 30,
+                'eval' => 'alphanum_x,required,trim,unique'
             ],
         ],
         'base_url' => [
@@ -92,7 +102,7 @@ return [
     ],
     'types' => [
         '1' => ['showitem' => '
-            name, base_url,
+            name, handle, base_url,
             --palette--;;credentials,
             --div--;LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tab.information,
             jobrouter_version,

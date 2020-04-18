@@ -12,13 +12,13 @@ namespace Brotkrueml\JobRouterConnector\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
-/**
- * Connection model
- */
 final class Connection extends AbstractEntity
 {
     /** @var string */
     protected $name = '';
+
+    /** @var string */
+    protected $handle = '';
 
     /** @var string */
     protected $baseUrl = '';
@@ -43,6 +43,16 @@ final class Connection extends AbstractEntity
     public function setName(string $name): void
     {
         $this->name = $name;
+    }
+
+    public function getHandle(): string
+    {
+        return $this->handle;
+    }
+
+    public function setHandle(string $handle): void
+    {
+        $this->handle = $handle;
     }
 
     public function getBaseUrl(): string
