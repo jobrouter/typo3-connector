@@ -49,36 +49,30 @@ The following fields are available:
 General
 -------
 
-:aspect:`Name`
-
+Name
    Use a name you recognise. This can be the name of the JobRouter installation
    or the purpose for which it is used. It is only descriptive.
 
-:aspect:`Base URL`
-
+Base URL
    The base URL of the JobRouter installation.
 
-:aspect:`Username`
-
+Username
    The username to login over the REST API.
 
-:aspect:`Password`
-
+Password
    The password to be used. It will be stored encrypted in the database.
 
 Information
 -----------
 
-:aspect:`JobRouter Version`
-
+JobRouter Version
    The version of the JobRouter installation. The version is automatically
    detected when a connection is established and therefore cannot be changed.
 
 Access
 ------
 
-:aspect:`Enabled`
-
+Enabled
    In the :guilabel:`Access` tab you can enable or disable the connection.
    Disabled connections cannot be used.
 
