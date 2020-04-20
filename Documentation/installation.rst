@@ -10,7 +10,7 @@ Target group: **Administrators**
 
 .. note::
 
-   The extension works with TYPO3 version 10.3+.
+   The extension works with TYPO3 10.4 LTS.
 
 
 .. _installation-requirements:

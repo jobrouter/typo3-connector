@@ -14,10 +14,10 @@
         "ext-json": "*",
         "ext-sodium": "*",
         "brotkrueml/jobrouter-client": "^0.9",
-        "typo3/cms-backend": "^10.3",
-        "typo3/cms-core": "^10.3",
-        "typo3/cms-extbase": "^10.3",
-        "typo3/cms-fluid": "^10.3"
+        "typo3/cms-backend": "^10.4",
+        "typo3/cms-core": "^10.4",
+        "typo3/cms-extbase": "^10.4",
+        "typo3/cms-fluid": "^10.4"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.16",
