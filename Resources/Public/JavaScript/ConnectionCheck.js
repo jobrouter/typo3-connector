@@ -1,59 +1,53 @@
-define(['jquery'], function($) {
-  'use strict';
+require([
+  'TYPO3/CMS/Core/DocumentService',
+  'TYPO3/CMS/Core/Event/RegularEvent',
+  'TYPO3/CMS/Core/Ajax/AjaxRequest',
+  'TYPO3/CMS/Backend/Notification'
+], function(DocumentService, RegularEvent, AjaxRequest, Notification) {
+  const connectionCheck = function(id, name) {
+    const notificationTitle = TYPO3.lang['connection_check_for'] + ' ' + name;
+    const request = new AjaxRequest(TYPO3.settings.ajaxUrls['jobrouter_connection_check']);
 
-  var ConnectionCheck = {};
-
-  ConnectionCheck.init = function() {
-    window.addEventListener('load', function() {
-      var listElement = document.getElementById('jobrouter-connection-list');
-
-      if (!listElement) {
-        return;
-      }
-
-      listElement.addEventListener('click', function(event) {
-        var linkElement = event.target.closest('.jobrouter-connection-check');
-
-        if (!linkElement) {
-          return;
-        }
-
-        event.preventDefault();
-
-        ConnectionCheck.check(
-          linkElement.dataset.connectionUid,
-          linkElement.dataset.connectionName
-        );
-      });
-    });
-  };
-
-  ConnectionCheck.check = function(id, name) {
-    var url = top.TYPO3.settings.ajaxUrls['jobrouter_connection_check'];
-    var settings = {
-      type: 'POST',
-      data: {connectionId: +id}
-    };
-
-    var notificationTitle = TYPO3.lang['connection_check_for'] + ' ' + name;
-    $.ajax(url, settings)
-      .done(function(data) {
-        if (data.check === 'ok') {
-          top.TYPO3.Notification.success(notificationTitle, TYPO3.lang['connection_successful'], 5);
+    request.post({connectionId: +id}).then(
+      async function(response) {
+        const data = await response.resolve();
+        if (data.check && data.check === 'ok') {
+          Notification.success(notificationTitle, TYPO3.lang['connection_successful'], 5);
           return;
         }
 
         if (data.error) {
-          top.TYPO3.Notification.error(notificationTitle, data.error);
+          Notification.error(notificationTitle, data.error);
           return;
         }
 
-        top.TYPO3.Notification.error(notificationTitle, 'Unknown error');
-      })
-      .fail(function(jqXhr, textStatus) {
-        top.TYPO3.Notification.error(notificationTitle, 'Unknown error (' + textStatus + ', ' + jqXhr.status + ')');
-      });
-  };
+        Notification.error(notificationTitle, TYPO3.lang['connection_unknown_error']);
+      }, function(error) {
+        Notification.error(notificationTitle, TYPO3.lang['connection_unknown_error'] + ' (' + error.statusText + ', ' + error.status + ')');
+      }
+    );
+  }
 
-  ConnectionCheck.init();
+  DocumentService.ready().then(() => {
+    const connectionListElement = document.getElementById('jobrouter-connection-list');
+
+    if (!connectionListElement) {
+      return;
+    }
+
+    new RegularEvent('click', function(e) {
+      const linkElement = e.target.closest('.jobrouter-connection-check');
+
+      if (!linkElement) {
+        return;
+      }
+
+      e.preventDefault();
+
+      connectionCheck(
+        linkElement.dataset.connectionUid,
+        linkElement.dataset.connectionName
+      );
+    }).bindTo(connectionListElement);
+  });
 });
