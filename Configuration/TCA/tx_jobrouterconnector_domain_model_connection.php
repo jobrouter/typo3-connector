@@ -9,7 +9,7 @@
 
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection',
+        'title' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection',
         'label' => 'name',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -20,7 +20,7 @@ return [
         ],
         'rootLevel' => 1,
         'searchFields' => 'name,handle,base_url,username',
-        'iconfile' => 'EXT:jobrouter_connector/Resources/Public/Icons/tx_jobrouterconnector_domain_model_connection.svg'
+        'iconfile' => 'EXT:' . \Brotkrueml\JobRouterConnector\Extension::KEY . '/Resources/Public/Icons/tx_jobrouterconnector_domain_model_connection.svg'
     ],
     'columns' => [
         'disabled' => [
@@ -41,7 +41,7 @@ return [
 
         'name' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.name',
+            'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.name',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -51,7 +51,7 @@ return [
         ],
         'handle' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.handle',
+            'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.handle',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -61,7 +61,7 @@ return [
         ],
         'base_url' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.base_url',
+            'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.base_url',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -71,7 +71,7 @@ return [
         ],
         'username' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.username',
+            'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.username',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -81,7 +81,7 @@ return [
         ],
         'password' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.password',
+            'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.password',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -90,8 +90,8 @@ return [
         ],
         'jobrouter_version' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.jobrouter_version',
-            'description' => 'LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.jobrouter_version.description',
+            'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.jobrouter_version',
+            'description' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.jobrouter_version.description',
             'config' => [
                 'type' => 'input',
                 'size' => 10,
@@ -104,7 +104,7 @@ return [
         '1' => ['showitem' => '
             name, handle, base_url,
             --palette--;;credentials,
-            --div--;LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tab.information,
+            --div--;' . \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tab.information,
             jobrouter_version,
             --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
             disabled,
@@ -113,7 +113,7 @@ return [
     ],
     'palettes' => [
         'credentials' => [
-            'label' => 'LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:palette.credentials',
+            'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':palette.credentials',
             'showitem' => 'username, password',
         ],
     ],

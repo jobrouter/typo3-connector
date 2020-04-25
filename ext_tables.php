@@ -1,26 +1,26 @@
 <?php
 defined('TYPO3_MODE') || die('Access denied.');
 
-(function ($moduleContainerKey = 'jobrouter', $extensionKey = 'jobrouter_connector') {
-    $moduleContainerIcon = 'module-' . $moduleContainerKey;
+(function () {
+    $moduleContainerIcon = 'module-' . \Brotkrueml\JobRouterConnector\Extension::MODULE_GROUP;
     \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class)
         ->registerIcon(
             $moduleContainerIcon,
             \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-            ['source' => 'EXT:' . $extensionKey . '/Resources/Public/Icons/jobrouter-module-container.svg']
+            ['source' => 'EXT:' . \Brotkrueml\JobRouterConnector\Extension::KEY . '/Resources/Public/Icons/jobrouter-module-container.svg']
         );
 
     // Place new module container before "tools"
     $position = array_search('tools', array_keys($GLOBALS['TBE_MODULES']));
 
     $GLOBALS['TBE_MODULES'] = array_slice($GLOBALS['TBE_MODULES'], 0, $position, true) +
-        [$moduleContainerKey => ''] +
+        [\Brotkrueml\JobRouterConnector\Extension::MODULE_GROUP => ''] +
         array_slice($GLOBALS['TBE_MODULES'], $position, count($GLOBALS['TBE_MODULES']) - 1, true);
 
-    $GLOBALS['TBE_MODULES']['_configuration'][$moduleContainerKey] = [
+    $GLOBALS['TBE_MODULES']['_configuration'][\Brotkrueml\JobRouterConnector\Extension::MODULE_GROUP] = [
         'iconIdentifier' => $moduleContainerIcon,
-        'labels' => 'LLL:EXT:' . $extensionKey . '/Resources/Private/Language/BackendModuleContainer.xlf',
-        'name' => $moduleContainerKey
+        'labels' => 'LLL:EXT:' . \Brotkrueml\JobRouterConnector\Extension::KEY . '/Resources/Private/Language/BackendModuleContainer.xlf',
+        'name' => \Brotkrueml\JobRouterConnector\Extension::MODULE_GROUP
     ];
 
     // Register new module
@@ -34,8 +34,8 @@ defined('TYPO3_MODE') || die('Access denied.');
         ],
         [
             'access' => 'admin',
-            'icon' => 'EXT:' . $extensionKey . '/Resources/Public/Icons/jobrouter-connector-module.svg',
-            'labels' => 'LLL:EXT:' . $extensionKey . '/Resources/Private/Language/BackendModule.xlf',
+            'icon' => 'EXT:' . \Brotkrueml\JobRouterConnector\Extension::KEY . '/Resources/Public/Icons/jobrouter-connector-module.svg',
+            'labels' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_BACKEND_MODULE,
         ]
     );
 

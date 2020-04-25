@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Brotkrueml\JobRouterConnector\Controller;
 
 use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
+use Brotkrueml\JobRouterConnector\Extension;
 use Brotkrueml\JobRouterConnector\Utility\FileUtility;
 use TYPO3\CMS\Backend\Routing\UriBuilder;
 use TYPO3\CMS\Backend\Template\Components\ButtonBar;
@@ -63,7 +64,7 @@ class BackendController extends ActionController
     {
         $pageRenderer = $this->moduleTemplate->getPageRenderer();
         $pageRenderer->addInlineLanguageLabelFile(
-            'EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf'
+            \str_replace('LLL:', '', Extension::LANGUAGE_PATH_BACKEND_MODULE)
         );
         $pageRenderer->loadRequireJsModule(
             'TYPO3/CMS/JobrouterConnector/ConnectionCheck'
@@ -95,7 +96,7 @@ class BackendController extends ActionController
         $uriBuilder = $this->objectManager->get(UriBuilder::class);
         $iconFactory = GeneralUtility::makeInstance(IconFactory::class);
 
-        $title = $this->getLanguageService()->sL('LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.add_connection');
+        $title = $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_BACKEND_MODULE . ':action.add_connection');
 
         $newRecordButton = $buttonBar->makeLinkButton()
             ->setHref((string)$uriBuilder->buildUriFromRoute(
