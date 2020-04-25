@@ -2,12 +2,12 @@
 defined('TYPO3_MODE') || die('Access denied.');
 
 (function () {
-    $moduleContainerIcon = 'module-' . \Brotkrueml\JobRouterConnector\Extension::MODULE_GROUP;
+    $moduleContainerIcon = 'modulegroup-' . \Brotkrueml\JobRouterConnector\Extension::MODULE_GROUP;
     \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class)
         ->registerIcon(
             $moduleContainerIcon,
             \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-            ['source' => 'EXT:' . \Brotkrueml\JobRouterConnector\Extension::KEY . '/Resources/Public/Icons/jobrouter-module-container.svg']
+            ['source' => 'EXT:' . \Brotkrueml\JobRouterConnector\Extension::KEY . '/Resources/Public/Icons/modulegroup-jobrouter.svg']
         );
 
     // Place new module container before "tools"
