@@ -38,12 +38,33 @@ class BackendController extends ActionController
     /** @var ConnectionRepository */
     private $connectionRepository;
 
+    /** @var FileUtility */
+    private $fileUtility;
+
+    /** @var UriBuilder */
+    private $routingUriBuilder;
+
+    /** @var IconFactory */
+    private $iconFactory;
+
     /** @var ModuleTemplate */
     private $moduleTemplate;
 
-    public function injectConnectionRepository(ConnectionRepository $connectionRepository): void
-    {
+    /** @var LanguageService */
+    private $languageService;
+
+    public function __construct(
+        ConnectionRepository $connectionRepository,
+        FileUtility $fileUtility,
+        UriBuilder $uriBuilder,
+        IconFactory $iconFactory,
+        LanguageService $languageService
+    ) {
         $this->connectionRepository = $connectionRepository;
+        $this->fileUtility = $fileUtility;
+        $this->routingUriBuilder = $uriBuilder;
+        $this->iconFactory = $iconFactory;
+        $this->languageService = $languageService;
     }
 
     /**
@@ -71,7 +92,7 @@ class BackendController extends ActionController
         );
 
         try {
-            (new FileUtility())->getAbsoluteKeyPath();
+            $this->fileUtility->getAbsoluteKeyPath();
             $keyFileExists = true;
         } catch (\RuntimeException $e) {
             $keyFileExists = false;
@@ -93,31 +114,28 @@ class BackendController extends ActionController
         /** @var ButtonBar $buttonBar */
         $buttonBar = $this->moduleTemplate->getDocHeaderComponent()->getButtonBar();
 
-        $uriBuilder = $this->objectManager->get(UriBuilder::class);
-        $iconFactory = GeneralUtility::makeInstance(IconFactory::class);
-
-        $title = $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_BACKEND_MODULE . ':action.add_connection');
+        $title = $this->languageService->sL(Extension::LANGUAGE_PATH_BACKEND_MODULE . ':action.add_connection');
 
         $newRecordButton = $buttonBar->makeLinkButton()
-            ->setHref((string)$uriBuilder->buildUriFromRoute(
+            ->setHref((string)$this->routingUriBuilder->buildUriFromRoute(
                 'record_edit',
                 [
                     'edit' => [
                         'tx_jobrouterconnector_domain_model_connection' => ['new'],
                     ],
-                    'returnUrl' => (string)$uriBuilder->buildUriFromRoute(self::MODULE_NAME),
+                    'returnUrl' => (string)$this->routingUriBuilder->buildUriFromRoute(self::MODULE_NAME),
                 ]
             ))
             ->setTitle($title)
-            ->setIcon($iconFactory->getIcon('actions-add', Icon::SIZE_SMALL));
+            ->setIcon($this->iconFactory->getIcon('actions-add', Icon::SIZE_SMALL));
 
         $buttonBar->addButton($newRecordButton, ButtonBar::BUTTON_POSITION_LEFT);
 
         // Refresh
         $refreshButton = $buttonBar->makeLinkButton()
             ->setHref(GeneralUtility::getIndpEnv('REQUEST_URI'))
-            ->setTitle($this->getLanguageService()->sL('LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.reload'))
-            ->setIcon($iconFactory->getIcon('actions-refresh', Icon::SIZE_SMALL));
+            ->setTitle($this->languageService->sL('LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.reload'))
+            ->setIcon($this->iconFactory->getIcon('actions-refresh', Icon::SIZE_SMALL));
         $buttonBar->addButton($refreshButton, ButtonBar::BUTTON_POSITION_RIGHT);
 
         if ($this->getBackendUser()->mayMakeShortcut()) {
@@ -127,11 +145,6 @@ class BackendController extends ActionController
                 ->setDisplayName('Shortcut');
             $buttonBar->addButton($shortcutButton, ButtonBar::BUTTON_POSITION_RIGHT);
         }
-    }
-
-    protected function getLanguageService(): LanguageService
-    {
-        return $GLOBALS['LANG'];
     }
 
     protected function getBackendUser(): BackendUserAuthentication
