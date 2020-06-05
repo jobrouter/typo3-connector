@@ -12,7 +12,10 @@ $EM_CONF[$_EXTKEY] = [
             'typo3' => '10.4.0-10.4.99',
         ],
         'conflicts' => [],
-        'suggests' => [],
+        'suggests' => [
+            'jobrouter_data' => '',
+            'jobrouter_process' => '',
+        ],
     ],
     'autoload' => [
         'psr-4' => ['Brotkrueml\\JobRouterConnector\\' => 'Classes']

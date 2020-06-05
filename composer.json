@@ -32,6 +32,10 @@
         "phpunit/phpunit": "^8.5 || ^9.1",
         "rector/rector": "^0.7"
     },
+    "suggest": {
+        "brotkrueml/typo3-jobrouter-data": "Connect JobRouter JobData tables with TYPO3",
+        "brotkrueml/typo3-jobrouter-process": "Connect JobRouter processes with TYPO3"
+    },
     "autoload": {
         "psr-4": {
             "Brotkrueml\\JobRouterConnector\\": "Classes"
