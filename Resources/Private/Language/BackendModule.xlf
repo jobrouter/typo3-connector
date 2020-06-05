@@ -3,60 +3,60 @@
 	<file source-language="en" datatype="plaintext" original="EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf" date="2020-04-25T14:55:53Z" product-name="jobrouter_connector">
 		<header/>
 		<body>
-			<trans-unit id="mlang_labels_tablabel">
+			<trans-unit id="mlang_labels_tablabel" resname="mlang_labels_tablabel">
 				<source><![CDATA[JobRouter connections]]></source>
 			</trans-unit>
-			<trans-unit id="mlang_labels_tabdescr">
+			<trans-unit id="mlang_labels_tabdescr" resname="mlang_labels_tabdescr">
 				<source><![CDATA[Manage JobRouter connections]]></source>
 			</trans-unit>
-			<trans-unit id="mlang_tabs_tab">
+			<trans-unit id="mlang_tabs_tab" resname="mlang_tabs_tab">
 				<source><![CDATA[Connections]]></source>
 			</trans-unit>
 
-			<trans-unit id="heading_text">
+			<trans-unit id="heading_text" resname="heading_text">
 				<source><![CDATA[JobRouter Connections]]></source>
 			</trans-unit>
 
-			<trans-unit id="action.add_connection">
+			<trans-unit id="action.add_connection" resname="action.add_connection">
 				<source><![CDATA[Add connection record]]></source>
 			</trans-unit>
-			<trans-unit id="action.check_connection">
+			<trans-unit id="action.check_connection" resname="action.check_connection">
 				<source><![CDATA[Check connection]]></source>
 			</trans-unit>
-			<trans-unit id="action.edit_connection">
+			<trans-unit id="action.edit_connection" resname="action.edit_connection">
 				<source><![CDATA[Edit connection record]]></source>
 			</trans-unit>
-			<trans-unit id="action.open_jobrouter_system">
+			<trans-unit id="action.open_jobrouter_system" resname="action.open_jobrouter_system">
 				<source><![CDATA[Open JobRouter system]]></source>
 			</trans-unit>
 
-			<trans-unit id="connections_not_found.title">
+			<trans-unit id="connections_not_found.title" resname="connections_not_found.title">
 				<source><![CDATA[No connections found]]></source>
 			</trans-unit>
-			<trans-unit id="connections_not_found.message">
+			<trans-unit id="connections_not_found.message" resname="connections_not_found.message">
 				<source><![CDATA[There are currently no connection records defined.]]></source>
 			</trans-unit>
-			<trans-unit id="connection_create">
+			<trans-unit id="connection_create" resname="connection_create">
 				<source><![CDATA[Create new connection]]></source>
 			</trans-unit>
-			<trans-unit id="connection_check_for">
+			<trans-unit id="connection_check_for" resname="connection_check_for">
 				<source><![CDATA[Connection check for]]></source>
 			</trans-unit>
-			<trans-unit id="connection_successful">
+			<trans-unit id="connection_successful" resname="connection_successful">
 				<source><![CDATA[Connection established successfully]]></source>
 			</trans-unit>
-			<trans-unit id="connection_unknown_error">
+			<trans-unit id="connection_unknown_error" resname="connection_unknown_error">
 				<source><![CDATA[Unknown error]]></source>
 			</trans-unit>
 
-			<trans-unit id="keyfile_not_exists.title">
+			<trans-unit id="keyfile_not_exists.title" resname="keyfile_not_exists.title">
 				<source><![CDATA[Key file does not exist]]></source>
 			</trans-unit>
-			<trans-unit id="keyfile_not_exists.message">
+			<trans-unit id="keyfile_not_exists.message" resname="keyfile_not_exists.message">
 				<source><![CDATA[The key file for encrypting the connection passwords does not exist. Run the console command "jobrouter:crypt:generatekey".]]></source>
 			</trans-unit>
 
-			<trans-unit id="status.disabled">
+			<trans-unit id="status.disabled" resname="status.disabled">
 				<source><![CDATA[disabled]]></source>
 			</trans-unit>
 		</body>
