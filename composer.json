@@ -1,67 +1,72 @@
 {
-    "name": "brotkrueml/typo3-jobrouter-connector",
-    "type": "typo3-cms-extension",
-    "description": "Define connections from TYPO3 to JobRouter digitisation platform",
-    "license": "GPL-2.0-or-later",
-    "keywords": [
-        "TYPO3 CMS",
-        "TYPO3 extension",
-        "JobRouter"
-    ],
-    "authors": [
-        {
-            "name": "Chris Müller",
-            "role": "Developer"
-        }
-    ],
-    "require": {
-        "php": ">=7.2",
-        "ext-json": "*",
-        "ext-sodium": "*",
-        "brotkrueml/jobrouter-client": "^0.9",
-        "typo3/cms-backend": "^10.4",
-        "typo3/cms-core": "^10.4",
-        "typo3/cms-extbase": "^10.4",
-        "typo3/cms-fluid": "^10.4",
-        "typo3/cms-frontend": "^10.4"
-    },
-    "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.16",
-        "mikey179/vfsstream": "^1.6",
-        "php-coveralls/php-coveralls": "^2.2",
-        "phpunit/phpunit": "^8.5 || ^9.1",
-        "rector/rector": "^0.7"
-    },
-    "suggest": {
-        "brotkrueml/typo3-jobrouter-data": "Connect JobRouter JobData tables with TYPO3",
-        "brotkrueml/typo3-jobrouter-process": "Connect JobRouter processes with TYPO3"
-    },
-    "autoload": {
-        "psr-4": {
-            "Brotkrueml\\JobRouterConnector\\": "Classes"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Brotkrueml\\JobRouterConnector\\Tests\\": "Tests"
-        }
-    },
-    "config": {
-        "sort-packages" : true,
-        "vendor-dir": ".Build/vendor",
-        "bin-dir": ".Build/bin"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.10.x-dev"
-        },
-        "typo3/cms": {
-            "extension-key": "jobrouter_connector",
-            "cms-package-dir": "{$vendor-dir}/typo3/cms",
-            "web-dir": ".Build/web"
-        }
-    },
-    "scripts": {
-        "fix-cs": ".Build/bin/php-cs-fixer fix"
-    }
+	"name": "brotkrueml/typo3-jobrouter-connector",
+	"type": "typo3-cms-extension",
+	"description": "Define connections from TYPO3 to JobRouter digitisation platform",
+	"license": "GPL-2.0-or-later",
+	"keywords": [
+		"TYPO3 CMS",
+		"TYPO3 extension",
+		"JobRouter"
+	],
+	"authors": [
+		{
+			"name": "Chris Müller",
+			"role": "Developer"
+		}
+	],
+	"support": {
+		"docs": "https://typo3-jobrouter.readthedocs.io/projects/connector/",
+		"issues": "https://github.com/brotkrueml/typo3-jobrouter-connector/issues",
+		"source":  "https://github.com/brotkrueml/typo3-jobrouter-connector"
+	},
+	"require": {
+		"php": ">=7.2",
+		"ext-json": "*",
+		"ext-sodium": "*",
+		"brotkrueml/jobrouter-client": "^0.9",
+		"typo3/cms-backend": "^10.4",
+		"typo3/cms-core": "^10.4",
+		"typo3/cms-extbase": "^10.4",
+		"typo3/cms-fluid": "^10.4",
+		"typo3/cms-frontend": "^10.4"
+	},
+	"require-dev": {
+		"friendsofphp/php-cs-fixer": "^2.16",
+		"mikey179/vfsstream": "^1.6",
+		"php-coveralls/php-coveralls": "^2.2",
+		"phpunit/phpunit": "^8.5 || ^9.1",
+		"rector/rector": "^0.7"
+	},
+	"suggest": {
+		"brotkrueml/typo3-jobrouter-data": "Connect JobRouter JobData tables with TYPO3",
+		"brotkrueml/typo3-jobrouter-process": "Connect JobRouter processes with TYPO3"
+	},
+	"autoload": {
+		"psr-4": {
+			"Brotkrueml\\JobRouterConnector\\": "Classes"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Brotkrueml\\JobRouterConnector\\Tests\\": "Tests"
+		}
+	},
+	"config": {
+		"sort-packages": true,
+		"vendor-dir": ".Build/vendor",
+		"bin-dir": ".Build/bin"
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "0.10.x-dev"
+		},
+		"typo3/cms": {
+			"extension-key": "jobrouter_connector",
+			"cms-package-dir": "{$vendor-dir}/typo3/cms",
+			"web-dir": ".Build/web"
+		}
+	},
+	"scripts": {
+		"fix-cs": ".Build/bin/php-cs-fixer fix"
+	}
 }
