@@ -3,7 +3,7 @@
 .. _developer:
 
 ================
-Developer Corner
+Developer corner
 ================
 
 Target group: **Developers**

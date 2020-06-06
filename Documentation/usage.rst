@@ -33,7 +33,7 @@ screen:
 
 .. _usage-create-connection:
 
-Create a Connection
+Create a connection
 ===================
 
 To create a new connection, click on the :guilabel:`+` button in the upper menu
@@ -94,7 +94,7 @@ Enabled
 
 .. _usage-connection-list:
 
-Connection List
+Connection list
 ===============
 
 After creating one or more connections, you will see a list of connections when
@@ -120,7 +120,7 @@ There are three buttons available for each connection:
 
 .. _usage-delete-connection:
 
-Delete a Connection
+Delete a connection
 ===================
 
 To delete a connection, open the editing page of the connection. In the upper

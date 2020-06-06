@@ -11,7 +11,7 @@ Target group: **Administrators**
 
 .. _configuration-extension-configuration:
 
-Extension Configuration
+Extension configuration
 =======================
 
 To configure the extension, go to :guilabel:`Admin Tools` > :guilabel:`Settings`
