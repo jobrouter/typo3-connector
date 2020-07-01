@@ -11,6 +11,7 @@ return [
     'ctrl' => [
         'title' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection',
         'label' => 'name',
+        'descriptionColumn' => 'description',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -19,7 +20,7 @@ return [
             'disabled' => 'disabled',
         ],
         'rootLevel' => 1,
-        'searchFields' => 'name,handle,base_url,username',
+        'searchFields' => 'name,handle,base_url,username,description',
         'iconfile' => 'EXT:' . \Brotkrueml\JobRouterConnector\Extension::KEY . '/Resources/Public/Icons/tx_jobrouterconnector_domain_model_connection.svg'
     ],
     'columns' => [
@@ -99,6 +100,15 @@ return [
                 'readOnly' => true,
             ],
         ],
+        'description' => [
+            'exclude' => true,
+            'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.description',
+            'config' => [
+                'type' => 'text',
+                'rows' => 5,
+                'cols' => 30
+            ]
+        ],
     ],
     'types' => [
         '1' => ['showitem' => '
@@ -108,7 +118,8 @@ return [
             jobrouter_version,
             --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
             disabled,
-            --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.extended,
+            --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes,
+            description,
         '],
     ],
     'palettes' => [

@@ -60,8 +60,19 @@ Handle
 Base URL
    The base URL of the JobRouter system.
 
+   .. caution::
+
+      The JobRouter system should be accessible only over TLS (https), so that
+      the credentials are transmitted encrypted.
+
 Username
-   The username to login over the REST API.
+   The username to sign in over the REST API.
+
+   .. tip::
+
+      For security reasons, use a JobRouter user who only has the access rights
+      required for the purpose. It is also possible to create two connections to
+      the same JobRouter system with different users.
 
 Password
    The password to be used. It will be stored encrypted in the database.
@@ -80,16 +91,12 @@ Enabled
    In the :guilabel:`Access` tab you can enable or disable the connection.
    Disabled connections cannot be used.
 
-.. tip::
+Notes
+-----
 
-   For security reasons, use a JobRouter user who only has the access rights
-   required for the purpose. It is also possible to create two connections to
-   the same JobRouter system with different users.
-
-.. caution::
-
-   The JobRouter system should be accessible only over TLS (https), so that the
-   credentials are transmitted encrypted.
+Description
+   This is a descriptive field only. You can enter additional remarks for a
+   connection.
 
 
 .. _usage-connection-list:
