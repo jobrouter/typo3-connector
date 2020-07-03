@@ -58,11 +58,7 @@
                                 </f:if>
                             </be:link.editRecord>
                         </td>
-                        <td>
-                            <be:link.editRecord table="tx_jobrouterconnector_domain_model_connection" uid="{connection.uid}" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.edit_connection')}">
-                                {connection.handle}
-                            </be:link.editRecord>
-                        </td>
+                        <td>{connection.handle}</td>
                         <td><f:link.external uri="{connection.baseUrl}" target="_blank" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.open_jobrouter_system')}" rel="noreferrer">{connection.baseUrl}</f:link.external></td>
                         <td>{connection.username}</td>
                         <td>{connection.jobrouterVersion}</td>
