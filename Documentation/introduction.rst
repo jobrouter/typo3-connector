@@ -6,10 +6,10 @@
 Introduction
 ============
 
-`JobRouter <https://www.jobrouter.com/>`_ is a scalable digitisation platform
+`JobRouter® <https://www.jobrouter.com/>`_ is a scalable digitisation platform
 which links processes, data and documents. The TYPO3 extension `TYPO3 JobRouter
 Connector <https://github.com/brotkrueml/typo3-jobrouter-connector>`_ links
-TYPO3 with the JobRouter platform.
+TYPO3 with the JobRouter® platform.
 
 
 .. admonition:: Work In Progress
@@ -22,7 +22,7 @@ What does it do?
 ================
 
 The TYPO3 JobRouter Connector is a base extension for defining connections
-from TYPO3 to JobRouter. Other extensions rely on this extension to add further
+from TYPO3 to JobRouter®. Other extensions rely on this extension to add further
 functionality:
 
 - `Synchronise JobData tables into TYPO3 <https://github.com/brotkrueml/typo3-jobrouter-data>`_

@@ -1,7 +1,7 @@
 {
 	"name": "brotkrueml/typo3-jobrouter-connector",
 	"type": "typo3-cms-extension",
-	"description": "Define connections from TYPO3 to JobRouter digitisation platform",
+	"description": "Define connections from TYPO3 to JobRouter® digitisation platform",
 	"license": "GPL-2.0-or-later",
 	"keywords": [
 		"TYPO3 CMS",

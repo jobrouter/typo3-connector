@@ -16,7 +16,7 @@ You can use the TYPO3 JobRouter Connector as a starting point for your own
 logic, e.g. to synchronise JobData tables or retrieve archive documents. Since
 this extension relies on the :doc:`JobRouter Client
 <jobrouter-client:introduction>` library, you can retrieve a :php:`RestClient`
-object to call the JobRouter REST API.
+object to call the JobRouter® REST API.
 
 Example
 -------
@@ -53,7 +53,7 @@ Let's have a look at an example in the TYPO3 context:
 Explanation:
 
 #. Lines 11-13: Retrieve the :php:`Connection` model with uid `42`, which holds
-   the base URL of the JobRouter installation and the credentials. Of course,
+   the base URL of the JobRouter® installation and the credentials. Of course,
    the connection must be registered first in the :guilabel:`Connections`
    :ref:`module <usage-module>`. But you can also instantiate a new model
    object.

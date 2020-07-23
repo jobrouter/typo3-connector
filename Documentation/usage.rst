@@ -50,19 +50,19 @@ General
 -------
 
 Name
-   Use a name you recognise. This can be the name of the JobRouter system or the
-   purpose for which it is used. It is only descriptive.
+   Use a name you recognise. This can be the name of the JobRouter® system or
+   the purpose for which it is used. It is only descriptive.
 
 Handle
    Enter a unique short handle. It can be used to create a connection
    independently of the internal uid.
 
 Base URL
-   The base URL of the JobRouter system.
+   The base URL of the JobRouter® system.
 
    .. caution::
 
-      The JobRouter system should be accessible only over TLS (https), so that
+      The JobRouter® system should be accessible only over TLS (https), so that
       the credentials are transmitted encrypted.
 
 Username
@@ -70,9 +70,9 @@ Username
 
    .. tip::
 
-      For security reasons, use a JobRouter user who only has the access rights
+      For security reasons, use a JobRouter® user who only has the access rights
       required for the purpose. It is also possible to create two connections to
-      the same JobRouter system with different users.
+      the same JobRouter® system with different users.
 
 Password
    The password to be used. It will be stored encrypted in the database.
@@ -81,7 +81,7 @@ Information
 -----------
 
 JobRouter Version
-   The version of the JobRouter system. The version is automatically detected
+   The version of the JobRouter® system. The version is automatically detected
    when a connection is established and therefore cannot be changed.
 
 Access
@@ -121,8 +121,8 @@ There are three buttons available for each connection:
 
 - You can edit a connection with the pencil.
 - Click on the bug icon to test a connection. This will also update the
-  JobRouter version if necessary.
-- The last icon is a link to the JobRouter system.
+  JobRouter® version if necessary.
+- The last icon is a link to the JobRouter® system.
 
 
 .. _usage-delete-connection:
