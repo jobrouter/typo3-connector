@@ -23,7 +23,7 @@
 		"php": ">=7.2",
 		"ext-json": "*",
 		"ext-sodium": "*",
-		"brotkrueml/jobrouter-client": "^0.9",
+		"brotkrueml/jobrouter-client": "^1.0",
 		"typo3/cms-backend": "^10.4",
 		"typo3/cms-core": "^10.4",
 		"typo3/cms-extbase": "^10.4",
