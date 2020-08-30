@@ -76,7 +76,7 @@ final class RestClientFactory
         }
 
         return \sprintf(
-            'TYPO3-JobRouter-Connector/%s (https://github.com/brotkrueml/typo3-jobrouter-connector)',
+            'TYPO3-JobRouter-Connector/%s (https://typo3-jobrouter.rtfd.io/projects/connector/)',
             static::$version
         );
     }
