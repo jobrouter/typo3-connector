@@ -21,7 +21,8 @@ return [
         ],
         'rootLevel' => 1,
         'searchFields' => 'name,handle,base_url,username,description',
-        'iconfile' => 'EXT:' . \Brotkrueml\JobRouterConnector\Extension::KEY . '/Resources/Public/Icons/tx_jobrouterconnector_domain_model_connection.svg'
+        'iconfile' => 'EXT:' . \Brotkrueml\JobRouterConnector\Extension::KEY . '/Resources/Public/Icons/tx_jobrouterconnector_domain_model_connection.svg',
+        'hideTable' => true,
     ],
     'columns' => [
         'disabled' => [
