@@ -12,12 +12,10 @@ declare(strict_types=1);
 namespace Brotkrueml\JobRouterConnector\Tests\Unit\Command;
 
 use Brotkrueml\JobRouterConnector\Command\GenerateKeyCommand;
-use Brotkrueml\JobRouterConnector\Exception\KeyFileException;
-use Brotkrueml\JobRouterConnector\Service\Crypt;
-use Brotkrueml\JobRouterConnector\Utility\FileUtility;
-use org\bovigo\vfs\vfsStream;
+use Brotkrueml\JobRouterConnector\Exception\KeyGenerationException;
+use Brotkrueml\JobRouterConnector\Service\KeyGenerator;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
-use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\Console\Tester\CommandTester;
 
 class GenerateKeyCommandTest extends TestCase
@@ -25,62 +23,43 @@ class GenerateKeyCommandTest extends TestCase
     /** @var CommandTester */
     private $commandTester;
 
-    /** @var ObjectProphecy */
-    private $fileUtility;
-
-    /** @var string */
-    private $keyPath = '';
+    /** @var KeyGenerator|Stub */
+    private $keyGeneratorStub;
 
     protected function setUp(): void
     {
-        vfsStream::setup('project-dir');
-        $this->keyPath = vfsStream::url('project-dir') . '/.key';
+        $this->keyGeneratorStub = $this->createStub(KeyGenerator::class);
 
-        $this->fileUtility = $this->prophesize(FileUtility::class);
-
-        $command = new GenerateKeyCommand(new Crypt(), $this->fileUtility->reveal());
+        $command = new GenerateKeyCommand($this->keyGeneratorStub);
         $this->commandTester = new CommandTester($command);
     }
 
     /**
      * @test
      */
-    public function keyIsSuccessfullyStored(): void
+    public function returnSuccessIfKeyWasGeneratedSuccessfully(): void
     {
-        $this->fileUtility->getAbsoluteKeyPath(false)->willReturn($this->keyPath);
+        $this->keyGeneratorStub
+            ->method('generateAndStoreKey');
 
         $this->commandTester->execute([]);
 
-        self::assertStringStartsWith('[OK]', trim($this->commandTester->getDisplay()));
-        self::assertSame(GenerateKeyCommand::EXIT_CODE_OK, $this->commandTester->getStatusCode());
-        self::assertFileExists($this->keyPath);
+        self::assertStringContainsString('[OK] Key was generated successfully', $this->commandTester->getDisplay());
+        self::assertSame(0, $this->commandTester->getStatusCode());
     }
 
     /**
      * @test
      */
-    public function returnErrorWhenExtensionConfigurationIsNotDefinedCorrectly(): void
+    public function returnErrorIfKeyGenerationThrowsException(): void
     {
-        $this->fileUtility->getAbsoluteKeyPath(false)->willThrow(KeyFileException::class);
+        $this->keyGeneratorStub
+            ->method('generateAndStoreKey')
+            ->willThrowException(new KeyGenerationException('some error'));
 
         $this->commandTester->execute([]);
 
-        self::assertStringStartsWith('[ERROR]', trim($this->commandTester->getDisplay()));
-        self::assertSame(GenerateKeyCommand::EXIT_CODE_KEY_FILE_WRONG_PATH, $this->commandTester->getStatusCode());
-    }
-
-    /**
-     * @test
-     */
-    public function returnErrorWhenKeyFileAlreadyExists(): void
-    {
-        \touch($this->keyPath);
-
-        $this->fileUtility->getAbsoluteKeyPath(false)->willReturn($this->keyPath);
-
-        $this->commandTester->execute([]);
-
-        self::assertStringStartsWith('[ERROR]', trim($this->commandTester->getDisplay()));
-        self::assertSame(GenerateKeyCommand::EXIT_CODE_KEY_FILE_EXISTS, $this->commandTester->getStatusCode());
+        self::assertStringContainsString('[ERROR] some error', $this->commandTester->getDisplay());
+        self::assertSame(1, $this->commandTester->getStatusCode());
     }
 }

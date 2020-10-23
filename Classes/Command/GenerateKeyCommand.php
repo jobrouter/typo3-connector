@@ -11,8 +11,8 @@ declare(strict_types=1);
 
 namespace Brotkrueml\JobRouterConnector\Command;
 
-use Brotkrueml\JobRouterConnector\Service\Crypt;
-use Brotkrueml\JobRouterConnector\Utility\FileUtility;
+use Brotkrueml\JobRouterConnector\Exception\KeyGenerationException;
+use Brotkrueml\JobRouterConnector\Service\KeyGenerator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -23,22 +23,15 @@ use Symfony\Component\Console\Style\SymfonyStyle;
  */
 final class GenerateKeyCommand extends Command
 {
-    public const EXIT_CODE_OK = 0;
-    public const EXIT_CODE_KEY_FILE_WRONG_PATH = 1;
-    public const EXIT_CODE_KEY_FILE_EXISTS = 2;
-    public const EXIT_CODE_KEY_FILE_CANNOT_BE_WRITTEN = 3;
+    private const EXIT_CODE_OK = 0;
+    private const EXIT_CODE_KEY_GENERATION_ERROR = 1;
 
-    /** @var Crypt */
-    private $crypt;
+    /** @var KeyGenerator */
+    private $keyGenerator;
 
-    /** @var FileUtility */
-    private $fileUtility;
-
-    public function __construct(Crypt $crypt, FileUtility $fileUtility)
+    public function __construct(KeyGenerator $keyGenerator)
     {
-        $this->crypt = $crypt;
-        $this->fileUtility = $fileUtility;
-
+        $this->keyGenerator = $keyGenerator;
         parent::__construct();
     }
 
@@ -52,23 +45,14 @@ final class GenerateKeyCommand extends Command
         $outputStyle = new SymfonyStyle($input, $output);
 
         try {
-            $absolutePath = $this->fileUtility->getAbsoluteKeyPath(false);
-        } catch (\Throwable $e) {
-            $outputStyle->error(sprintf('The key file path is not defined correctly in the extension configuration!'));
-            return self::EXIT_CODE_KEY_FILE_WRONG_PATH;
+            $this->keyGenerator->generateAndStoreKey();
+        } catch (KeyGenerationException $e) {
+            $outputStyle->error($e->getMessage());
+
+            return self::EXIT_CODE_KEY_GENERATION_ERROR;
         }
 
-        if (\file_exists($absolutePath)) {
-            $outputStyle->error(sprintf('The key file "%s" already exists!', $absolutePath));
-            return self::EXIT_CODE_KEY_FILE_EXISTS;
-        }
-
-        if (false === \file_put_contents($absolutePath, $this->crypt->generateKey())) {
-            $outputStyle->error(sprintf('The key file "%s" could not be written!', $absolutePath));
-            return self::EXIT_CODE_KEY_FILE_CANNOT_BE_WRITTEN;
-        }
-
-        $outputStyle->success(sprintf('Key was generated and stored into "%s"', $absolutePath));
+        $outputStyle->success('Key was generated successfully');
 
         return self::EXIT_CODE_OK;
     }
