@@ -4,4 +4,6 @@ Documentation/_build/
 .php_cs.cache
 .phpunit.result.cache
 .scannerwork
+Build/testing-docker/.env
 composer.lock
+Tests/Acceptance/Support/_generated/

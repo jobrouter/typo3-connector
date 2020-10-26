@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataset>
+	<tx_jobrouterconnector_domain_model_connection>
+		<uid>1</uid>
+		<pid>0</pid>
+        <crdate>1603481421</crdate>
+		<tstamp>1603481421</tstamp>
+        <cruser_id>1</cruser_id>
+        <name>Some JobRouter Connection Name</name>
+        <handle>some_connection_handle</handle>
+        <base_url>https://example.org/</base_url>
+        <username>jobrouter_user</username>
+        <password>abc</password>
+        <jobrouter_version>5.1.5</jobrouter_version>
+        <description>Some description</description>
+	</tx_jobrouterconnector_domain_model_connection>
+</dataset>

@@ -1,0 +1,9 @@
+namespace: Brotkrueml\JobRouterConnector\Tests\Acceptance\Support
+paths:
+  tests: Acceptance
+  data: .
+  log: ../.Build/Web/typo3temp/var/tests/AcceptanceReports
+  support: Acceptance/Support
+extensions:
+  enabled:
+    - Codeception\Extension\RunFailed
