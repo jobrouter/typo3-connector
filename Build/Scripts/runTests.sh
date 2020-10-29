@@ -36,7 +36,7 @@ read -r -d '' HELP <<EOF
 jobrouter_connector test runner. Execute unit test suite and some other details.
 Also used by GitHub Actions for test execution.
 
-Successfully tested with docker version 18.06.1-ce and docker-compose 1.21.2.
+Successfully tested with docker version 19.03.13-ce and docker-compose 1.25.0.
 
 Usage: $0 [options] [file]
 
@@ -54,7 +54,7 @@ Options:
             - phpstan: phpstan analyze
             - unit (default): PHP unit tests
 
-    -d <mariadb|mssql|postgres|sqlite>
+    -d <mariadb>
         Only with -s functional
         Specifies on which DBMS tests are performed
             - mariadb (default): use mariadb
