@@ -23,6 +23,11 @@ services:
       TYPO3_PATH_APP: ${ROOT_DIR}/.Build/Web/typo3temp/var/tests/acceptance
     command: php -n -c /etc/php/cli-no-xdebug/php.ini -S web:8000 -t ${ROOT_DIR}/.Build/Web
 
+  mockserver:
+    image: mockserver/mockserver:mockserver-5.11.1
+    ports:
+      - 1080:1080
+
   acceptance_backend_mariadb10:
     image: typo3gmbh/${DOCKER_PHP_IMAGE}:latest
     user: ${HOST_UID}
@@ -30,6 +35,7 @@ services:
       - mariadb10
       - chrome
       - web
+      - mockserver
     environment:
       typo3DatabaseName: func_test
       typo3DatabaseUsername: root

@@ -1,4 +1,5 @@
 <?php
+
 $EM_CONF[$_EXTKEY] = [
     'title' => 'JobRouter Connector',
     'description' => 'Define connections from TYPO3 to JobRouter® digitisation platform',

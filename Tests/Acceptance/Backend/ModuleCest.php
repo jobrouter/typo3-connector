@@ -15,7 +15,8 @@ use Brotkrueml\JobRouterConnector\Tests\Acceptance\Support\BackendTester;
 
 class ModuleCest
 {
-    private static $connectorModuleSelector = '#jobrouter_JobRouterConnectorJobrouterconnector';
+    private const CONNECTOR_MODULE_SELECTOR = '#jobrouter_JobRouterConnectorJobrouterconnector';
+    private const MOCKSERVER_BASE_URL = 'http://mockserver:1080/';
 
     public function _before(BackendTester $I): void
     {
@@ -30,7 +31,7 @@ class ModuleCest
 
     public function onFirstCallModuleComplainsAboutMissingKeyFile(BackendTester $I): void
     {
-        $I->click(self::$connectorModuleSelector);
+        $I->click(self::CONNECTOR_MODULE_SELECTOR);
         $I->switchToContentFrame();
         $I->canSee('JobRouter Connections', 'h1');
 
@@ -41,7 +42,7 @@ class ModuleCest
     {
         $I->createJobRouterKey();
 
-        $I->click(self::$connectorModuleSelector);
+        $I->click(self::CONNECTOR_MODULE_SELECTOR);
         $I->switchToContentFrame();
         $I->canSee('JobRouter Connections', 'h1');
 
@@ -52,7 +53,7 @@ class ModuleCest
     {
         $I->createJobRouterKey();
 
-        $I->click(self::$connectorModuleSelector);
+        $I->click(self::CONNECTOR_MODULE_SELECTOR);
         $I->switchToContentFrame();
         $I->canSee('JobRouter Connections', 'h1');
 
@@ -64,9 +65,9 @@ class ModuleCest
     public function whenConnectionIsAvailableItIsShownOnTheModulePage(BackendTester $I): void
     {
         $I->createJobRouterKey();
-        $I->importDatabaseFixture();
+        $I->importConnectionFixture('https://example.org/', 'secretPwd');
 
-        $I->click(self::$connectorModuleSelector);
+        $I->click(self::CONNECTOR_MODULE_SELECTOR);
         $I->switchToContentFrame();
         $I->canSee('JobRouter Connections', 'h1');
 
@@ -74,21 +75,86 @@ class ModuleCest
         $I->canSee('Some JobRouter Connection Name', '#jobrouter-connection-list-name-1');
         $I->canSee('some_connection_handle', '#jobrouter-connection-list-handle-1');
         $I->canSee('https://example.org/', '#jobrouter-connection-list-baseurl-1');
-        $I->canSee('jobrouter_user', '#jobrouter-connection-list-username-1');
-        $I->canSee('5.1.5', '#jobrouter-connection-list-version-1');
+        $I->canSee('john.doe', '#jobrouter-connection-list-username-1');
     }
 
     public function whenConnectionIsAvailableAClickOnTheNameLinkOpensToEditForm(BackendTester $I): void
     {
         $I->createJobRouterKey();
-        $I->importDatabaseFixture();
+        $I->importConnectionFixture('https://example.org/', 'secretPwd');
 
-        $I->click(self::$connectorModuleSelector);
+        $I->click(self::CONNECTOR_MODULE_SELECTOR);
         $I->switchToContentFrame();
         $I->canSee('JobRouter Connections', 'h1');
 
         $I->canSeeElement('#jobrouter-connection-list');
         $I->click('Some JobRouter Connection Name');
         $I->waitForText('Edit JobRouter Connection "Some JobRouter Connection Name" on root level');
+    }
+
+    public function whenConnectionIsAvailableAClickOnTheEditButtonsOpensToEditForm(BackendTester $I): void
+    {
+        $I->createJobRouterKey();
+        $I->importConnectionFixture('https://example.org/', 'secretPwd');
+
+        $I->click(self::CONNECTOR_MODULE_SELECTOR);
+        $I->switchToContentFrame();
+        $I->canSee('JobRouter Connections', 'h1');
+
+        $I->canSeeElement('#jobrouter-connection-list');
+        $I->click('#jobrouter-connection-list-edit-1');
+        $I->waitForText('Edit JobRouter Connection "Some JobRouter Connection Name" on root level');
+    }
+
+    public function whenConnectionIsAvailableAClickOnTheCheckButtonsShowsASuccessfulNotification(BackendTester $I): void
+    {
+        $I->createJobRouterKey();
+        $I->importConnectionFixture(self::MOCKSERVER_BASE_URL, $I->encryptPassword('secretPwd'));
+        $I->createMockServerExpectation(self::MOCKSERVER_BASE_URL, 'john.doe', 'secretPwd');
+
+        $I->click(self::CONNECTOR_MODULE_SELECTOR);
+        $I->switchToContentFrame();
+        $I->canSee('JobRouter Connections', 'h1');
+
+        $I->canSeeElement('#jobrouter-connection-list');
+        $I->dontSee('5.1.5');
+        $I->click('#jobrouter-connection-list-check-1');
+        $I->switchToMainFrame();
+        $I->waitForText('Connection established successfully');
+
+        $I->click(self::CONNECTOR_MODULE_SELECTOR);
+        $I->switchToContentFrame();
+        $I->canSee('5.1.5');
+    }
+
+    public function whenConnectionIsAvailableAClickOnTheCheckButtonsShowsAnErrorNotificationIfNoJobRouterConnection(BackendTester $I): void
+    {
+        $I->createJobRouterKey();
+        $I->importConnectionFixture(self::MOCKSERVER_BASE_URL, $I->encryptPassword('secretPwd'));
+
+        $I->click(self::CONNECTOR_MODULE_SELECTOR);
+        $I->switchToContentFrame();
+        $I->canSee('JobRouter Connections', 'h1');
+
+        $I->canSeeElement('#jobrouter-connection-list');
+        $I->click('#jobrouter-connection-list-check-1');
+        $I->switchToMainFrame();
+        $I->waitForText('Error fetching resource');
+    }
+
+    public function whenConnectionIsAvailableAClickOnTheOpenButtonsOpensThatUrl(BackendTester $I): void
+    {
+        $url = self::MOCKSERVER_BASE_URL . 'mockserver/dashboard';
+
+        $I->createJobRouterKey();
+        $I->importConnectionFixture($url, 'secretPwd');
+
+        $I->click(self::CONNECTOR_MODULE_SELECTOR);
+        $I->switchToContentFrame();
+        $I->canSee('JobRouter Connections', 'h1');
+
+        $I->canSeeElement('#jobrouter-connection-list');
+        $I->click('#jobrouter-connection-list-open-1');
+        $I->amOnUrl($url);
     }
 }
