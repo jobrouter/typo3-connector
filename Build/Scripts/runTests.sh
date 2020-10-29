@@ -140,13 +140,10 @@ OPTIND=1
 # Array for invalid options
 INVALID_OPTIONS=();
 # Simple option parsing based on getopts (! not getopt)
-while getopts ":s:d:p:e:xy:nhuv" OPT; do
+while getopts ":s:p:e:xy:nhuv" OPT; do
     case ${OPT} in
         s)
             TEST_SUITE=${OPTARG}
-            ;;
-        d)
-            DBMS=${OPTARG}
             ;;
         p)
             PHP_VERSION=${OPTARG}
@@ -250,29 +247,8 @@ case ${TEST_SUITE} in
         ;;
     functional)
         setUpDockerComposeDotEnv
-        case ${DBMS} in
-            mariadb)
-                docker-compose run functional_mariadb10
-                SUITE_EXIT_CODE=$?
-                ;;
-            mssql)
-                docker-compose run functional_mssql2019latest
-                SUITE_EXIT_CODE=$?
-                ;;
-            postgres)
-                docker-compose run functional_postgres10
-                SUITE_EXIT_CODE=$?
-                ;;
-            sqlite)
-                docker-compose run functional_sqlite
-                SUITE_EXIT_CODE=$?
-                ;;
-            *)
-                echo "Invalid -d option argument ${DBMS}" >&2
-                echo >&2
-                echo "${HELP}" >&2
-                exit 1
-        esac
+        docker-compose run functional_mariadb10
+        SUITE_EXIT_CODE=$?
         docker-compose down
         ;;
     lint)
