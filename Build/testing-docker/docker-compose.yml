@@ -77,7 +77,7 @@ services:
           set -x
         fi
         php -v | grep '^PHP';
-        composer install;
+        composer install --no-progress;
       "
 
   composer_validate:
