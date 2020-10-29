@@ -1,9 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../.Build/vendor/phpunit/phpunit/phpunit.xsd"
     bootstrap="../.Build/vendor/autoload.php"
-    convertErrorsToExceptions="true"
-    convertNoticesToExceptions="true"
-    convertWarningsToExceptions="true"
-    stopOnFailure="false"
+    testdox="true"
 >
     <testsuites>
         <testsuite name="Unit tests">
