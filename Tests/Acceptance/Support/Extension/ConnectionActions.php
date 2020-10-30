@@ -39,13 +39,6 @@ trait ConnectionActions
         }
     }
 
-    public function encryptPassword(string $unencryptedPassword): string
-    {
-        $crypt = new Crypt(new FileUtility());
-
-        return $crypt->encrypt($unencryptedPassword);
-    }
-
     public function truncateConnectionTable(): void
     {
         $connection = GeneralUtility::makeInstance(ConnectionPool::class)
@@ -55,6 +48,8 @@ trait ConnectionActions
 
     public function importConnectionFixture(string $baseUrl, string $password): void
     {
+        $encryptedPassword = (new Crypt(new FileUtility()))->encrypt($password);
+
         $fixture = <<<EOT
 <?xml version="1.0" encoding="utf-8"?>
 <dataset>
@@ -68,7 +63,7 @@ trait ConnectionActions
         <handle>some_connection_handle</handle>
         <base_url>$baseUrl</base_url>
         <username>john.doe</username>
-        <password>$password</password>
+        <password>$encryptedPassword</password>
         <jobrouter_version></jobrouter_version>
         <description>Some description</description>
 	</tx_jobrouterconnector_domain_model_connection>

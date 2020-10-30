@@ -109,7 +109,7 @@ class ModuleCest
     public function whenConnectionIsAvailableAClickOnTheCheckButtonsShowsASuccessfulNotification(BackendTester $I): void
     {
         $I->createJobRouterKey();
-        $I->importConnectionFixture(self::MOCKSERVER_BASE_URL, $I->encryptPassword('secretPwd'));
+        $I->importConnectionFixture(self::MOCKSERVER_BASE_URL, 'secretPwd');
         $I->createMockServerExpectation(self::MOCKSERVER_BASE_URL, 'john.doe', 'secretPwd');
 
         $I->click(self::CONNECTOR_MODULE_SELECTOR);
@@ -130,7 +130,7 @@ class ModuleCest
     public function whenConnectionIsAvailableAClickOnTheCheckButtonsShowsAnErrorNotificationIfNoJobRouterConnection(BackendTester $I): void
     {
         $I->createJobRouterKey();
-        $I->importConnectionFixture(self::MOCKSERVER_BASE_URL, $I->encryptPassword('secretPwd'));
+        $I->importConnectionFixture(self::MOCKSERVER_BASE_URL, 'secretPwd');
 
         $I->click(self::CONNECTOR_MODULE_SELECTOR);
         $I->switchToContentFrame();
