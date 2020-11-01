@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 #
-# TYPO3 core test runner based on docker and docker-compose.
+# TYPO3 JobRouter Connector test runner based on docker and docker-compose.
 #
 
-# Function to write a .env file in Build/testing-docker/local
+# Function to write a .env file in Build/testing-docker
 # This is read by docker-compose and vars defined here are
-# used in Build/testing-docker/local/docker-compose.yml
+# used in Build/testing-docker/docker-compose.yml
 setUpDockerComposeDotEnv() {
     # Delete possibly existing local .env file if exists
     [ -e .env ] && rm .env
@@ -51,7 +51,6 @@ Options:
             - composerValidate: "composer validate"
             - functional: functional tests
             - lint: PHP linting
-            - phpstan: phpstan analyze
             - unit (default): PHP unit tests
 
     -d <mariadb>
@@ -84,10 +83,6 @@ Options:
     -y <port>
         Send xdebug information to a different port than default 9000 if an IDE like PhpStorm
         is not listening on default port.
-
-    -n
-        Only with -s cgl
-        Activate dry-run in CGL check that does not actively change files and only prints broken ones.
 
     -u
         Update existing typo3gmbh/phpXY:latest docker images. Maintenance call to docker pull latest
@@ -132,7 +127,6 @@ PHP_XDEBUG_ON=0
 PHP_XDEBUG_PORT=9000
 EXTRA_TEST_OPTIONS=""
 SCRIPT_VERBOSE=0
-CGLCHECK_DRY_RUN=""
 
 # Option parsing
 # Reset in case getopts has been used previously in the shell
@@ -160,9 +154,6 @@ while getopts ":s:p:e:xy:nhuv" OPT; do
         h)
             echo "${HELP}"
             exit 0
-            ;;
-        n)
-            CGLCHECK_DRY_RUN="-n"
             ;;
         u)
             TEST_SUITE=update
@@ -223,16 +214,6 @@ case ${TEST_SUITE} in
         SUITE_EXIT_CODE=$?
         docker-compose down
         ;;
-    cgl)
-        # Active dry-run for cgl needs not "-n" but specific options
-        if [[ ! -z ${CGLCHECK_DRY_RUN} ]]; then
-            CGLCHECK_DRY_RUN="--dry-run --diff --diff-format udiff"
-        fi
-        setUpDockerComposeDotEnv
-        docker-compose run cgl
-        SUITE_EXIT_CODE=$?
-        docker-compose down
-        ;;
     composerInstall)
         setUpDockerComposeDotEnv
         docker-compose run composer_install
@@ -254,12 +235,6 @@ case ${TEST_SUITE} in
     lint)
         setUpDockerComposeDotEnv
         docker-compose run lint
-        SUITE_EXIT_CODE=$?
-        docker-compose down
-        ;;
-    phpstan)
-        setUpDockerComposeDotEnv
-        docker-compose run phpstan
         SUITE_EXIT_CODE=$?
         docker-compose down
         ;;
