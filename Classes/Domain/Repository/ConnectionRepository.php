@@ -14,10 +14,7 @@ namespace Brotkrueml\JobRouterConnector\Domain\Repository;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
-/**
- * The repository for connections
- */
-final class ConnectionRepository extends Repository
+class ConnectionRepository extends Repository
 {
     /** @var string[] */
     protected $defaultOrderings = [
