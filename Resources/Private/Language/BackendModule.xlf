@@ -59,6 +59,10 @@
 			<trans-unit id="status.disabled" resname="status.disabled">
 				<source><![CDATA[disabled]]></source>
 			</trans-unit>
+
+			<trans-unit id="client_version" resname="client_version">
+				<source><![CDATA[Installed JobRouter Client version]]></source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

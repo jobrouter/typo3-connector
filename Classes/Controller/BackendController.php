@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\JobRouterConnector\Controller;
 
+use Brotkrueml\JobRouterClient\Information\Version;
 use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
 use Brotkrueml\JobRouterConnector\Extension;
 use Brotkrueml\JobRouterConnector\Utility\FileUtility;
@@ -107,6 +108,7 @@ class BackendController extends ActionController
         $this->view->assignMultiple([
             'connections' => $connections,
             'keyFileExists' => $keyFileExists,
+            'clientVersion' => (new Version())->getVersion(),
         ]);
     }
 
