@@ -10,4 +10,5 @@ platform which links processes, data and documents.
 The TYPO3 JobRouter Connector is a base extension for defining
 connections from TYPO3 to JobRouter®.
 
-[Documentation](https://typo3-jobrouter.readthedocs.io/projects/connector/)
+[Documentation](https://typo3-jobrouter.readthedocs.io/projects/connector/) |
+[Changelog](https://github.com/brotkrueml/typo3-jobrouter-connector/blob/master/CHANGELOG.md)
