@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.12.3] - 2021-02-06
+
 ### Added
 - Version information of used JobRouter Client in backend module
 
@@ -117,7 +119,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 Initial preview release
 
 
-[Unreleased]: https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.12.2...HEAD
+[Unreleased]: https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.12.3...HEAD
+[0.12.3]: https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.12.2...v0.12.3
 [0.12.2]: https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.12.1...v0.12.2
 [0.12.1]: https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.12.0...v0.12.1
 [0.12.0]: https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.11.0..v0.12.0
