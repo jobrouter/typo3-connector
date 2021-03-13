@@ -21,7 +21,7 @@ import sphinx_typo3_theme
 # -- Project information -----------------------------------------------------
 
 project = u'TYPO3 JobRouter Connector'
-copyright = u'2020-2021, Chris Müller'
+copyright = u'2019-2021, Chris Müller'
 author = u'Chris Müller'
 
 # The short X.Y version
@@ -186,5 +186,7 @@ epub_exclude_files = ['search.html']
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {
-    'jobrouter-client': ('https://jobrouter-client.readthedocs.io/en/stable/', None)
+    'jobrouter-client': ('https://jobrouter-client.readthedocs.io/en/stable/', None),
+    'typo3-jobrouter-data': ('https://typo3-jobrouter.readthedocs.io/projects/data/en/stable/', None),
+    'typo3-jobrouter-process': ('https://typo3-jobrouter.readthedocs.io/projects/process/en/stable/', None),
 }

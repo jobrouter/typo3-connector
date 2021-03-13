@@ -12,11 +12,7 @@ Connector <https://github.com/brotkrueml/typo3-jobrouter-connector>`_ links
 TYPO3 with the JobRouter® platform.
 
 
-.. admonition:: Work In Progress
-
-   Currently the TYPO3 JobRouter Connector is in a beta phase. Although it can
-   already be used, the API is still subject to changes.
-
+.. _what-does-it-do:
 
 What does it do?
 ================
@@ -25,10 +21,24 @@ The TYPO3 JobRouter Connector is a base extension for defining connections
 from TYPO3 to JobRouter®. Other extensions rely on this extension to add further
 functionality:
 
-- `Synchronise JobData tables into TYPO3 <https://github.com/brotkrueml/typo3-jobrouter-data>`_
-- `Enhance the TYPO3 Form Framework <https://github.com/brotkrueml/typo3-jobrouter-form>`_
-  with form finishers to push data to a JobData table or start an instance of a
-  process
+- :doc:`Connect JobData tables with TYPO3 <typo3-jobrouter-data:introduction>`
+- :doc:`Connect JobRouter® processes with TYPO3 <typo3-jobrouter-process:introduction>`
 
 This extension uses the :doc:`JobRouter Client <jobrouter-client:introduction>`
 library.
+
+
+.. _release-management:
+
+Release management
+==================
+
+This extension uses `semantic versioning <https://semver.org/>`__ which
+basically means for you, that
+
+* Bugfix updates (e.g. 1.0.0 => 1.0.1) just includes small bug fixes or security
+  relevant stuff without breaking changes.
+* Minor updates (e.g. 1.0.0 => 1.1.0) includes new features and smaller tasks
+  without breaking changes.
+* Major updates (e.g. 1.0.0 => 2.0.0) includes breaking changes which can be
+  refactorings, features or bug fixes.

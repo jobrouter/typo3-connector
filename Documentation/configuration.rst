@@ -1,4 +1,5 @@
 .. include:: _includes.txt
+.. highlight:: shell
 
 .. _configuration:
 
@@ -33,7 +34,7 @@ key file relative to the project directory.
 
 .. attention::
 
-   The key should **never** be accessible via a browser. So do not put it in
+   The key should **never** be accessible via a browser. So do **not** put it in
    a folder like :file:`public` or :file:`htdocs`. If you have a standard TYPO3
    installation, the default value is fine.
 
@@ -43,19 +44,21 @@ key file relative to the project directory.
 Key Generation
 ==============
 
-Since the access data of a JobRouter installation is encrypted, an encryption
-key is required to encrypt and decrypt the password. The extension provides a
-console command for creating a key. So log on to your server and go to the
-project path. To generate the key, you need write permissions for this path.
-Run the following command in the project directory:
-
-.. code-block:: shell
+An encryption key is required to encrypt and decrypt the password. The extension
+provides a console command for creating a key. So log on to your server and go
+to the project path. To generate the key, you need write permissions for this
+path. Run the following command in the project directory for a composer
+installation::
 
    vendor/bin/typo3 jobrouter:connector:generatekey
 
+In a non-composer installation execute::
+
+   php public/typo3/sysext/core/bin/typo3 jobrouter:connector:generatekey
+
 Hopefully you will receive a successful response:
 
-.. code-block:: shell
+.. code-block:: text
 
    [OK] Key was generated and stored into "/your/project/path/.jobrouterkey"
 
