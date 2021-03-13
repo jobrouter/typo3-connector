@@ -117,6 +117,27 @@ class FileUtilityTest extends TestCase
         self::assertSame('vfs://' . self::ROOT_DIR . '/.jobrouter-key', $actual);
     }
 
+    /**
+     * @test
+     */
+    public function getAbsoluteKeyPathReturnsPathCorrectlyIfNotInComposerMode(): void
+    {
+        \touch(vfsStream::url(self::ROOT_DIR) . '/.jobrouter-key');
+
+        GeneralUtility::addInstance(
+            ExtensionConfiguration::class,
+            $this->getExtensionConfigurationMock(
+                '.jobrouter-key'
+            )
+        );
+
+        $this->initializeEnvironment(false, vfsStream::url(self::ROOT_DIR) . '/some-folder');
+
+        $actual = $this->subject->getAbsoluteKeyPath();
+
+        self::assertSame('vfs://' . self::ROOT_DIR . '/.jobrouter-key', $actual);
+    }
+
     protected function getExtensionConfigurationMock($returnedKeyPath): MockObject
     {
         /** @var MockObject|ExtensionConfiguration $extensionConfigurationMock */
@@ -130,13 +151,13 @@ class FileUtilityTest extends TestCase
         return $extensionConfigurationMock;
     }
 
-    protected function initializeEnvironment(): void
+    protected function initializeEnvironment(bool $isComposerMode = true, string $projectPath = ''): void
     {
         Environment::initialize(
             new ApplicationContext('Testing'),
             false,
-            true,
-            vfsStream::url(self::ROOT_DIR),
+            $isComposerMode,
+            $projectPath ?: vfsStream::url(self::ROOT_DIR),
             '',
             '',
             '',

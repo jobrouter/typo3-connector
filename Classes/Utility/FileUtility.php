@@ -33,7 +33,12 @@ class FileUtility
             );
         }
 
-        $absoluteKeyPath = Environment::getProjectPath() . DIRECTORY_SEPARATOR . $keyPath;
+        $folder = Environment::getProjectPath();
+        if (!Environment::isComposerMode()) {
+            // In classic installation the project path is the public folder
+            $folder = \dirname($folder);
+        }
+        $absoluteKeyPath = $folder . DIRECTORY_SEPARATOR . $keyPath;
 
         if ($errorOnNonExistingFile && !\file_exists($absoluteKeyPath)) {
             throw new KeyFileException(
