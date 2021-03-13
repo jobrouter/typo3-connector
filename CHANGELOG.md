@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Extension usable in non-composer installations
+
 ## [0.12.3] - 2021-02-06
 
 ### Added

@@ -1,9 +1,11 @@
-Documentation/_build/
 .Build
 .idea
 .php_cs.cache
 .phpunit.result.cache
 .scannerwork
 Build/testing-docker/.env
-composer.lock
+/composer.lock
+Documentation/_build/
+Resources/Private/PHP/
+!Resources/Private/PHP/composer.*
 Tests/Acceptance/Support/_generated/

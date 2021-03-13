@@ -8,4 +8,5 @@
 /.readthedocs.yml export-ignore
 /CHANGELOG.md export-ignore
 /README.md export-ignore
+/Resources/Private/PHP/composer.* export-ignore
 /sonar-project.properties export-ignore

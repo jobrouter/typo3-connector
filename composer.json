@@ -31,6 +31,7 @@
 		"typo3/cms-frontend": "*"
 	},
 	"require-dev": {
+		"clue/phar-composer": "^1.2",
 		"codeception/codeception": "^4.1",
 		"codeception/module-asserts": "^1.3",
 		"codeception/module-webdriver": "^1.2",
@@ -70,7 +71,10 @@
 		}
 	},
 	"scripts": {
+		"build-jobrouter-client": "php -d phar.readonly=off .Build/bin/phar-composer build Resources/Private/PHP/composer.json Resources/Private/PHP/jobrouter-client.phar",
+		"update-jobrouter-client": "composer update --no-dev --prefer-dist --optimize-autoloader --working-dir=Resources/Private/PHP",
 		"fix-cs": ".Build/bin/php-cs-fixer fix",
+		"zip": "rm -r Resources/Private/PHP/vendor && grep -Po \"(?<='version' => ')([0-9]+\\.[0-9]+\\.[0-9]+)\" ext_emconf.php | xargs -I {version} sh -c 'mkdir -p ../zip; git archive -v -o \"../zip/${PWD##*/}_{version}.zip\" v{version}'",
 		"post-autoload-dump": [
 			"TYPO3\\TestingFramework\\Composer\\ExtensionTestEnvironment::prepare"
 		]
