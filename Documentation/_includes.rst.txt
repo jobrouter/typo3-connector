@@ -1,8 +1,10 @@
-.. This is '_includes.txt'. It is included at the very top of each and
+.. This is '_includes.rst.txt'. It is included at the very top of each and
    every ReST source file in THIS documentation project (= manual).
 
 .. role:: php(code)
    :language: php
+.. role:: shell(code)
+   :language: shell
 
 .. default-role:: code
 .. highlight:: php

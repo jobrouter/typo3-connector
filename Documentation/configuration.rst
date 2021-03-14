@@ -1,4 +1,4 @@
-.. include:: _includes.txt
+.. include:: _includes.rst.txt
 .. highlight:: shell
 
 .. _configuration:
