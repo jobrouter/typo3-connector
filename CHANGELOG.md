@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2021-03-14
+
 ### Added
 - Extension usable in non-composer installations
 
@@ -122,7 +124,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 Initial preview release
 
 
-[Unreleased]: https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.12.3...HEAD
+[Unreleased]: https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.12.3...v1.0.0
 [0.12.3]: https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.12.2...v0.12.3
 [0.12.2]: https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.12.1...v0.12.2
 [0.12.1]: https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.12.0...v0.12.1
