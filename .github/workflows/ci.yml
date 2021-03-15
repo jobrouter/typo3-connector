@@ -4,10 +4,12 @@ on:
   push:
     paths-ignore:
       - 'Documentation/**'
+      - 'Resources/Private/Language/**'
       - 'README.md'
   pull_request:
     paths-ignore:
       - 'Documentation/**'
+      - 'Resources/Private/Language/**'
       - 'README.md'
 
 jobs:
