@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf" date="2021-03-13T08:36:04Z" product-name="jobrouter_connector" target-language="fi">
+    <header/>
+    <body>
+      <trans-unit id="mlang_labels_tablabel" resname="mlang_labels_tablabel">
+        <source><![CDATA[JobRouter connections]]></source>
+        <target state="needs-translation"><![CDATA[JobRouter connections]]></target>
+      </trans-unit>
+      <trans-unit id="mlang_labels_tabdescr" resname="mlang_labels_tabdescr">
+        <source><![CDATA[Manage JobRouter connections]]></source>
+        <target state="needs-translation"><![CDATA[Manage JobRouter connections]]></target>
+      </trans-unit>
+      <trans-unit id="mlang_tabs_tab" resname="mlang_tabs_tab">
+        <source><![CDATA[Connections]]></source>
+        <target state="needs-translation"><![CDATA[Connections]]></target>
+      </trans-unit>
+      <trans-unit id="heading_text" resname="heading_text">
+        <source><![CDATA[JobRouter Connections]]></source>
+        <target state="needs-translation"><![CDATA[JobRouter Connections]]></target>
+      </trans-unit>
+      <trans-unit id="action.add_connection" resname="action.add_connection">
+        <source><![CDATA[Add connection record]]></source>
+        <target state="needs-translation"><![CDATA[Add connection record]]></target>
+      </trans-unit>
+      <trans-unit id="action.check_connection" resname="action.check_connection">
+        <source><![CDATA[Check connection]]></source>
+        <target state="needs-translation"><![CDATA[Check connection]]></target>
+      </trans-unit>
+      <trans-unit id="action.edit_connection" resname="action.edit_connection">
+        <source><![CDATA[Edit connection record]]></source>
+        <target state="needs-translation"><![CDATA[Edit connection record]]></target>
+      </trans-unit>
+      <trans-unit id="action.open_jobrouter_system" resname="action.open_jobrouter_system">
+        <source><![CDATA[Open JobRouter system]]></source>
+        <target state="needs-translation"><![CDATA[Open JobRouter system]]></target>
+      </trans-unit>
+      <trans-unit id="connections_not_found.title" resname="connections_not_found.title">
+        <source><![CDATA[No connections found]]></source>
+        <target state="needs-translation"><![CDATA[No connections found]]></target>
+      </trans-unit>
+      <trans-unit id="connections_not_found.message" resname="connections_not_found.message">
+        <source><![CDATA[There are currently no connection records defined.]]></source>
+        <target state="needs-translation"><![CDATA[There are currently no connection records defined.]]></target>
+      </trans-unit>
+      <trans-unit id="connection_create" resname="connection_create">
+        <source><![CDATA[Create new connection]]></source>
+        <target state="needs-translation"><![CDATA[Create new connection]]></target>
+      </trans-unit>
+      <trans-unit id="connection_check_for" resname="connection_check_for">
+        <source><![CDATA[Connection check for]]></source>
+        <target state="needs-translation"><![CDATA[Connection check for]]></target>
+      </trans-unit>
+      <trans-unit id="connection_successful" resname="connection_successful">
+        <source><![CDATA[Connection established successfully]]></source>
+        <target state="needs-translation"><![CDATA[Connection established successfully]]></target>
+      </trans-unit>
+      <trans-unit id="connection_unknown_error" resname="connection_unknown_error">
+        <source><![CDATA[Unknown error]]></source>
+        <target state="needs-translation"><![CDATA[Unknown error]]></target>
+      </trans-unit>
+      <trans-unit id="keyfile_not_exists.title" resname="keyfile_not_exists.title">
+        <source><![CDATA[Key file does not exist]]></source>
+        <target state="needs-translation"><![CDATA[Key file does not exist]]></target>
+      </trans-unit>
+      <trans-unit id="keyfile_not_exists.message" resname="keyfile_not_exists.message">
+        <source><![CDATA[The key file for encrypting the connection passwords does not exist. Run the console command "jobrouter:connector:generatekey".]]></source>
+        <target state="needs-translation"><![CDATA[The key file for encrypting the connection passwords does not exist. Run the console command "jobrouter:connector:generatekey".]]></target>
+      </trans-unit>
+      <trans-unit id="status.disabled" resname="status.disabled">
+        <source><![CDATA[disabled]]></source>
+        <target state="needs-translation"><![CDATA[disabled]]></target>
+      </trans-unit>
+      <trans-unit id="client_version" resname="client_version">
+        <source><![CDATA[Installed JobRouter Client version]]></source>
+        <target state="needs-translation"><![CDATA[Installed JobRouter Client version]]></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
