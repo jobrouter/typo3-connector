@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="EXT:jobrouter_connector/Resources/Private/Language/BackendModuleGroup.xlf" date="2020-11-22T19:18:14Z" product-name="jobrouter_connector" target-language="de">
+    <header/>
+    <body>
+      <trans-unit id="mlang_tabs_tab" resname="mlang_tabs_tab" translate="no">
+        <source><![CDATA[JobRouter]]></source>
+        <target state="needs-translation"><![CDATA[JobRouter]]></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
