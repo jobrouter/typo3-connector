@@ -4,13 +4,11 @@ on:
   push:
     paths-ignore:
       - 'Documentation/**'
-      - 'Resources/Private/Language/**'
-      - 'README.md'
+      - '**.md'
   pull_request:
     paths-ignore:
       - 'Documentation/**'
-      - 'Resources/Private/Language/**'
-      - 'README.md'
+      - '**.md'
 
 jobs:
   build:
@@ -76,3 +74,20 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  xliff-validation:
+    name: XLIFF validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+      - name: Install package
+        run: |
+          sudo apt-get -y install libxml2-utils
+      - name: Download XSD
+        run: |
+          curl --no-progress-meter -O https://docs.oasis-open.org/xliff/v1.2/cs02/xliff-core-1.2-strict.xsd
+      - name: Validate XLIFF files
+        run: |
+          xmllint --schema xliff-core-1.2-strict.xsd --noout Resources/Private/Language/*.xlf
