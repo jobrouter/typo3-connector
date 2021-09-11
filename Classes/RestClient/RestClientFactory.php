@@ -21,7 +21,6 @@ use Brotkrueml\JobRouterConnector\Extension;
 use Brotkrueml\JobRouterConnector\Service\Crypt;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 
 final class RestClientFactory
@@ -88,14 +87,12 @@ final class RestClientFactory
             return;
         }
 
-        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-
         $connection->setJobrouterVersion($client->getJobRouterVersion());
 
-        $connectionRepository = $objectManager->get(ConnectionRepository::class);
+        $connectionRepository = GeneralUtility::makeInstance(ConnectionRepository::class);
         $connectionRepository->update($connection);
 
-        $persistenceManager = $objectManager->get(PersistenceManager::class);
+        $persistenceManager = GeneralUtility::makeInstance(PersistenceManager::class);
         $persistenceManager->persistAll();
     }
 }

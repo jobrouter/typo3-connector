@@ -18,19 +18,18 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Http\JsonResponse;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /**
  @internal
  */
 final class ConnectionAjaxController
 {
-    /** @var ObjectManager */
-    private $objectManager;
+    /** @var ConnectionRepository */
+    private $connectionRepository;
 
     public function __construct()
     {
-        $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+        $this->connectionRepository = GeneralUtility::makeInstance(ConnectionRepository::class);
     }
 
     public function checkAction(ServerRequestInterface $request): ResponseInterface
@@ -39,9 +38,8 @@ final class ConnectionAjaxController
 
         $result = ['check' => 'ok'];
         try {
-            $connectionRepository = $this->objectManager->get(ConnectionRepository::class);
             /** @var Connection $connection */
-            $connection = $connectionRepository->findByIdentifierWithHidden($connectionId);
+            $connection = $this->connectionRepository->findByIdentifierWithHidden($connectionId);
 
             if ($connection) {
                 (new RestClientFactory())->create($connection, 10);
