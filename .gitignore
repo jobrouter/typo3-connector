@@ -6,6 +6,7 @@
 Build/testing-docker/.env
 /composer.lock
 Documentation/_build/
+Makefile
 Resources/Private/PHP/
 !Resources/Private/PHP/composer.*
 Tests/Acceptance/Support/_generated/
