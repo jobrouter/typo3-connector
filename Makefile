@@ -11,7 +11,7 @@ coding-standards: vendor
 	.Build/bin/php-cs-fixer fix --config=.php_cs --diff
 
 .PHONY: unit-tests
-tests: vendor
+unit-tests: vendor
 	.Build/bin/phpunit -c Tests/phpunit.xml.dist
 
 vendor: composer.json composer.lock
