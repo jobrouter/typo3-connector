@@ -15,6 +15,7 @@ tests: vendor
 	.Build/bin/phpunit -c Tests/phpunit.xml.dist
 
 vendor: composer.json composer.lock
+	composer normalize
 	composer validate
 	composer install
 
