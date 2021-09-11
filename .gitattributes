@@ -10,5 +10,7 @@
 /.php_cs export-ignore
 /.readthedocs.yml export-ignore
 /CHANGELOG.md export-ignore
+/Makefile export-ignore
 /README.md export-ignore
 /sonar-project.properties export-ignore
+*.xsd export-ignore
