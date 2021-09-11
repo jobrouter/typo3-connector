@@ -34,6 +34,7 @@
 		"friendsofphp/php-cs-fixer": "^2.18",
 		"mikey179/vfsstream": "^1.6",
 		"phpunit/phpunit": "^8.5 || ^9.5",
+		"symfony/yaml": "^4.4 || ^5.3",
 		"typo3/coding-standards": "^0.3",
 		"typo3/testing-framework": "^6.7"
 	},
