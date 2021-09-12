@@ -26,6 +26,8 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 final class ConnectionAjaxController
 {
+    private const ERROR_MESSAGE_MAX_LENGTH = 1000;
+
     /** @var ConnectionRepository */
     private $connectionRepository;
 
@@ -54,7 +56,14 @@ final class ConnectionAjaxController
                 ];
             }
         } catch (\Exception $e) {
-            $result = ['error' => $e->getMessage()];
+            $result = [
+                'error' => \sprintf(
+                    "%s: %d\n%s",
+                    $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_BACKEND_MODULE . ':returned_http_status_code'),
+                    $e->getCode(),
+                    \substr($e->getMessage(), 0, self::ERROR_MESSAGE_MAX_LENGTH)
+                )
+            ];
         }
 
         return new JsonResponse($result);

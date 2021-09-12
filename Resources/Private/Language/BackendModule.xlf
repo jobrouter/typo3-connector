@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file source-language="en" datatype="plaintext" original="EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf" date="2021-09-12T16:41:35Z" product-name="jobrouter_connector">
+	<file source-language="en" datatype="plaintext" original="EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf" date="2021-09-12T16:57:51Z" product-name="jobrouter_connector">
 		<header/>
 		<body>
 			<trans-unit id="mlang_labels_tablabel" resname="mlang_labels_tablabel">
@@ -50,6 +50,9 @@
 			</trans-unit>
 			<trans-unit id="connection_unknown_error" resname="connection_unknown_error">
 				<source><![CDATA[Unknown error]]></source>
+			</trans-unit>
+			<trans-unit id="returned_http_status_code" resname="returned_http_status_code">
+				<source><![CDATA[Returned HTTP status code]]></source>
 			</trans-unit>
 
 			<trans-unit id="keyfile_not_exists.title" resname="keyfile_not_exists.title">
