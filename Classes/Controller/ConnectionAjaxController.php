@@ -13,10 +13,12 @@ namespace Brotkrueml\JobRouterConnector\Controller;
 
 use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
 use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
+use Brotkrueml\JobRouterConnector\Extension;
 use Brotkrueml\JobRouterConnector\RestClient\RestClientFactory;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Http\JsonResponse;
+use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -44,12 +46,22 @@ final class ConnectionAjaxController
             if ($connection) {
                 (new RestClientFactory())->create($connection, 10);
             } else {
-                $result = ['error' => sprintf('Connection with id "%d" not found!', $connectionId)];
+                $result = [
+                    'error' => \sprintf(
+                        $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_BACKEND_MODULE . ':connection_not_found'),
+                        $connectionId
+                    )
+                ];
             }
         } catch (\Exception $e) {
             $result = ['error' => $e->getMessage()];
         }
 
         return new JsonResponse($result);
+    }
+
+    private function getLanguageService(): LanguageService
+    {
+        return $GLOBALS['LANG'];
     }
 }
