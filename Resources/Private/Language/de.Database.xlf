@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf" date="2020-07-01T15:49:51Z" product-name="jobrouter_connector" target-language="de">
+    <header/>
+    <body>
+      <trans-unit id="palette.credentials" resname="palette.credentials" approved="yes">
+        <source><![CDATA[Credentials]]></source>
+        <target state="final"><![CDATA[Zugangsdaten]]></target>
+      </trans-unit>
+      <trans-unit id="tab.information" resname="tab.information" approved="yes">
+        <source><![CDATA[Information]]></source>
+        <target state="final"><![CDATA[Information]]></target>
+      </trans-unit>
+      <trans-unit id="tx_jobrouterconnector_domain_model_connection" resname="tx_jobrouterconnector_domain_model_connection" approved="yes">
+        <source><![CDATA[JobRouter Connection]]></source>
+        <target state="final"><![CDATA[JobRouter-Verbindung]]></target>
+      </trans-unit>
+      <trans-unit id="tx_jobrouterconnector_domain_model_connection.base_url" resname="tx_jobrouterconnector_domain_model_connection.base_url" approved="yes">
+        <source><![CDATA[Base URL]]></source>
+        <target state="final"><![CDATA[Basis-URL]]></target>
+      </trans-unit>
+      <trans-unit id="tx_jobrouterconnector_domain_model_connection.description" resname="tx_jobrouterconnector_domain_model_connection.description" approved="yes">
+        <source><![CDATA[Description]]></source>
+        <target state="final"><![CDATA[Beschreibung]]></target>
+      </trans-unit>
+      <trans-unit id="tx_jobrouterconnector_domain_model_connection.handle" resname="tx_jobrouterconnector_domain_model_connection.handle" approved="yes">
+        <source><![CDATA[Handle]]></source>
+        <target state="final"><![CDATA[Referenz]]></target>
+      </trans-unit>
+      <trans-unit id="tx_jobrouterconnector_domain_model_connection.jobrouter_version" resname="tx_jobrouterconnector_domain_model_connection.jobrouter_version" approved="yes">
+        <source><![CDATA[JobRouter Version]]></source>
+        <target state="final"><![CDATA[JobRouter-Version]]></target>
+      </trans-unit>
+      <trans-unit id="tx_jobrouterconnector_domain_model_connection.jobrouter_version.description" resname="tx_jobrouterconnector_domain_model_connection.jobrouter_version.description" approved="yes">
+        <source><![CDATA[The version is automatically detected when a connection is established and therefore cannot be changed.]]></source>
+        <target state="final"><![CDATA[Die Version wird automatisch erkannt, wenn eine Verbindung hergestellt wird und kann daher nicht geändert werden.]]></target>
+      </trans-unit>
+      <trans-unit id="tx_jobrouterconnector_domain_model_connection.name" resname="tx_jobrouterconnector_domain_model_connection.name" approved="yes">
+        <source><![CDATA[Name]]></source>
+        <target state="final"><![CDATA[Name]]></target>
+      </trans-unit>
+      <trans-unit id="tx_jobrouterconnector_domain_model_connection.password" resname="tx_jobrouterconnector_domain_model_connection.password" approved="yes">
+        <source><![CDATA[Password]]></source>
+        <target state="final"><![CDATA[Passwort]]></target>
+      </trans-unit>
+      <trans-unit id="tx_jobrouterconnector_domain_model_connection.username" resname="tx_jobrouterconnector_domain_model_connection.username" approved="yes">
+        <source><![CDATA[Username]]></source>
+        <target state="final"><![CDATA[Benutzername]]></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
