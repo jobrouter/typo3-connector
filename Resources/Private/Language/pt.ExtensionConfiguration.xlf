@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="en" datatype="plaintext" original="messages" date="2019-08-14T13:32:12Z" product-name="jobrouter_connector" target-language="pt-PT">
+  <file source-language="en" datatype="plaintext" original="messages" date="2019-08-14T13:32:12Z" product-name="jobrouter_connector" target-language="pt-BR">
     <header/>
     <body>
       <trans-unit id="keyPath" resname="keyPath">
