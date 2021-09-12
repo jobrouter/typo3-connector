@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="en" datatype="plaintext" original="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf" date="2020-07-01T15:49:51Z" product-name="jobrouter_connector" target-language="zh-TW">
+  <file source-language="en" datatype="plaintext" original="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf" date="2020-07-01T15:49:51Z" product-name="jobrouter_connector" target-language="zh-CN">
     <header/>
     <body>
       <trans-unit id="palette.credentials" resname="palette.credentials">
