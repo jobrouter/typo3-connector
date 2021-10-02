@@ -19,10 +19,14 @@ use PHPUnit\Framework\TestCase;
 
 class PasswordTest extends TestCase
 {
-    /** @var Password */
+    /**
+     * @var Password
+     */
     private $subject;
 
-    /** @var MockObject|Crypt */
+    /**
+     * @var MockObject|Crypt
+     */
     private $cryptMock;
 
     protected function setUp(): void

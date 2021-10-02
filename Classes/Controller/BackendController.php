@@ -34,25 +34,39 @@ class BackendController extends ActionController
 {
     private const MODULE_NAME = 'jobrouter_JobRouterConnectorJobrouterconnector';
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $defaultViewObjectName = BackendTemplateView::class;
 
-    /** @var ConnectionRepository */
+    /**
+     * @var ConnectionRepository
+     */
     private $connectionRepository;
 
-    /** @var FileUtility */
+    /**
+     * @var FileUtility
+     */
     private $fileUtility;
 
-    /** @var UriBuilder */
+    /**
+     * @var UriBuilder
+     */
     private $routingUriBuilder;
 
-    /** @var IconFactory */
+    /**
+     * @var IconFactory
+     */
     private $iconFactory;
 
-    /** @var ModuleTemplate */
+    /**
+     * @var ModuleTemplate
+     */
     private $moduleTemplate;
 
-    /** @var LanguageService */
+    /**
+     * @var LanguageService
+     */
     private $languageService;
 
     public function __construct(
@@ -71,8 +85,6 @@ class BackendController extends ActionController
 
     /**
      * Set up the doc header properly here
-     *
-     * @param ViewInterface $view
      */
     protected function initializeView(ViewInterface $view): void
     {

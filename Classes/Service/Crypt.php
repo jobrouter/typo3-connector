@@ -21,7 +21,9 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class Crypt implements SingletonInterface
 {
-    /** @var FileUtility $fileUtility */
+    /**
+     * @var FileUtility
+     */
     private $fileUtility;
 
     public function __construct(FileUtility $fileUtility = null)
@@ -61,7 +63,7 @@ class Crypt implements SingletonInterface
             );
         }
 
-        if (false === $clearText) {
+        if ($clearText === false) {
             throw new CryptException(
                 'The value could not be decrypted!',
                 1565993705
@@ -87,7 +89,7 @@ class Crypt implements SingletonInterface
     private function getKey(): string
     {
         $key = \file_get_contents($this->fileUtility->getAbsoluteKeyPath());
-        if (false === $key) {
+        if ($key === false) {
             throw new CryptException(
                 'The key could not be retrieved!',
                 1565993707

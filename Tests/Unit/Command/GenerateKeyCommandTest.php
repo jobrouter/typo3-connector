@@ -20,10 +20,14 @@ use Symfony\Component\Console\Tester\CommandTester;
 
 class GenerateKeyCommandTest extends TestCase
 {
-    /** @var CommandTester */
+    /**
+     * @var CommandTester
+     */
     private $commandTester;
 
-    /** @var KeyGenerator|Stub */
+    /**
+     * @var KeyGenerator|Stub
+     */
     private $keyGeneratorStub;
 
     protected function setUp(): void

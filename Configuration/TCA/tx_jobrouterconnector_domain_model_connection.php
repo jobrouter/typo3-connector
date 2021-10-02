@@ -35,10 +35,10 @@ return [
                     [
                         0 => '',
                         1 => '',
-                        'invertStateDisplay' => true
-                    ]
+                        'invertStateDisplay' => true,
+                    ],
                 ],
-            ]
+            ],
         ],
 
         'name' => [
@@ -48,7 +48,7 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'max' => 255,
-                'eval' => 'required,trim'
+                'eval' => 'required,trim',
             ],
         ],
         'handle' => [
@@ -58,7 +58,7 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'max' => 30,
-                'eval' => 'alphanum_x,required,trim,unique'
+                'eval' => 'alphanum_x,required,trim,unique',
             ],
         ],
         'base_url' => [
@@ -68,7 +68,7 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'max' => 255,
-                'eval' => 'nospace,required'
+                'eval' => 'nospace,required',
             ],
         ],
         'username' => [
@@ -78,7 +78,7 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'max' => 255,
-                'eval' => 'nospace,required'
+                'eval' => 'nospace,required',
             ],
         ],
         'password' => [
@@ -87,8 +87,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'nospace,password,required,' . \Brotkrueml\JobRouterConnector\Evaluation\Password::class
-            ]
+                'eval' => 'nospace,password,required,' . \Brotkrueml\JobRouterConnector\Evaluation\Password::class,
+            ],
         ],
         'jobrouter_version' => [
             'exclude' => true,
@@ -107,21 +107,23 @@ return [
             'config' => [
                 'type' => 'text',
                 'rows' => 5,
-                'cols' => 30
-            ]
+                'cols' => 30,
+            ],
         ],
     ],
     'types' => [
-        '1' => ['showitem' => '
-            name, handle, base_url,
-            --palette--;;credentials,
-            --div--;' . \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tab.information,
-            jobrouter_version,
-            --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
-            disabled,
-            --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes,
-            description,
-        '],
+        '1' => [
+            'showitem' => '
+                name, handle, base_url,
+                --palette--;;credentials,
+                --div--;' . \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tab.information,
+                jobrouter_version,
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
+                disabled,
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes,
+                description,
+            ',
+        ],
     ],
     'palettes' => [
         'credentials' => [

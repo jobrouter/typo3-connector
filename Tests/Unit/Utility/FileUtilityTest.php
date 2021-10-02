@@ -29,10 +29,14 @@ class FileUtilityTest extends TestCase
 {
     protected const ROOT_DIR = 'project-dir';
 
-    /** @var vfsStreamDirectory */
+    /**
+     * @var vfsStreamDirectory
+     */
     protected $root;
 
-    /** @var FileUtility */
+    /**
+     * @var FileUtility
+     */
     protected $subject;
 
     protected function setUp(): void

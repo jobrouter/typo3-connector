@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the "jobrouter_connector" extension for TYPO3 CMS.
  *
@@ -10,6 +12,6 @@
 return [
     'jobrouter_connection_check' => [
         'path' => '/jobrouter/connection/check',
-        'target' => \Brotkrueml\JobRouterConnector\Controller\ConnectionAjaxController::class . '::checkAction'
+        'target' => \Brotkrueml\JobRouterConnector\Controller\ConnectionAjaxController::class . '::checkAction',
     ],
 ];

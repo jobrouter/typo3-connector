@@ -16,7 +16,9 @@ use PHPUnit\Framework\TestCase;
 
 class ConnectionTest extends TestCase
 {
-    /** @var Connection */
+    /**
+     * @var Connection
+     */
     protected $subject;
 
     protected function setUp(): void

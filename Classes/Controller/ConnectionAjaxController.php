@@ -28,7 +28,9 @@ final class ConnectionAjaxController
 {
     private const ERROR_MESSAGE_MAX_LENGTH = 1000;
 
-    /** @var ConnectionRepository */
+    /**
+     * @var ConnectionRepository
+     */
     private $connectionRepository;
 
     public function __construct()
@@ -40,7 +42,9 @@ final class ConnectionAjaxController
     {
         $connectionId = (int)$request->getParsedBody()['connectionId'];
 
-        $result = ['check' => 'ok'];
+        $result = [
+            'check' => 'ok',
+        ];
         try {
             /** @var Connection $connection */
             $connection = $this->connectionRepository->findByIdentifierWithHidden($connectionId);
@@ -52,7 +56,7 @@ final class ConnectionAjaxController
                     'error' => \sprintf(
                         $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_BACKEND_MODULE . ':connection_not_found'),
                         $connectionId
-                    )
+                    ),
                 ];
             }
         } catch (\Exception $e) {
@@ -62,7 +66,7 @@ final class ConnectionAjaxController
                     $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_BACKEND_MODULE . ':returned_http_status_code'),
                     $e->getCode(),
                     \substr($e->getMessage(), 0, self::ERROR_MESSAGE_MAX_LENGTH)
-                )
+                ),
             ];
         }
 

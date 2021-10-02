@@ -19,7 +19,9 @@ use PHPUnit\Framework\TestCase;
 
 class CryptTest extends TestCase
 {
-    /** @var Crypt */
+    /**
+     * @var Crypt
+     */
     private $subject;
 
     protected function setUp(): void

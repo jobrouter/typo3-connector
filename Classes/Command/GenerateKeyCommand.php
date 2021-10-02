@@ -26,7 +26,9 @@ final class GenerateKeyCommand extends Command
     private const EXIT_CODE_OK = 0;
     private const EXIT_CODE_KEY_GENERATION_ERROR = 1;
 
-    /** @var KeyGenerator */
+    /**
+     * @var KeyGenerator
+     */
     private $keyGenerator;
 
     public function __construct(KeyGenerator $keyGenerator)

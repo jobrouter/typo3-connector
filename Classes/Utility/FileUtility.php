@@ -26,7 +26,7 @@ class FileUtility
         $configuration = GeneralUtility::makeInstance(ExtensionConfiguration::class);
         $keyPath = $configuration->get('jobrouter_connector', 'keyPath');
 
-        if (!$keyPath) {
+        if (! $keyPath) {
             throw new KeyFileException(
                 'The key file path is not defined correctly in the extension configuration!',
                 1565992922
@@ -34,13 +34,13 @@ class FileUtility
         }
 
         $folder = Environment::getProjectPath();
-        if (!Environment::isComposerMode()) {
+        if (! Environment::isComposerMode()) {
             // In classic installation the project path is the public folder
             $folder = \dirname($folder);
         }
         $absoluteKeyPath = $folder . DIRECTORY_SEPARATOR . $keyPath;
 
-        if ($errorOnNonExistingFile && !\file_exists($absoluteKeyPath)) {
+        if ($errorOnNonExistingFile && ! \file_exists($absoluteKeyPath)) {
             throw new KeyFileException(
                 'The key file is not available!',
                 1565992923

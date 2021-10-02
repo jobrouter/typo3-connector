@@ -1,14 +1,14 @@
 .PHONY: qa
-qa: coding-standards unit-tests yaml-lint
+qa: cs unit-tests yaml-lint
 
 .PHONY: build-jobrouter-client
 build-jobrouter-client:
 	composer update --no-dev --prefer-dist --optimize-autoloader --working-dir=Resources/Private/PHP
 	php -d phar.readonly=off .Build/bin/phar-composer build Resources/Private/PHP/composer.json Resources/Private/PHP/jobrouter-client.phar
 
-.PHONY: coding-standards
-coding-standards: vendor
-	.Build/bin/php-cs-fixer fix --config=.php_cs --diff
+.PHONY: cs
+cs: vendor
+	.Build/bin/ecs --fix
 
 .PHONY: unit-tests
 unit-tests: vendor

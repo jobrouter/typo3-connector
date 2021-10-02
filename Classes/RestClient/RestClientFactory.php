@@ -36,7 +36,6 @@ final class RestClientFactory
      * @param Connection $connection The connection model
      * @param int|null $lifetime Optional lifetime argument
      * @param string|null $userAgentAddition Addition to the user agent
-     * @return ClientInterface
      * @throws ExceptionInterface
      */
     public function create(
@@ -66,7 +65,6 @@ final class RestClientFactory
     }
 
     /**
-     * @return string
      * @norector Rector\Php56\Rector\FunctionLike\AddDefaultValueForUndefinedVariableRector
      */
     private function getUserAgentAddition(): string

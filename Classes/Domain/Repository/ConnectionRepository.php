@@ -16,7 +16,9 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 
 class ConnectionRepository extends Repository
 {
-    /** @var string[] */
+    /**
+     * @var string[]
+     */
     protected $defaultOrderings = [
         'disabled' => QueryInterface::ORDER_ASCENDING,
         'name' => QueryInterface::ORDER_ASCENDING,

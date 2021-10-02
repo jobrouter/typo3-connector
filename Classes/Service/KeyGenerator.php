@@ -16,10 +16,14 @@ use Brotkrueml\JobRouterConnector\Utility\FileUtility;
 
 class KeyGenerator
 {
-    /** @var Crypt */
+    /**
+     * @var Crypt
+     */
     private $crypt;
 
-    /** @var FileUtility */
+    /**
+     * @var FileUtility
+     */
     private $fileUtility;
 
     public function __construct(Crypt $crypt, FileUtility $fileUtility)
@@ -47,7 +51,7 @@ class KeyGenerator
             );
         }
 
-        if (false === @\file_put_contents($absolutePath, $this->crypt->generateKey())) {
+        if (@\file_put_contents($absolutePath, $this->crypt->generateKey()) === false) {
             throw new KeyGenerationException(
                 sprintf('The key file "%s" could not be written!', $absolutePath),
                 1603475037
