@@ -2,7 +2,27 @@
 
 defined('TYPO3') || die();
 
-(function () {
+(static function () {
+    if ((new TYPO3\CMS\Core\Information\Typo3Version())->getMajorVersion() === 10) {
+        // Since TYPO3 v11.4 icons can be registered in Configuration/Icons.php
+        /** @var \TYPO3\CMS\Core\Imaging\IconRegistry $iconRegistry */
+        $iconRegistry = TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(TYPO3\CMS\Core\Imaging\IconRegistry::class);
+        $iconRegistry->registerIcon(
+            'jobrouter-modulegroup',
+            TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+            [
+                'source' => 'EXT:' . Brotkrueml\JobRouterConnector\Extension::KEY . '/Resources/Public/Icons/modulegroup-jobrouter.svg',
+            ]
+        );
+        $iconRegistry->registerIcon(
+            'jobrouter-module-connector',
+            TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+            [
+                'source' => 'EXT:' . Brotkrueml\JobRouterConnector\Extension::KEY . '/Resources/Public/Icons/module-connector.svg',
+            ]
+        );
+    }
+
     // Register "JobRouter" module group
     TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addModule(
         'jobrouter',
@@ -10,7 +30,7 @@ defined('TYPO3') || die();
         'before:tools',
         null,
         [
-            'icon' => 'EXT:' . Brotkrueml\JobRouterConnector\Extension::KEY . '/Resources/Public/Icons/modulegroup-jobrouter.svg',
+            'iconIdentifier' => 'jobrouter-modulegroup',
             'labels' => 'LLL:EXT:' . Brotkrueml\JobRouterConnector\Extension::KEY . '/Resources/Private/Language/BackendModuleGroup.xlf',
         ]
     );
@@ -26,7 +46,7 @@ defined('TYPO3') || die();
         ],
         [
             'access' => 'admin',
-            'icon' => 'EXT:' . Brotkrueml\JobRouterConnector\Extension::KEY . '/Resources/Public/Icons/module-connector.svg',
+            'iconIdentifier' => 'jobrouter-module-connector',
             'labels' => Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_BACKEND_MODULE,
         ]
     );
