@@ -42,3 +42,6 @@ basically means for you, that
   without breaking changes.
 * Major updates (e.g. 1.0.0 => 2.0.0) includes breaking changes which can be
   refactorings, features or bug fixes.
+
+The changes between the different versions can be found in the
+:ref:`changelog <changelog>`.
