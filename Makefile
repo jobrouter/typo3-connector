@@ -1,10 +1,18 @@
 .PHONY: qa
-qa: cs unit-tests yaml-lint
+qa: cs unit-tests yaml-lint changelog
 
 .PHONY: build-jobrouter-client
 build-jobrouter-client:
 	composer update --no-dev --prefer-dist --optimize-autoloader --working-dir=Resources/Private/PHP
 	php -d phar.readonly=off .Build/bin/phar-composer build Resources/Private/PHP/composer.json Resources/Private/PHP/jobrouter-client.phar
+
+# See: https://github.com/crossnox/m2r2
+.PHONY: changelog
+changelog:
+	m2r2 CHANGELOG.md && \
+	echo ".. _changelog:" | cat - CHANGELOG.rst > /tmp/CHANGELOG.rst && \
+	mv /tmp/CHANGELOG.rst Documentation/changelog.rst && \
+	rm CHANGELOG.rst
 
 .PHONY: cs
 cs: vendor

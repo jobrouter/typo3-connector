@@ -38,4 +38,5 @@ Contents
    configuration
    usage
    developer
+   changelog
    copyright
