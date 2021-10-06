@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Compatibility with TYPO3 v11
+- Compatibility with TYPO3 v11 LTS
 
 ## [1.0.0] - 2021-03-14
 
