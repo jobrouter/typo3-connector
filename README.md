@@ -4,6 +4,7 @@
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=typo3-jobrouter-connector&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=typo3-jobrouter-connector)
 [![Documentation Status](https://readthedocs.org/projects/typo3-jobrouter-connector/badge/?version=latest)](https://typo3-jobrouter.readthedocs.io/projects/connector/)
 [![Crowdin](https://badges.crowdin.net/typo3-extension-jobrouterconne/localized.svg)](https://crowdin.com/project/typo3-extension-jobrouterconne)
+[![Latest Stable Version](https://img.shields.io/packagist/v/brotkrueml/typo3-jobrouter-connector.svg?label=stable)](https://packagist.org/packages/brotkrueml/typo3-jobrouter-connector)
 
 [JobRouter®](https://www.jobrouter.com/) is a scalable digitization
 platform which links processes, data and documents.
