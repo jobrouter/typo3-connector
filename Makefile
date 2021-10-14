@@ -1,5 +1,5 @@
 .PHONY: qa
-qa: cs unit-tests yaml-lint changelog
+qa: cs unit-tests rector-dry yaml-lint changelog
 
 .PHONY: build-jobrouter-client
 build-jobrouter-client:
@@ -17,6 +17,14 @@ changelog:
 .PHONY: cs
 cs: vendor
 	.Build/bin/ecs --fix
+
+.PHONY: rector
+rector: vendor
+	.Build/bin/rector
+
+.PHONY: rector-dry
+rector-dry: vendor
+	.Build/bin/rector --dry-run
 
 .PHONY: unit-tests
 unit-tests: vendor

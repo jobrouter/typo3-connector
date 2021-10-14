@@ -42,7 +42,7 @@ final class RestClientFactory
         Connection $connection,
         ?int $lifetime = null,
         ?string $userAgentAddition = null
-    ): ClientInterface {
+    ): RestClient {
         $decryptedPassword = (new Crypt())->decrypt($connection->getPassword());
 
         $configuration = new ClientConfiguration(

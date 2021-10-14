@@ -121,3 +121,6 @@ jobs:
       - name: Check coding standards
         run: |
           .Build/bin/ecs check --no-progress-bar
+      - name: Run rector
+        run: |
+          make rector-dry
