@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\JobRouterConnector\Controller;
 
+use Brotkrueml\JobRouterClient\Exception\HttpException;
 use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
 use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
 use Brotkrueml\JobRouterConnector\Extension;
@@ -59,7 +60,7 @@ final class ConnectionAjaxController
                     ),
                 ];
             }
-        } catch (\Exception $e) {
+        } catch (HttpException $e) {
             $result = [
                 'error' => \sprintf(
                     "%s: %d\n%s",
@@ -67,6 +68,10 @@ final class ConnectionAjaxController
                     $e->getCode(),
                     \substr($e->getMessage(), 0, self::ERROR_MESSAGE_MAX_LENGTH)
                 ),
+            ];
+        } catch (\Exception $e) {
+            $result = [
+                'error' => \substr($e->getMessage(), 0, self::ERROR_MESSAGE_MAX_LENGTH),
             ];
         }
 
