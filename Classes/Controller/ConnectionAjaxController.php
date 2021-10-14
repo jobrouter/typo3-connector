@@ -16,14 +16,14 @@ use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
 use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
 use Brotkrueml\JobRouterConnector\Extension;
 use Brotkrueml\JobRouterConnector\RestClient\RestClientFactory;
+use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use TYPO3\CMS\Core\Http\JsonResponse;
+use Psr\Http\Message\StreamFactoryInterface;
 use TYPO3\CMS\Core\Localization\LanguageService;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- @internal
+ * @internal
  */
 final class ConnectionAjaxController
 {
@@ -33,10 +33,23 @@ final class ConnectionAjaxController
      * @var ConnectionRepository
      */
     private $connectionRepository;
+    /**
+     * @var ResponseFactoryInterface
+     */
+    private $responseFactory;
+    /**
+     * @var StreamFactoryInterface
+     */
+    private $streamFactory;
 
-    public function __construct()
-    {
-        $this->connectionRepository = GeneralUtility::makeInstance(ConnectionRepository::class);
+    public function __construct(
+        ConnectionRepository $connectionRepository,
+        ResponseFactoryInterface $responseFactory,
+        StreamFactoryInterface $streamFactory
+    ) {
+        $this->connectionRepository = $connectionRepository;
+        $this->responseFactory = $responseFactory;
+        $this->streamFactory = $streamFactory;
     }
 
     public function checkAction(ServerRequestInterface $request): ResponseInterface
@@ -75,7 +88,9 @@ final class ConnectionAjaxController
             ];
         }
 
-        return new JsonResponse($result);
+        return $this->responseFactory->createResponse(200)
+            ->withHeader('Content-Type', 'application/json; charset=utf-8')
+            ->withBody($this->streamFactory->createStream(\json_encode($result)));
     }
 
     private function getLanguageService(): LanguageService

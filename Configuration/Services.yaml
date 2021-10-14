@@ -10,6 +10,9 @@ services:
   Brotkrueml\JobRouterConnector\Utility\FileUtility:
     public: true
 
+  Brotkrueml\JobRouterConnector\Controller\ConnectionAjaxController:
+    tags: [ 'backend.controller' ]
+
   Brotkrueml\JobRouterConnector\Command\GenerateKeyCommand:
     tags:
       - name: 'console.command'
