@@ -39,6 +39,7 @@ final class GenerateKeyCommand extends Command
 
     protected function configure(): void
     {
+        // @todo Remove when compatibility is set to TYPO3 v11+ as it is defined in Configuration/Services.yaml
         $this->setDescription('Generates a random key for encrypting and decrypting connection passwords');
     }
 
