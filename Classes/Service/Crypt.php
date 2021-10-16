@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace Brotkrueml\JobRouterConnector\Service;
 
 use Brotkrueml\JobRouterConnector\Exception\CryptException;
-use Brotkrueml\JobRouterConnector\Utility\FileUtility;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -22,13 +21,13 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 class Crypt implements SingletonInterface
 {
     /**
-     * @var FileUtility
+     * @var FileService
      */
-    private $fileUtility;
+    private $fileService;
 
-    public function __construct(FileUtility $fileUtility = null)
+    public function __construct(FileService $fileService = null)
     {
-        $this->fileUtility = $fileUtility ?? GeneralUtility::makeInstance(FileUtility::class);
+        $this->fileService = $fileService ?? GeneralUtility::makeInstance(FileService::class);
     }
 
     public function encrypt(string $value): string
@@ -88,7 +87,7 @@ class Crypt implements SingletonInterface
 
     private function getKey(): string
     {
-        $key = \file_get_contents($this->fileUtility->getAbsoluteKeyPath());
+        $key = \file_get_contents($this->fileService->getAbsoluteKeyPath());
         if ($key === false) {
             throw new CryptException(
                 'The key could not be retrieved!',

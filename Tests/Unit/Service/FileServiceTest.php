@@ -9,10 +9,10 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\JobRouterConnector\Tests\Unit\Utility;
+namespace Brotkrueml\JobRouterConnector\Tests\Unit\Service;
 
 use Brotkrueml\JobRouterConnector\Exception\KeyFileException;
-use Brotkrueml\JobRouterConnector\Utility\FileUtility;
+use Brotkrueml\JobRouterConnector\Service\FileService;
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -25,7 +25,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * @runTestsInSeparateProcesses
  */
-class FileUtilityTest extends TestCase
+class FileServiceTest extends TestCase
 {
     protected const ROOT_DIR = 'project-dir';
 
@@ -35,14 +35,14 @@ class FileUtilityTest extends TestCase
     protected $root;
 
     /**
-     * @var FileUtility
+     * @var FileService
      */
     protected $subject;
 
     protected function setUp(): void
     {
         $this->root = vfsStream::setup(self::ROOT_DIR);
-        $this->subject = new FileUtility();
+        $this->subject = new FileService();
     }
 
     /**

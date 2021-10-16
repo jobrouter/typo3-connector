@@ -13,7 +13,7 @@ namespace Brotkrueml\JobRouterConnector\Tests\Unit\Service;
 
 use Brotkrueml\JobRouterConnector\Exception\CryptException;
 use Brotkrueml\JobRouterConnector\Service\Crypt;
-use Brotkrueml\JobRouterConnector\Utility\FileUtility;
+use Brotkrueml\JobRouterConnector\Service\FileService;
 use org\bovigo\vfs\vfsStream;
 use PHPUnit\Framework\TestCase;
 
@@ -102,12 +102,12 @@ class CryptTest extends TestCase
     {
         $keyPath = vfsStream::url('project-dir') . '/.jobrouter-key';
 
-        $fileUtilityMock = $this->createMock(FileUtility::class);
-        $fileUtilityMock
+        $fileServiceMock = $this->createMock(FileService::class);
+        $fileServiceMock
             ->method('getAbsoluteKeyPath')
             ->willReturn($keyPath);
 
-        $this->subject = new Crypt($fileUtilityMock);
+        $this->subject = new Crypt($fileServiceMock);
 
         if ($fileShouldExist) {
             \file_put_contents($keyPath, $this->subject->generateKey());

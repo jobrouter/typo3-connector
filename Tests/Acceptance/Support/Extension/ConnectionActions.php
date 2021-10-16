@@ -13,8 +13,8 @@ namespace Brotkrueml\JobRouterConnector\Tests\Acceptance\Support\Extension;
 
 use Brotkrueml\JobRouterConnector\Exception\KeyFileException;
 use Brotkrueml\JobRouterConnector\Service\Crypt;
+use Brotkrueml\JobRouterConnector\Service\FileService;
 use Brotkrueml\JobRouterConnector\Service\KeyGenerator;
-use Brotkrueml\JobRouterConnector\Utility\FileUtility;
 use Psr\Http\Client\ClientInterface;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Http\RequestFactory;
@@ -26,14 +26,14 @@ trait ConnectionActions
 {
     public function createJobRouterKey(): void
     {
-        $fileUtility = new FileUtility();
-        (new KeyGenerator(new Crypt($fileUtility), $fileUtility))->generateAndStoreKey();
+        $fileService = new FileService();
+        (new KeyGenerator(new Crypt($fileService), $fileService))->generateAndStoreKey();
     }
 
     public function deleteJobRouterKey(): void
     {
         try {
-            \unlink((new FileUtility())->getAbsoluteKeyPath());
+            \unlink((new FileService())->getAbsoluteKeyPath());
         } catch (KeyFileException $e) {
             // do nothing
         }
@@ -48,7 +48,7 @@ trait ConnectionActions
 
     public function importConnectionFixture(string $baseUrl, string $password): void
     {
-        $encryptedPassword = (new Crypt(new FileUtility()))->encrypt($password);
+        $encryptedPassword = (new Crypt(new FileService()))->encrypt($password);
 
         $fixture = <<<EOT
 <?xml version="1.0" encoding="utf-8"?>

@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace Brotkrueml\JobRouterConnector\Service;
 
 use Brotkrueml\JobRouterConnector\Exception\KeyGenerationException;
-use Brotkrueml\JobRouterConnector\Utility\FileUtility;
 
 class KeyGenerator
 {
@@ -22,20 +21,20 @@ class KeyGenerator
     private $crypt;
 
     /**
-     * @var FileUtility
+     * @var FileService
      */
-    private $fileUtility;
+    private $fileService;
 
-    public function __construct(Crypt $crypt, FileUtility $fileUtility)
+    public function __construct(Crypt $crypt, FileService $fileService)
     {
         $this->crypt = $crypt;
-        $this->fileUtility = $fileUtility;
+        $this->fileService = $fileService;
     }
 
     public function generateAndStoreKey(): void
     {
         try {
-            $absolutePath = $this->fileUtility->getAbsoluteKeyPath(false);
+            $absolutePath = $this->fileService->getAbsoluteKeyPath(false);
         } catch (\Throwable $e) {
             throw new KeyGenerationException(
                 'The key file path is not defined correctly in the extension configuration!',

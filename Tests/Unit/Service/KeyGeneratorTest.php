@@ -14,8 +14,8 @@ namespace Brotkrueml\JobRouterConnector\Tests\Unit\Service;
 use Brotkrueml\JobRouterConnector\Exception\KeyFileException;
 use Brotkrueml\JobRouterConnector\Exception\KeyGenerationException;
 use Brotkrueml\JobRouterConnector\Service\Crypt;
+use Brotkrueml\JobRouterConnector\Service\FileService;
 use Brotkrueml\JobRouterConnector\Service\KeyGenerator;
-use Brotkrueml\JobRouterConnector\Utility\FileUtility;
 use org\bovigo\vfs\vfsStream;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
@@ -28,9 +28,9 @@ class KeyGeneratorTest extends TestCase
     private $keyPath;
 
     /**
-     * @var FileUtility|Stub
+     * @var FileService|Stub
      */
-    private $fileUtilityStub;
+    private $fileServiceStub;
 
     /**
      * @var Crypt|Stub
@@ -46,10 +46,10 @@ class KeyGeneratorTest extends TestCase
     {
         vfsStream::setup('project-dir');
         $this->keyPath = vfsStream::url('project-dir') . '/.key';
-        $this->fileUtilityStub = $this->createStub(FileUtility::class);
+        $this->fileServiceStub = $this->createStub(FileService::class);
         $this->cryptStub = $this->createStub(Crypt::class);
 
-        $this->subject = new KeyGenerator($this->cryptStub, $this->fileUtilityStub);
+        $this->subject = new KeyGenerator($this->cryptStub, $this->fileServiceStub);
     }
 
     /**
@@ -60,7 +60,7 @@ class KeyGeneratorTest extends TestCase
         $this->expectException(KeyGenerationException::class);
         $this->expectExceptionCode(1603474945);
 
-        $this->fileUtilityStub
+        $this->fileServiceStub
             ->method('getAbsoluteKeyPath')
             ->with(false)
             ->willThrowException(new KeyFileException());
@@ -76,7 +76,7 @@ class KeyGeneratorTest extends TestCase
         $this->expectException(KeyGenerationException::class);
         $this->expectExceptionCode(1603474997);
 
-        $this->fileUtilityStub
+        $this->fileServiceStub
             ->method('getAbsoluteKeyPath')
             ->with(false)
             ->willReturn($this->keyPath);
@@ -98,7 +98,7 @@ class KeyGeneratorTest extends TestCase
         \mkdir($baseDir);
         \chmod($baseDir, 0444);
 
-        $this->fileUtilityStub
+        $this->fileServiceStub
             ->method('getAbsoluteKeyPath')
             ->with(false)
             ->willReturn($baseDir . '/.key');
@@ -111,7 +111,7 @@ class KeyGeneratorTest extends TestCase
      */
     public function generateAndStoreKeyIsSuccessful(): void
     {
-        $this->fileUtilityStub
+        $this->fileServiceStub
             ->method('getAbsoluteKeyPath')
             ->with(false)
             ->willReturn($this->keyPath);

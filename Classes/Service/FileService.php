@@ -9,7 +9,7 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\JobRouterConnector\Utility;
+namespace Brotkrueml\JobRouterConnector\Service;
 
 use Brotkrueml\JobRouterConnector\Exception\KeyFileException;
 use Brotkrueml\JobRouterConnector\Extension;
@@ -20,7 +20,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * @internal
  */
-class FileUtility
+class FileService
 {
     public function getAbsoluteKeyPath(bool $errorOnNonExistingFile = true): string
     {

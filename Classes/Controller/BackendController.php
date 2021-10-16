@@ -14,7 +14,7 @@ namespace Brotkrueml\JobRouterConnector\Controller;
 use Brotkrueml\JobRouterClient\Information\Version;
 use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
 use Brotkrueml\JobRouterConnector\Extension;
-use Brotkrueml\JobRouterConnector\Utility\FileUtility;
+use Brotkrueml\JobRouterConnector\Service\FileService;
 use TYPO3\CMS\Backend\Routing\UriBuilder;
 use TYPO3\CMS\Backend\Template\Components\ButtonBar;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
@@ -45,9 +45,9 @@ class BackendController extends ActionController
     private $connectionRepository;
 
     /**
-     * @var FileUtility
+     * @var FileService
      */
-    private $fileUtility;
+    private $fileService;
 
     /**
      * @var UriBuilder
@@ -71,13 +71,13 @@ class BackendController extends ActionController
 
     public function __construct(
         ConnectionRepository $connectionRepository,
-        FileUtility $fileUtility,
+        FileService $fileService,
         UriBuilder $uriBuilder,
         IconFactory $iconFactory,
         LanguageService $languageService
     ) {
         $this->connectionRepository = $connectionRepository;
-        $this->fileUtility = $fileUtility;
+        $this->fileService = $fileService;
         $this->routingUriBuilder = $uriBuilder;
         $this->iconFactory = $iconFactory;
         $this->languageService = $languageService;
@@ -106,7 +106,7 @@ class BackendController extends ActionController
         );
 
         try {
-            $this->fileUtility->getAbsoluteKeyPath();
+            $this->fileService->getAbsoluteKeyPath();
             $keyFileExists = true;
         } catch (\RuntimeException $e) {
             $keyFileExists = false;
