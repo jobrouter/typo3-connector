@@ -35,7 +35,10 @@ class ConnectionRepository extends Repository
         return $query->execute();
     }
 
-    public function findByIdentifierWithHidden($identifier): object
+    /**
+     * @noRector Rector\TypeDeclaration\Rector\FunctionLike\ReturnTypeDeclarationRector
+     */
+    public function findByIdentifierWithHidden(int $identifier): ?object
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setIgnoreEnableFields(true);

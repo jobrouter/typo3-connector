@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Brotkrueml\JobRouterConnector\Controller;
 
 use Brotkrueml\JobRouterClient\Exception\HttpException;
+use Brotkrueml\JobRouterConnector\Domain\Entity\ConnectionTestResult;
 use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
 use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
 use Brotkrueml\JobRouterConnector\Extension;
@@ -54,43 +55,43 @@ final class ConnectionAjaxController
 
     public function checkAction(ServerRequestInterface $request): ResponseInterface
     {
-        $connectionId = (int)$request->getParsedBody()['connectionId'];
+        $body = $request->getParsedBody();
+        if (! \is_array($body)) {
+            return $this->buildResponse('Request has no valid body!');
+        }
 
-        $result = [
-            'check' => 'ok',
-        ];
+        $connectionId = (int)($body['connectionId'] ?? 0);
         try {
-            /** @var Connection $connection */
             $connection = $this->connectionRepository->findByIdentifierWithHidden($connectionId);
 
-            if ($connection) {
-                (new RestClientFactory())->create($connection, 10);
-            } else {
-                $result = [
-                    'error' => \sprintf(
-                        $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_BACKEND_MODULE . ':connection_not_found'),
-                        $connectionId
-                    ),
-                ];
+            if (! $connection instanceof Connection) {
+                return $this->buildResponse(\sprintf(
+                    $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_BACKEND_MODULE . ':connection_not_found'),
+                    $connectionId
+                ));
             }
+
+            (new RestClientFactory())->create($connection, 10);
+            return $this->buildResponse();
         } catch (HttpException $e) {
-            $result = [
-                'error' => \sprintf(
-                    "%s: %d\n%s",
-                    $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_BACKEND_MODULE . ':returned_http_status_code'),
-                    $e->getCode(),
-                    \substr($e->getMessage(), 0, self::ERROR_MESSAGE_MAX_LENGTH)
-                ),
-            ];
-        } catch (\Exception $e) {
-            $result = [
-                'error' => \substr($e->getMessage(), 0, self::ERROR_MESSAGE_MAX_LENGTH),
-            ];
+            return $this->buildResponse(\sprintf(
+                "%s: %d\n%s",
+                $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_BACKEND_MODULE . ':returned_http_status_code'),
+                $e->getCode(),
+                \substr($e->getMessage(), 0, self::ERROR_MESSAGE_MAX_LENGTH)
+            ));
+        } catch (\Throwable $t) {
+            return $this->buildResponse(\substr($t->getMessage(), 0, self::ERROR_MESSAGE_MAX_LENGTH));
         }
+    }
+
+    private function buildResponse(string $errorMessage = ''): ResponseInterface
+    {
+        $result = new ConnectionTestResult($errorMessage);
 
         return $this->responseFactory->createResponse(200)
             ->withHeader('Content-Type', 'application/json; charset=utf-8')
-            ->withBody($this->streamFactory->createStream(\json_encode($result)));
+            ->withBody($this->streamFactory->createStream($result->toJson()));
     }
 
     private function getLanguageService(): LanguageService
