@@ -8,7 +8,7 @@ require([
 
   const connectionCheck = (id, name) => {
     const notificationTitle = TYPO3.lang['connection_check_for'] + ' ' + name;
-    const request = new AjaxRequest(TYPO3.settings.ajaxUrls['jobrouter_connection_check']);
+    const request = new AjaxRequest(TYPO3.settings.ajaxUrls['jobrouter_connection_test']);
 
     request.post({connectionId: +id}).then(
       async response => {

@@ -16,7 +16,7 @@ use Brotkrueml\JobRouterConnector\Domain\Entity\ConnectionTestResult;
 use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
 use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
 use Brotkrueml\JobRouterConnector\Extension;
-use Brotkrueml\JobRouterConnector\RestClient\RestClientFactory;
+use Brotkrueml\JobRouterConnector\RestClient\RestClientFactoryInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -26,7 +26,7 @@ use TYPO3\CMS\Core\Localization\LanguageService;
 /**
  * @internal
  */
-final class ConnectionAjaxController
+final class ConnectionTestController
 {
     private const ERROR_MESSAGE_MAX_LENGTH = 1000;
 
@@ -34,6 +34,10 @@ final class ConnectionAjaxController
      * @var ConnectionRepository
      */
     private $connectionRepository;
+    /**
+     * @var RestClientFactoryInterface
+     */
+    private $restClientFactory;
     /**
      * @var ResponseFactoryInterface
      */
@@ -45,15 +49,17 @@ final class ConnectionAjaxController
 
     public function __construct(
         ConnectionRepository $connectionRepository,
+        RestClientFactoryInterface $restClientFactory,
         ResponseFactoryInterface $responseFactory,
         StreamFactoryInterface $streamFactory
     ) {
         $this->connectionRepository = $connectionRepository;
+        $this->restClientFactory = $restClientFactory;
         $this->responseFactory = $responseFactory;
         $this->streamFactory = $streamFactory;
     }
 
-    public function checkAction(ServerRequestInterface $request): ResponseInterface
+    public function __invoke(ServerRequestInterface $request): ResponseInterface
     {
         $body = $request->getParsedBody();
         if (! \is_array($body)) {
@@ -71,7 +77,7 @@ final class ConnectionAjaxController
                 ));
             }
 
-            (new RestClientFactory())->create($connection, 10);
+            $this->restClientFactory->create($connection, 10);
             return $this->buildResponse();
         } catch (HttpException $e) {
             return $this->buildResponse(\sprintf(

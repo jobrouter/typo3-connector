@@ -10,8 +10,8 @@ declare(strict_types=1);
  */
 
 return [
-    'jobrouter_connection_check' => [
-        'path' => '/jobrouter/connection/check',
-        'target' => \Brotkrueml\JobRouterConnector\Controller\ConnectionAjaxController::class . '::checkAction',
+    'jobrouter_connection_test' => [
+        'path' => '/jobrouter/connection/test',
+        'target' => Brotkrueml\JobRouterConnector\Controller\ConnectionTestController::class,
     ],
 ];

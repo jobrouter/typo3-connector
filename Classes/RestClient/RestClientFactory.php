@@ -23,7 +23,7 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 
-final class RestClientFactory
+final class RestClientFactory implements RestClientFactoryInterface
 {
     /**
      * @var string
@@ -42,7 +42,7 @@ final class RestClientFactory
         Connection $connection,
         ?int $lifetime = null,
         ?string $userAgentAddition = null
-    ): RestClient {
+    ): ClientInterface {
         $decryptedPassword = (new Crypt())->decrypt($connection->getPassword());
 
         $configuration = new ClientConfiguration(
