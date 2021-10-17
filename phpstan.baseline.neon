@@ -1,0 +1,112 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Call to an undefined method TYPO3\\\\CMS\\\\Extbase\\\\Mvc\\\\View\\\\ViewInterface\\:\\:getModuleTemplate\\(\\)\\.$#"
+			count: 1
+			path: Classes/Controller/BackendController.php
+
+		-
+			message: "#^Array with keys is not allowed\\. Use value object to pass data instead$#"
+			count: 4
+			path: Classes/Controller/ConnectionAjaxController.php
+
+		-
+			message: "#^Cannot access offset 'connectionId' on array\\|object\\|null\\.$#"
+			count: 1
+			path: Classes/Controller/ConnectionAjaxController.php
+
+		-
+			message: "#^If condition is always true\\.$#"
+			count: 1
+			path: Classes/Controller/ConnectionAjaxController.php
+
+		-
+			message: "#^Parameter \\#1 \\$content of method Psr\\\\Http\\\\Message\\\\StreamFactoryInterface\\:\\:createStream\\(\\) expects string, string\\|false given\\.$#"
+			count: 1
+			path: Classes/Controller/ConnectionAjaxController.php
+
+		-
+			message: "#^Array with keys is not allowed\\. Use value object to pass data instead$#"
+			count: 1
+			path: Classes/Domain/Repository/ConnectionRepository.php
+
+		-
+			message: "#^Cannot call method getFirst\\(\\) on array\\|TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\QueryResultInterface\\.$#"
+			count: 1
+			path: Classes/Domain/Repository/ConnectionRepository.php
+
+		-
+			message: "#^Method Brotkrueml\\\\JobRouterConnector\\\\Domain\\\\Repository\\\\ConnectionRepository\\:\\:findAllWithHidden\\(\\) should return iterable&TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\QueryResultInterface but returns array\\|TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\QueryResultInterface\\.$#"
+			count: 1
+			path: Classes/Domain/Repository/ConnectionRepository.php
+
+		-
+			message: "#^Method Brotkrueml\\\\JobRouterConnector\\\\Domain\\\\Repository\\\\ConnectionRepository\\:\\:findByIdentifierWithHidden\\(\\) has parameter \\$identifier with no typehint specified\\.$#"
+			count: 1
+			path: Classes/Domain/Repository/ConnectionRepository.php
+
+		-
+			message: "#^Property Brotkrueml\\\\JobRouterConnector\\\\Evaluation\\\\Password\\:\\:\\$cryptService \\(Brotkrueml\\\\JobRouterConnector\\\\Service\\\\Crypt\\) does not accept object\\.$#"
+			count: 1
+			path: Classes/Evaluation/Password.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:persistAll\\(\\)\\.$#"
+			count: 1
+			path: Classes/RestClient/RestClientFactory.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:update\\(\\)\\.$#"
+			count: 1
+			path: Classes/RestClient/RestClientFactory.php
+
+		-
+			message: "#^Do not use static property$#"
+			count: 3
+			path: Classes/RestClient/RestClientFactory.php
+
+		-
+			message: "#^PHPDoc tag @throws with type Brotkrueml\\\\JobRouterClient\\\\Exception\\\\ExceptionInterface is not subtype of Throwable$#"
+			count: 1
+			path: Classes/RestClient/RestClientFactory.php
+
+		-
+			message: "#^Property Brotkrueml\\\\JobRouterConnector\\\\Service\\\\Crypt\\:\\:\\$fileService \\(Brotkrueml\\\\JobRouterConnector\\\\Service\\\\FileService\\) does not accept object\\.$#"
+			count: 1
+			path: Classes/Service/Crypt.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:get\\(\\)\\.$#"
+			count: 1
+			path: Classes/Service/FileService.php
+
+		-
+			message: "#^\"@\\\\file_put_contents\\(\\$absolutePath, \\$this\\-\\>crypt\\-\\>generateKey\\(\\)\\)\" is forbidden to use$#"
+			count: 1
+			path: Classes/Service/KeyGenerator.php
+
+		-
+			message: "#^Array with keys is not allowed\\. Use value object to pass data instead$#"
+			count: 2
+			path: Configuration/Backend/AjaxRoutes.php
+
+		-
+			message: "#^Array with keys is not allowed\\. Use value object to pass data instead$#"
+			count: 3
+			path: Configuration/Icons.php
+
+		-
+			message: "#^Use value object over return of values$#"
+			count: 1
+			path: Configuration/Icons.php
+
+		-
+			message: "#^Array with keys is not allowed\\. Use value object to pass data instead$#"
+			count: 25
+			path: Configuration/TCA/tx_jobrouterconnector_domain_model_connection.php
+
+		-
+			message: "#^Use value object over return of values$#"
+			count: 1
+			path: Configuration/TCA/tx_jobrouterconnector_domain_model_connection.php
+

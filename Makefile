@@ -1,5 +1,5 @@
 .PHONY: qa
-qa: cs unit-tests rector-dry yaml-lint changelog
+qa: cs unit-tests phpstan rector-dry yaml-lint changelog
 
 .PHONY: build-jobrouter-client
 build-jobrouter-client:
@@ -17,6 +17,10 @@ changelog:
 .PHONY: cs
 cs: vendor
 	.Build/bin/ecs --fix
+
+.PHONY: phpstan
+phpstan: vendor
+	.Build/bin/phpstan analyse
 
 .PHONY: rector
 rector: vendor
