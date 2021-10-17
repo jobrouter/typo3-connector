@@ -11,29 +11,9 @@ parameters:
 			path: Classes/Domain/Repository/ConnectionRepository.php
 
 		-
-			message: "#^Cannot call method getFirst\\(\\) on array\\|TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\QueryResultInterface\\.$#"
+			message: "#^Method Brotkrueml\\\\JobRouterConnector\\\\Domain\\\\Repository\\\\ConnectionRepository\\:\\:findAllWithHidden\\(\\) return type has no value type specified in iterable type array\\|TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\QueryResultInterface\\.$#"
 			count: 1
 			path: Classes/Domain/Repository/ConnectionRepository.php
-
-		-
-			message: "#^Method Brotkrueml\\\\JobRouterConnector\\\\Domain\\\\Repository\\\\ConnectionRepository\\:\\:findAllWithHidden\\(\\) should return iterable&TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\QueryResultInterface but returns array\\|TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\QueryResultInterface\\.$#"
-			count: 1
-			path: Classes/Domain/Repository/ConnectionRepository.php
-
-		-
-			message: "#^Property Brotkrueml\\\\JobRouterConnector\\\\Evaluation\\\\Password\\:\\:\\$cryptService \\(Brotkrueml\\\\JobRouterConnector\\\\Service\\\\Crypt\\) does not accept object\\.$#"
-			count: 1
-			path: Classes/Evaluation/Password.php
-
-		-
-			message: "#^Call to an undefined method object\\:\\:persistAll\\(\\)\\.$#"
-			count: 1
-			path: Classes/RestClient/RestClientFactory.php
-
-		-
-			message: "#^Call to an undefined method object\\:\\:update\\(\\)\\.$#"
-			count: 1
-			path: Classes/RestClient/RestClientFactory.php
 
 		-
 			message: "#^Do not use static property$#"
@@ -44,16 +24,6 @@ parameters:
 			message: "#^PHPDoc tag @throws with type Brotkrueml\\\\JobRouterClient\\\\Exception\\\\ExceptionInterface is not subtype of Throwable$#"
 			count: 1
 			path: Classes/RestClient/RestClientFactory.php
-
-		-
-			message: "#^Property Brotkrueml\\\\JobRouterConnector\\\\Service\\\\Crypt\\:\\:\\$fileService \\(Brotkrueml\\\\JobRouterConnector\\\\Service\\\\FileService\\) does not accept object\\.$#"
-			count: 1
-			path: Classes/Service/Crypt.php
-
-		-
-			message: "#^Call to an undefined method object\\:\\:get\\(\\)\\.$#"
-			count: 1
-			path: Classes/Service/FileService.php
 
 		-
 			message: "#^\"@\\\\file_put_contents\\(\\$absolutePath, \\$this\\-\\>crypt\\-\\>generateKey\\(\\)\\)\" is forbidden to use$#"

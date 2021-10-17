@@ -7,6 +7,7 @@ use Rector\Core\ValueObject\PhpVersion;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUnusedPromotedPropertyRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\SetList;
+use Rector\TypeDeclaration\Rector\FunctionLike\ReturnTypeDeclarationRector;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
@@ -42,6 +43,9 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $parameters->set(Option::SKIP, [
         __DIR__ . '/Tests/Acceptance/*',
+        ReturnTypeDeclarationRector::class => [
+            __DIR__ . '/Classes/Domain/Repository/ConnectionRepository.php',
+        ],
         RemoveUnusedPromotedPropertyRector::class, // Skip until compatibility with PHP >= 8.0
     ]);
 };

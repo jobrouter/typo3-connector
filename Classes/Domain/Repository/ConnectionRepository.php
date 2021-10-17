@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Brotkrueml\JobRouterConnector\Domain\Repository;
 
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 class ConnectionRepository extends Repository
@@ -25,7 +26,7 @@ class ConnectionRepository extends Repository
     ];
 
     /**
-     * @return mixed[]|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @return QueryResultInterface|array
      */
     public function findAllWithHidden()
     {
@@ -35,9 +36,6 @@ class ConnectionRepository extends Repository
         return $query->execute();
     }
 
-    /**
-     * @noRector Rector\TypeDeclaration\Rector\FunctionLike\ReturnTypeDeclarationRector
-     */
     public function findByIdentifierWithHidden(int $identifier): ?object
     {
         $query = $this->createQuery();
