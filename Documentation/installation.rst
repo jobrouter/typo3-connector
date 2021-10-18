@@ -19,8 +19,22 @@ Target group: **Administrators**
 Requirements
 ============
 
-In addition to the TYPO3 requirements this extension needs some more PHP
+In addition to the TYPO3 requirements this extension needs additional PHP
 extensions: `curl` and `sodium`.
+
+
+.. _version-matrix:
+
+Version matrix
+==============
+
+=================== ========== ===========
+JobRouter Connector PHP        TYPO3
+=================== ========== ===========
+1.0                 7.2 - 7.4  10.4
+------------------- ---------- -----------
+1.1                 7.3 - 8.0  10.4 / 11.5
+=================== ========== ===========
 
 
 .. _installation-composer:

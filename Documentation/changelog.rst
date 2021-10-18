@@ -17,6 +17,12 @@ Added
 
 * Compatibility with TYPO3 v11 LTS
 
+Removed
+^^^^^^^
+
+
+* Compatibility with PHP 7.2
+
 `1.0.0 <https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.12.3...v1.0.0>`_ - 2021-03-14
 ------------------------------------------------------------------------------------------------------------
 

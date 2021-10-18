@@ -22,6 +22,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->import(SetList::PHP_70);
     $containerConfigurator->import(SetList::PHP_71);
     $containerConfigurator->import(SetList::PHP_72);
+    $containerConfigurator->import(SetList::PHP_73);
     $containerConfigurator->import(SetList::TYPE_DECLARATION);
     $containerConfigurator->import(PHPUnitSetList::PHPUNIT_CODE_QUALITY);
     $containerConfigurator->import(PHPUnitSetList::PHPUNIT_EXCEPTION);
@@ -39,7 +40,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $parameters->set(Option::AUTOLOAD_PATHS, [__DIR__ . '/.Build/vendor/autoload.php']);
 
-    $parameters->set(Option::PHP_VERSION_FEATURES, PhpVersion::PHP_72);
+    $parameters->set(Option::PHP_VERSION_FEATURES, PhpVersion::PHP_73);
 
     $parameters->set(Option::SKIP, [
         __DIR__ . '/Tests/Acceptance/*',

@@ -242,7 +242,7 @@ final class ConnectionTestControllerTest extends TestCase
 
         $actual = $this->subject->__invoke($this->requestStub);
         $actual->getBody()->rewind();
-        $contents = \json_decode($actual->getBody()->getContents(), true);
+        $contents = \json_decode($actual->getBody()->getContents(), true, 512, \JSON_THROW_ON_ERROR);
 
         self::assertSame(1000, \strlen($contents['error']));
     }
