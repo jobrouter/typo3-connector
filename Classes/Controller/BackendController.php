@@ -32,7 +32,7 @@ use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
  */
 class BackendController extends ActionController
 {
-    private const MODULE_NAME = 'jobrouter_JobRouterConnectorJobrouterconnector';
+    private const MODULE_NAME = 'jobrouter_JobRouterConnectorConnections';
 
     /**
      * @var string

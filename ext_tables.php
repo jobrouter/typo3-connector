@@ -39,7 +39,7 @@ defined('TYPO3') || die();
     TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
         'JobRouterConnector',
         'jobrouter',
-        'jobrouterconnector',
+        'connections',
         '',
         [
             Brotkrueml\JobRouterConnector\Controller\BackendController::class => 'list',
