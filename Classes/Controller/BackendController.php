@@ -154,10 +154,16 @@ class BackendController extends ActionController
         $buttonBar->addButton($refreshButton, ButtonBar::BUTTON_POSITION_RIGHT);
 
         if ($this->getBackendUser()->mayMakeShortcut()) {
+            $label = $this->languageService->sL(
+                \sprintf(
+                    'LLL:EXT:%s/Resources/Private/Language/BackendModule.xlf:heading_text',
+                    Extension::KEY
+                )
+            );
             $shortcutButton = $buttonBar->makeShortcutButton()
                 ->setModuleName(self::MODULE_NAME)
                 ->setGetVariables(['route', 'module', 'id'])
-                ->setDisplayName('Shortcut');
+                ->setDisplayName($label);
             $buttonBar->addButton($shortcutButton, ButtonBar::BUTTON_POSITION_RIGHT);
         }
     }
