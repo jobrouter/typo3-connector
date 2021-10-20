@@ -189,4 +189,5 @@ intersphinx_mapping = {
     'jobrouter-client': ('https://jobrouter-client.readthedocs.io/en/stable/', None),
     'typo3-jobrouter-data': ('https://typo3-jobrouter.readthedocs.io/projects/data/en/stable/', None),
     'typo3-jobrouter-process': ('https://typo3-jobrouter.readthedocs.io/projects/process/en/stable/', None),
+    't3gettingstarted': ('https://docs.typo3.org/m/typo3/tutorial-getting-started/11.5/en-us/', None),
 }
