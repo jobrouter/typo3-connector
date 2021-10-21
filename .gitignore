@@ -1,6 +1,5 @@
 .Build
 .idea
-.phpunit.result.cache
 .scannerwork
 Build/testing-docker/.env
 /composer.lock
