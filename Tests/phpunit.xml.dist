@@ -4,17 +4,17 @@
     xsi:noNamespaceSchemaLocation="../.Build/vendor/phpunit/phpunit/phpunit.xsd"
     bootstrap="../.Build/vendor/autoload.php"
     cacheResult="false"
-    testdox="true"
     executionOrder="random"
+    testdox="true"
 >
+    <coverage>
+        <include>
+            <directory>../Classes/</directory>
+        </include>
+    </coverage>
     <testsuites>
         <testsuite name="Unit tests">
             <directory>Unit/</directory>
         </testsuite>
     </testsuites>
-    <filter>
-        <whitelist>
-            <directory>../Classes/</directory>
-        </whitelist>
-    </filter>
 </phpunit>
