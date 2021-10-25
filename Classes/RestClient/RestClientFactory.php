@@ -26,9 +26,19 @@ use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 final class RestClientFactory implements RestClientFactoryInterface
 {
     /**
+     * @var Crypt
+     */
+    private $cryptService;
+    /**
      * @var string
      */
     private $version = '';
+
+    public function __construct(Crypt $cryptService = null)
+    {
+        // @todo For backwards compatibility the Crypt service is optional, must be always injected for version 2.0+
+        $this->cryptService = $cryptService ?? new Crypt();
+    }
 
     /**
      * Creates the Rest client for the given connection
@@ -43,7 +53,7 @@ final class RestClientFactory implements RestClientFactoryInterface
         ?int $lifetime = null,
         ?string $userAgentAddition = null
     ): ClientInterface {
-        $decryptedPassword = (new Crypt())->decrypt($connection->getPassword());
+        $decryptedPassword = $this->cryptService->decrypt($connection->getPassword());
 
         $configuration = new ClientConfiguration(
             $connection->getBaseUrl(),
