@@ -88,8 +88,6 @@ class BackendController extends ActionController
      */
     protected function initializeView(ViewInterface $view): void
     {
-        parent::initializeView($view);
-
         $this->moduleTemplate = $this->view->getModuleTemplate();
 
         $this->createDocumentHeaderButtons();

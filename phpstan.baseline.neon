@@ -1,6 +1,6 @@
 parameters:
 	ignoreErrors:
-		-
+		- # ViewInterface is deprecated in v11, but necessary for v10 compatibility. Will be refactored once minimum requirement is TYPO3 v11
 			message: "#^Call to an undefined method TYPO3\\\\CMS\\\\Extbase\\\\Mvc\\\\View\\\\ViewInterface\\:\\:getModuleTemplate\\(\\)\\.$#"
 			count: 1
 			path: Classes/Controller/BackendController.php
