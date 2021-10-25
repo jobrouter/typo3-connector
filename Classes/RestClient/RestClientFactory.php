@@ -28,7 +28,7 @@ final class RestClientFactory implements RestClientFactoryInterface
     /**
      * @var string
      */
-    private static $version = '';
+    private $version = '';
 
     /**
      * Creates the Rest client for the given connection
@@ -69,13 +69,13 @@ final class RestClientFactory implements RestClientFactoryInterface
      */
     private function getUserAgentAddition(): string
     {
-        if (self::$version === '') {
-            self::$version = ExtensionManagementUtility::getExtensionVersion(Extension::KEY);
+        if ($this->version === '') {
+            $this->version = ExtensionManagementUtility::getExtensionVersion(Extension::KEY);
         }
 
         return \sprintf(
             'TYPO3-JobRouter-Connector/%s (https://typo3-jobrouter.rtfd.io/projects/connector/)',
-            self::$version
+            $this->version
         );
     }
 

@@ -4,8 +4,3 @@ parameters:
 			message: "#^Call to an undefined method TYPO3\\\\CMS\\\\Extbase\\\\Mvc\\\\View\\\\ViewInterface\\:\\:getModuleTemplate\\(\\)\\.$#"
 			count: 1
 			path: Classes/Controller/BackendController.php
-
-		-
-			message: "#^Do not use static property$#"
-			count: 3
-			path: Classes/RestClient/RestClientFactory.php
