@@ -10,7 +10,6 @@ parameters:
     level: 8
     paths:
         - Classes
-        - Configuration
 
 services:
     -

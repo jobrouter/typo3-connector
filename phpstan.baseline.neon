@@ -30,28 +30,3 @@ parameters:
 			count: 1
 			path: Classes/Service/KeyGenerator.php
 
-		-
-			message: "#^Array with keys is not allowed\\. Use value object to pass data instead$#"
-			count: 2
-			path: Configuration/Backend/AjaxRoutes.php
-
-		-
-			message: "#^Array with keys is not allowed\\. Use value object to pass data instead$#"
-			count: 3
-			path: Configuration/Icons.php
-
-		-
-			message: "#^Use value object over return of values$#"
-			count: 1
-			path: Configuration/Icons.php
-
-		-
-			message: "#^Array with keys is not allowed\\. Use value object to pass data instead$#"
-			count: 25
-			path: Configuration/TCA/tx_jobrouterconnector_domain_model_connection.php
-
-		-
-			message: "#^Use value object over return of values$#"
-			count: 1
-			path: Configuration/TCA/tx_jobrouterconnector_domain_model_connection.php
-
