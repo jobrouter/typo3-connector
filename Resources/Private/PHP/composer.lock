@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "845dffcae0da0846eb6e622b64010a03",
+    "content-hash": "a4e81a5a21e9f948df94d84437d9fa1e",
     "packages": [
         {
             "name": "brotkrueml/jobrouter-client",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brotkrueml/jobrouter-client.git",
-                "reference": "5b1b96ef96830292e1be0e4342c7bc4e6a2f7a3e"
+                "reference": "13b5186e00c1b91dddde2436c3770509749fb2d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brotkrueml/jobrouter-client/zipball/5b1b96ef96830292e1be0e4342c7bc4e6a2f7a3e",
-                "reference": "5b1b96ef96830292e1be0e4342c7bc4e6a2f7a3e",
+                "url": "https://api.github.com/repos/brotkrueml/jobrouter-client/zipball/13b5186e00c1b91dddde2436c3770509749fb2d6",
+                "reference": "13b5186e00c1b91dddde2436c3770509749fb2d6",
                 "shasum": ""
             },
             "require": {
@@ -29,16 +29,18 @@
                 "symfony/polyfill-php80": "^1.18"
             },
             "require-dev": {
-                "brotkrueml/coding-standards": "~1.0.0",
+                "brotkrueml/coding-standards": "~1.1.0",
                 "captainhook/captainhook": "^5.10",
                 "donatj/mock-webserver": "dev-php81",
                 "ergebnis/composer-normalize": "^2.15",
-                "infection/infection": "^0.24",
+                "infection/infection": "^0.25",
                 "mikey179/vfsstream": "^1.6.10",
                 "php-coveralls/php-coveralls": "^2.4",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan": "^0.12.99",
                 "phpunit/phpunit": "^9.5",
-                "rector/rector": "^0.11.56",
-                "vimeo/psalm": "^4.10"
+                "rector/rector": "^0.11.60",
+                "symplify/phpstan-rules": "^9.3"
             },
             "type": "library",
             "extra": {
@@ -71,7 +73,7 @@
                 "issues": "https://github.com/brotkrueml/jobrouter-client/issues",
                 "source": "https://github.com/brotkrueml/jobrouter-client"
             },
-            "time": "2021-10-02T16:54:39+00:00"
+            "time": "2021-10-24T11:51:26+00:00"
         },
         {
             "name": "kriswallsmith/buzz",

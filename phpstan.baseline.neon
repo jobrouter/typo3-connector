@@ -19,8 +19,3 @@ parameters:
 			message: "#^Do not use static property$#"
 			count: 3
 			path: Classes/RestClient/RestClientFactory.php
-
-		-
-			message: "#^PHPDoc tag @throws with type Brotkrueml\\\\JobRouterClient\\\\Exception\\\\ExceptionInterface is not subtype of Throwable$#"
-			count: 1
-			path: Classes/RestClient/RestClientFactory.php
