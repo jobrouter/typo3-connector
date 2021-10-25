@@ -6,16 +6,6 @@ parameters:
 			path: Classes/Controller/BackendController.php
 
 		-
-			message: "#^Array with keys is not allowed\\. Use value object to pass data instead$#"
-			count: 1
-			path: Classes/Domain/Repository/ConnectionRepository.php
-
-		-
-			message: "#^Method Brotkrueml\\\\JobRouterConnector\\\\Domain\\\\Repository\\\\ConnectionRepository\\:\\:findAllWithHidden\\(\\) return type has no value type specified in iterable type array\\|TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\QueryResultInterface\\.$#"
-			count: 1
-			path: Classes/Domain/Repository/ConnectionRepository.php
-
-		-
 			message: "#^Do not use static property$#"
 			count: 3
 			path: Classes/RestClient/RestClientFactory.php

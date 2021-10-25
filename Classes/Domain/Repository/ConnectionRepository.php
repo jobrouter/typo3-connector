@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brotkrueml\JobRouterConnector\Domain\Repository;
 
+use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
@@ -18,7 +19,8 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 class ConnectionRepository extends Repository
 {
     /**
-     * @var string[]
+     * @var array<string, string>
+     * @phpstan-ignore-next-line
      */
     protected $defaultOrderings = [
         'disabled' => QueryInterface::ORDER_ASCENDING,
@@ -26,9 +28,9 @@ class ConnectionRepository extends Repository
     ];
 
     /**
-     * @return QueryResultInterface|array
+     * @return QueryResultInterface<Connection>
      */
-    public function findAllWithHidden()
+    public function findAllWithHidden(): QueryResultInterface
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setIgnoreEnableFields(true);
