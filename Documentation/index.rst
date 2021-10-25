@@ -1,6 +1,6 @@
 .. include:: _includes.rst.txt
 
-.. _start
+.. _start:
 
 =========================
 TYPO3 JobRouter Connector
