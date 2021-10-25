@@ -50,11 +50,25 @@ class KeyGenerator
             );
         }
 
-        if (@\file_put_contents($absolutePath, $this->crypt->generateKey()) === false) {
+        try {
+            $this->writeKey($absolutePath, $this->crypt->generateKey());
+        } catch (\Throwable $t) {
             throw new KeyGenerationException(
                 sprintf('The key file "%s" could not be written!', $absolutePath),
-                1603475037
+                1603475037,
+                $t
             );
         }
+    }
+
+    private function writeKey(string $path, string $key): void
+    {
+        \set_error_handler(static function (int $severity, string $message, string $file, int $line): void {
+            throw new \ErrorException($message, $severity, $severity, $file, $line);
+        });
+
+        \file_put_contents($path, $key);
+
+        \restore_error_handler();
     }
 }

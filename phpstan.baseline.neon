@@ -24,9 +24,3 @@ parameters:
 			message: "#^PHPDoc tag @throws with type Brotkrueml\\\\JobRouterClient\\\\Exception\\\\ExceptionInterface is not subtype of Throwable$#"
 			count: 1
 			path: Classes/RestClient/RestClientFactory.php
-
-		-
-			message: "#^\"@\\\\file_put_contents\\(\\$absolutePath, \\$this\\-\\>crypt\\-\\>generateKey\\(\\)\\)\" is forbidden to use$#"
-			count: 1
-			path: Classes/Service/KeyGenerator.php
-
