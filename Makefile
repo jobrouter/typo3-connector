@@ -1,6 +1,10 @@
 .PHONY: qa
 qa: cs unit-tests phpstan rector-dry yaml-lint changelog
 
+.PHONY: acceptance-tests
+acceptance-tests:
+	./Build/Scripts/runTests.sh -s acceptance
+
 .PHONY: build-jobrouter-client
 build-jobrouter-client:
 	composer update --no-dev --prefer-dist --optimize-autoloader --working-dir=Resources/Private/PHP

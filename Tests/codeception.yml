@@ -4,6 +4,7 @@ paths:
   data: .
   log: ../.Build/Web/typo3temp/var/tests/AcceptanceReports
   support: Acceptance/Support
+  output: ../.Build/Web/typo3temp/var/tests/_output
 extensions:
   enabled:
     - Codeception\Extension\RunFailed

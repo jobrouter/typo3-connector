@@ -1,7 +1,9 @@
-version: '3.6'
+version: '2.3'
 services:
   chrome:
-    image: selenium/standalone-chrome:3.14
+    image: selenium/standalone-chrome:95.0
+    tmpfs:
+      - /dev/shm:rw,nosuid,nodev,noexec,relatime
 
   mariadb10:
     image: mariadb:10
@@ -10,8 +12,23 @@ services:
     tmpfs:
       - /var/lib/mysql/:rw,noexec,nosuid
 
+  mssql2019latest:
+    image: typo3/core-testing-mssql2019:latest
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: "Test1234!"
+      MSSQL_PID: Developer
+
+  postgres10:
+    image: postgres:10
+    environment:
+      POSTGRES_PASSWORD: funcp
+      POSTGRES_USER: ${HOST_USER}
+    tmpfs:
+      - /var/lib/postgresql/data:rw,noexec,nosuid
+
   web:
-    image: typo3gmbh/${DOCKER_PHP_IMAGE}:latest
+    image: typo3/core-testing-${DOCKER_PHP_IMAGE}:latest
     user: ${HOST_UID}
     stop_grace_period: 1s
     volumes:
@@ -21,15 +38,27 @@ services:
     environment:
       TYPO3_PATH_ROOT: ${ROOT_DIR}/.Build/Web/typo3temp/var/tests/acceptance
       TYPO3_PATH_APP: ${ROOT_DIR}/.Build/Web/typo3temp/var/tests/acceptance
-    command: php -n -c /etc/php/cli-no-xdebug/php.ini -S web:8000 -t ${ROOT_DIR}/.Build/Web
+    command: >
+      /bin/sh -c "
+        if [ ${PHP_XDEBUG_ON} -eq 0 ]; then
+          XDEBUG_MODE=\"off\" \
+          php -S web:8000 -t ${ROOT_DIR}/.Build/Web
+        else
+          DOCKER_HOST=`route -n | awk '/^0.0.0.0/ { print $$2 }'`
+          XDEBUG_MODE=\"debug,develop\" \
+          XDEBUG_TRIGGER=\"foo\" \
+          XDEBUG_CONFIG=\"client_port=${PHP_XDEBUG_PORT} client_host=$${DOCKER_HOST}\" \
+          php -S web:8000 -t ${ROOT_DIR}/.Build/Web
+        fi
+      "
 
   mockserver:
-    image: mockserver/mockserver:mockserver-5.11.1
+    image: mockserver/mockserver:mockserver-5.11.2
     ports:
       - 1080:1080
 
   acceptance_backend_mariadb10:
-    image: typo3gmbh/${DOCKER_PHP_IMAGE}:latest
+    image: typo3/core-testing-${DOCKER_PHP_IMAGE}:latest
     user: ${HOST_UID}
     links:
       - mariadb10
@@ -58,12 +87,21 @@ services:
         done;
         echo Database is up;
         php -v | grep '^PHP';
-        mkdir -p Web/typo3temp/var/tests/ \
-          && vendor/codeception/codeception/codecept run Backend -d -c Web/typo3conf/ext/jobrouter_connector/Tests/codeception.yml ${TEST_FILE}
+        mkdir -p Web/typo3temp/var/tests/
+        if [ ${PHP_XDEBUG_ON} -eq 0 ]; then
+          XDEBUG_MODE=\"off\" \
+          vendor/codeception/codeception/codecept run Backend -c Web/typo3conf/ext/jobrouter_connector/Tests/codeception.yml ${TEST_FILE} ${EXTRA_TEST_OPTIONS}
+        else
+          DOCKER_HOST=`route -n | awk '/^0.0.0.0/ { print $$2 }'`
+          XDEBUG_MODE=\"debug,develop\" \
+          XDEBUG_TRIGGER=\"foo\" \
+          XDEBUG_CONFIG=\"client_port=${PHP_XDEBUG_PORT} client_host=$${DOCKER_HOST}\" \
+          vendor/codeception/codeception/codecept run Backend -c Web/typo3conf/ext/jobrouter_connector/Tests/codeception.yml ${TEST_FILE} ${EXTRA_TEST_OPTIONS}
+        fi
       "
 
   composer_install:
-    image: typo3gmbh/${DOCKER_PHP_IMAGE}:latest
+    image: typo3/core-testing-${DOCKER_PHP_IMAGE}:latest
     user: ${HOST_UID}
     volumes:
       - ${ROOT_DIR}:${ROOT_DIR}
@@ -77,11 +115,15 @@ services:
           set -x
         fi
         php -v | grep '^PHP';
-        composer install --no-progress;
+        if [ ${TYPO3} -eq 10 ]; then
+          composer install --no-progress --no-interaction;
+        else
+          composer remove typo3/coding-standards ichhabrecht/content-defender typo3/cms* --dev --no-progress --no-interaction && composer require typo3/coding-standards:^0.3 typo3/cms-install:^11.5 typo3/cms-fluid-styled-content:^11.5 typo3/cms-info:^11.5 typo3/cms-workspaces:^11.5 --dev -W --no-progress --no-interaction
+        fi
       "
 
   composer_validate:
-    image: typo3gmbh/${DOCKER_PHP_IMAGE}:latest
+    image: typo3/core-testing-${DOCKER_PHP_IMAGE}:latest
     user: ${HOST_UID}
     volumes:
       - ${ROOT_DIR}:${ROOT_DIR}
@@ -99,7 +141,7 @@ services:
       "
 
   functional_mariadb10:
-    image: typo3gmbh/${DOCKER_PHP_IMAGE}:latest
+    image: typo3/core-testing-${DOCKER_PHP_IMAGE}:latest
     user: ${HOST_UID}
     links:
       - mariadb10
@@ -126,17 +168,26 @@ services:
         echo Database is up;
         php -v | grep '^PHP';
         if [ ${PHP_XDEBUG_ON} -eq 0 ]; then
-          php -n -c /etc/php/cli-no-xdebug/php.ini \
-            vendor/phpunit/phpunit/phpunit -c vendor/typo3/testing-framework/Resources/Core/Build/FunctionalTests.xml ${EXTRA_TEST_OPTIONS} ${TEST_FILE};
+          export XDEBUG_MODE=\"off\"
+          if [ ${TYPO3} -eq 10 ]; then
+            bin/phpunit -c Web/typo3conf/ext/jobrouter_connector/Build/phpunit/FunctionalTests.xml ${EXTRA_TEST_OPTIONS} ${TEST_FILE};
+          else
+            bin/phpunit -c Web/typo3conf/ext/jobrouter_connector/Build/phpunit/FunctionalTests.xml --exclude-group=content_defender ${EXTRA_TEST_OPTIONS} ${TEST_FILE};
+          fi
         else
           DOCKER_HOST=`route -n | awk '/^0.0.0.0/ { print $$2 }'`
-          XDEBUG_CONFIG=\"remote_port=${PHP_XDEBUG_PORT} remote_enable=1 remote_host=$${DOCKER_HOST}\" \
-            vendor/phpunit/phpunit/phpunit -c vendor/typo3/testing-framework/Resources/Core/Build/FunctionalTests.xml ${EXTRA_TEST_OPTIONS} ${TEST_FILE};
+          export XDEBUG_MODE=\"debug,develop\" \
+          XDEBUG_TRIGGER=\"foo\" \
+          XDEBUG_CONFIG=\"client_port=${PHP_XDEBUG_PORT} client_host=$${DOCKER_HOST}\"
+          if [ ${TYPO3} -eq 10 ]; then
+            bin/phpunit -c Web/typo3conf/ext/jobrouter_connector/Build/phpunit/FunctionalTests.xml ${EXTRA_TEST_OPTIONS} ${TEST_FILE};
+          else
+            bin/phpunit -c Web/typo3conf/ext/jobrouter_connector/Build/phpunit/FunctionalTests.xml ---exclude-group=content_defender ${EXTRA_TEST_OPTIONS} ${TEST_FILE};
+          fi
         fi
       "
-
   lint:
-    image: typo3gmbh/${DOCKER_PHP_IMAGE}:latest
+    image: typo3/core-testing-${DOCKER_PHP_IMAGE}:latest
     user: ${HOST_UID}
     volumes:
       - ${ROOT_DIR}:${ROOT_DIR}
@@ -149,11 +200,11 @@ services:
           set -x
         fi
         php -v | grep '^PHP';
-        find . -name \\*.php ! -path "./.Build/\\*" -print0 | xargs -0 -n1 -P4 php -n -c /etc/php/cli-no-xdebug/php.ini -l >/dev/null
+        find . -name \\*.php ! -path "./.Build/\\*" -print0 | xargs -0 -n1 -P4 php -dxdebug.mode=off -l >/dev/null
       "
 
   unit:
-    image: typo3gmbh/${DOCKER_PHP_IMAGE}:latest
+    image: typo3/core-testing-${DOCKER_PHP_IMAGE}:latest
     user: ${HOST_UID}
     volumes:
       - ${ROOT_DIR}:${ROOT_DIR}
@@ -168,11 +219,13 @@ services:
         fi
         php -v | grep '^PHP';
         if [ ${PHP_XDEBUG_ON} -eq 0 ]; then
-          php -n -c /etc/php/cli-no-xdebug/php.ini \
-            bin/phpunit -c vendor/typo3/testing-framework/Resources/Core/Build/UnitTests.xml ${EXTRA_TEST_OPTIONS} ${TEST_FILE};
+          XDEBUG_MODE=\"off\" \
+          bin/phpunit -c Web/typo3conf/ext/jobrouter_connector/Build/phpunit/UnitTests.xml ${EXTRA_TEST_OPTIONS} ${TEST_FILE};
         else
           DOCKER_HOST=`route -n | awk '/^0.0.0.0/ { print $$2 }'`
-          XDEBUG_CONFIG=\"remote_port=${PHP_XDEBUG_PORT} remote_enable=1 remote_host=$${DOCKER_HOST}\" \
-            bin/phpunit -c vendor/typo3/testing-framework/Resources/Core/Build/UnitTests.xml ${EXTRA_TEST_OPTIONS} ${TEST_FILE};
+          XDEBUG_MODE=\"debug,develop\" \
+          XDEBUG_TRIGGER=\"foo\" \
+          XDEBUG_CONFIG=\"client_port=${PHP_XDEBUG_PORT} client_host=$${DOCKER_HOST}\" \
+          bin/phpunit -c Web/typo3conf/ext/jobrouter_connector/Build/phpunit/UnitTests.xml ${EXTRA_TEST_OPTIONS} ${TEST_FILE};
         fi
       "

@@ -19,7 +19,7 @@ use TYPO3\TestingFramework\Core\Acceptance\Extension\BackendEnvironment;
 class BackendJobRouterConnectorEnvironment extends BackendEnvironment
 {
     /**
-     * Load a list of core extensions and styleguide
+     * Load a list of core extensions and JobRouter Connector
      *
      * @var array
      */
@@ -29,7 +29,6 @@ class BackendJobRouterConnectorEnvironment extends BackendEnvironment
             'extbase',
             'fluid',
             'backend',
-            'about',
             'install',
             'frontend',
             'recordlist',
@@ -39,8 +38,6 @@ class BackendJobRouterConnectorEnvironment extends BackendEnvironment
         ],
         'xmlDatabaseFixtures' => [
             'PACKAGE:typo3/testing-framework/Resources/Core/Acceptance/Fixtures/be_users.xml',
-            'PACKAGE:typo3/testing-framework/Resources/Core/Acceptance/Fixtures/be_sessions.xml',
-            'PACKAGE:typo3/testing-framework/Resources/Core/Acceptance/Fixtures/be_groups.xml',
         ],
     ];
 }

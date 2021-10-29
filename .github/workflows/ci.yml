@@ -58,22 +58,20 @@ jobs:
       - name: Run unit tests
         run: |
           make unit-tests
-#  acceptance-tests:
-#    name: Acceptance tests
-#    runs-on: ubuntu-latest
-#    env:
-#      phpVersion: 7.4
-#    steps:
-#      - name: Check out repository
-#        uses: actions/checkout@v2
-#        with:
-#          fetch-depth: 1
-#      - name: Install composer dependencies
-#        run: |
-#          ./Build/Scripts/runTests.sh -s composerInstall -p $phpVersion
-#      - name: Run acceptance tests
-#        run: |
-#          ./Build/Scripts/runTests.sh -s acceptance -p $phpVersion
+  acceptance-tests:
+    name: Acceptance tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+      - name: Install composer dependencies
+        run: |
+          ./Build/Scripts/runTests.sh -s composerInstall -p 7.4 -t 10
+      - name: Run acceptance tests
+        run: |
+          ./Build/Scripts/runTests.sh -s acceptance -p 7.4 -t 10
   sonar-cloud:
     name: SonarCloud Analysis
     runs-on: ubuntu-latest

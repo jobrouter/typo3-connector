@@ -13,14 +13,14 @@ namespace Brotkrueml\JobRouterConnector\Tests\Acceptance\Backend;
 
 use Brotkrueml\JobRouterConnector\Tests\Acceptance\Support\BackendTester;
 
-class ModuleCest
+class ConnectionsModuleCest
 {
-    private const CONNECTOR_MODULE_SELECTOR = '#jobrouter_JobRouterConnectorJobrouterconnector';
+    private const CONNECTOR_MODULE_SELECTOR = '#jobrouter_JobRouterConnectorConnections';
     private const MOCKSERVER_BASE_URL = 'http://mockserver:1080/';
 
     public function _before(BackendTester $I): void
     {
-        $I->useExistingSession('admin');
+        $I->loginAs('admin');
     }
 
     public function _after(BackendTester $I): void
@@ -29,7 +29,7 @@ class ModuleCest
         $I->truncateConnectionTable();
     }
 
-    public function onFirstCallModuleComplainsAboutMissingKeyFile(BackendTester $I): void
+    public function onVeryFirstCallModuleComplainsAboutMissingKeyFile(BackendTester $I): void
     {
         $I->click(self::CONNECTOR_MODULE_SELECTOR);
         $I->switchToContentFrame();
@@ -92,7 +92,7 @@ class ModuleCest
         $I->waitForText('Edit JobRouter Connection "Some JobRouter Connection Name" on root level');
     }
 
-    public function whenConnectionIsAvailableAClickOnTheEditButtonsOpensToEditForm(BackendTester $I): void
+    public function whenConnectionIsAvailableAClickOnTheEditButtonOpensToEditForm(BackendTester $I): void
     {
         $I->createJobRouterKey();
         $I->importConnectionFixture('https://example.org/', 'secretPwd');
@@ -106,7 +106,7 @@ class ModuleCest
         $I->waitForText('Edit JobRouter Connection "Some JobRouter Connection Name" on root level');
     }
 
-    public function whenConnectionIsAvailableAClickOnTheCheckButtonsShowsASuccessfulNotification(BackendTester $I): void
+    public function whenConnectionIsAvailableAClickOnTheCheckButtonShowsASuccessfulNotification(BackendTester $I): void
     {
         $I->createJobRouterKey();
         $I->importConnectionFixture(self::MOCKSERVER_BASE_URL, 'secretPwd');
@@ -127,7 +127,7 @@ class ModuleCest
         $I->canSee('5.1.5');
     }
 
-    public function whenConnectionIsAvailableAClickOnTheCheckButtonsShowsAnErrorNotificationIfNoJobRouterConnection(BackendTester $I): void
+    public function whenConnectionIsAvailableAClickOnTheCheckButtonShowsAnErrorNotificationIfNoJobRouterConnection(BackendTester $I): void
     {
         $I->createJobRouterKey();
         $I->importConnectionFixture(self::MOCKSERVER_BASE_URL, 'secretPwd');
@@ -142,7 +142,7 @@ class ModuleCest
         $I->waitForText('Error fetching resource');
     }
 
-    public function whenConnectionIsAvailableAClickOnTheOpenButtonsOpensThatUrl(BackendTester $I): void
+    public function whenConnectionIsAvailableAClickOnTheOpenButtonOpensThatUrl(BackendTester $I): void
     {
         $url = self::MOCKSERVER_BASE_URL . 'mockserver/dashboard';
 
