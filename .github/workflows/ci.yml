@@ -61,6 +61,13 @@ jobs:
   acceptance-tests:
     name: Acceptance tests
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - php-versions: '7.4'
+            typo3-versions: '10'
+          - php-versions: '8.0'
+            typo3-versions: '11'
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
@@ -68,10 +75,16 @@ jobs:
           fetch-depth: 1
       - name: Install composer dependencies
         run: |
-          ./Build/Scripts/runTests.sh -s composerInstall -p 7.4 -t 10
+          ./Build/Scripts/runTests.sh -s composerInstall -p ${{ matrix.php-versions }} -t ${{ matrix.typo3-versions }}
       - name: Run acceptance tests
         run: |
-          ./Build/Scripts/runTests.sh -s acceptance -p 7.4 -t 10
+          ./Build/Scripts/runTests.sh -s acceptance -p ${{ matrix.php-versions }} -t ${{ matrix.typo3-versions }}
+      - name: Archive acceptance tests results
+        uses: actions/upload-artifact@v2
+        with:
+          name: acceptance-test-reports-${{ matrix.php-versions }}-${{ matrix.typo3-versions }}
+          path: .Build/Web/typo3temp/var/tests/_output
+          if-no-files-found: ignore
   sonar-cloud:
     name: SonarCloud Analysis
     runs-on: ubuntu-latest
