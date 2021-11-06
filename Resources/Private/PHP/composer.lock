@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a4e81a5a21e9f948df94d84437d9fa1e",
+    "content-hash": "61d3401c6c46aec363fea1990865bd53",
     "packages": [
         {
             "name": "brotkrueml/jobrouter-client",
-            "version": "v1.1.1",
+            "version": "v1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brotkrueml/jobrouter-client.git",
-                "reference": "13b5186e00c1b91dddde2436c3770509749fb2d6"
+                "reference": "f5df1754198a35c3754a25957617114fc2487d5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brotkrueml/jobrouter-client/zipball/13b5186e00c1b91dddde2436c3770509749fb2d6",
-                "reference": "13b5186e00c1b91dddde2436c3770509749fb2d6",
+                "url": "https://api.github.com/repos/brotkrueml/jobrouter-client/zipball/f5df1754198a35c3754a25957617114fc2487d5b",
+                "reference": "f5df1754198a35c3754a25957617114fc2487d5b",
                 "shasum": ""
             },
             "require": {
@@ -73,7 +73,7 @@
                 "issues": "https://github.com/brotkrueml/jobrouter-client/issues",
                 "source": "https://github.com/brotkrueml/jobrouter-client"
             },
-            "time": "2021-10-24T11:51:26+00:00"
+            "time": "2021-10-30T11:49:56+00:00"
         },
         {
             "name": "kriswallsmith/buzz",

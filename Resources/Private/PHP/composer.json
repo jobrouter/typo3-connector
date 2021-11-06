@@ -4,7 +4,7 @@
 	"description": "Dependencies for TYPO3 classic installation",
 	"require": {
 		"php": "7.3.*",
-		"brotkrueml/jobrouter-client": "^1.1.1"
+		"brotkrueml/jobrouter-client": "1.1.2"
 	},
 	"replace": {
 		"php-http/httplug": "*",
