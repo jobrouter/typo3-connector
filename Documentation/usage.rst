@@ -17,6 +17,10 @@ Module
 The connections to JobRouter® installations are managed in the backend module
 :guilabel:`JobRouter` > :guilabel:`Connections`.
 
+.. note::
+
+   The module is only available in the live workspace.
+
 On your first visit after installing the extension you should see the following
 screen:
 
@@ -27,8 +31,8 @@ screen:
 
 .. note::
 
-   If you see an error that the key file does not exist, :ref:`generate the key
-   <configuration-key-generation>` first.
+   If you get the error message that the key file does not exist,
+   first :ref:`generate the key <configuration-key-generation>`.
 
 
 .. _usage-create-connection:
