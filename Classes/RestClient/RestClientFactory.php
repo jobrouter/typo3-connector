@@ -17,6 +17,7 @@ use Brotkrueml\JobRouterClient\Configuration\ClientConfiguration;
 use Brotkrueml\JobRouterClient\Exception\ExceptionInterface;
 use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
 use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
+use Brotkrueml\JobRouterConnector\Exception\CryptException;
 use Brotkrueml\JobRouterConnector\Extension;
 use Brotkrueml\JobRouterConnector\Service\Crypt;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
@@ -46,6 +47,7 @@ final class RestClientFactory implements RestClientFactoryInterface
      * @param Connection $connection The connection model
      * @param int|null $lifetime Optional lifetime argument
      * @param string|null $userAgentAddition Addition to the user agent
+     * @throws CryptException
      * @throws ExceptionInterface
      */
     public function create(
@@ -53,7 +55,18 @@ final class RestClientFactory implements RestClientFactoryInterface
         ?int $lifetime = null,
         ?string $userAgentAddition = null
     ): ClientInterface {
-        $decryptedPassword = $this->cryptService->decrypt($connection->getPassword());
+        try {
+            $decryptedPassword = $this->cryptService->decrypt($connection->getPassword());
+        } catch (CryptException $e) {
+            throw new CryptException(
+                \sprintf(
+                    'The password of the connection with the handle "%s" cannot be decrypted!',
+                    $connection->getHandle()
+                ),
+                1636467052,
+                $e
+            );
+        }
 
         $configuration = new ClientConfiguration(
             $connection->getBaseUrl(),
