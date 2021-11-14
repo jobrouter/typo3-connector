@@ -2,7 +2,7 @@
 
 $EM_CONF[$_EXTKEY] = [
     'title' => 'JobRouter Connector',
-    'description' => 'Define connections from TYPO3 to JobRouter® digitisation platform',
+    'description' => 'Connect TYPO3 with the JobRouter® digitalisation platform',
     'category' => 'module',
     'author' => 'Chris Müller',
     'author_email' => 'typo3@krue.ml',

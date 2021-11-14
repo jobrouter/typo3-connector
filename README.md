@@ -1,4 +1,4 @@
-# Define connections to JobRouter® systems from TYPO3 installations
+# Connect TYPO3 with the JobRouter® digitalisation platform
 
 [![CI Status](https://github.com/brotkrueml/typo3-jobrouter-connector/workflows/CI/badge.svg?branch=master)](https://github.com/brotkrueml/typo3-jobrouter-connector/actions?query=workflow%3ACI)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=typo3-jobrouter-connector&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=typo3-jobrouter-connector)
@@ -6,7 +6,7 @@
 [![Crowdin](https://badges.crowdin.net/typo3-extension-jobrouterconne/localized.svg)](https://crowdin.com/project/typo3-extension-jobrouterconne)
 [![Latest Stable Version](https://img.shields.io/packagist/v/brotkrueml/typo3-jobrouter-connector.svg?label=stable)](https://packagist.org/packages/brotkrueml/typo3-jobrouter-connector)
 
-[JobRouter®](https://www.jobrouter.com/) is a scalable digitization
+[JobRouter®](https://www.jobrouter.com/) is a scalable digitalisation
 platform which links processes, data and documents.
 
 The TYPO3 JobRouter Connector is a base extension for defining
