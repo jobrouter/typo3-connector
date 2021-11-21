@@ -8,7 +8,7 @@ acceptance-tests:
 .PHONY: build-jobrouter-client
 build-jobrouter-client:
 	composer update --no-dev --prefer-dist --optimize-autoloader --working-dir=Resources/Private/PHP
-	php -d phar.readonly=off .Build/bin/phar-composer build Resources/Private/PHP/composer.json Resources/Private/PHP/jobrouter-client.phar
+	tools/box compile -c Resources/Private/PHP/box.json
 
 # See: https://github.com/crossnox/m2r2
 .PHONY: changelog

@@ -4,6 +4,7 @@
 Build/testing-docker/.env
 /composer.lock
 Documentation/_build/
-Resources/Private/PHP/
-!Resources/Private/PHP/composer.*
+Resources/Private/PHP/*.phar
+Resources/Private/PHP/vendor/
 Tests/Acceptance/Support/_generated/
+tools/

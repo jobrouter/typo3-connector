@@ -1,5 +1,6 @@
 /Build/ export-ignore
 /Documentation/ export-ignore
+/Resources/Private/PHP/box.json export-ignore
 /Resources/Private/PHP/composer.* export-ignore
 /Tests/ export-ignore
 /.crowdin.yml export-ignore
@@ -7,6 +8,7 @@
 /.gitattributes export-ignore
 /.github/ export-ignore
 /.gitignore export-ignore
+/.phive export-ignore
 /.phpstorm.meta.php export-ignore
 /.readthedocs.yml export-ignore
 /captainhook.json export-ignore

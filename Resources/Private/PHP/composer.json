@@ -5,17 +5,5 @@
 	"require": {
 		"php": "7.3.*",
 		"brotkrueml/jobrouter-client": "1.1.2"
-	},
-	"replace": {
-		"php-http/httplug": "*",
-		"php-http/message-factory": "*",
-		"php-http/promise": "*",
-		"psr/http-client": "*",
-		"psr/http-factory": "*",
-		"psr/http-message": "*",
-		"symfony/deprecation-contracts": "*",
-		"symfony/options-resolver": "*",
-		"symfony/polyfill-php73": "*",
-		"symfony/polyfill-php80": "*"
 	}
 }
