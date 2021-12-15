@@ -31,7 +31,7 @@
 		"typo3/cms-frontend": "^10.4.11 || ^11.5"
 	},
 	"require-dev": {
-		"brotkrueml/coding-standards": "~1.1.0",
+		"brotkrueml/coding-standards": "~1.2.0",
 		"captainhook/captainhook": "^5.10",
 		"codeception/codeception": "^4.1",
 		"codeception/module-asserts": "^1.3",
