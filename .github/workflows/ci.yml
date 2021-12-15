@@ -53,6 +53,7 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
       - name: Install composer dependencies
         run: |
+          composer remove symplify/phpstan-rules --dev --no-update
           composer require typo3/cms-core=${{ matrix.typo3-versions }} --no-progress --prefer-dist --optimize-autoloader
       - name: Run PHP linter
         run: |
@@ -77,6 +78,7 @@ jobs:
           fetch-depth: 1
       - name: Install composer dependencies
         run: |
+          composer remove symplify/phpstan-rules --dev --no-update
           ./Build/Scripts/runTests.sh -s composerInstall -p ${{ matrix.php-versions }} -t ${{ matrix.typo3-versions }}
       - name: Run acceptance tests
         run: |
@@ -109,7 +111,7 @@ jobs:
       - name: Setup PHP version
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.4
+          php-version: 8.0
           coverage: xdebug
           extensions: mbstring
       - name: Get Composer Cache Directory

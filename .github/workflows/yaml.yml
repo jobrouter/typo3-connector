@@ -36,6 +36,7 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
       - name: Install composer dependencies
         run: |
+          composer remove symplify/phpstan-rules --dev --no-update
           composer update --no-progress --prefer-dist --optimize-autoloader
       - name: Lint yaml files
         run: |
