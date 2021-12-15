@@ -1,19 +1,24 @@
 {
 	"name": "brotkrueml/typo3-jobrouter-connector",
-	"type": "typo3-cms-extension",
 	"description": "Connect TYPO3 with the JobRouter® digitalisation platform",
+	"license": "GPL-2.0-or-later",
+	"type": "typo3-cms-extension",
 	"keywords": [
 		"TYPO3 CMS",
 		"TYPO3 extension",
 		"JobRouter"
 	],
-	"license": "GPL-2.0-or-later",
 	"authors": [
 		{
 			"name": "Chris Müller",
 			"role": "Developer"
 		}
 	],
+	"support": {
+		"issues": "https://github.com/brotkrueml/typo3-jobrouter-connector/issues",
+		"source": "https://github.com/brotkrueml/typo3-jobrouter-connector",
+		"docs": "https://typo3-jobrouter.readthedocs.io/projects/connector/"
+	},
 	"require": {
 		"php": ">=7.3",
 		"ext-json": "*",
@@ -31,7 +36,7 @@
 		"codeception/codeception": "^4.1",
 		"codeception/module-asserts": "^1.3",
 		"codeception/module-webdriver": "^1.2",
-		"ergebnis/composer-normalize": "^2.15",
+		"ergebnis/composer-normalize": "^2.18",
 		"mikey179/vfsstream": "^1.6",
 		"phpstan/extension-installer": "^1.1",
 		"phpstan/phpstan": "^0.12.99",
@@ -43,8 +48,18 @@
 		"typo3/testing-framework": "^6.12"
 	},
 	"suggest": {
-		"brotkrueml/typo3-jobrouter-data": "Connect JobRouter JobData tables with TYPO3",
-		"brotkrueml/typo3-jobrouter-process": "Connect JobRouter processes with TYPO3"
+		"brotkrueml/typo3-jobrouter-data": "Connect JobRouter® JobData tables with TYPO3",
+		"brotkrueml/typo3-jobrouter-process": "Connect JobRouter® processes with TYPO3"
+	},
+	"autoload": {
+		"psr-4": {
+			"Brotkrueml\\JobRouterConnector\\": "Classes"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Brotkrueml\\JobRouterConnector\\Tests\\": "Tests"
+		}
 	},
 	"config": {
 		"bin-dir": ".Build/bin",
@@ -61,25 +76,10 @@
 			"web-dir": ".Build/Web"
 		}
 	},
-	"autoload": {
-		"psr-4": {
-			"Brotkrueml\\JobRouterConnector\\": "Classes"
-		}
-	},
-	"autoload-dev": {
-		"psr-4": {
-			"Brotkrueml\\JobRouterConnector\\Tests\\": "Tests"
-		}
-	},
 	"scripts": {
 		"post-autoload-dump": [
 			".Build/bin/captainhook install -f -s",
 			"TYPO3\\TestingFramework\\Composer\\ExtensionTestEnvironment::prepare"
 		]
-	},
-	"support": {
-		"issues": "https://github.com/brotkrueml/typo3-jobrouter-connector/issues",
-		"source": "https://github.com/brotkrueml/typo3-jobrouter-connector",
-		"docs": "https://typo3-jobrouter.readthedocs.io/projects/connector/"
 	}
 }
