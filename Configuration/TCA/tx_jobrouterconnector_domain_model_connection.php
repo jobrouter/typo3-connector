@@ -26,7 +26,6 @@ return [
     ],
     'columns' => [
         'disabled' => [
-            'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.enabled',
             'config' => [
                 'type' => 'check',
@@ -42,7 +41,6 @@ return [
         ],
 
         'name' => [
-            'exclude' => true,
             'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.name',
             'config' => [
                 'type' => 'input',
@@ -52,7 +50,6 @@ return [
             ],
         ],
         'handle' => [
-            'exclude' => true,
             'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.handle',
             'config' => [
                 'type' => 'input',
@@ -62,7 +59,6 @@ return [
             ],
         ],
         'base_url' => [
-            'exclude' => true,
             'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.base_url',
             'config' => [
                 'type' => 'input',
@@ -72,7 +68,6 @@ return [
             ],
         ],
         'username' => [
-            'exclude' => true,
             'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.username',
             'config' => [
                 'type' => 'input',
@@ -82,7 +77,6 @@ return [
             ],
         ],
         'password' => [
-            'exclude' => true,
             'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.password',
             'config' => [
                 'type' => 'input',
@@ -91,7 +85,6 @@ return [
             ],
         ],
         'jobrouter_version' => [
-            'exclude' => true,
             'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.jobrouter_version',
             'description' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.jobrouter_version.description',
             'config' => [
@@ -102,7 +95,6 @@ return [
             ],
         ],
         'description' => [
-            'exclude' => true,
             'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.description',
             'config' => [
                 'type' => 'text',
