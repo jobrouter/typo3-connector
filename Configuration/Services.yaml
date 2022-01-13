@@ -6,6 +6,7 @@ services:
 
   Brotkrueml\JobRouterConnector\:
     resource: '../Classes/*'
+    exclude: '../Classes/{Domain/Entity,Domain/Model,Exception,Extension.php}'
 
   Brotkrueml\JobRouterConnector\Utility\FileUtility:
     public: true
