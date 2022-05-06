@@ -126,6 +126,7 @@ class BackendController extends ActionController
 
         // Refresh
         $refreshButton = $buttonBar->makeLinkButton()
+            /** @phpstan-ignore-next-line */
             ->setHref(GeneralUtility::getIndpEnv('REQUEST_URI'))
             ->setTitle($this->languageService->sL('LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.reload'))
             ->setIcon($this->iconFactory->getIcon('actions-refresh', Icon::SIZE_SMALL));
