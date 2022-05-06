@@ -26,14 +26,8 @@ use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 
 final class RestClientFactory implements RestClientFactoryInterface
 {
-    /**
-     * @var Crypt
-     */
-    private $cryptService;
-    /**
-     * @var string
-     */
-    private $version = '';
+    private Crypt $cryptService;
+    private string $version = '';
 
     public function __construct(Crypt $cryptService = null)
     {

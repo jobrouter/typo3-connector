@@ -30,22 +30,10 @@ final class ConnectionTestController
 {
     private const ERROR_MESSAGE_MAX_LENGTH = 1000;
 
-    /**
-     * @var ConnectionRepository
-     */
-    private $connectionRepository;
-    /**
-     * @var RestClientFactoryInterface
-     */
-    private $restClientFactory;
-    /**
-     * @var ResponseFactoryInterface
-     */
-    private $responseFactory;
-    /**
-     * @var StreamFactoryInterface
-     */
-    private $streamFactory;
+    private ConnectionRepository $connectionRepository;
+    private RestClientFactoryInterface $restClientFactory;
+    private ResponseFactoryInterface $responseFactory;
+    private StreamFactoryInterface $streamFactory;
 
     public function __construct(
         ConnectionRepository $connectionRepository,

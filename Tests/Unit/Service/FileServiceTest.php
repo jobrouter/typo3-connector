@@ -29,15 +29,8 @@ class FileServiceTest extends TestCase
 {
     protected const ROOT_DIR = 'project-dir';
 
-    /**
-     * @var vfsStreamDirectory
-     */
-    protected $root;
-
-    /**
-     * @var FileService
-     */
-    protected $subject;
+    protected vfsStreamDirectory $root;
+    protected FileService $subject;
 
     protected function setUp(): void
     {

@@ -20,7 +20,7 @@
 		"docs": "https://typo3-jobrouter.readthedocs.io/projects/connector/"
 	},
 	"require": {
-		"php": ">=7.3",
+		"php": ">=7.4",
 		"ext-json": "*",
 		"ext-sodium": "*",
 		"brotkrueml/jobrouter-client": "^1.1",

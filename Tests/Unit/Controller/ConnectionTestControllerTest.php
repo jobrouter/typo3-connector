@@ -41,10 +41,7 @@ final class ConnectionTestControllerTest extends TestCase
      * @var ServerRequestInterface|Stub
      */
     private $requestStub;
-    /**
-     * @var ConnectionTestController
-     */
-    private $subject;
+    private ConnectionTestController $subject;
 
     protected function setUp(): void
     {
@@ -63,9 +60,7 @@ final class ConnectionTestControllerTest extends TestCase
         $languageServiceStub = $this->createStub(LanguageService::class);
         $languageServiceStub
             ->method('sL')
-            ->willReturnCallback(static function (string $key): string {
-                return $key;
-            });
+            ->willReturnCallback(static fn (string $key): string => $key);
 
         $GLOBALS['LANG'] = $languageServiceStub;
     }

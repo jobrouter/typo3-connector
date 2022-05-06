@@ -15,15 +15,8 @@ use Brotkrueml\JobRouterConnector\Exception\KeyGenerationException;
 
 class KeyGenerator
 {
-    /**
-     * @var Crypt
-     */
-    private $crypt;
-
-    /**
-     * @var FileService
-     */
-    private $fileService;
+    private Crypt $crypt;
+    private FileService $fileService;
 
     public function __construct(Crypt $crypt, FileService $fileService)
     {

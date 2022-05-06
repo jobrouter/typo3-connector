@@ -20,11 +20,7 @@ use Symfony\Component\Console\Tester\CommandTester;
 
 class GenerateKeyCommandTest extends TestCase
 {
-    /**
-     * @var CommandTester
-     */
-    private $commandTester;
-
+    private CommandTester $commandTester;
     /**
      * @var KeyGenerator|Stub
      */

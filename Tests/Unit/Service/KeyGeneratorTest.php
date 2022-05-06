@@ -22,25 +22,16 @@ use PHPUnit\Framework\TestCase;
 
 class KeyGeneratorTest extends TestCase
 {
-    /**
-     * @var string
-     */
-    private $keyPath;
-
+    private string $keyPath;
     /**
      * @var FileService|Stub
      */
     private $fileServiceStub;
-
     /**
      * @var Crypt|Stub
      */
     private $cryptStub;
-
-    /**
-     * @var KeyGenerator
-     */
-    private $subject;
+    private KeyGenerator $subject;
 
     protected function setUp(): void
     {

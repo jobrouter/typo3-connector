@@ -16,10 +16,7 @@ namespace Brotkrueml\JobRouterConnector\Domain\Entity;
  */
 final class ConnectionTestResult
 {
-    /**
-     * @var string
-     */
-    private $errorMessage = '';
+    private string $errorMessage = '';
 
     public function __construct(string $errorMessage)
     {

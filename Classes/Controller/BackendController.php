@@ -39,35 +39,15 @@ class BackendController extends ActionController
      */
     protected $defaultViewObjectName = BackendTemplateView::class;
 
-    /**
-     * @var ConnectionRepository
-     */
-    private $connectionRepository;
-
-    /**
-     * @var FileService
-     */
-    private $fileService;
-
-    /**
-     * @var UriBuilder
-     */
-    private $routingUriBuilder;
-
-    /**
-     * @var IconFactory
-     */
-    private $iconFactory;
-
+    private ConnectionRepository $connectionRepository;
+    private FileService $fileService;
+    private UriBuilder $routingUriBuilder;
+    private IconFactory $iconFactory;
     /**
      * @var ModuleTemplate
      */
     private $moduleTemplate;
-
-    /**
-     * @var LanguageService
-     */
-    private $languageService;
+    private LanguageService $languageService;
 
     public function __construct(
         ConnectionRepository $connectionRepository,

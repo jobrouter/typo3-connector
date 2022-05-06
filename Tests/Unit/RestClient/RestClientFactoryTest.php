@@ -24,10 +24,7 @@ final class RestClientFactoryTest extends TestCase
      * @var Crypt|Stub
      */
     private $cryptServiceStub;
-    /**
-     * @var RestClientFactory
-     */
-    private $subject;
+    private RestClientFactory $subject;
 
     protected function setUp(): void
     {

@@ -20,10 +20,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 final class Password
 {
-    /**
-     * @var Crypt
-     */
-    private $cryptService;
+    private Crypt $cryptService;
 
     public function __construct(Crypt $crypt = null)
     {
