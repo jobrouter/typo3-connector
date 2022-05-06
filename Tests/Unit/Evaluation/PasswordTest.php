@@ -22,7 +22,7 @@ class PasswordTest extends TestCase
     private Password $subject;
 
     /**
-     * @var MockObject|Crypt
+     * @var MockObject&Crypt
      */
     private $cryptMock;
 

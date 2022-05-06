@@ -30,15 +30,15 @@ use TYPO3\CMS\Core\Localization\LanguageService;
 final class ConnectionTestControllerTest extends TestCase
 {
     /**
-     * @var ConnectionRepository|Stub
+     * @var ConnectionRepository&Stub
      */
     private $connectionRepositoryStub;
     /**
-     * @var RestClientFactoryInterface|MockObject
+     * @var RestClientFactoryInterface&MockObject
      */
     private $restClientFactoryMock;
     /**
-     * @var ServerRequestInterface|Stub
+     * @var ServerRequestInterface&Stub
      */
     private $requestStub;
     private ConnectionTestController $subject;

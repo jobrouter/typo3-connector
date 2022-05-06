@@ -45,6 +45,7 @@ class BackendController extends ActionController
     private IconFactory $iconFactory;
     /**
      * @var ModuleTemplate
+     * @noRector
      */
     private $moduleTemplate;
     private LanguageService $languageService;

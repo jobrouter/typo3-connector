@@ -9,13 +9,16 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\JobRouterConnector\Extension;
+use TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider;
+
 return [
     'jobrouter-modulegroup' => [
-        'provider' => TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-        'source' => 'EXT:' . Brotkrueml\JobRouterConnector\Extension::KEY . '/Resources/Public/Icons/modulegroup-jobrouter.svg',
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:' . Extension::KEY . '/Resources/Public/Icons/modulegroup-jobrouter.svg',
     ],
     'jobrouter-module-connector' => [
-        'provider' => TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-        'source' => 'EXT:' . Brotkrueml\JobRouterConnector\Extension::KEY . '/Resources/Public/Icons/module-connector.svg',
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:' . Extension::KEY . '/Resources/Public/Icons/module-connector.svg',
     ],
 ];

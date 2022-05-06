@@ -21,7 +21,7 @@ use PHPUnit\Framework\TestCase;
 final class RestClientFactoryTest extends TestCase
 {
     /**
-     * @var Crypt|Stub
+     * @var Crypt&Stub
      */
     private $cryptServiceStub;
     private RestClientFactory $subject;

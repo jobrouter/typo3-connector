@@ -24,11 +24,11 @@ class KeyGeneratorTest extends TestCase
 {
     private string $keyPath;
     /**
-     * @var FileService|Stub
+     * @var FileService&Stub
      */
     private $fileServiceStub;
     /**
-     * @var Crypt|Stub
+     * @var Crypt&Stub
      */
     private $cryptStub;
     private KeyGenerator $subject;

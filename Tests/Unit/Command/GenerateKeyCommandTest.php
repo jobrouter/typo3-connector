@@ -22,7 +22,7 @@ class GenerateKeyCommandTest extends TestCase
 {
     private CommandTester $commandTester;
     /**
-     * @var KeyGenerator|Stub
+     * @var KeyGenerator&Stub
      */
     private $keyGeneratorStub;
 

@@ -9,9 +9,11 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Brotkrueml\JobRouterConnector\Controller\ConnectionTestController;
+
 return [
     'jobrouter_connection_test' => [
         'path' => '/jobrouter/connection/test',
-        'target' => Brotkrueml\JobRouterConnector\Controller\ConnectionTestController::class,
+        'target' => ConnectionTestController::class,
     ],
 ];
