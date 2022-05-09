@@ -84,6 +84,48 @@ return [
                 'eval' => 'nospace,password,required,' . \Brotkrueml\JobRouterConnector\Evaluation\Password::class,
             ],
         ],
+        'timeout' => [
+            'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.timeout',
+            'config' => [
+                'type' => 'input',
+                'size' => 5,
+                'eval' => 'trim,int',
+                'range' => [
+                    'lower' => 0,
+                    'upper' => 240,
+                ],
+                'default' => 0,
+                'slider' => [
+                    'step' => 10,
+                    'width' => 200,
+                ],
+            ],
+        ],
+        'verify' => [
+            'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.verify',
+            'config' => [
+                'type' => 'check',
+                'renderType' => 'checkboxToggle',
+                'items' => [
+                    [
+                        0 => '',
+                        1 => '',
+                        'labelChecked' => 'Enabled',
+                        'labelUnchecked' => 'Disabled',
+                    ],
+                ],
+                'default' => 1,
+            ],
+        ],
+        'proxy' => [
+            'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.proxy',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'max' => 255,
+                'eval' => 'trim',
+            ],
+        ],
         'jobrouter_version' => [
             'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.jobrouter_version',
             'description' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.jobrouter_version.description',
@@ -108,6 +150,7 @@ return [
             'showitem' => '
                 name, handle, base_url,
                 --palette--;;credentials,
+                --palette--;;options,
                 --div--;' . \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tab.information,
                 jobrouter_version,
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
@@ -121,6 +164,10 @@ return [
         'credentials' => [
             'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':palette.credentials',
             'showitem' => 'username, password',
+        ],
+        'options' => [
+            'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':palette.options',
+            'showitem' => 'timeout, verify, --linebreak--, proxy',
         ],
     ],
 ];

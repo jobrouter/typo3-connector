@@ -1,9 +1,9 @@
 {
 	"name": "brotkrueml/typo3-jobrouter-connector",
 	"type": "library",
-	"description": "Dependencies for TYPO3 classic installation",
+	"description": "Dependencies for TYPO3 legacy installation",
 	"require": {
 		"php": "7.4.*",
-		"brotkrueml/jobrouter-client": "1.1.2"
+		"brotkrueml/jobrouter-client": "1.3.x-dev@dev"
 	}
 }

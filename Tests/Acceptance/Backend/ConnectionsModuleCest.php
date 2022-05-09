@@ -76,6 +76,24 @@ class ConnectionsModuleCest
         $I->canSee('some_connection_handle', '#jobrouter-connection-list-handle-1');
         $I->canSee('https://example.org/', '#jobrouter-connection-list-baseurl-1');
         $I->canSee('john.doe', '#jobrouter-connection-list-username-1');
+        $I->canSeeInSource('actions.svg#actions-check', '#jobrouter-connection-list-verify-1');
+    }
+
+    public function whenConnectionIsAvailableWithVerifySetToFalseItIsShownOnTheModulePage(BackendTester $I): void
+    {
+        $I->createJobRouterKey();
+        $I->importConnectionFixture('https://example.org/', 'secretPwd', 0);
+
+        $I->click(self::CONNECTOR_MODULE_SELECTOR);
+        $I->switchToContentFrame();
+        $I->canSee('JobRouter Connections', 'h1');
+
+        $I->canSeeElement('#jobrouter-connection-list');
+        $I->canSee('Some JobRouter Connection Name', '#jobrouter-connection-list-name-1');
+        $I->canSee('some_connection_handle', '#jobrouter-connection-list-handle-1');
+        $I->canSee('https://example.org/', '#jobrouter-connection-list-baseurl-1');
+        $I->canSee('john.doe', '#jobrouter-connection-list-username-1');
+        $I->canSeeInSource('actions.svg#actions-close', '#jobrouter-connection-list-verify-1');
     }
 
     public function whenConnectionIsAvailableAClickOnTheNameLinkOpensToEditForm(BackendTester $I): void

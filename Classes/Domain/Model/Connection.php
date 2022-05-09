@@ -20,6 +20,9 @@ final class Connection extends AbstractEntity
     protected string $baseUrl = '';
     protected string $username = '';
     protected string $password = '';
+    protected int $timeout = 0;
+    protected bool $verify = true;
+    protected string $proxy = '';
     protected string $jobrouterVersion = '';
     protected bool $disabled = false;
 
@@ -71,6 +74,36 @@ final class Connection extends AbstractEntity
     public function setPassword(string $password): void
     {
         $this->password = $password;
+    }
+
+    public function getTimeout(): int
+    {
+        return $this->timeout;
+    }
+
+    public function setTimeout(int $timeout): void
+    {
+        $this->timeout = $timeout;
+    }
+
+    public function isVerify(): bool
+    {
+        return $this->verify;
+    }
+
+    public function setVerify(bool $verify): void
+    {
+        $this->verify = $verify;
+    }
+
+    public function getProxy(): string
+    {
+        return $this->proxy;
+    }
+
+    public function setProxy(string $proxy): void
+    {
+        $this->proxy = $proxy;
     }
 
     public function getJobrouterVersion(): string

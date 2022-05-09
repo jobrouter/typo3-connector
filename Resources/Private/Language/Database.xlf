@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file source-language="en" datatype="plaintext" original="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf" date="2020-07-01T15:49:51Z" product-name="jobrouter_connector">
+	<file source-language="en" datatype="plaintext" original="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf" date="2022-05-06T17:13:46Z" product-name="jobrouter_connector">
 		<header/>
 		<body>
 			<trans-unit id="palette.credentials" resname="palette.credentials">
 				<source><![CDATA[Credentials]]></source>
+			</trans-unit>
+			<trans-unit id="palette.options" resname="palette.options">
+				<source><![CDATA[Options]]></source>
 			</trans-unit>
 			<trans-unit id="tab.information" resname="tab.information">
 				<source><![CDATA[Information]]></source>
@@ -33,8 +36,17 @@
 			<trans-unit id="tx_jobrouterconnector_domain_model_connection.password" resname="tx_jobrouterconnector_domain_model_connection.password">
 				<source><![CDATA[Password]]></source>
 			</trans-unit>
+			<trans-unit id="tx_jobrouterconnector_domain_model_connection.proxy" resname="tx_jobrouterconnector_domain_model_connection.proxy">
+				<source><![CDATA[Proxy URL]]></source>
+			</trans-unit>
+			<trans-unit id="tx_jobrouterconnector_domain_model_connection.timeout" resname="tx_jobrouterconnector_domain_model_connection.timeout">
+				<source><![CDATA[Timeout]]></source>
+			</trans-unit>
 			<trans-unit id="tx_jobrouterconnector_domain_model_connection.username" resname="tx_jobrouterconnector_domain_model_connection.username">
 				<source><![CDATA[Username]]></source>
+			</trans-unit>
+			<trans-unit id="tx_jobrouterconnector_domain_model_connection.verify" resname="tx_jobrouterconnector_domain_model_connection.verify">
+				<source><![CDATA[Verify TLS certificate]]></source>
 			</trans-unit>
 		</body>
 	</file>

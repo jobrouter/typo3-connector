@@ -47,6 +47,7 @@
                     <th scope="col"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.handle"/></th>
                     <th scope="col"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.base_url"/></th>
                     <th scope="col"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.username"/></th>
+                    <th scope="col" class="text-center"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.verify"/></th>
                     <th scope="col"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.jobrouter_version"/></th>
                     <th scope="col"></th>
                 </tr>
@@ -65,6 +66,12 @@
                         <td id="jobrouter-connection-list-handle-{connection.uid}">{connection.handle}</td>
                         <td id="jobrouter-connection-list-baseurl-{connection.uid}"><f:link.external uri="{connection.baseUrl}" target="_blank" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.open_jobrouter_system')}" rel="noreferrer">{connection.baseUrl}</f:link.external></td>
                         <td id="jobrouter-connection-list-username-{connection.uid}">{connection.username}</td>
+                        <td id="jobrouter-connection-list-verify-{connection.uid}" class="text-center">
+                            <f:if condition="{connection.verify}">
+                                <f:then><core:icon identifier="actions-check"/></f:then>
+                                <f:else><core:icon identifier="actions-close"/></f:else>
+                            </f:if>
+                        </td>
                         <td id="jobrouter-connection-list-version-{connection.uid}">{connection.jobrouterVersion}</td>
                         <td>
                             <div class="btn-group">

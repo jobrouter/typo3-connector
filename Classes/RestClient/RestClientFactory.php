@@ -14,6 +14,7 @@ namespace Brotkrueml\JobRouterConnector\RestClient;
 use Brotkrueml\JobRouterClient\Client\ClientInterface;
 use Brotkrueml\JobRouterClient\Client\RestClient;
 use Brotkrueml\JobRouterClient\Configuration\ClientConfiguration;
+use Brotkrueml\JobRouterClient\Configuration\ClientOptions;
 use Brotkrueml\JobRouterClient\Exception\ExceptionInterface;
 use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
 use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
@@ -69,6 +70,10 @@ final class RestClientFactory implements RestClientFactoryInterface
         );
 
         $configuration = $configuration->withUserAgentAddition($userAgentAddition ?? $this->getUserAgentAddition());
+
+        $configuration = $configuration->withClientOptions(
+            new ClientOptions(false, 5, $connection->getTimeout(), $connection->isVerify(), $connection->getProxy())
+        );
 
         if ($lifetime) {
             $configuration = $configuration->withLifetime($lifetime);

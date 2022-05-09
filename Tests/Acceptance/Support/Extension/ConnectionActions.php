@@ -46,7 +46,7 @@ trait ConnectionActions
         $connection->truncate('tx_jobrouterconnector_domain_model_connection');
     }
 
-    public function importConnectionFixture(string $baseUrl, string $password): void
+    public function importConnectionFixture(string $baseUrl, string $password, int $verify = 1): void
     {
         $encryptedPassword = (new Crypt(new FileService()))->encrypt($password);
 
@@ -64,6 +64,9 @@ trait ConnectionActions
         <base_url>${baseUrl}</base_url>
         <username>john.doe</username>
         <password>${encryptedPassword}</password>
+        <timeout>0</timeout>
+        <verify>{$verify}</verify>
+        <proxy></proxy>
         <jobrouter_version></jobrouter_version>
         <description>Some description</description>
 	</tx_jobrouterconnector_domain_model_connection>

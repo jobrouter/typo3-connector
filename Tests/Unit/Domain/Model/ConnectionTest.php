@@ -136,6 +136,72 @@ class ConnectionTest extends TestCase
     /**
      * @test
      */
+    public function initialTimeoutIsZero(): void
+    {
+        $actual = $this->subject->getTimeout();
+
+        self::assertSame(0, $actual);
+    }
+
+    /**
+     * @test
+     */
+    public function setAndGetTimeout(): void
+    {
+        $this->subject->setTimeout(42);
+
+        $actual = $this->subject->getTimeout();
+
+        self::assertSame(42, $actual);
+    }
+
+    /**
+     * @test
+     */
+    public function initialVerifyIsTrue(): void
+    {
+        $actual = $this->subject->isVerify();
+
+        self::assertTrue($actual);
+    }
+
+    /**
+     * @test
+     */
+    public function setAndIsVerify(): void
+    {
+        $this->subject->setVerify(false);
+
+        $actual = $this->subject->isVerify();
+
+        self::assertFalse($actual);
+    }
+
+    /**
+     * @test
+     */
+    public function initialProxyIsEmptyString(): void
+    {
+        $actual = $this->subject->getProxy();
+
+        self::assertSame('', $actual);
+    }
+
+    /**
+     * @test
+     */
+    public function setAndGetProxy(): void
+    {
+        $this->subject->setProxy('https://example.org/');
+
+        $actual = $this->subject->getProxy();
+
+        self::assertSame('https://example.org/', $actual);
+    }
+
+    /**
+     * @test
+     */
     public function initialDisabledIsFalse(): void
     {
         $actual = $this->subject->isDisabled();

@@ -82,6 +82,33 @@ Username
 Password
    The password to be used. It will be stored encrypted in the database.
 
+Timeout
+   .. versionadded:: 1.2.0
+
+   The maximum number of seconds to execute a request.
+
+   *Default:* `0`
+
+Verify TLS certificate
+   .. versionadded:: 1.2.0
+
+   The TLS certificate of the JobRouter® installation is checked when
+   connecting.
+
+   *Default:* activated
+
+   .. important::
+      This should only be disabled when connecting to a test or development
+      installation as this introduces security issues.
+
+Proxy URL
+   .. versionadded:: 1.2.0
+
+   Enter the URL when connecting through a proxy to the JobRouter® installation.
+
+   *Default:* (empty)
+
+
 Information
 -----------
 

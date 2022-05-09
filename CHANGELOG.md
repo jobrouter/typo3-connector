@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Configuration of connection options (#8)
+
 ### Removed
 - Compatibility with PHP 7.3
 
