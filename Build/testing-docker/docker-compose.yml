@@ -1,7 +1,7 @@
 version: '2.3'
 services:
   chrome:
-    image: selenium/standalone-chrome:95.0
+    image: selenium/standalone-chrome:101.0
     tmpfs:
       - /dev/shm:rw,nosuid,nodev,noexec,relatime
 
@@ -11,21 +11,6 @@ services:
       MYSQL_ROOT_PASSWORD: funcp
     tmpfs:
       - /var/lib/mysql/:rw,noexec,nosuid
-
-  mssql2019latest:
-    image: typo3/core-testing-mssql2019:latest
-    environment:
-      ACCEPT_EULA: Y
-      SA_PASSWORD: "Test1234!"
-      MSSQL_PID: Developer
-
-  postgres10:
-    image: postgres:10
-    environment:
-      POSTGRES_PASSWORD: funcp
-      POSTGRES_USER: ${HOST_USER}
-    tmpfs:
-      - /var/lib/postgresql/data:rw,noexec,nosuid
 
   web:
     image: typo3/core-testing-${DOCKER_PHP_IMAGE}:latest
@@ -53,7 +38,7 @@ services:
       "
 
   mockserver:
-    image: mockserver/mockserver:mockserver-5.11.2
+    image: mockserver/mockserver:mockserver-5.13.2
     ports:
       - 1080:1080
 
