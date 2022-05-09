@@ -41,7 +41,7 @@ Successfully tested with docker version 20.10.10-ce and docker-compose 1.25.0.
 
 Usage: $0 [options] [file]
 
-No arguments: Run all unit tests with PHP 7.4
+No arguments: Run all unit tests with PHP 8.1
 
 Options:
     -s <...>
@@ -65,9 +65,9 @@ Options:
             - postgres: use postgres
             - sqlite: use sqlite
 
-    -p <7.2|7.3|7.4|8.0>
+    -p <7.2|7.3|7.4|8.0|8.1>
         Specifies the PHP minor version to be used
-            - 7.4 (default): use PHP 7.4
+            - 8.1 (default): use PHP 8.1
 
     -e "<phpunit or codeception options>"
         Only with -s acceptance|functional|unit
@@ -99,11 +99,11 @@ Options:
         Show this help.
 
 Examples:
-    # Run unit tests using PHP 7.4
+    # Run unit tests using PHP 8.1
     ./Build/Scripts/runTests.sh
 
-    # Run unit tests using PHP 7.3
-    ./Build/Scripts/runTests.sh -p 7.3
+    # Run unit tests using PHP 7.4
+    ./Build/Scripts/runTests.sh -p 7.4
 EOF
 
 # Test if docker-compose exists, else exit out with error
@@ -124,7 +124,7 @@ cd ../testing-docker || exit 1
 ROOT_DIR=`readlink -f ${PWD}/../../`
 TEST_SUITE="unit"
 DBMS="mariadb"
-PHP_VERSION="7.4"
+PHP_VERSION="8.1"
 PHP_XDEBUG_ON=0
 PHP_XDEBUG_PORT=9000
 EXTRA_TEST_OPTIONS=""
