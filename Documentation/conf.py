@@ -15,7 +15,7 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
-import sphinx_typo3_theme
+import sphinx_rtd_theme
 
 
 # -- Project information -----------------------------------------------------
@@ -40,7 +40,6 @@ release = u'1.2.0-dev'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx_typo3_theme',
     'sphinx.ext.intersphinx',
 ]
 
@@ -77,7 +76,7 @@ pygments_style = None
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'sphinx_typo3_theme'
+html_theme = 'sphinx_rtd_theme'
 html_favicon = '_images/favicon.ico'
 
 # Theme options are theme-specific and customize the look and feel of a theme
