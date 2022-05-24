@@ -21,7 +21,7 @@ import sphinx_rtd_theme
 # -- Project information -----------------------------------------------------
 
 project = u'TYPO3 JobRouter Connector'
-copyright = u'2019-2022, Chris Müller'
+copyright = u'since 2019, Chris Müller'
 author = u'Chris Müller'
 
 # The short X.Y version
@@ -188,5 +188,5 @@ intersphinx_mapping = {
     'jobrouter-client': ('https://jobrouter-client.readthedocs.io/en/stable/', None),
     'typo3-jobrouter-data': ('https://typo3-jobrouter.readthedocs.io/projects/data/en/stable/', None),
     'typo3-jobrouter-process': ('https://typo3-jobrouter.readthedocs.io/projects/process/en/stable/', None),
-    't3gettingstarted': ('https://docs.typo3.org/m/typo3/tutorial-getting-started/11.5/en-us/', None),
+    't3start': ('https://docs.typo3.org/m/typo3/tutorial-getting-started/11.5/en-us/', None),
 }
