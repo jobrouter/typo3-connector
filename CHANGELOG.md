@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2022-05-27
+
 ### Added
 - Configuration of connection options (#8)
 
@@ -138,7 +140,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 Initial preview release
 
 
-[Unreleased]: https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.12.3...v1.0.0
 [0.12.3]: https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.12.2...v0.12.3
