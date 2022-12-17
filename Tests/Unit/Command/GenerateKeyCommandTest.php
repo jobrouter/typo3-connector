@@ -21,7 +21,7 @@ use Symfony\Component\Console\Tester\CommandTester;
 class GenerateKeyCommandTest extends TestCase
 {
     private CommandTester $commandTester;
-    private KeyGenerator & Stub $keyGeneratorStub;
+    private KeyGenerator&Stub $keyGeneratorStub;
 
     protected function setUp(): void
     {

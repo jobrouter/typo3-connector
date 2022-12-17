@@ -29,9 +29,9 @@ use TYPO3\CMS\Core\Localization\LanguageService;
  */
 final class ConnectionTestControllerTest extends TestCase
 {
-    private ConnectionRepository & Stub $connectionRepositoryStub;
-    private RestClientFactoryInterface & MockObject $restClientFactoryMock;
-    private ServerRequestInterface & Stub $requestStub;
+    private ConnectionRepository&Stub $connectionRepositoryStub;
+    private RestClientFactoryInterface&MockObject $restClientFactoryMock;
+    private ServerRequestInterface&Stub $requestStub;
     private ConnectionTestController $subject;
 
     protected function setUp(): void
