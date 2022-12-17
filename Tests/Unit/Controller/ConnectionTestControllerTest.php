@@ -29,18 +29,9 @@ use TYPO3\CMS\Core\Localization\LanguageService;
  */
 final class ConnectionTestControllerTest extends TestCase
 {
-    /**
-     * @var ConnectionRepository&Stub
-     */
-    private $connectionRepositoryStub;
-    /**
-     * @var RestClientFactoryInterface&MockObject
-     */
-    private MockObject $restClientFactoryMock;
-    /**
-     * @var ServerRequestInterface&Stub
-     */
-    private $requestStub;
+    private ConnectionRepository & Stub $connectionRepositoryStub;
+    private RestClientFactoryInterface & MockObject $restClientFactoryMock;
+    private ServerRequestInterface & Stub $requestStub;
     private ConnectionTestController $subject;
 
     protected function setUp(): void
@@ -239,6 +230,6 @@ final class ConnectionTestControllerTest extends TestCase
         $actual->getBody()->rewind();
         $contents = \json_decode($actual->getBody()->getContents(), true, 512, \JSON_THROW_ON_ERROR);
 
-        self::assertSame(1000, \strlen($contents['error']));
+        self::assertSame(1000, \strlen((string)$contents['error']));
     }
 }

@@ -30,21 +30,12 @@ final class ConnectionTestController
 {
     private const ERROR_MESSAGE_MAX_LENGTH = 1000;
 
-    private ConnectionRepository $connectionRepository;
-    private RestClientFactoryInterface $restClientFactory;
-    private ResponseFactoryInterface $responseFactory;
-    private StreamFactoryInterface $streamFactory;
-
     public function __construct(
-        ConnectionRepository $connectionRepository,
-        RestClientFactoryInterface $restClientFactory,
-        ResponseFactoryInterface $responseFactory,
-        StreamFactoryInterface $streamFactory
+        private readonly ConnectionRepository $connectionRepository,
+        private readonly RestClientFactoryInterface $restClientFactory,
+        private readonly ResponseFactoryInterface $responseFactory,
+        private readonly StreamFactoryInterface $streamFactory
     ) {
-        $this->connectionRepository = $connectionRepository;
-        $this->restClientFactory = $restClientFactory;
-        $this->responseFactory = $responseFactory;
-        $this->streamFactory = $streamFactory;
     }
 
     public function __invoke(ServerRequestInterface $request): ResponseInterface

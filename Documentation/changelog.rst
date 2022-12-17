@@ -16,6 +16,7 @@ Removed
 
 
 * Compatibility with TYPO3 v10 (#6)
+* Compatibility with PHP 7.4 and 8.0
 
 `1.2.0 <https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v1.1.0...v1.2.0>`_ - 2022-05-27
 -----------------------------------------------------------------------------------------------------------

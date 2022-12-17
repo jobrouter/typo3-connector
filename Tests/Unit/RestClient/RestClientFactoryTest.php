@@ -20,10 +20,7 @@ use PHPUnit\Framework\TestCase;
 
 final class RestClientFactoryTest extends TestCase
 {
-    /**
-     * @var Crypt&Stub
-     */
-    private $cryptServiceStub;
+    private Crypt & Stub $cryptServiceStub;
     private RestClientFactory $subject;
 
     protected function setUp(): void

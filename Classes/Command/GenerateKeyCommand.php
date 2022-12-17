@@ -26,11 +26,9 @@ final class GenerateKeyCommand extends Command
     private const EXIT_CODE_OK = 0;
     private const EXIT_CODE_KEY_GENERATION_ERROR = 1;
 
-    private KeyGenerator $keyGenerator;
-
-    public function __construct(KeyGenerator $keyGenerator)
-    {
-        $this->keyGenerator = $keyGenerator;
+    public function __construct(
+        private readonly KeyGenerator $keyGenerator
+    ) {
         parent::__construct();
     }
 

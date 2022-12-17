@@ -38,30 +38,18 @@ class BackendController extends ActionController
      * @var string
      */
     protected $defaultViewObjectName = BackendTemplateView::class;
-
-    private ConnectionRepository $connectionRepository;
-    private FileService $fileService;
-    private UriBuilder $routingUriBuilder;
-    private IconFactory $iconFactory;
     /**
      * @var ModuleTemplate
-     * @noRector
      */
     private $moduleTemplate;
-    private LanguageService $languageService;
 
     public function __construct(
-        ConnectionRepository $connectionRepository,
-        FileService $fileService,
-        UriBuilder $uriBuilder,
-        IconFactory $iconFactory,
-        LanguageService $languageService
+        private readonly ConnectionRepository $connectionRepository,
+        private readonly FileService $fileService,
+        private readonly UriBuilder $routingUriBuilder,
+        private readonly IconFactory $iconFactory,
+        private readonly LanguageService $languageService
     ) {
-        $this->connectionRepository = $connectionRepository;
-        $this->fileService = $fileService;
-        $this->routingUriBuilder = $uriBuilder;
-        $this->iconFactory = $iconFactory;
-        $this->languageService = $languageService;
     }
 
     /**
@@ -87,7 +75,7 @@ class BackendController extends ActionController
         try {
             $this->fileService->getAbsoluteKeyPath();
             $keyFileExists = true;
-        } catch (\RuntimeException $e) {
+        } catch (\RuntimeException) {
             $keyFileExists = false;
         }
 

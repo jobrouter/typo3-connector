@@ -15,13 +15,10 @@ use Brotkrueml\JobRouterConnector\Exception\KeyGenerationException;
 
 class KeyGenerator
 {
-    private Crypt $crypt;
-    private FileService $fileService;
-
-    public function __construct(Crypt $crypt, FileService $fileService)
-    {
-        $this->crypt = $crypt;
-        $this->fileService = $fileService;
+    public function __construct(
+        private readonly Crypt $crypt,
+        private readonly FileService $fileService
+    ) {
     }
 
     public function generateAndStoreKey(): void
@@ -56,7 +53,7 @@ class KeyGenerator
 
     private function writeKey(string $path, string $key): void
     {
-        \set_error_handler(static function (int $severity, string $message, string $file, int $line): void {
+        \set_error_handler(static function (int $severity, string $message, string $file, int $line): never {
             throw new \ErrorException($message, $severity, $severity, $file, $line);
         });
 

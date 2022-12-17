@@ -20,7 +20,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class Crypt implements SingletonInterface
 {
-    private FileService $fileService;
+    private readonly FileService $fileService;
 
     public function __construct(FileService $fileService = null)
     {

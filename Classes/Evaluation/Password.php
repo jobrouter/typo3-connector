@@ -20,7 +20,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 final class Password
 {
-    private Crypt $cryptService;
+    private readonly Crypt $cryptService;
 
     public function __construct(Crypt $crypt = null)
     {
@@ -34,7 +34,7 @@ final class Password
 
             // The password is already encrypted
             return $value;
-        } catch (CryptException $e) {
+        } catch (CryptException) {
             // Do nothing
         }
 
