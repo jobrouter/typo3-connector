@@ -61,9 +61,9 @@ trait ConnectionActions
         <cruser_id>1</cruser_id>
         <name>Some JobRouter Connection Name</name>
         <handle>some_connection_handle</handle>
-        <base_url>${baseUrl}</base_url>
+        <base_url>{$baseUrl}</base_url>
         <username>john.doe</username>
-        <password>${encryptedPassword}</password>
+        <password>{$encryptedPassword}</password>
         <timeout>0</timeout>
         <verify>{$verify}</verify>
         <proxy></proxy>
