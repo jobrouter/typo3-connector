@@ -10,7 +10,6 @@
 /.phive export-ignore
 /.phpstorm.meta.php export-ignore
 /.readthedocs.yml export-ignore
-/captainhook.json export-ignore
 /ecs.php export-ignore
 /Makefile export-ignore
 /phpstan.neon export-ignore
