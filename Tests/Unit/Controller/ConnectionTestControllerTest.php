@@ -36,7 +36,7 @@ final class ConnectionTestControllerTest extends TestCase
     /**
      * @var RestClientFactoryInterface&MockObject
      */
-    private $restClientFactoryMock;
+    private MockObject $restClientFactoryMock;
     /**
      * @var ServerRequestInterface&Stub
      */

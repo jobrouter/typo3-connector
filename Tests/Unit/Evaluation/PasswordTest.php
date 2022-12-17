@@ -24,7 +24,7 @@ class PasswordTest extends TestCase
     /**
      * @var MockObject&Crypt
      */
-    private $cryptMock;
+    private MockObject $cryptMock;
 
     protected function setUp(): void
     {

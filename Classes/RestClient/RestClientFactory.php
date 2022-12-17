@@ -86,9 +86,6 @@ final class RestClientFactory implements RestClientFactoryInterface
         return $client;
     }
 
-    /**
-     * @norector Rector\Php56\Rector\FunctionLike\AddDefaultValueForUndefinedVariableRector
-     */
     private function getUserAgentAddition(): string
     {
         if ($this->version === '') {

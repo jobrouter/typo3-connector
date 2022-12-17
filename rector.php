@@ -10,7 +10,6 @@ use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\PostRector\Rector\NameImportingPostRector;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
-use Rector\TypeDeclaration\Rector\FunctionLike\ReturnTypeDeclarationRector;
 
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->phpVersion(PhpVersion::PHP_74);
@@ -38,15 +37,12 @@ return static function (RectorConfig $rectorConfig): void {
         __DIR__ . '/Tests',
     ]);
     $rectorConfig->importNames();
-    $rectorConfig->disableImportShortClasses();
+    $rectorConfig->importShortClasses(false);
     $rectorConfig->skip([
         __DIR__ . '/Tests/Acceptance/*',
         AddLiteralSeparatorToNumberRector::class,
         NameImportingPostRector::class => [
             __DIR__ . '/Configuration/TCA/*',
-        ],
-        ReturnTypeDeclarationRector::class => [
-            __DIR__ . '/Classes/Domain/Repository/ConnectionRepository.php',
         ],
         RemoveUnusedPromotedPropertyRector::class, // Skip until compatibility with PHP >= 8.0
     ]);
