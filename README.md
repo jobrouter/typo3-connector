@@ -11,7 +11,12 @@ platform which links processes, data and documents.
 The TYPO3 JobRouter Connector is a base extension for defining
 connections from TYPO3 to JobRouter®.
 
-The extension supports TYPO3 v10 LTS and TYPO3 v11 LTS.
+## Versions and support
+
+| Latest release | TYPO3       | PHP   | Updates will contain                     |
+|----------------|-------------|-------|------------------------------------------|
+| 2.x            | 11.5        | ≥ 7.4 | In development                           |
+| 1.x            | 10.4 - 11.5 | ≥ 7.4 | Security fixes (EOL expected April 2023) |
 
 [Documentation](https://typo3-jobrouter.readthedocs.io/projects/connector/) |
 [Translation](https://crowdin.com/project/typo3-extension-jobrouterconne) |

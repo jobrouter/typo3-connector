@@ -19,12 +19,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php-versions:
-          - '7.4'
-        typo3-versions:
-          - '^10'
-          - '^11'
         include:
+          - php-versions: '7.4'
+            typo3-versions: '^11'
           - php-versions: '8.0'
             typo3-versions: '^11'
           - php-versions: '8.1'
@@ -66,7 +63,7 @@ jobs:
       matrix:
         include:
           - php-versions: '7.4'
-            typo3-versions: '10'
+            typo3-versions: '11'
           - php-versions: '8.1'
             typo3-versions: '11'
     steps:

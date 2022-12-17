@@ -19,7 +19,9 @@ Target group: **Administrators**
 Requirements
 ============
 
-The extension is available for TYPO3 v10 LTS and TYPO3 v11 LTS.
+.. note::
+   The extension in version |release| supports TYPO3 v11 LTS and requires at
+   least PHP 7.4.
 
 In addition to the TYPO3 requirements this extension needs the following PHP
 extensions: `curl` and `sodium`.
@@ -33,11 +35,13 @@ Version matrix
 =================== ========== ===========
 JobRouter Connector PHP        TYPO3
 =================== ========== ===========
-1.0                 7.2 - 7.4  10.4
+2.0                 7.4 - 8.1  11.5
+------------------- ---------- -----------
+1.2                 7.4 - 8.1  10.4 / 11.5
 ------------------- ---------- -----------
 1.1                 7.3 - 8.1  10.4 / 11.5
 ------------------- ---------- -----------
-1.2                 7.4 - 8.1  10.4 / 11.5
+1.0                 7.2 - 7.4  10.4
 =================== ========== ===========
 
 
