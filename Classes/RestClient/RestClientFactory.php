@@ -27,7 +27,7 @@ use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 
 final class RestClientFactory implements RestClientFactoryInterface
 {
-    private string $version = '';
+    private string $extensionVersion = '';
 
     public function __construct(
         private readonly Crypt $cryptService
@@ -85,13 +85,13 @@ final class RestClientFactory implements RestClientFactoryInterface
 
     private function getUserAgentAddition(): string
     {
-        if ($this->version === '') {
-            $this->version = ExtensionManagementUtility::getExtensionVersion(Extension::KEY);
+        if ($this->extensionVersion === '') {
+            $this->extensionVersion = ExtensionManagementUtility::getExtensionVersion(Extension::KEY);
         }
 
         return \sprintf(
             'TYPO3-JobRouter-Connector/%s (https://extensions.typo3.org/extension/jobrouter_connector)',
-            $this->version
+            $this->extensionVersion
         );
     }
 
