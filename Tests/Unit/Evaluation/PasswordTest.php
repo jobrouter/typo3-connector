@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace Brotkrueml\JobRouterConnector\Tests\Unit\Evaluation;
 
 use Brotkrueml\JobRouterConnector\Evaluation\Password;
-use Brotkrueml\JobRouterConnector\Exception\CryptException;
 use Brotkrueml\JobRouterConnector\Service\Crypt;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -36,40 +35,24 @@ class PasswordTest extends TestCase
     /**
      * @test
      */
-    public function evaluateFieldValueReturnsSameEncryptedValueIfItsAlreadyEncrypted(): void
+    public function evaluateFieldValueReturnsObfuscatedValueWhenAlreadyObfuscated(): void
     {
-        $encryptedValue = 'encrypted-value';
+        $value = Password::OBFUSCATED_VALUE;
 
-        $this->cryptMock
-            ->expects(self::once())
-            ->method('decrypt')
-            ->with($encryptedValue);
+        $actual = $this->subject->evaluateFieldValue($value);
 
-        $this->cryptMock
-            ->expects(self::never())
-            ->method('encrypt');
-
-        $actual = $this->subject->evaluateFieldValue($encryptedValue);
-
-        self::assertSame($encryptedValue, $actual);
+        self::assertSame($value, $actual);
     }
 
     /**
      * @test
      */
-    public function evaluateFieldValueWithClearTextValueReturnsEncryptedValue(): void
+    public function evaluateFieldValueWithValueNotObfuscatedReturnsEncryptedValue(): void
     {
         $encryptedValue = 'encrypted-value';
         $cleartextValue = 'cleartext-value';
 
         $this->cryptMock
-            ->expects(self::once())
-            ->method('decrypt')
-            ->with($cleartextValue)
-            ->willThrowException(new CryptException());
-
-        $this->cryptMock
-            ->expects(self::once())
             ->method('encrypt')
             ->with($cleartextValue)
             ->willReturn($encryptedValue);
@@ -77,5 +60,29 @@ class PasswordTest extends TestCase
         $actual = $this->subject->evaluateFieldValue($cleartextValue);
 
         self::assertSame($encryptedValue, $actual);
+    }
+
+    /**
+     * @test
+     */
+    public function deevaluateFieldValueReturnsEmptyStringWhenGivenValueIsEmptyString(): void
+    {
+        $actual = $this->subject->deevaluateFieldValue([
+            'value' => '',
+        ]);
+
+        self::assertSame('', $actual);
+    }
+
+    /**
+     * @test
+     */
+    public function deevaluateFieldValueReturnsObfuscatedValueWhenGivenValueIsNotEmpty(): void
+    {
+        $actual = $this->subject->deevaluateFieldValue([
+            'value' => 'some value',
+        ]);
+
+        self::assertSame(Password::OBFUSCATED_VALUE, $actual);
     }
 }

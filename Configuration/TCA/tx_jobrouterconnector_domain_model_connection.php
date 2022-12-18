@@ -85,7 +85,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim,nospace,password,' . \Brotkrueml\JobRouterConnector\Evaluation\Password::class,
+                'eval' => 'trim,nospace,' . \Brotkrueml\JobRouterConnector\Evaluation\Password::class,
                 'required' => true,
             ],
         ],

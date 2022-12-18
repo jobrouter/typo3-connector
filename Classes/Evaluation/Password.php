@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace Brotkrueml\JobRouterConnector\Evaluation;
 
-use Brotkrueml\JobRouterConnector\Exception\CryptException;
 use Brotkrueml\JobRouterConnector\Service\Crypt;
 
 /**
@@ -19,6 +18,8 @@ use Brotkrueml\JobRouterConnector\Service\Crypt;
  */
 final class Password
 {
+    public const OBFUSCATED_VALUE = '********';
+
     public function __construct(
         private readonly Crypt $cryptService
     ) {
@@ -26,15 +27,22 @@ final class Password
 
     public function evaluateFieldValue(string $value): string
     {
-        try {
-            $this->cryptService->decrypt($value);
-
-            // The password is already encrypted
+        if ($value === self::OBFUSCATED_VALUE) {
             return $value;
-        } catch (CryptException) {
-            // Do nothing
         }
 
         return $this->cryptService->encrypt($value);
+    }
+
+    /**
+     * @param array{value: string} $parameters
+     */
+    public function deevaluateFieldValue(array $parameters): string
+    {
+        if ($parameters['value'] === '') {
+            return '';
+        }
+
+        return self::OBFUSCATED_VALUE;
     }
 }

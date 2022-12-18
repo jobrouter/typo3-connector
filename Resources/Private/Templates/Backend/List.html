@@ -16,7 +16,7 @@
             <f:else>
                 <f:be.infobox state="-1" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:connections_not_found.title')}">
                     <p><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:connections_not_found.message"/></p>
-                    <be:link.newRecord class="btn btn-primary" table="tx_jobrouterconnector_domain_model_connection">
+                    <be:link.newRecord class="btn btn-primary" table="tx_jobrouterconnector_domain_model_connection" returnUrl="{f:be.uri(route: 'jobrouter_connections')}">
                         <f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:connection_create"/>
                     </be:link.newRecord>
                 </f:be.infobox>
@@ -51,7 +51,12 @@
             <f:for each="{connections}" as="connection">
                 <tr>
                     <td id="jobrouter-connection-list-name-{connection.uid}">
-                        <be:link.editRecord table="tx_jobrouterconnector_domain_model_connection" uid="{connection.uid}" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.edit_connection')}">
+                        <be:link.editRecord
+                            table="tx_jobrouterconnector_domain_model_connection"
+                            uid="{connection.uid}"
+                            title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.edit_connection')}"
+                            returnUrl="{f:be.uri(route: 'jobrouter_connections')}"
+                        >
                             {connection.name}
                             <f:if condition="{connection.disabled}">
                                 ({f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:status.disabled')})
@@ -70,7 +75,14 @@
                     <td id="jobrouter-connection-list-version-{connection.uid}">{connection.jobrouterVersion}</td>
                     <td>
                         <div class="btn-group">
-                            <be:link.editRecord id="jobrouter-connection-list-edit-{connection.uid}" class="btn btn-default" table="tx_jobrouterconnector_domain_model_connection" uid="{connection.uid}" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.edit_connection')}">
+                            <be:link.editRecord
+                                id="jobrouter-connection-list-edit-{connection.uid}"
+                                class="btn btn-default"
+                                table="tx_jobrouterconnector_domain_model_connection"
+                                uid="{connection.uid}"
+                                title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.edit_connection')}"
+                                returnUrl="{f:be.uri(route: 'jobrouter_connections')}"
+                            >
                                 <core:icon identifier="actions-open"/>
                             </be:link.editRecord>
                             <a id="jobrouter-connection-list-check-{connection.uid}" class="btn btn-default jobrouter-connection-check" data-connection-uid="{connection.uid}" data-connection-name="{connection.name}" href="#" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.check_connection')}">

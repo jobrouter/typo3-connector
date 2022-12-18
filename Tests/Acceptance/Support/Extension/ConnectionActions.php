@@ -17,6 +17,7 @@ use Brotkrueml\JobRouterConnector\Service\FileService;
 use Brotkrueml\JobRouterConnector\Service\KeyGenerator;
 use Psr\Http\Client\ClientInterface;
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Http\Client\GuzzleClientFactory;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Http\Stream;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -58,7 +59,6 @@ trait ConnectionActions
 		<pid>0</pid>
         <crdate>1603481421</crdate>
 		<tstamp>1603481421</tstamp>
-        <cruser_id>1</cruser_id>
         <name>Some JobRouter Connection Name</name>
         <handle>some_connection_handle</handle>
         <base_url>{$baseUrl}</base_url>
@@ -108,7 +108,7 @@ EOT;
         $content->write(\json_encode($body));
 
         $expectationUrl = \rtrim($mockServerBaseUrl, '/') . '/mockserver/expectation';
-        $request = (new RequestFactory())
+        $request = (new RequestFactory(new GuzzleClientFactory()))
             ->createRequest('PUT', $expectationUrl)
             ->withBody($content);
 
