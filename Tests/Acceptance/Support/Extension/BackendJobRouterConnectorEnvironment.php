@@ -36,8 +36,8 @@ class BackendJobRouterConnectorEnvironment extends BackendEnvironment
         'testExtensionsToLoad' => [
             'typo3conf/ext/jobrouter_connector',
         ],
-        'xmlDatabaseFixtures' => [
-            'PACKAGE:typo3/testing-framework/Resources/Core/Acceptance/Fixtures/be_users.xml',
+        'csvDatabaseFixtures' => [
+            __DIR__ . '/../../Fixtures/be_users.csv',
         ],
     ];
 }
