@@ -11,6 +11,12 @@ and this project adheres to `Semantic Versioning <https://semver.org/spec/v2.0.0
 `Unreleased <https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v1.2.0...HEAD>`_
 -------------------------------------------------------------------------------------------------
 
+Changed
+^^^^^^^
+
+
+* JobRouter Client in version 2 is required
+
 Removed
 ^^^^^^^
 

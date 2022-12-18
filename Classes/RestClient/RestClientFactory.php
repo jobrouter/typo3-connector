@@ -67,17 +67,16 @@ final class RestClientFactory implements RestClientFactoryInterface
             $decryptedPassword
         );
 
-        $configuration = $configuration->withUserAgentAddition($userAgentAddition ?? $this->getUserAgentAddition());
-
-        $configuration = $configuration->withClientOptions(
-            new ClientOptions(false, 5, $connection->getTimeout(), $connection->isVerify(), $connection->getProxy())
-        );
-
+        $configuration = $configuration
+            ->withUserAgentAddition($userAgentAddition ?? $this->getUserAgentAddition())
+            ->withClientOptions(
+                new ClientOptions(false, 5, $connection->getTimeout(), $connection->isVerify(), $connection->getProxy())
+            );
         if ($lifetime) {
             $configuration = $configuration->withLifetime($lifetime);
         }
 
-        $client = new RestClient($configuration);
+        $client = (new RestClient($configuration))->authenticate();
 
         $this->updateJobRouterVersion($client, $connection);
 
