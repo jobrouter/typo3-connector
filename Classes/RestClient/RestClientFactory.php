@@ -27,13 +27,11 @@ use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 
 final class RestClientFactory implements RestClientFactoryInterface
 {
-    private readonly Crypt $cryptService;
     private string $version = '';
 
-    public function __construct(Crypt $cryptService = null)
-    {
-        // @todo For backwards compatibility the Crypt service is optional, must be always injected for version 2.0+
-        $this->cryptService = $cryptService ?? new Crypt();
+    public function __construct(
+        private readonly Crypt $cryptService
+    ) {
     }
 
     /**
@@ -93,7 +91,7 @@ final class RestClientFactory implements RestClientFactoryInterface
         }
 
         return \sprintf(
-            'TYPO3-JobRouter-Connector/%s (https://typo3-jobrouter.rtfd.io/projects/connector/)',
+            'TYPO3-JobRouter-Connector/%s (https://extensions.typo3.org/extension/jobrouter_connector)',
             $this->version
         );
     }
