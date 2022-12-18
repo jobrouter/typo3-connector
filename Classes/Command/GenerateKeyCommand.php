@@ -23,9 +23,6 @@ use Symfony\Component\Console\Style\SymfonyStyle;
  */
 final class GenerateKeyCommand extends Command
 {
-    private const EXIT_CODE_OK = 0;
-    private const EXIT_CODE_KEY_GENERATION_ERROR = 1;
-
     public function __construct(
         private readonly KeyGenerator $keyGenerator
     ) {
@@ -41,11 +38,11 @@ final class GenerateKeyCommand extends Command
         } catch (KeyGenerationException $e) {
             $outputStyle->error($e->getMessage());
 
-            return self::EXIT_CODE_KEY_GENERATION_ERROR;
+            return self::FAILURE;
         }
 
         $outputStyle->success('Key was generated successfully');
 
-        return self::EXIT_CODE_OK;
+        return self::SUCCESS;
     }
 }
