@@ -43,7 +43,7 @@
 		"saschaegerer/phpstan-typo3": "^1.8",
 		"symfony/yaml": "^5.4 || ^6.0",
 		"symplify/phpstan-rules": "^11.1",
-		"typo3/testing-framework": "^6.16"
+		"typo3/testing-framework": "^7.0@dev"
 	},
 	"suggest": {
 		"brotkrueml/typo3-jobrouter-data": "Connect JobRouter® JobData tables with TYPO3",
@@ -79,10 +79,5 @@
 			"extension-key": "jobrouter_connector",
 			"web-dir": ".Build/Web"
 		}
-	},
-	"scripts": {
-		"post-autoload-dump": [
-			"TYPO3\\TestingFramework\\Composer\\ExtensionTestEnvironment::prepare"
-		]
 	}
 }
