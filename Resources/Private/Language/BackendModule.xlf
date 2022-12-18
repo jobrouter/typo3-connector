@@ -18,7 +18,7 @@
 			</trans-unit>
 
 			<trans-unit id="action.add_connection" resname="action.add_connection">
-				<source><![CDATA[Add connection record]]></source>
+				<source><![CDATA[Add connection]]></source>
 			</trans-unit>
 			<trans-unit id="action.check_connection" resname="action.check_connection">
 				<source><![CDATA[Check connection]]></source>

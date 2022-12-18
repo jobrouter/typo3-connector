@@ -40,8 +40,8 @@ screen:
 Create a connection
 ===================
 
-To create a new connection, click on the :guilabel:`+` button in the upper menu
-bar, which displays a form:
+To create a new connection, click on the :guilabel:`+ Add connection` button in
+the upper menu bar, which displays a form:
 
 .. figure:: _images/create-connection.png
    :alt: Create a connection

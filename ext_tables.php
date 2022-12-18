@@ -1,35 +1,39 @@
 <?php
 
+use Brotkrueml\JobRouterConnector\Controller\ConnectionListController;
+use Brotkrueml\JobRouterConnector\Evaluation\Password;
+use Brotkrueml\JobRouterConnector\Extension;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+
 defined('TYPO3') || die();
 
 // Register "JobRouter" module group
-TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addModule(
+ExtensionManagementUtility::addModule(
     'jobrouter',
     '',
     'before:tools',
     null,
     [
         'iconIdentifier' => 'jobrouter-modulegroup',
-        'labels' => 'LLL:EXT:' . Brotkrueml\JobRouterConnector\Extension::KEY . '/Resources/Private/Language/BackendModuleGroup.xlf',
+        'labels' => 'LLL:EXT:' . Extension::KEY . '/Resources/Private/Language/BackendModuleGroup.xlf',
     ]
 );
 
-// Register "Connections" module
-TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
-    'JobRouterConnector',
+// Add "Connections" module
+ExtensionManagementUtility::addModule(
     'jobrouter',
     'connections',
+    'top',
     '',
     [
-        Brotkrueml\JobRouterConnector\Controller\BackendController::class => 'list',
-    ],
-    [
+        'routeTarget' => ConnectionListController::class . '::handleRequest',
         'access' => 'admin',
+        'name' => Extension::MODULE_NAME,
         'iconIdentifier' => 'jobrouter-module-connector',
-        'labels' => Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_BACKEND_MODULE,
+        'labels' => Extension::LANGUAGE_PATH_BACKEND_MODULE,
         'workspaces' => 'online',
     ]
 );
 
 // Add validation call for form field connection password
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tce']['formevals'][Brotkrueml\JobRouterConnector\Evaluation\Password::class] = '';
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tce']['formevals'][Password::class] = '';

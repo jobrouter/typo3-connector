@@ -15,7 +15,7 @@ use Brotkrueml\JobRouterConnector\Tests\Acceptance\Support\BackendTester;
 
 class ConnectionsModuleCest
 {
-    private const CONNECTOR_MODULE_SELECTOR = '#jobrouter_JobRouterConnectorConnections';
+    private const CONNECTOR_MODULE_SELECTOR = '#jobrouter_connections';
     private const MOCKSERVER_BASE_URL = 'http://mockserver:1080/';
 
     public function _before(BackendTester $I): void

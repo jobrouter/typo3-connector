@@ -4,91 +4,87 @@
     xmlns:be="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
     data-namespace-typo3-fluid="true"
 >
-    <f:layout name="BackendAdministration" />
 
-    <f:section name="headline">
-        <h1><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:heading_text"/></h1>
-    </f:section>
+<h1><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:heading_text"/></h1>
 
-    <f:section name="content">
-        <f:if condition="{keyFileExists}">
+<f:if condition="{keyFileExists}">
+    <f:then>
+        <f:if condition="{connections -> f:count()}">
             <f:then>
-                <f:if condition="{connections -> f:count()}">
-                    <f:then>
-                        <f:render section="table" arguments="{_all}" />
-                    </f:then>
-                    <f:else>
-                        <f:be.infobox state="-1" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:connections_not_found.title')}">
-                            <p><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:connections_not_found.message"/></p>
-                            <be:link.newRecord class="btn btn-primary" table="tx_jobrouterconnector_domain_model_connection">
-                                <f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:connection_create"/>
-                            </be:link.newRecord>
-                        </f:be.infobox>
-                    </f:else>
-                </f:if>
+                <f:render section="table" arguments="{_all}" />
             </f:then>
             <f:else>
-                <f:be.infobox state="2" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:keyfile_not_exists.title')}">
-                    <p><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:keyfile_not_exists.message"/></p>
+                <f:be.infobox state="-1" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:connections_not_found.title')}">
+                    <p><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:connections_not_found.message"/></p>
+                    <be:link.newRecord class="btn btn-primary" table="tx_jobrouterconnector_domain_model_connection">
+                        <f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:connection_create"/>
+                    </be:link.newRecord>
                 </f:be.infobox>
             </f:else>
         </f:if>
-        <p class="text-right">
-            <f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:client_version"/>:
-            {clientVersion}
-        </p>
-    </f:section>
+    </f:then>
+    <f:else>
+        <f:be.infobox state="2" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:keyfile_not_exists.title')}">
+            <p><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:keyfile_not_exists.message"/></p>
+        </f:be.infobox>
+    </f:else>
+</f:if>
+<p class="text-right">
+    <f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:client_version"/>:
+    {clientVersion}
+</p>
 
-    <f:section name="table">
-        <table class="table table-striped table-hover">
-            <thead>
+<f:section name="table">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.name"/></th>
+                <th scope="col"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.handle"/></th>
+                <th scope="col"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.base_url"/></th>
+                <th scope="col"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.username"/></th>
+                <th scope="col" class="text-center"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.verify"/></th>
+                <th scope="col"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.jobrouter_version"/></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody id="jobrouter-connection-list">
+            <f:for each="{connections}" as="connection">
                 <tr>
-                    <th scope="col"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.name"/></th>
-                    <th scope="col"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.handle"/></th>
-                    <th scope="col"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.base_url"/></th>
-                    <th scope="col"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.username"/></th>
-                    <th scope="col" class="text-center"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.verify"/></th>
-                    <th scope="col"><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf:tx_jobrouterconnector_domain_model_connection.jobrouter_version"/></th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody id="jobrouter-connection-list">
-                <f:for each="{connections}" as="connection">
-                    <tr>
-                        <td id="jobrouter-connection-list-name-{connection.uid}">
-                            <be:link.editRecord table="tx_jobrouterconnector_domain_model_connection" uid="{connection.uid}" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.edit_connection')}">
-                                {connection.name}
-                                <f:if condition="{connection.disabled}">
-                                    ({f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:status.disabled')})
-                                </f:if>
-                            </be:link.editRecord>
-                        </td>
-                        <td id="jobrouter-connection-list-handle-{connection.uid}">{connection.handle}</td>
-                        <td id="jobrouter-connection-list-baseurl-{connection.uid}"><f:link.external uri="{connection.baseUrl}" target="_blank" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.open_jobrouter_system')}" rel="noreferrer">{connection.baseUrl}</f:link.external></td>
-                        <td id="jobrouter-connection-list-username-{connection.uid}">{connection.username}</td>
-                        <td id="jobrouter-connection-list-verify-{connection.uid}" class="text-center">
-                            <f:if condition="{connection.verify}">
-                                <f:then><core:icon identifier="actions-check"/></f:then>
-                                <f:else><core:icon identifier="actions-close"/></f:else>
+                    <td id="jobrouter-connection-list-name-{connection.uid}">
+                        <be:link.editRecord table="tx_jobrouterconnector_domain_model_connection" uid="{connection.uid}" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.edit_connection')}">
+                            {connection.name}
+                            <f:if condition="{connection.disabled}">
+                                ({f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:status.disabled')})
                             </f:if>
-                        </td>
-                        <td id="jobrouter-connection-list-version-{connection.uid}">{connection.jobrouterVersion}</td>
-                        <td>
-                            <div class="btn-group">
-                                <be:link.editRecord id="jobrouter-connection-list-edit-{connection.uid}" class="btn btn-default" table="tx_jobrouterconnector_domain_model_connection" uid="{connection.uid}" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.edit_connection')}">
-                                    <core:icon identifier="actions-open"/>
-                                </be:link.editRecord>
-                                <a id="jobrouter-connection-list-check-{connection.uid}" class="btn btn-default jobrouter-connection-check" data-connection-uid="{connection.uid}" data-connection-name="{connection.name}" href="#" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.check_connection')}">
-                                    <core:icon identifier="actions-debug"/>
-                                </a>
-                                <f:link.external id="jobrouter-connection-list-open-{connection.uid}" class="btn btn-default" uri="{connection.baseUrl}" target="_blank" rel="noreferrer" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.open_jobrouter_system')}">
-                                    <core:icon identifier="actions-window-open" />
-                                </f:link.external>
-                            </div>
-                        </td>
-                    </tr>
-                </f:for>
-            </tbody>
-        </table>
-    </f:section>
+                        </be:link.editRecord>
+                    </td>
+                    <td id="jobrouter-connection-list-handle-{connection.uid}">{connection.handle}</td>
+                    <td id="jobrouter-connection-list-baseurl-{connection.uid}"><f:link.external uri="{connection.baseUrl}" target="_blank" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.open_jobrouter_system')}" rel="noreferrer">{connection.baseUrl}</f:link.external></td>
+                    <td id="jobrouter-connection-list-username-{connection.uid}">{connection.username}</td>
+                    <td id="jobrouter-connection-list-verify-{connection.uid}" class="text-center">
+                        <f:if condition="{connection.verify}">
+                            <f:then><core:icon identifier="actions-check"/></f:then>
+                            <f:else><core:icon identifier="actions-close"/></f:else>
+                        </f:if>
+                    </td>
+                    <td id="jobrouter-connection-list-version-{connection.uid}">{connection.jobrouterVersion}</td>
+                    <td>
+                        <div class="btn-group">
+                            <be:link.editRecord id="jobrouter-connection-list-edit-{connection.uid}" class="btn btn-default" table="tx_jobrouterconnector_domain_model_connection" uid="{connection.uid}" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.edit_connection')}">
+                                <core:icon identifier="actions-open"/>
+                            </be:link.editRecord>
+                            <a id="jobrouter-connection-list-check-{connection.uid}" class="btn btn-default jobrouter-connection-check" data-connection-uid="{connection.uid}" data-connection-name="{connection.name}" href="#" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.check_connection')}">
+                                <core:icon identifier="actions-debug"/>
+                            </a>
+                            <f:link.external id="jobrouter-connection-list-open-{connection.uid}" class="btn btn-default" uri="{connection.baseUrl}" target="_blank" rel="noreferrer" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.open_jobrouter_system')}">
+                                <core:icon identifier="actions-window-open" />
+                            </f:link.external>
+                        </div>
+                    </td>
+                </tr>
+            </f:for>
+        </tbody>
+    </table>
+</f:section>
+
 </html>

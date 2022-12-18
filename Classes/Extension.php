@@ -18,7 +18,7 @@ final class Extension
 {
     public const KEY = 'jobrouter_connector';
 
-    public const MODULE_GROUP = 'jobrouter';
+    public const MODULE_NAME = 'jobrouter_connections';
 
     private const LANGUAGE_PATH = 'LLL:EXT:' . self::KEY . '/Resources/Private/Language/';
     public const LANGUAGE_PATH_BACKEND_MODULE = self::LANGUAGE_PATH . 'BackendModule.xlf';

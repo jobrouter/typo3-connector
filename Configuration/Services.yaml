@@ -11,6 +11,9 @@ services:
   Brotkrueml\JobRouterConnector\Utility\FileUtility:
     public: true
 
+  Brotkrueml\JobRouterConnector\Controller\ConnectionListController:
+    tags: [ 'backend.controller' ]
+
   Brotkrueml\JobRouterConnector\Controller\ConnectionTestController:
     tags: [ 'backend.controller' ]
 
