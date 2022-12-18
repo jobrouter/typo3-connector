@@ -13,18 +13,15 @@ namespace Brotkrueml\JobRouterConnector\Evaluation;
 
 use Brotkrueml\JobRouterConnector\Exception\CryptException;
 use Brotkrueml\JobRouterConnector\Service\Crypt;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * @internal
  */
 final class Password
 {
-    private readonly Crypt $cryptService;
-
-    public function __construct(Crypt $crypt = null)
-    {
-        $this->cryptService = $crypt ?? GeneralUtility::makeInstance(Crypt::class);
+    public function __construct(
+        private readonly Crypt $cryptService
+    ) {
     }
 
     public function evaluateFieldValue(string $value): string

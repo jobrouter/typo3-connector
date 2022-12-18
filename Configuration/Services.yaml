@@ -20,3 +20,6 @@ services:
         command: 'jobrouter:connector:generatekey'
         description: 'Generates a random key for encrypting and decrypting connection passwords'
         schedulable: false
+
+  Brotkrueml\JobRouterConnector\Evaluation\Password:
+    public: true
