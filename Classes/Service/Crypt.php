@@ -12,19 +12,15 @@ declare(strict_types=1);
 namespace Brotkrueml\JobRouterConnector\Service;
 
 use Brotkrueml\JobRouterConnector\Exception\CryptException;
-use TYPO3\CMS\Core\SingletonInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * @internal
  */
-class Crypt implements SingletonInterface
+class Crypt
 {
-    private readonly FileService $fileService;
-
-    public function __construct(FileService $fileService = null)
-    {
-        $this->fileService = $fileService ?? GeneralUtility::makeInstance(FileService::class);
+    public function __construct(
+        private readonly FileService $fileService
+    ) {
     }
 
     public function encrypt(string $value): string

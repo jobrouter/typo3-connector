@@ -17,6 +17,9 @@ use Brotkrueml\JobRouterConnector\Service\FileService;
 use org\bovigo\vfs\vfsStream;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @covers \Brotkrueml\JobRouterConnector\Service\Crypt
+ */
 class CryptTest extends TestCase
 {
     private ?Crypt $subject = null;
@@ -31,7 +34,7 @@ class CryptTest extends TestCase
      */
     public function generateKeyReturnsAKey(): void
     {
-        $subject = new Crypt();
+        $subject = new Crypt(new FileService());
 
         $actual = $subject->generateKey();
         $actualBase64Decoded = \base64_decode($actual);
