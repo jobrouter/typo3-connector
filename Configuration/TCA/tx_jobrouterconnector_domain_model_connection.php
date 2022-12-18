@@ -46,7 +46,8 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'max' => 255,
-                'eval' => 'required,trim',
+                'eval' => 'trim',
+                'required' => true,
             ],
         ],
         'handle' => [
@@ -55,7 +56,8 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'max' => 30,
-                'eval' => 'alphanum_x,required,trim,unique',
+                'eval' => 'alphanum_x,trim,unique',
+                'required' => true,
             ],
         ],
         'base_url' => [
@@ -64,7 +66,8 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'max' => 255,
-                'eval' => 'nospace,required',
+                'eval' => 'trim,nospace',
+                'required' => true,
             ],
         ],
         'username' => [
@@ -73,7 +76,8 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'max' => 50,
-                'eval' => 'nospace,required',
+                'eval' => 'trim,nospace',
+                'required' => true,
             ],
         ],
         'password' => [
@@ -81,7 +85,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'nospace,password,required,' . \Brotkrueml\JobRouterConnector\Evaluation\Password::class,
+                'eval' => 'trim,nospace,password,' . \Brotkrueml\JobRouterConnector\Evaluation\Password::class,
+                'required' => true,
             ],
         ],
         'timeout' => [
