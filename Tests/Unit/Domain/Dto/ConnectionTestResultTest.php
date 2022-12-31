@@ -9,9 +9,9 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\JobRouterConnector\Tests\Unit\Domain\Entity;
+namespace Brotkrueml\JobRouterConnector\Tests\Unit\Domain\Dto;
 
-use Brotkrueml\JobRouterConnector\Domain\Entity\ConnectionTestResult;
+use Brotkrueml\JobRouterConnector\Domain\Dto\ConnectionTestResult;
 use PHPUnit\Framework\TestCase;
 
 final class ConnectionTestResultTest extends TestCase

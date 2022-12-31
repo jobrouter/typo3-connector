@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Brotkrueml\JobRouterConnector\Controller;
 
 use Brotkrueml\JobRouterClient\Exception\HttpException;
-use Brotkrueml\JobRouterConnector\Domain\Entity\ConnectionTestResult;
+use Brotkrueml\JobRouterConnector\Domain\Dto\ConnectionTestResult;
 use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
 use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
 use Brotkrueml\JobRouterConnector\Extension;
