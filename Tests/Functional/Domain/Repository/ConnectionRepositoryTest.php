@@ -72,6 +72,30 @@ final class ConnectionRepositoryTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function findByUidReturnsRecord(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/../../Fixtures/tx_jobrouterconnector_domain_model_connection.csv');
+
+        $actual = $this->subject->findByUid(1);
+
+        self::assertSame(1, $actual->uid);
+    }
+
+    /**
+     * @test
+     */
+    public function findByUidWithDisabledRecordThrowsException(): void
+    {
+        $this->expectException(ConnectionNotFoundException::class);
+
+        $this->importCSVDataSet(__DIR__ . '/../../Fixtures/tx_jobrouterconnector_domain_model_connection.csv');
+
+        $this->subject->findByUid(2);
+    }
+
+    /**
+     * @test
+     */
     public function findByUidWithHiddenReturnsRecord(): void
     {
         $this->importCSVDataSet(__DIR__ . '/../../Fixtures/tx_jobrouterconnector_domain_model_connection.csv');

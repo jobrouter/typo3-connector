@@ -49,6 +49,26 @@ class ConnectionRepository
         return $connections;
     }
 
+    public function findByUid(int $uid): Connection
+    {
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable(self::TABLE_NAME);
+
+        $row = $queryBuilder
+            ->select('*')
+            ->from(self::TABLE_NAME)
+            ->where(
+                $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($uid, DatabaseConnection::PARAM_INT)),
+            )
+            ->executeQuery()
+            ->fetchAssociative();
+
+        if ($row === false) {
+            throw ConnectionNotFoundException::forUid($uid);
+        }
+
+        return Connection::fromArray($row);
+    }
+
     public function findByUidWithHidden(int $uid): Connection
     {
         $queryBuilder = $this->connectionPool->getQueryBuilderForTable(self::TABLE_NAME);
