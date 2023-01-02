@@ -13,8 +13,8 @@ namespace Brotkrueml\JobRouterConnector\Controller;
 
 use Brotkrueml\JobRouterClient\Exception\HttpException;
 use Brotkrueml\JobRouterConnector\Domain\Dto\ConnectionTestResult;
-use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
 use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
+use Brotkrueml\JobRouterConnector\Exception\ConnectionNotFoundException;
 use Brotkrueml\JobRouterConnector\Extension;
 use Brotkrueml\JobRouterConnector\RestClient\RestClientFactoryInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -47,15 +47,15 @@ final class ConnectionTestController
 
         $connectionId = (int)($body['connectionId'] ?? 0);
         try {
-            $connection = $this->connectionRepository->findByIdentifierWithHidden($connectionId);
+            $connection = $this->connectionRepository->findByUidWithHidden($connectionId);
+        } catch (ConnectionNotFoundException) {
+            return $this->buildResponse(\sprintf(
+                $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_BACKEND_MODULE . ':connection_not_found'),
+                $connectionId
+            ));
+        }
 
-            if (! $connection instanceof Connection) {
-                return $this->buildResponse(\sprintf(
-                    $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_BACKEND_MODULE . ':connection_not_found'),
-                    $connectionId
-                ));
-            }
-
+        try {
             $this->restClientFactory->create($connection, 10);
             return $this->buildResponse();
         } catch (HttpException $e) {

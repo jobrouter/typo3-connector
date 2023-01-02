@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - JobRouter Client in version 2 is required
+- Connection model is no longer Extbase-based and is moved to the Domain/Entity namespace
+- ConnectionRepository is no longer Extbase-based
 
 ### Removed
 - Compatibility with TYPO3 v10 (#6)

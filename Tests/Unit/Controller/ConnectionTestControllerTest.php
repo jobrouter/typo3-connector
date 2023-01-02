@@ -13,8 +13,9 @@ namespace Brotkrueml\JobRouterConnector\Tests\Unit\Controller;
 
 use Brotkrueml\JobRouterClient\Exception\HttpException;
 use Brotkrueml\JobRouterConnector\Controller\ConnectionTestController;
-use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
+use Brotkrueml\JobRouterConnector\Domain\Entity\Connection;
 use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
+use Brotkrueml\JobRouterConnector\Exception\ConnectionNotFoundException;
 use Brotkrueml\JobRouterConnector\RestClient\RestClientFactoryInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
@@ -89,6 +90,10 @@ final class ConnectionTestControllerTest extends TestCase
             ->willReturn([
                 'connectionId' => '42',
             ]);
+        $this->connectionRepositoryStub
+            ->method('findByUidWithHidden')
+            ->with(42)
+            ->willThrowException(new ConnectionNotFoundException());
 
         $actual = $this->subject->__invoke($this->requestStub);
         $actual->getBody()->rewind();
@@ -110,9 +115,9 @@ final class ConnectionTestControllerTest extends TestCase
                 'connectionId' => '42',
             ]);
 
-        $connection = new Connection();
+        $connection = $this->getConnectionEntity();
         $this->connectionRepositoryStub
-            ->method('findByIdentifierWithHidden')
+            ->method('findByUidWithHidden')
             ->with(42)
             ->willReturn($connection);
 
@@ -141,12 +146,9 @@ final class ConnectionTestControllerTest extends TestCase
                 'connectionId' => '42',
             ]);
 
-        $actual = $this->subject->__invoke($this->requestStub);
-        $actual->getBody()->rewind();
-
-        $connection = new Connection();
+        $connection = $this->getConnectionEntity();
         $this->connectionRepositoryStub
-            ->method('findByIdentifierWithHidden')
+            ->method('findByUidWithHidden')
             ->with(42)
             ->willReturn($connection);
 
@@ -176,12 +178,9 @@ final class ConnectionTestControllerTest extends TestCase
                 'connectionId' => '42',
             ]);
 
-        $actual = $this->subject->__invoke($this->requestStub);
-        $actual->getBody()->rewind();
-
-        $connection = new Connection();
+        $connection = $this->getConnectionEntity();
         $this->connectionRepositoryStub
-            ->method('findByIdentifierWithHidden')
+            ->method('findByUidWithHidden')
             ->with(42)
             ->willReturn($connection);
 
@@ -211,12 +210,9 @@ final class ConnectionTestControllerTest extends TestCase
                 'connectionId' => '42',
             ]);
 
-        $actual = $this->subject->__invoke($this->requestStub);
-        $actual->getBody()->rewind();
-
-        $connection = new Connection();
+        $connection = $this->getConnectionEntity();
         $this->connectionRepositoryStub
-            ->method('findByIdentifierWithHidden')
+            ->method('findByUidWithHidden')
             ->with(42)
             ->willReturn($connection);
 
@@ -231,5 +227,22 @@ final class ConnectionTestControllerTest extends TestCase
         $contents = \json_decode($actual->getBody()->getContents(), true, 512, \JSON_THROW_ON_ERROR);
 
         self::assertSame(1000, \strlen((string)$contents['error']));
+    }
+
+    private function getConnectionEntity(): Connection
+    {
+        return Connection::fromArray([
+            'uid' => 42,
+            'name' => 'some name',
+            'handle' => 'some_handle',
+            'base_url' => '',
+            'username' => '',
+            'password' => '',
+            'timeout' => 0,
+            'verify' => true,
+            'proxy' => '',
+            'jobrouter_version' => '',
+            'disabled' => false,
+        ]);
     }
 }

@@ -11,7 +11,8 @@ declare(strict_types=1);
 
 namespace Brotkrueml\JobRouterConnector\Tests\Unit\RestClient;
 
-use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
+use Brotkrueml\JobRouterConnector\Domain\Entity\Connection;
+use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
 use Brotkrueml\JobRouterConnector\Exception\CryptException;
 use Brotkrueml\JobRouterConnector\RestClient\RestClientFactory;
 use Brotkrueml\JobRouterConnector\Service\Crypt;
@@ -20,13 +21,15 @@ use PHPUnit\Framework\TestCase;
 
 final class RestClientFactoryTest extends TestCase
 {
+    private ConnectionRepository&Stub $connectionRepositoryStub;
     private Crypt&Stub $cryptServiceStub;
     private RestClientFactory $subject;
 
     protected function setUp(): void
     {
+        $this->connectionRepositoryStub = $this->createStub(ConnectionRepository::class);
         $this->cryptServiceStub = $this->createStub(Crypt::class);
-        $this->subject = new RestClientFactory($this->cryptServiceStub);
+        $this->subject = new RestClientFactory($this->connectionRepositoryStub, $this->cryptServiceStub);
     }
 
     /**
@@ -40,9 +43,19 @@ final class RestClientFactoryTest extends TestCase
 
         $cryptException = new CryptException('some crypt exception');
 
-        $connection = new Connection();
-        $connection->setHandle('some handle');
-        $connection->setPassword('some password');
+        $connection = Connection::fromArray([
+            'uid' => 1,
+            'name' => '',
+            'handle' => 'some handle',
+            'base_url' => '',
+            'username' => '',
+            'password' => 'some password',
+            'timeout' => 0,
+            'verify' => true,
+            'proxy' => '',
+            'jobrouter_version' => '',
+            'disabled' => false,
+        ]);
 
         $this->cryptServiceStub
             ->method('decrypt')

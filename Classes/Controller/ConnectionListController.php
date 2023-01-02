@@ -108,7 +108,7 @@ final class ConnectionListController
 
     private function listAction(): void
     {
-        $connections = null;
+        $connections = [];
         try {
             $this->fileService->getAbsoluteKeyPath();
             $keyFileExists = true;

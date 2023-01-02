@@ -11,42 +11,77 @@ declare(strict_types=1);
 
 namespace Brotkrueml\JobRouterConnector\Domain\Repository;
 
-use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
-use TYPO3\CMS\Extbase\Persistence\QueryInterface;
-use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
-use TYPO3\CMS\Extbase\Persistence\Repository;
+use Brotkrueml\JobRouterConnector\Domain\Entity\Connection;
+use Brotkrueml\JobRouterConnector\Exception\ConnectionNotFoundException;
+use TYPO3\CMS\Core\Database\Connection as DatabaseConnection;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Database\Query\Restriction\HiddenRestriction;
 
-/**
- * @extends Repository<Connection>
- */
-class ConnectionRepository extends Repository
+class ConnectionRepository
 {
-    /**
-     * @var array<string, string>
-     * @phpstan-ignore-next-line
-     */
-    protected $defaultOrderings = [
-        'disabled' => QueryInterface::ORDER_ASCENDING,
-        'name' => QueryInterface::ORDER_ASCENDING,
-    ];
+    private const TABLE_NAME = 'tx_jobrouterconnector_domain_model_connection';
 
-    /**
-     * @return QueryResultInterface<Connection>
-     */
-    public function findAllWithHidden(): QueryResultInterface
-    {
-        $query = $this->createQuery();
-        $query->getQuerySettings()->setIgnoreEnableFields(true);
-
-        return $query->execute();
+    public function __construct(
+        private readonly ConnectionPool $connectionPool
+    ) {
     }
 
-    public function findByIdentifierWithHidden(int $identifier): ?object
+    /**
+     * @return Connection[]
+     */
+    public function findAllWithHidden(): array
     {
-        $query = $this->createQuery();
-        $query->getQuerySettings()->setIgnoreEnableFields(true);
-        $query->matching($query->equals('uid', $identifier));
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable(self::TABLE_NAME);
+        $queryBuilder->getRestrictions()->removeByType(HiddenRestriction::class);
 
-        return $query->execute()->getFirst();
+        $result = $queryBuilder
+            ->select('*')
+            ->from(self::TABLE_NAME)
+            ->orderBy('disabled', 'ASC')
+            ->addOrderBy('name', 'ASC')
+            ->executeQuery();
+
+        $connections = [];
+        while ($row = $result->fetchAssociative()) {
+            $connections[] = Connection::fromArray($row);
+        }
+
+        return $connections;
+    }
+
+    public function findByUidWithHidden(int $uid): Connection
+    {
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable(self::TABLE_NAME);
+        $queryBuilder->getRestrictions()->removeByType(HiddenRestriction::class);
+
+        $row = $queryBuilder
+            ->select('*')
+            ->from(self::TABLE_NAME)
+            ->where(
+                $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($uid, DatabaseConnection::PARAM_INT)),
+            )
+            ->executeQuery()
+            ->fetchAssociative();
+
+        if ($row === false) {
+            throw ConnectionNotFoundException::forUid($uid);
+        }
+
+        return Connection::fromArray($row);
+    }
+
+    public function updateJobRouterVersion(int $identifier, string $version): int
+    {
+        return $this->connectionPool
+            ->getConnectionForTable(self::TABLE_NAME)
+            ->update(
+                self::TABLE_NAME,
+                [
+                    'jobrouter_version' => $version,
+                ],
+                [
+                    'uid' => $identifier,
+                ]
+            );
     }
 }

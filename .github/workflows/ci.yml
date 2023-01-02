@@ -57,6 +57,31 @@ jobs:
       - name: Run unit tests
         run: |
           make unit-tests
+  functional-tests:
+    name: Functional tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - php-versions: '8.1'
+            typo3-versions: '11'
+          - php-versions: '8.1'
+            typo3-versions: '12'
+          - php-versions: '8.2'
+            typo3-versions: '11'
+          - php-versions: '8.2'
+            typo3-versions: '12'
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+      - name: Install composer dependencies
+        run: |
+          ./Build/Scripts/runTests.sh -s composerInstall -p ${{ matrix.php-versions }} -t ${{ matrix.typo3-versions }}
+      - name: Run functional tests
+        run: |
+          ./Build/Scripts/runTests.sh -s functional -p ${{ matrix.php-versions }} -t ${{ matrix.typo3-versions }}
   acceptance-tests:
     name: Acceptance tests
     runs-on: ubuntu-latest

@@ -22,6 +22,8 @@ Changed
 
 
 * JobRouter Client in version 2 is required
+* Connection model is no longer Extbase-based and is moved to the Domain/Entity namespace
+* ConnectionRepository is no longer Extbase-based
 
 Removed
 ^^^^^^^

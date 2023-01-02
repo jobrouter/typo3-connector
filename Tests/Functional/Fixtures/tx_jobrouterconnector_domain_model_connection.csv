@@ -1,0 +1,4 @@
+tx_jobrouterconnector_domain_model_connection
+,uid,disabled,name,handle,base_url,username,password,timeout,verify,proxy,jobrouter_version
+,1,0,"some name","some_handle","https://example.org/","some_user","some_pass",0,1,"https://proxy.example.net/","2022.4.1"
+,2,1,"another name","another_handle","https://example.com/","another_user","another_pass",60,1,"","2022.3.2"

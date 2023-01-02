@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Brotkrueml\JobRouterConnector\RestClient;
 
 use Brotkrueml\JobRouterClient\Client\ClientInterface;
-use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
+use Brotkrueml\JobRouterConnector\Domain\Entity\Connection;
 
 interface RestClientFactoryInterface
 {

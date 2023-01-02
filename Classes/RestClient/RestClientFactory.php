@@ -16,20 +16,19 @@ use Brotkrueml\JobRouterClient\Client\RestClient;
 use Brotkrueml\JobRouterClient\Configuration\ClientConfiguration;
 use Brotkrueml\JobRouterClient\Configuration\ClientOptions;
 use Brotkrueml\JobRouterClient\Exception\ExceptionInterface;
-use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
+use Brotkrueml\JobRouterConnector\Domain\Entity\Connection;
 use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
 use Brotkrueml\JobRouterConnector\Exception\CryptException;
 use Brotkrueml\JobRouterConnector\Extension;
 use Brotkrueml\JobRouterConnector\Service\Crypt;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 
 final class RestClientFactory implements RestClientFactoryInterface
 {
     private string $extensionVersion = '';
 
     public function __construct(
+        private readonly ConnectionRepository $connectionRepository,
         private readonly Crypt $cryptService
     ) {
     }
@@ -49,12 +48,12 @@ final class RestClientFactory implements RestClientFactoryInterface
         ?string $userAgentAddition = null
     ): ClientInterface {
         try {
-            $decryptedPassword = $this->cryptService->decrypt($connection->getPassword());
+            $decryptedPassword = $this->cryptService->decrypt($connection->encryptedPassword);
         } catch (CryptException $e) {
             throw new CryptException(
                 \sprintf(
                     'The password of the connection with the handle "%s" cannot be decrypted!',
-                    $connection->getHandle()
+                    $connection->handle
                 ),
                 1636467052,
                 $e
@@ -62,15 +61,15 @@ final class RestClientFactory implements RestClientFactoryInterface
         }
 
         $configuration = new ClientConfiguration(
-            $connection->getBaseUrl(),
-            $connection->getUsername(),
+            $connection->baseUrl,
+            $connection->username,
             $decryptedPassword
         );
 
         $configuration = $configuration
             ->withUserAgentAddition($userAgentAddition ?? $this->getUserAgentAddition())
             ->withClientOptions(
-                new ClientOptions(false, 5, $connection->getTimeout(), $connection->isVerify(), $connection->getProxy())
+                new ClientOptions(false, 5, $connection->timeout, $connection->verify, $connection->proxy)
             );
         if ($lifetime) {
             $configuration = $configuration->withLifetime($lifetime);
@@ -97,16 +96,10 @@ final class RestClientFactory implements RestClientFactoryInterface
 
     private function updateJobRouterVersion(ClientInterface $client, Connection $connection): void
     {
-        if ($client->getJobRouterVersion() === $connection->getJobrouterVersion()) {
+        if ($client->getJobRouterVersion() === $connection->jobrouterVersion) {
             return;
         }
 
-        $connection->setJobrouterVersion($client->getJobRouterVersion());
-
-        $connectionRepository = GeneralUtility::makeInstance(ConnectionRepository::class);
-        $connectionRepository->update($connection);
-
-        $persistenceManager = GeneralUtility::makeInstance(PersistenceManager::class);
-        $persistenceManager->persistAll();
+        $this->connectionRepository->updateJobRouterVersion($connection->uid, $client->getJobRouterVersion());
     }
 }
