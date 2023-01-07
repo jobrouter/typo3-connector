@@ -30,7 +30,7 @@ class FileService
         if (! $keyPath) {
             throw new KeyFileException(
                 'The key file path is not defined correctly in the extension configuration!',
-                1565992922
+                1565992922,
             );
         }
 
@@ -39,7 +39,7 @@ class FileService
             // In classic installation the project path is the public folder
             $folder = \dirname($folder);
         }
-        $absoluteKeyPath = $folder . DIRECTORY_SEPARATOR . $keyPath;
+        $absoluteKeyPath = $folder . \DIRECTORY_SEPARATOR . $keyPath;
         if (! $errorOnNonExistingFile) {
             return $absoluteKeyPath;
         }
@@ -49,7 +49,7 @@ class FileService
 
         throw new KeyFileException(
             'The key file is not available!',
-            1565992923
+            1565992923,
         );
     }
 }

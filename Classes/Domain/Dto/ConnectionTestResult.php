@@ -17,7 +17,7 @@ namespace Brotkrueml\JobRouterConnector\Domain\Dto;
 final class ConnectionTestResult
 {
     public function __construct(
-        private readonly string $errorMessage
+        private readonly string $errorMessage,
     ) {
     }
 

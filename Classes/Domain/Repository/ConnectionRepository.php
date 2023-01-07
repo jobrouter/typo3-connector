@@ -22,7 +22,7 @@ class ConnectionRepository
     private const TABLE_NAME = 'tx_jobrouterconnector_domain_model_connection';
 
     public function __construct(
-        private readonly ConnectionPool $connectionPool
+        private readonly ConnectionPool $connectionPool,
     ) {
     }
 
@@ -101,7 +101,7 @@ class ConnectionRepository
                 ],
                 [
                     'uid' => $identifier,
-                ]
+                ],
             );
     }
 }

@@ -34,7 +34,7 @@ final class ConnectionTestController
         private readonly ConnectionRepository $connectionRepository,
         private readonly RestClientFactoryInterface $restClientFactory,
         private readonly ResponseFactoryInterface $responseFactory,
-        private readonly StreamFactoryInterface $streamFactory
+        private readonly StreamFactoryInterface $streamFactory,
     ) {
     }
 
@@ -51,7 +51,7 @@ final class ConnectionTestController
         } catch (ConnectionNotFoundException) {
             return $this->buildResponse(\sprintf(
                 $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_BACKEND_MODULE . ':connection_not_found'),
-                $connectionId
+                $connectionId,
             ));
         }
 
@@ -63,7 +63,7 @@ final class ConnectionTestController
                 "%s: %d\n%s",
                 $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_BACKEND_MODULE . ':returned_http_status_code'),
                 $e->getCode(),
-                \substr($e->getMessage(), 0, self::ERROR_MESSAGE_MAX_LENGTH)
+                \substr($e->getMessage(), 0, self::ERROR_MESSAGE_MAX_LENGTH),
             ));
         } catch (\Throwable $t) {
             return $this->buildResponse(\substr($t->getMessage(), 0, self::ERROR_MESSAGE_MAX_LENGTH));

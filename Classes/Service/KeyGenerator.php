@@ -17,7 +17,7 @@ class KeyGenerator
 {
     public function __construct(
         private readonly Crypt $crypt,
-        private readonly FileService $fileService
+        private readonly FileService $fileService,
     ) {
     }
 
@@ -29,14 +29,14 @@ class KeyGenerator
             throw new KeyGenerationException(
                 'The key file path is not defined correctly in the extension configuration!',
                 1603474945,
-                $e
+                $e,
             );
         }
 
         if (\file_exists($absolutePath)) {
             throw new KeyGenerationException(
                 \sprintf('The key file "%s" already exists!', $absolutePath),
-                1603474997
+                1603474997,
             );
         }
 
@@ -44,9 +44,9 @@ class KeyGenerator
             $this->writeKey($absolutePath, $this->crypt->generateKey());
         } catch (\Throwable $t) {
             throw new KeyGenerationException(
-                sprintf('The key file "%s" could not be written!', $absolutePath),
+                \sprintf('The key file "%s" could not be written!', $absolutePath),
                 1603475037,
-                $t
+                $t,
             );
         }
     }

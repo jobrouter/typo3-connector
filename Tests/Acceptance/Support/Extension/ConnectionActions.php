@@ -73,7 +73,7 @@ trait ConnectionActions
 </dataset>
 EOT;
 
-        $fixturePath = \sprintf('%s/tx_jobrouterconnector_domain_model_connection_%d.xml', \sys_get_temp_dir(), uniqid());
+        $fixturePath = \sprintf('%s/tx_jobrouterconnector_domain_model_connection_%d.xml', \sys_get_temp_dir(), \uniqid());
         \file_put_contents($fixturePath, $fixture);
 
         (new TestBase())->importXmlDatabaseFixture($fixturePath);
@@ -88,7 +88,7 @@ EOT;
                 'body' => \sprintf(
                     '{"username":"%s","password":"%s","lifetime":10}',
                     $username,
-                    $password
+                    $password,
                 ),
             ],
             'httpResponse' => [

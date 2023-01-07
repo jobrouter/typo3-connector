@@ -135,7 +135,7 @@ final class ConnectionRepositoryTest extends FunctionalTestCase
                 'tx_jobrouterconnector_domain_model_connection',
                 [
                     'uid' => 1,
-                ]
+                ],
             )
             ->fetchOne();
 

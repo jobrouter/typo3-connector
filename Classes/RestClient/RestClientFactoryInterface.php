@@ -26,6 +26,6 @@ interface RestClientFactoryInterface
     public function create(
         Connection $connection,
         ?int $lifetime = null,
-        ?string $userAgentAddition = null
+        ?string $userAgentAddition = null,
     ): ClientInterface;
 }

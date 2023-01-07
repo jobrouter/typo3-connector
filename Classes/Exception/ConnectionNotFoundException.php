@@ -18,9 +18,9 @@ final class ConnectionNotFoundException extends \RuntimeException
         return new self(
             \sprintf(
                 'Connection with uid "%d" not found.',
-                $uid
+                $uid,
             ),
-            1672478103
+            1672478103,
         );
     }
 }

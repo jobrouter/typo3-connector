@@ -48,7 +48,7 @@ class FileServiceTest extends TestCase
 
         GeneralUtility::addInstance(
             ExtensionConfiguration::class,
-            $this->getExtensionConfigurationMock('')
+            $this->getExtensionConfigurationMock(''),
         );
 
         $this->subject->getAbsoluteKeyPath();
@@ -65,8 +65,8 @@ class FileServiceTest extends TestCase
         GeneralUtility::addInstance(
             ExtensionConfiguration::class,
             $this->getExtensionConfigurationMock(
-                '.non-existing-file'
-            )
+                '.non-existing-file',
+            ),
         );
 
         $this->initializeEnvironment();
@@ -82,8 +82,8 @@ class FileServiceTest extends TestCase
         GeneralUtility::addInstance(
             ExtensionConfiguration::class,
             $this->getExtensionConfigurationMock(
-                '.non-existing-file'
-            )
+                '.non-existing-file',
+            ),
         );
 
         $this->initializeEnvironment();
@@ -103,8 +103,8 @@ class FileServiceTest extends TestCase
         GeneralUtility::addInstance(
             ExtensionConfiguration::class,
             $this->getExtensionConfigurationMock(
-                '.jobrouter-key'
-            )
+                '.jobrouter-key',
+            ),
         );
 
         $this->initializeEnvironment();
@@ -124,8 +124,8 @@ class FileServiceTest extends TestCase
         GeneralUtility::addInstance(
             ExtensionConfiguration::class,
             $this->getExtensionConfigurationMock(
-                '.jobrouter-key'
-            )
+                '.jobrouter-key',
+            ),
         );
 
         $this->initializeEnvironment(false, vfsStream::url(self::ROOT_DIR) . '/some-folder');
@@ -159,7 +159,7 @@ class FileServiceTest extends TestCase
             '',
             '',
             '',
-            ''
+            '',
         );
     }
 }

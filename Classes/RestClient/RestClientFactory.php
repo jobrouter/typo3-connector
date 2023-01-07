@@ -29,7 +29,7 @@ final class RestClientFactory implements RestClientFactoryInterface
 
     public function __construct(
         private readonly ConnectionRepository $connectionRepository,
-        private readonly Crypt $cryptService
+        private readonly Crypt $cryptService,
     ) {
     }
 
@@ -45,7 +45,7 @@ final class RestClientFactory implements RestClientFactoryInterface
     public function create(
         Connection $connection,
         ?int $lifetime = null,
-        ?string $userAgentAddition = null
+        ?string $userAgentAddition = null,
     ): ClientInterface {
         try {
             $decryptedPassword = $this->cryptService->decrypt($connection->encryptedPassword);
@@ -53,23 +53,23 @@ final class RestClientFactory implements RestClientFactoryInterface
             throw new CryptException(
                 \sprintf(
                     'The password of the connection with the handle "%s" cannot be decrypted!',
-                    $connection->handle
+                    $connection->handle,
                 ),
                 1636467052,
-                $e
+                $e,
             );
         }
 
         $configuration = new ClientConfiguration(
             $connection->baseUrl,
             $connection->username,
-            $decryptedPassword
+            $decryptedPassword,
         );
 
         $configuration = $configuration
             ->withUserAgentAddition($userAgentAddition ?? $this->getUserAgentAddition())
             ->withClientOptions(
-                new ClientOptions(false, 5, $connection->timeout, $connection->verify, $connection->proxy)
+                new ClientOptions(false, 5, $connection->timeout, $connection->verify, $connection->proxy),
             );
         if ($lifetime) {
             $configuration = $configuration->withLifetime($lifetime);
@@ -90,7 +90,7 @@ final class RestClientFactory implements RestClientFactoryInterface
 
         return \sprintf(
             'TYPO3-JobRouter-Connector/%s (https://extensions.typo3.org/extension/jobrouter_connector)',
-            $this->extensionVersion
+            $this->extensionVersion,
         );
     }
 

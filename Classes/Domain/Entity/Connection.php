@@ -44,7 +44,7 @@ final class Connection
             (bool)$data['verify'],
             $data['proxy'],
             $data['jobrouter_version'],
-            (bool)$data['disabled']
+            (bool)$data['disabled'],
         );
     }
 }

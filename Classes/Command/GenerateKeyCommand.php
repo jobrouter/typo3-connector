@@ -24,7 +24,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 final class GenerateKeyCommand extends Command
 {
     public function __construct(
-        private readonly KeyGenerator $keyGenerator
+        private readonly KeyGenerator $keyGenerator,
     ) {
         parent::__construct();
     }

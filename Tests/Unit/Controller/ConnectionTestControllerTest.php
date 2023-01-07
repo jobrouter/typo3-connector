@@ -44,7 +44,7 @@ final class ConnectionTestControllerTest extends TestCase
             $this->connectionRepositoryStub,
             $this->restClientFactoryMock,
             new ResponseFactory(),
-            new StreamFactory()
+            new StreamFactory(),
         );
 
         $this->requestStub = $this->createStub(ServerRequestInterface::class);
@@ -76,7 +76,7 @@ final class ConnectionTestControllerTest extends TestCase
 
         self::assertJsonStringEqualsJsonString(
             '{"error": "Request has no valid body!"}',
-            $actual->getBody()->getContents()
+            $actual->getBody()->getContents(),
         );
     }
 
@@ -100,7 +100,7 @@ final class ConnectionTestControllerTest extends TestCase
 
         self::assertJsonStringEqualsJsonString(
             '{"error": "LLL:EXT:jobrouter_connector\/Resources\/Private\/Language\/BackendModule.xlf:connection_not_found"}',
-            $actual->getBody()->getContents()
+            $actual->getBody()->getContents(),
         );
     }
 
@@ -131,7 +131,7 @@ final class ConnectionTestControllerTest extends TestCase
 
         self::assertJsonStringEqualsJsonString(
             '{"check": "ok"}',
-            $actual->getBody()->getContents()
+            $actual->getBody()->getContents(),
         );
     }
 
@@ -163,7 +163,7 @@ final class ConnectionTestControllerTest extends TestCase
 
         self::assertJsonStringEqualsJsonString(
             '{"error": "LLL:EXT:jobrouter_connector\/Resources\/Private\/Language\/BackendModule.xlf:returned_http_status_code: 500\nsome message"}',
-            $actual->getBody()->getContents()
+            $actual->getBody()->getContents(),
         );
     }
 
@@ -195,7 +195,7 @@ final class ConnectionTestControllerTest extends TestCase
 
         self::assertJsonStringEqualsJsonString(
             '{"error": "some message"}',
-            $actual->getBody()->getContents()
+            $actual->getBody()->getContents(),
         );
     }
 

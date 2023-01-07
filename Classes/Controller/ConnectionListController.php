@@ -51,10 +51,10 @@ final class ConnectionListController
         $this->moduleTemplate = $this->moduleTemplateFactory->create($request);
 
         $this->pageRenderer->addInlineLanguageLabelFile(
-            \str_replace('LLL:', '', Extension::LANGUAGE_PATH_BACKEND_MODULE)
+            \str_replace('LLL:', '', Extension::LANGUAGE_PATH_BACKEND_MODULE),
         );
         $this->pageRenderer->loadRequireJsModule(
-            'TYPO3/CMS/JobrouterConnector/ConnectionCheck'
+            'TYPO3/CMS/JobrouterConnector/ConnectionCheck',
         );
 
         $this->initializeView();
@@ -85,7 +85,7 @@ final class ConnectionListController
                         'tx_jobrouterconnector_domain_model_connection' => ['new'],
                     ],
                     'returnUrl' => (string)$this->uriBuilder->buildUriFromRoute(Extension::MODULE_NAME),
-                ]
+                ],
             ))
             ->setTitle($this->getLanguageService()->sL(Extension::LANGUAGE_PATH_BACKEND_MODULE . ':action.add_connection'))
             ->setShowLabelText(true)

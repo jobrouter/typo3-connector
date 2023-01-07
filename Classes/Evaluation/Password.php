@@ -21,7 +21,7 @@ final class Password
     public const OBFUSCATED_VALUE = '********';
 
     public function __construct(
-        private readonly Crypt $cryptService
+        private readonly Crypt $cryptService,
     ) {
     }
 

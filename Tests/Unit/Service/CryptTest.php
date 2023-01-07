@@ -40,7 +40,7 @@ class CryptTest extends TestCase
         $actualBase64Decoded = \base64_decode($actual);
 
         self::assertNotEmpty($actual);
-        self::assertSame(32, strlen($actualBase64Decoded));
+        self::assertSame(32, \strlen($actualBase64Decoded));
     }
 
     /**
