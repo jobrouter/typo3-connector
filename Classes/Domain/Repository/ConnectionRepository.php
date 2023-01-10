@@ -90,6 +90,26 @@ class ConnectionRepository
         return Connection::fromArray($row);
     }
 
+    public function findByHandle(string $handle): Connection
+    {
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable(self::TABLE_NAME);
+
+        $row = $queryBuilder
+            ->select('*')
+            ->from(self::TABLE_NAME)
+            ->where(
+                $queryBuilder->expr()->eq('handle', $queryBuilder->createNamedParameter($handle)),
+            )
+            ->executeQuery()
+            ->fetchAssociative();
+
+        if ($row === false) {
+            throw ConnectionNotFoundException::forHandle($handle);
+        }
+
+        return Connection::fromArray($row);
+    }
+
     public function updateJobRouterVersion(int $identifier, string $version): int
     {
         return $this->connectionPool

@@ -23,4 +23,15 @@ final class ConnectionNotFoundException extends \RuntimeException
             1672478103,
         );
     }
+
+    public static function forHandle(string $handle): self
+    {
+        return new self(
+            \sprintf(
+                'Connection with handle "%d" not found.',
+                $handle,
+            ),
+            1672478104,
+        );
+    }
 }

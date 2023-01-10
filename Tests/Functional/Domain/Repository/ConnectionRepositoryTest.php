@@ -120,6 +120,28 @@ final class ConnectionRepositoryTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function findByHandleReturnsRecord(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/../../Fixtures/tx_jobrouterconnector_domain_model_connection.csv');
+
+        $actual = $this->subject->findByHandle('some_handle');
+
+        self::assertSame(1, $actual->uid);
+    }
+
+    /**
+     * @test
+     */
+    public function findByUidWithNotExistingHandleThrowsException(): void
+    {
+        $this->expectException(ConnectionNotFoundException::class);
+
+        $this->subject->findByHandle('nonexisting');
+    }
+
+    /**
+     * @test
+     */
     public function updateJobRouterVersion(): void
     {
         $this->importCSVDataSet(__DIR__ . '/../../Fixtures/tx_jobrouterconnector_domain_model_connection.csv');
