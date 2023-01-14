@@ -31,8 +31,7 @@
     <php>
         <const name="TYPO3_TESTING_FUNCTIONAL_REMOVE_ERROR_HANDLER" value="true" />
         <ini name="display_errors" value="1" />
-        <!-- Turn off deprecations because of TCA migrations in v12 (due to compat with v11) -->
-        <ini name="error_reporting" value="E_ALL &amp; ~E_DEPRECATED" />
+        <ini name="error_reporting" value="E_ALL" />
         <env name="TYPO3_CONTEXT" value="Testing" />
     </php>
 </phpunit>
