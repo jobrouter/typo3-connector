@@ -91,9 +91,8 @@ return [
         'timeout' => [
             'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.timeout',
             'config' => [
-                'type' => 'input',
+                'type' => 'number',
                 'size' => 5,
-                'eval' => 'trim,int',
                 'range' => [
                     'lower' => 0,
                     'upper' => 240,
