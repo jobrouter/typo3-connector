@@ -112,7 +112,7 @@ final class ConnectionListController
         try {
             $this->fileService->getAbsoluteKeyPath();
             $keyFileExists = true;
-            $connections = $this->connectionRepository->findAllWithHidden();
+            $connections = $this->connectionRepository->findAll(true);
         } catch (KeyFileException) {
             $keyFileExists = false;
         }

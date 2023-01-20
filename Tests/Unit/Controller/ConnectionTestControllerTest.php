@@ -91,8 +91,8 @@ final class ConnectionTestControllerTest extends TestCase
                 'connectionId' => '42',
             ]);
         $this->connectionRepositoryStub
-            ->method('findByUidWithHidden')
-            ->with(42)
+            ->method('findByUid')
+            ->with(42, true)
             ->willThrowException(new ConnectionNotFoundException());
 
         $actual = $this->subject->__invoke($this->requestStub);
@@ -117,8 +117,8 @@ final class ConnectionTestControllerTest extends TestCase
 
         $connection = $this->getConnectionEntity();
         $this->connectionRepositoryStub
-            ->method('findByUidWithHidden')
-            ->with(42)
+            ->method('findByUid')
+            ->with(42, true)
             ->willReturn($connection);
 
         $this->restClientFactoryMock
@@ -148,8 +148,8 @@ final class ConnectionTestControllerTest extends TestCase
 
         $connection = $this->getConnectionEntity();
         $this->connectionRepositoryStub
-            ->method('findByUidWithHidden')
-            ->with(42)
+            ->method('findByUid')
+            ->with(42, true)
             ->willReturn($connection);
 
         $this->restClientFactoryMock
@@ -180,8 +180,8 @@ final class ConnectionTestControllerTest extends TestCase
 
         $connection = $this->getConnectionEntity();
         $this->connectionRepositoryStub
-            ->method('findByUidWithHidden')
-            ->with(42)
+            ->method('findByUid')
+            ->with(42, true)
             ->willReturn($connection);
 
         $this->restClientFactoryMock
@@ -212,8 +212,8 @@ final class ConnectionTestControllerTest extends TestCase
 
         $connection = $this->getConnectionEntity();
         $this->connectionRepositoryStub
-            ->method('findByUidWithHidden')
-            ->with(42)
+            ->method('findByUid')
+            ->with(42, true)
             ->willReturn($connection);
 
         $this->restClientFactoryMock

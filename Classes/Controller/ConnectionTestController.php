@@ -47,7 +47,7 @@ final class ConnectionTestController
 
         $connectionId = (int)($body['connectionId'] ?? 0);
         try {
-            $connection = $this->connectionRepository->findByUidWithHidden($connectionId);
+            $connection = $this->connectionRepository->findByUid($connectionId, true);
         } catch (ConnectionNotFoundException) {
             return $this->buildResponse(\sprintf(
                 $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_BACKEND_MODULE . ':connection_not_found'),

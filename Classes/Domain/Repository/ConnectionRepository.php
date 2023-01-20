@@ -29,10 +29,12 @@ class ConnectionRepository
     /**
      * @return Connection[]
      */
-    public function findAllWithHidden(): array
+    public function findAll(bool $withDisabled = false): array
     {
         $queryBuilder = $this->connectionPool->getQueryBuilderForTable(self::TABLE_NAME);
-        $queryBuilder->getRestrictions()->removeByType(HiddenRestriction::class);
+        if ($withDisabled) {
+            $queryBuilder->getRestrictions()->removeByType(HiddenRestriction::class);
+        }
 
         $result = $queryBuilder
             ->select('*')
@@ -49,30 +51,12 @@ class ConnectionRepository
         return $connections;
     }
 
-    public function findByUid(int $uid): Connection
+    public function findByUid(int $uid, bool $withDisabled = false): Connection
     {
         $queryBuilder = $this->connectionPool->getQueryBuilderForTable(self::TABLE_NAME);
-
-        $row = $queryBuilder
-            ->select('*')
-            ->from(self::TABLE_NAME)
-            ->where(
-                $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($uid, DatabaseConnection::PARAM_INT)),
-            )
-            ->executeQuery()
-            ->fetchAssociative();
-
-        if ($row === false) {
-            throw ConnectionNotFoundException::forUid($uid);
+        if ($withDisabled) {
+            $queryBuilder->getRestrictions()->removeByType(HiddenRestriction::class);
         }
-
-        return Connection::fromArray($row);
-    }
-
-    public function findByUidWithHidden(int $uid): Connection
-    {
-        $queryBuilder = $this->connectionPool->getQueryBuilderForTable(self::TABLE_NAME);
-        $queryBuilder->getRestrictions()->removeByType(HiddenRestriction::class);
 
         $row = $queryBuilder
             ->select('*')

@@ -37,11 +37,25 @@ final class ConnectionRepositoryTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function findAllWithHiddenWithNoRecordsAvailable(): void
+    public function findAllWhenNoRecordsAvailable(): void
     {
-        $actual = $this->subject->findAllWithHidden();
+        $actual = $this->subject->findAll();
 
         self::assertSame([], $actual);
+    }
+
+    /**
+     * @test
+     */
+    public function findAll(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/../../Fixtures/tx_jobrouterconnector_domain_model_connection.csv');
+
+        $actual = $this->subject->findAll();
+
+        self::assertCount(1, $actual);
+
+        self::assertSame(1, $actual[0]->uid);
     }
 
     /**
@@ -51,22 +65,12 @@ final class ConnectionRepositoryTest extends FunctionalTestCase
     {
         $this->importCSVDataSet(__DIR__ . '/../../Fixtures/tx_jobrouterconnector_domain_model_connection.csv');
 
-        $actual = $this->subject->findAllWithHidden();
+        $actual = $this->subject->findAll(true);
 
         self::assertCount(2, $actual);
 
         self::assertSame(1, $actual[0]->uid);
         self::assertSame(2, $actual[1]->uid);
-    }
-
-    /**
-     * @test
-     */
-    public function findByUidWithHiddenThrowsExceptionWhenRecordNotAvailable(): void
-    {
-        $this->expectException(ConnectionNotFoundException::class);
-
-        $this->subject->findByUidWithHidden(9999);
     }
 
     /**
@@ -96,23 +100,11 @@ final class ConnectionRepositoryTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function findByUidWithHiddenReturnsRecord(): void
-    {
-        $this->importCSVDataSet(__DIR__ . '/../../Fixtures/tx_jobrouterconnector_domain_model_connection.csv');
-
-        $actual = $this->subject->findByUidWithHidden(1);
-
-        self::assertSame(1, $actual->uid);
-    }
-
-    /**
-     * @test
-     */
     public function findByUidWithHiddenReturnsDisabledRecord(): void
     {
         $this->importCSVDataSet(__DIR__ . '/../../Fixtures/tx_jobrouterconnector_domain_model_connection.csv');
 
-        $actual = $this->subject->findByUidWithHidden(2);
+        $actual = $this->subject->findByUid(2, true);
 
         self::assertSame(2, $actual->uid);
     }
