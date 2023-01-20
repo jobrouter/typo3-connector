@@ -14,20 +14,20 @@ on:
 
 jobs:
   build:
-    name: Linting / Unit tests
+    name: Build PHP/TYPO3
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         include:
           - php-versions: '8.1'
-            typo3-versions: '^11'
+            typo3-versions: '11'
           - php-versions: '8.1'
-            typo3-versions: '^12'
+            typo3-versions: '12'
           - php-versions: '8.2'
-            typo3-versions: '^11'
+            typo3-versions: '11'
           - php-versions: '8.2'
-            typo3-versions: '^12'
+            typo3-versions: '12'
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
@@ -50,35 +50,13 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
       - name: Install composer dependencies
         run: |
-          composer require typo3/cms-core=${{ matrix.typo3-versions }} --no-progress --prefer-dist --optimize-autoloader
+          composer require typo3/cms-core=^${{ matrix.typo3-versions }} --no-progress --prefer-dist --optimize-autoloader
       - name: Run PHP linter
         run: |
           find . -type f -name '*.php' ! -path "./.Build/*" -print0 | xargs -0 -n1 -P4 php -l -n | (! grep -v "No syntax errors detected" )
       - name: Run unit tests
         run: |
           make unit-tests
-  functional-tests:
-    name: Functional tests
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        include:
-          - php-versions: '8.1'
-            typo3-versions: '11'
-          - php-versions: '8.1'
-            typo3-versions: '12'
-          - php-versions: '8.2'
-            typo3-versions: '11'
-          - php-versions: '8.2'
-            typo3-versions: '12'
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 1
-      - name: Install composer dependencies
-        run: |
-          ./Build/Scripts/runTests.sh -s composerInstall -p ${{ matrix.php-versions }} -t ${{ matrix.typo3-versions }}
       - name: Run functional tests
         run: |
           ./Build/Scripts/runTests.sh -s functional -p ${{ matrix.php-versions }} -t ${{ matrix.typo3-versions }}
