@@ -147,7 +147,7 @@ return [
     'types' => [
         '1' => [
             'showitem' => '
-                name, handle, base_url,
+                --palette--;;system,
                 --palette--;;credentials,
                 --palette--;;options,
                 --div--;' . \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tab.information,
@@ -167,6 +167,10 @@ return [
         'options' => [
             'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':palette.options',
             'showitem' => 'timeout, verify, --linebreak--, proxy',
+        ],
+        'system' => [
+            'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':palette.system',
+            'showitem' => 'name, handle, base_url',
         ],
     ],
 ];
