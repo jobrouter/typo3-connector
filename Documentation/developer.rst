@@ -13,8 +13,8 @@ Create own logic
 ================
 
 You can use the TYPO3 JobRouter Connector as a starting point for your own
-logic, e.g. to synchronise JobData tables or retrieve archive documents. Since
-this extension relies on the :doc:`JobRouter Client
+logic, for example, to synchronise JobData tables or retrieve archive documents.
+Since this extension relies on the :doc:`JobRouter Client
 <jobrouter-client:introduction>` library, you can get a :php:`RestClient`
 object to call the JobRouter® REST API.
 
@@ -24,58 +24,20 @@ Example
 To simplify the creation of this client object, a factory method is available.
 Let's have a look at an example in the TYPO3 context:
 
-::
-
-   <?php
-   declare(strict_types=1);
-
-   use Brotkrueml\JobRouterClient\Exception\ExceptionInterface;
-   use Brotkrueml\JobRouterConnector\Domain\Model\Connection;
-   use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
-   use Brotkrueml\JobRouterConnector\RestClient\RestClientFactory;
-
-   final class MyController
-   {
-      private ConnectionRepository $connectionRepository;
-      private RestClientFactory $restClientFactory;
-
-      public function __construct(
-         ConnectionRepository $connectionRepository,
-         RestClientFactory $restClientFactory
-      ) {
-         $this->connectionRepository = $connectionRepository;
-         $this->restClientFactory = $restClientFactory;
-      }
-
-      public function myAction()
-      {
-         $connection = $connectionRepository->findOneByHandle('example');
-
-         if ($connection === null) {
-             // The connection is not found or disabled
-         }
-
-         try {
-            $client = $this->restClientFactory->create($connection, 60);
-         } catch (ExceptionInterface $e) {
-            // Maybe authentication failure or HTTP error
-         }
-
-         // Now you can call the request() method of the $client
-      }
-   }
+.. literalinclude:: _snippets/_MyController.php
+   :caption: EXT:my_extension/Classes/Controller/MyController.php
+   :linenos:
 
 Explanation:
 
-#. Line 24: Retrieve the :php:`Connection` model class with handle `example`,
+#. Line 28: Retrieve the :php:`Connection` entity class with handle `example`,
    which holds the base URL of the JobRouter® installation and the credentials.
    Of course, the connection must be registered first in the
-   :guilabel:`Connections` :ref:`module <usage-module>`. But you can also
-   instantiate a new model object.
-#. Lines 26-28: It can be the case that there is no connection model available:
+   :guilabel:`Connections` :ref:`module <usage-module>`.
+#. Lines 29-31: It can be the case that there is no connection entity available:
    There is no connection with handle `example` or the connection is disabled.
    So you have to consider this case.
-#. Line 31: Create the REST client with the :php:`create()` method of the
+#. Line 34: Create the REST client with the :php:`create()` method of the
    :php:`RestClientFactory`. The first argument is the :php:`Connection` model,
    the second argument the optional lifetime of the authentication token. With
    the call the authentication is done immediately, so an exception can be

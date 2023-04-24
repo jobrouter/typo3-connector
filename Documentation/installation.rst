@@ -47,7 +47,7 @@ JobRouter Connector PHP        TYPO3
 
 .. _installation-composer:
 
-Installation via composer
+Installation via Composer
 =========================
 
 The recommended way to install this extension is by using Composer. In your

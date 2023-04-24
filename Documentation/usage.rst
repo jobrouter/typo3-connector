@@ -15,10 +15,9 @@ Module
 ======
 
 The connections to JobRouter® installations are managed in the backend module
-:guilabel:`JobRouter` > :guilabel:`Connections`.
+:guilabel:`JobRouter > Connections`.
 
 .. note::
-
    The module is only available in the live workspace.
 
 On your first visit after installing the extension you should see the following
@@ -30,7 +29,6 @@ screen:
    Initial Connections module screen
 
 .. note::
-
    If you get the error message that the key file does not exist,
    first :ref:`generate the key <configuration-key-generation>`.
 
@@ -83,15 +81,11 @@ Password
    The password to be used. It will be stored encrypted in the database.
 
 Timeout
-   .. versionadded:: 1.2.0
-
    The maximum number of seconds to execute a request.
 
    *Default:* `0`
 
 Verify TLS certificate
-   .. versionadded:: 1.2.0
-
    The TLS certificate of the JobRouter® installation is checked when
    connecting.
 
@@ -102,8 +96,6 @@ Verify TLS certificate
       installation as this introduces security issues.
 
 Proxy URL
-   .. versionadded:: 1.2.0
-
    Enter the URL when connecting through a proxy to the JobRouter® installation.
 
    *Default:* (empty)
@@ -163,9 +155,8 @@ Delete a connection
 ===================
 
 To delete a connection, open the editing page of the connection. In the upper
-menu bar you will find the :guilabel:`delete` button.
+menu bar you will find the :guilabel:`Delete` button.
 
 .. note::
-
    Currently, there is no check during deletion whether a connection is used
    in other records.
