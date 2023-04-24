@@ -13,7 +13,7 @@ services:
       - /var/lib/mysql/:rw,noexec,nosuid
 
   web:
-    image: typo3/core-testing-${DOCKER_PHP_IMAGE}:latest
+    image: ${IMAGE_PREFIX}core-testing-${DOCKER_PHP_IMAGE}:latest
     user: ${HOST_UID}
     stop_grace_period: 1s
     volumes:
@@ -43,7 +43,7 @@ services:
       - 1080:1080
 
   acceptance_backend_mariadb10:
-    image: typo3/core-testing-${DOCKER_PHP_IMAGE}:latest
+    image: ${IMAGE_PREFIX}core-testing-${DOCKER_PHP_IMAGE}:latest
     user: ${HOST_UID}
     links:
       - mariadb10
@@ -86,7 +86,7 @@ services:
       "
 
   composer_install:
-    image: typo3/core-testing-${DOCKER_PHP_IMAGE}:latest
+    image: ${IMAGE_PREFIX}core-testing-${DOCKER_PHP_IMAGE}:latest
     user: ${HOST_UID}
     volumes:
       - ${ROOT_DIR}:${ROOT_DIR}
@@ -104,7 +104,7 @@ services:
       "
 
   composer_validate:
-    image: typo3/core-testing-${DOCKER_PHP_IMAGE}:latest
+    image: ${IMAGE_PREFIX}core-testing-${DOCKER_PHP_IMAGE}:latest
     user: ${HOST_UID}
     volumes:
       - ${ROOT_DIR}:${ROOT_DIR}
@@ -122,7 +122,7 @@ services:
       "
 
   functional_mariadb10:
-    image: typo3/core-testing-${DOCKER_PHP_IMAGE}:latest
+    image: ${IMAGE_PREFIX}core-testing-${DOCKER_PHP_IMAGE}:latest
     user: ${HOST_UID}
     links:
       - mariadb10
@@ -168,7 +168,7 @@ services:
         fi
       "
   lint:
-    image: typo3/core-testing-${DOCKER_PHP_IMAGE}:latest
+    image: ${IMAGE_PREFIX}core-testing-${DOCKER_PHP_IMAGE}:latest
     user: ${HOST_UID}
     volumes:
       - ${ROOT_DIR}:${ROOT_DIR}
@@ -185,7 +185,7 @@ services:
       "
 
   unit:
-    image: typo3/core-testing-${DOCKER_PHP_IMAGE}:latest
+    image: ${IMAGE_PREFIX}core-testing-${DOCKER_PHP_IMAGE}:latest
     user: ${HOST_UID}
     volumes:
       - ${ROOT_DIR}:${ROOT_DIR}
