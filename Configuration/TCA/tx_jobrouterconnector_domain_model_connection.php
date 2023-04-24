@@ -31,8 +31,7 @@ return [
                 'renderType' => 'checkboxToggle',
                 'items' => [
                     [
-                        0 => '',
-                        1 => '',
+                        'label' => '',
                         'invertStateDisplay' => true,
                     ],
                 ],
@@ -111,10 +110,7 @@ return [
                 'renderType' => 'checkboxToggle',
                 'items' => [
                     [
-                        0 => '',
-                        1 => '',
-                        'labelChecked' => 'Enabled',
-                        'labelUnchecked' => 'Disabled',
+                        'label' => '',
                     ],
                 ],
                 'default' => 1,

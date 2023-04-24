@@ -9,7 +9,7 @@
 
 defined('TYPO3') || die();
 
-if ((new TYPO3\CMS\Core\Information\Typo3Version())->getMajorVersion() === 11) {
+if ((new TYPO3\CMS\Core\Information\Typo3Version())->getMajorVersion() < 12) {
     $GLOBALS['TCA']['tx_jobrouterconnector_domain_model_connection']['columns']['timeout']['config'] = array_merge(
         $GLOBALS['TCA']['tx_jobrouterconnector_domain_model_connection']['columns']['timeout']['config'],
         [
@@ -17,4 +17,19 @@ if ((new TYPO3\CMS\Core\Information\Typo3Version())->getMajorVersion() === 11) {
             'eval' => 'int',
         ],
     );
+
+    $GLOBALS['TCA']['tx_jobrouterconnector_domain_model_connection']['columns']['disabled']['config']['items'] = [
+        [
+            0 => '',
+            1 => '',
+            'invertStateDisplay' => true,
+        ],
+    ];
+
+    $GLOBALS['TCA']['tx_jobrouterconnector_domain_model_connection']['columns']['timeout']['config']['items'] = [
+        [
+            0 => '',
+            1 => '',
+        ],
+    ];
 }
