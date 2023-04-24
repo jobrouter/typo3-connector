@@ -65,7 +65,7 @@
                         </be:link.editRecord>
                     </td>
                     <td id="jobrouter-connection-list-handle-{connection.uid}">{connection.handle}</td>
-                    <td id="jobrouter-connection-list-baseurl-{connection.uid}"><f:link.external uri="{connection.baseUrl}" target="_blank" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.open_jobrouter_system')}" rel="noreferrer">{connection.baseUrl}</f:link.external></td>
+                    <td id="jobrouter-connection-list-baseurl-{connection.uid}"><f:link.external class="jobrouter-connector-link" uri="{connection.baseUrl}" target="_blank" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:action.open_jobrouter_system')}" rel="noreferrer">{connection.baseUrl}</f:link.external></td>
                     <td id="jobrouter-connection-list-username-{connection.uid}">{connection.username}</td>
                     <td id="jobrouter-connection-list-verify-{connection.uid}" class="text-center">
                         <f:if condition="{connection.verify}">
