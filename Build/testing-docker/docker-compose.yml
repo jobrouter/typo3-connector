@@ -38,7 +38,7 @@ services:
       "
 
   mockserver:
-    image: mockserver/mockserver:mockserver-5.13.2
+    image: mockserver/mockserver:mockserver-5.15.0
     ports:
       - 1080:1080
 
