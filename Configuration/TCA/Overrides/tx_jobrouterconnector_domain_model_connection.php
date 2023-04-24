@@ -26,7 +26,7 @@ if ((new TYPO3\CMS\Core\Information\Typo3Version())->getMajorVersion() < 12) {
         ],
     ];
 
-    $GLOBALS['TCA']['tx_jobrouterconnector_domain_model_connection']['columns']['timeout']['config']['items'] = [
+    $GLOBALS['TCA']['tx_jobrouterconnector_domain_model_connection']['columns']['verify']['config']['items'] = [
         [
             0 => '',
             1 => '',
