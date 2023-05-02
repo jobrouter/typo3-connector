@@ -20,8 +20,8 @@ Requirements
 ============
 
 .. note::
-   The extension in version |release| supports TYPO3 v11 LTS and TYPO3 v12 and
-   requires at least PHP 8.1.
+   The extension in version |release| supports TYPO3 v11 LTS and TYPO3 v12 LTS
+   and requires at least PHP 8.1.
 
 In addition to the TYPO3 requirements this extension needs the following PHP
 extensions: `curl` and `sodium`.
