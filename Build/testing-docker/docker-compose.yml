@@ -75,13 +75,13 @@ services:
         mkdir -p Web/typo3temp/var/tests/
         if [ ${PHP_XDEBUG_ON} -eq 0 ]; then
           XDEBUG_MODE=\"off\" \
-          vendor/codeception/codeception/codecept run Backend -c Web/typo3conf/ext/jobrouter_connector/Tests/codeception.yml ${TEST_FILE} ${EXTRA_TEST_OPTIONS}
+          vendor/codeception/codeception/codecept run Backend -c ../Tests/codeception.yml ${TEST_FILE} ${EXTRA_TEST_OPTIONS}
         else
           DOCKER_HOST=`route -n | awk '/^0.0.0.0/ { print $$2 }'`
           XDEBUG_MODE=\"debug,develop\" \
           XDEBUG_TRIGGER=\"foo\" \
           XDEBUG_CONFIG=\"client_port=${PHP_XDEBUG_PORT} client_host=$${DOCKER_HOST}\" \
-          vendor/codeception/codeception/codecept run Backend -c Web/typo3conf/ext/jobrouter_connector/Tests/codeception.yml ${TEST_FILE} ${EXTRA_TEST_OPTIONS}
+          vendor/codeception/codeception/codecept run Backend -c ../Tests/codeception.yml ${TEST_FILE} ${EXTRA_TEST_OPTIONS}
         fi
       "
 
@@ -150,21 +150,14 @@ services:
         php -v | grep '^PHP';
         if [ ${PHP_XDEBUG_ON} -eq 0 ]; then
           export XDEBUG_MODE=\"off\"
-          if [ ${TYPO3} -eq 10 ]; then
-            bin/phpunit -c Web/typo3conf/ext/jobrouter_connector/Build/phpunit/FunctionalTests.xml ${EXTRA_TEST_OPTIONS} ${TEST_FILE};
-          else
-            bin/phpunit -c Web/typo3conf/ext/jobrouter_connector/Build/phpunit/FunctionalTests.xml --exclude-group=content_defender ${EXTRA_TEST_OPTIONS} ${TEST_FILE};
-          fi
+          pwd
+          bin/phpunit -c ../Build/phpunit/FunctionalTests.xml ${EXTRA_TEST_OPTIONS} ${TEST_FILE};
         else
           DOCKER_HOST=`route -n | awk '/^0.0.0.0/ { print $$2 }'`
           export XDEBUG_MODE=\"debug,develop\" \
           XDEBUG_TRIGGER=\"foo\" \
           XDEBUG_CONFIG=\"client_port=${PHP_XDEBUG_PORT} client_host=$${DOCKER_HOST}\"
-          if [ ${TYPO3} -eq 10 ]; then
-            bin/phpunit -c Web/typo3conf/ext/jobrouter_connector/Build/phpunit/FunctionalTests.xml ${EXTRA_TEST_OPTIONS} ${TEST_FILE};
-          else
-            bin/phpunit -c Web/typo3conf/ext/jobrouter_connector/Build/phpunit/FunctionalTests.xml ---exclude-group=content_defender ${EXTRA_TEST_OPTIONS} ${TEST_FILE};
-          fi
+          bin/phpunit -c ../Build/phpunit/FunctionalTests.xml ${EXTRA_TEST_OPTIONS} ${TEST_FILE};
         fi
       "
   lint:
@@ -201,12 +194,12 @@ services:
         php -v | grep '^PHP';
         if [ ${PHP_XDEBUG_ON} -eq 0 ]; then
           XDEBUG_MODE=\"off\" \
-          bin/phpunit -c Web/typo3conf/ext/jobrouter_connector/Build/phpunit/UnitTests.xml ${EXTRA_TEST_OPTIONS} ${TEST_FILE};
+          bin/phpunit -c ../Build/phpunit/FunctionalTests.xml ${EXTRA_TEST_OPTIONS} ${TEST_FILE};
         else
           DOCKER_HOST=`route -n | awk '/^0.0.0.0/ { print $$2 }'`
           XDEBUG_MODE=\"debug,develop\" \
           XDEBUG_TRIGGER=\"foo\" \
           XDEBUG_CONFIG=\"client_port=${PHP_XDEBUG_PORT} client_host=$${DOCKER_HOST}\" \
-          bin/phpunit -c Web/typo3conf/ext/jobrouter_connector/Build/phpunit/UnitTests.xml ${EXTRA_TEST_OPTIONS} ${TEST_FILE};
+          bin/phpunit -c ../Build/phpunit/FunctionalTests.xml ${EXTRA_TEST_OPTIONS} ${TEST_FILE};
         fi
       "
