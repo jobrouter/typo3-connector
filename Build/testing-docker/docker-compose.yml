@@ -19,7 +19,7 @@ services:
     volumes:
       - ${ROOT_DIR}:${ROOT_DIR}
       # @todo Home folder should not be mounted. This leads to interference with existing setups and can
-      #       also be considered as security issue. Same for passwd and group mount.  
+      #       also be considered as security issue. Same for passwd and group mount.
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
     environment:
@@ -108,6 +108,7 @@ services:
           set -x
         fi
         php -v | grep '^PHP';
+        rm -Rf .Build composer.lock
         if [ "${TYPO3}" -eq 11 ]; then
               composer req --no-update \
                 "typo3/cms-core":"^11.5.4"
