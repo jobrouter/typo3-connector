@@ -50,7 +50,7 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
       - name: Install composer dependencies
         run: |
-          Build/Scripts/runTests -s composerInstall -p ${{ matrix.php-versions }} -t ${{ matrix.typo3-versions }}
+          Build/Scripts/runTests.sh -s composerInstall -p ${{ matrix.php-versions }} -t ${{ matrix.typo3-versions }}
       - name: Run PHP linter
         run: |
           find . -type f -name '*.php' ! -path "./.Build/*" -print0 | xargs -0 -n1 -P4 php -l -n | (! grep -v "No syntax errors detected" )
