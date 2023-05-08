@@ -118,6 +118,7 @@ services:
                 "typo3/cms-core":"^12.4"
         fi
         composer install --no-progress --no-interaction;
+        git restore composer.json
       "
 
   composer_validate:
