@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <!--
-    Boilerplate for a functional test suite setup.
+    Boilerplate for a unit test suite setup.
 
     This file is loosely maintained within TYPO3 testing-framework, extensions
     are encouraged to not use it directly, but to copy it to an own place,
-    for instance Build/FunctionalTests.xml.
-    Note FunctionalTestsBootstrap.php should be copied along the way.
+    for instance Build/UnitTests.xml.
+    Note UnitTestsBootstrap.php should be copied along the way.
 
     Functional tests should extend \TYPO3\TestingFramework\Core\Tests\FunctionalTestCase,
     take a look at this class for further documentation on how to run the suite.
@@ -19,14 +19,15 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
     backupGlobals="true"
-    bootstrap="FunctionalTestsBootstrap.php"
+    bootstrap="UnitTestsBootstrap.php"
     cacheResult="false"
     colors="true"
+    convertDeprecationsToExceptions="true"
     convertErrorsToExceptions="true"
     convertWarningsToExceptions="true"
-    convertDeprecationsToExceptions="true"
     convertNoticesToExceptions="true"
     forceCoversAnnotation="false"
+    processIsolation="false"
     stopOnError="false"
     stopOnFailure="false"
     stopOnIncomplete="false"
@@ -36,25 +37,24 @@
     failOnWarning="true"
     failOnRisky="true"
 >
+    <coverage>
+        <include>
+            <directory>../../Tests/Unit/</directory>
+        </include>
+    </coverage>
     <testsuites>
-        <testsuite name="Functional tests">
+        <testsuite name="Unit tests">
             <!--
                       This path either needs an adaption in extensions, or an extension's
                       test location path needs to be given to phpunit.
                   -->
-            <directory>../../Tests/Functional/</directory>
+            <directory>../../Tests/Unit/</directory>
         </testsuite>
     </testsuites>
+    <!-- @todo: change tag to 'coverage' when TF requires phpunit > 9 -->
     <php>
         <!-- @deprecated: will be removed with next major version, constant TYPO3_MODE is deprecated -->
         <const name="TYPO3_MODE" value="BE"/>
-        <!--
-                @deprecated: Set this to not suppress warnings, notices and deprecations in functional tests
-                             with TYPO3 core v11 and up.
-                             Will always be done with next major version.
-                             To still suppress warnings, notices and deprecations, do NOT define the constant at all.
-             -->
-        <const name="TYPO3_TESTING_FUNCTIONAL_REMOVE_ERROR_HANDLER" value="true"/>
         <ini name="display_errors" value="1"/>
         <env name="TYPO3_CONTEXT" value="Testing"/>
     </php>
