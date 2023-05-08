@@ -1,7 +1,8 @@
 version: '2.3'
 services:
   chrome:
-    image: selenium/standalone-chrome:101.0
+    #image: selenium/standalone-chrome:101.0
+    image: ${DOCKER_SELENIUM_IMAGE}
     tmpfs:
       - /dev/shm:rw,nosuid,nodev,noexec,relatime
 

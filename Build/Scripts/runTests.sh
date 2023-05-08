@@ -26,6 +26,7 @@ setUpDockerComposeDotEnv() {
     echo "PHP_XDEBUG_ON=${PHP_XDEBUG_ON}" >> .env
     echo "PHP_XDEBUG_PORT=${PHP_XDEBUG_PORT}" >> .env
     echo "DOCKER_PHP_IMAGE=${DOCKER_PHP_IMAGE}" >> .env
+    echo "DOCKER_SELENIUM_IMAGE=${DOCKER_SELENIUM_IMAGE}" >> .env
     echo "IMAGE_PREFIX=${IMAGE_PREFIX}" >> .env
     echo "TYPO3=${TYPO3}" >> .env
     echo "PHP_VERSION=${PHP_VERSION}" >> .env
@@ -133,6 +134,17 @@ EXTRA_TEST_OPTIONS=""
 SCRIPT_VERBOSE=0
 TYPO3="11"
 IMAGE_PREFIX="ghcr.io/typo3/"
+
+# Detect arm64 and use a seleniarm image.
+# In a perfect world selenium would have a arm64 integrated, but that is not on the horizon.
+# So for the time being we have to use seleniarm image.
+# DISABLED - TO NEW AND INTRODUCES ISSUES: DOCKER_SELENIUM_IMAGE="selenium/standalone-chrome:101.0"
+DOCKER_SELENIUM_IMAGE="selenium/standalone-chrome:4.0.0-20211102"
+ARCH=$(uname -m)
+if [ $ARCH = "arm64" ]; then
+    DOCKER_SELENIUM_IMAGE="seleniarm/standalone-chromium:4.1.2-20220227"
+    echo "Architecture" $ARCH "requires" $DOCKER_SELENIUM_IMAGE "to run acceptance tests."
+fi
 
 # Option parsing
 # Reset in case getopts has been used previously in the shell
