@@ -12,10 +12,11 @@ declare(strict_types=1);
 namespace Brotkrueml\JobRouterConnector\Tests\Acceptance\Backend;
 
 use Brotkrueml\JobRouterConnector\Tests\Acceptance\Support\BackendTester;
+use TYPO3\CMS\Core\Information\Typo3Version;
 
 final class ConnectionsModuleCest
 {
-    private const CONNECTOR_MODULE_SELECTOR = '[data-modulemenu-identifier="jobrouter_connections"]';
+    private const CONNECTOR_MODULE_SELECTOR = 'jobrouter_connections';
     private const MOCKSERVER_BASE_URL = 'http://mockserver:1080/';
 
     public function _before(BackendTester $I): void
@@ -31,7 +32,7 @@ final class ConnectionsModuleCest
 
     public function onVeryFirstCallModuleComplainsAboutMissingKeyFile(BackendTester $I): void
     {
-        $I->click(self::CONNECTOR_MODULE_SELECTOR);
+        $I->click($this->moduleIdentifier());
         $I->switchToContentFrame();
         $I->canSee('JobRouter Connections', 'h1');
 
@@ -42,7 +43,7 @@ final class ConnectionsModuleCest
     {
         $I->createJobRouterKey();
 
-        $I->click(self::CONNECTOR_MODULE_SELECTOR);
+        $I->click($this->moduleIdentifier());
         $I->switchToContentFrame();
         $I->canSee('JobRouter Connections', 'h1');
 
@@ -53,7 +54,7 @@ final class ConnectionsModuleCest
     {
         $I->createJobRouterKey();
 
-        $I->click(self::CONNECTOR_MODULE_SELECTOR);
+        $I->click($this->moduleIdentifier());
         $I->switchToContentFrame();
         $I->canSee('JobRouter Connections', 'h1');
 
@@ -67,7 +68,7 @@ final class ConnectionsModuleCest
         $I->createJobRouterKey();
         $I->importConnectionFixture('https://example.org/', 'secretPwd');
 
-        $I->click(self::CONNECTOR_MODULE_SELECTOR);
+        $I->click($this->moduleIdentifier());
         $I->switchToContentFrame();
         $I->canSee('JobRouter Connections', 'h1');
 
@@ -84,7 +85,7 @@ final class ConnectionsModuleCest
         $I->createJobRouterKey();
         $I->importConnectionFixture('https://example.org/', 'secretPwd', 0);
 
-        $I->click(self::CONNECTOR_MODULE_SELECTOR);
+        $I->click($this->moduleIdentifier());
         $I->switchToContentFrame();
         $I->canSee('JobRouter Connections', 'h1');
 
@@ -101,7 +102,7 @@ final class ConnectionsModuleCest
         $I->createJobRouterKey();
         $I->importConnectionFixture('https://example.org/', 'secretPwd');
 
-        $I->click(self::CONNECTOR_MODULE_SELECTOR);
+        $I->click($this->moduleIdentifier());
         $I->switchToContentFrame();
         $I->canSee('JobRouter Connections', 'h1');
 
@@ -115,7 +116,7 @@ final class ConnectionsModuleCest
         $I->createJobRouterKey();
         $I->importConnectionFixture('https://example.org/', 'secretPwd');
 
-        $I->click(self::CONNECTOR_MODULE_SELECTOR);
+        $I->click($this->moduleIdentifier());
         $I->switchToContentFrame();
         $I->canSee('JobRouter Connections', 'h1');
 
@@ -130,7 +131,7 @@ final class ConnectionsModuleCest
         $I->importConnectionFixture(self::MOCKSERVER_BASE_URL, 'secretPwd');
         $I->createMockServerExpectation(self::MOCKSERVER_BASE_URL, 'john.doe', 'secretPwd');
 
-        $I->click(self::CONNECTOR_MODULE_SELECTOR);
+        $I->click($this->moduleIdentifier());
         $I->switchToContentFrame();
         $I->canSee('JobRouter Connections', 'h1');
 
@@ -140,7 +141,7 @@ final class ConnectionsModuleCest
         $I->switchToMainFrame();
         $I->waitForText('Connection established successfully');
 
-        $I->click(self::CONNECTOR_MODULE_SELECTOR);
+        $I->click($this->moduleIdentifier());
         $I->switchToContentFrame();
         $I->canSee('5.1.5');
     }
@@ -150,7 +151,7 @@ final class ConnectionsModuleCest
         $I->createJobRouterKey();
         $I->importConnectionFixture(self::MOCKSERVER_BASE_URL, 'secretPwd');
 
-        $I->click(self::CONNECTOR_MODULE_SELECTOR);
+        $I->click($this->moduleIdentifier());
         $I->switchToContentFrame();
         $I->canSee('JobRouter Connections', 'h1');
 
@@ -167,12 +168,20 @@ final class ConnectionsModuleCest
         $I->createJobRouterKey();
         $I->importConnectionFixture($url, 'secretPwd');
 
-        $I->click(self::CONNECTOR_MODULE_SELECTOR);
+        $I->click($this->moduleIdentifier());
         $I->switchToContentFrame();
         $I->canSee('JobRouter Connections', 'h1');
 
         $I->canSeeElement('#jobrouter-connection-list');
         $I->click('#jobrouter-connection-list-open-1');
         $I->amOnUrl($url);
+    }
+
+    private function moduleIdentifier(): string
+    {
+        if ((new Typo3Version())->getMajorVersion() < 12) {
+            return '#' . self::CONNECTOR_MODULE_SELECTOR;
+        }
+        return \sprintf('[data-moduleroute-identifier="%s"]', self::CONNECTOR_MODULE_SELECTOR);
     }
 }
