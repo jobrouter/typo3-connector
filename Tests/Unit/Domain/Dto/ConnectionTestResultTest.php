@@ -12,13 +12,12 @@ declare(strict_types=1);
 namespace Brotkrueml\JobRouterConnector\Tests\Unit\Domain\Dto;
 
 use Brotkrueml\JobRouterConnector\Domain\Dto\ConnectionTestResult;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 final class ConnectionTestResultTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function toJsonReturnsCorrectJsonWhenNoErrorMessageIsGiven(): void
     {
         $subject = new ConnectionTestResult('');
@@ -26,9 +25,7 @@ final class ConnectionTestResultTest extends TestCase
         self::assertJsonStringEqualsJsonString('{"check": "ok"}', $subject->toJson());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function toJsonReturnsCorrectJsonWhenErrorMessageIsGiven(): void
     {
         $subject = new ConnectionTestResult('some error message');

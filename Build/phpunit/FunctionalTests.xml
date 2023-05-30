@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <!--
 	Functional test suite setup
 
@@ -14,13 +15,13 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../.Build/vendor/phpunit/phpunit/phpunit.xsd"
     backupGlobals="true"
+    beStrictAboutTestsThatDoNotTestAnything="false"
     bootstrap="FunctionalTestsBootstrap.php"
+    cacheDirectory=".phpunit.cache"
     cacheResult="false"
     colors="true"
-    convertDeprecationsToExceptions="true"
-    beStrictAboutTestsThatDoNotTestAnything="false"
-    failOnWarning="true"
     failOnRisky="true"
+    failOnWarning="true"
     testdox="true"
 >
     <testsuites>
@@ -29,9 +30,9 @@
         </testsuite>
     </testsuites>
     <php>
-        <const name="TYPO3_TESTING_FUNCTIONAL_REMOVE_ERROR_HANDLER" value="true" />
-        <ini name="display_errors" value="1" />
-        <ini name="error_reporting" value="E_ALL" />
-        <env name="TYPO3_CONTEXT" value="Testing" />
+        <const name="TYPO3_TESTING_FUNCTIONAL_REMOVE_ERROR_HANDLER" value="true"/>
+        <ini name="display_errors" value="1"/>
+        <ini name="error_reporting" value="E_ALL"/>
+        <env name="TYPO3_CONTEXT" value="Testing"/>
     </php>
 </phpunit>

@@ -13,6 +13,7 @@ namespace Brotkrueml\JobRouterConnector\Tests\Unit\Hooks;
 
 use Brotkrueml\JobRouterConnector\Evaluation\Password;
 use Brotkrueml\JobRouterConnector\Hooks\DropObfuscatedPasswordInConnection;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 
@@ -25,9 +26,7 @@ final class DropObfuscatedPasswordInConnectionTest extends TestCase
         $this->subject = new DropObfuscatedPasswordInConnection();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function tableIsNotConnectionTableThenFieldsAreUntouched(): void
     {
         $incomingFieldArray = [
@@ -41,9 +40,7 @@ final class DropObfuscatedPasswordInConnectionTest extends TestCase
         ], $incomingFieldArray);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function tableIsConnectionTabelThenPasswordFieldIsRemovedWhenObfuscated(): void
     {
         $incomingFieldArray = [
@@ -58,9 +55,7 @@ final class DropObfuscatedPasswordInConnectionTest extends TestCase
         ], $incomingFieldArray);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function tableIsConnectionTabelThenPasswordFieldIsRemovedWhenNotObfuscated(): void
     {
         $incomingFieldArray = [

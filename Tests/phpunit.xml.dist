@@ -7,14 +7,15 @@
     executionOrder="random"
     testdox="true"
 >
-    <coverage>
-        <include>
-            <directory>../Classes/</directory>
-        </include>
-    </coverage>
+    <coverage/>
     <testsuites>
         <testsuite name="Unit tests">
             <directory>Unit/</directory>
         </testsuite>
     </testsuites>
+    <source>
+        <include>
+            <directory>../Classes/</directory>
+        </include>
+    </source>
 </phpunit>

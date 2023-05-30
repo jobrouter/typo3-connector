@@ -17,6 +17,8 @@ use Brotkrueml\JobRouterConnector\Domain\Entity\Connection;
 use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
 use Brotkrueml\JobRouterConnector\Exception\ConnectionNotFoundException;
 use Brotkrueml\JobRouterConnector\RestClient\RestClientFactoryInterface;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
@@ -25,9 +27,7 @@ use TYPO3\CMS\Core\Http\ResponseFactory;
 use TYPO3\CMS\Core\Http\StreamFactory;
 use TYPO3\CMS\Core\Localization\LanguageService;
 
-/**
- * @runTestsInSeparateProcesses
- */
+#[RunTestsInSeparateProcesses]
 final class ConnectionTestControllerTest extends TestCase
 {
     private ConnectionRepository&Stub $connectionRepositoryStub;
@@ -62,9 +62,7 @@ final class ConnectionTestControllerTest extends TestCase
         unset($GLOBALS['LANG']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function invokeReturnsResponseWithErrorWhenRequestHasInvalidBody(): void
     {
         $this->requestStub
@@ -80,9 +78,7 @@ final class ConnectionTestControllerTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function invokeReturnsResponseWithErrorWhenIdentifierCannotBeFoundInRepository(): void
     {
         $this->requestStub
@@ -104,9 +100,7 @@ final class ConnectionTestControllerTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function invokeReturnSuccessfulResponse(): void
     {
         $this->requestStub
@@ -135,9 +129,7 @@ final class ConnectionTestControllerTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function invokeReturnsResponseWithErrorWhenHttpExceptionIsThrown(): void
     {
         $this->requestStub
@@ -167,9 +159,7 @@ final class ConnectionTestControllerTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function invokeReturnsResponseWithErrorWhenAnExceptionOtherThanHttpExceptionIsThrown(): void
     {
         $this->requestStub
@@ -199,9 +189,7 @@ final class ConnectionTestControllerTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function invokeReturnsResponseWithTruncatedErrorWhenMaximumLengthIsExceeded(): void
     {
         $this->requestStub

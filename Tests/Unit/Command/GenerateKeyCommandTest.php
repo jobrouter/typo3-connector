@@ -14,11 +14,12 @@ namespace Brotkrueml\JobRouterConnector\Tests\Unit\Command;
 use Brotkrueml\JobRouterConnector\Command\GenerateKeyCommand;
 use Brotkrueml\JobRouterConnector\Exception\KeyGenerationException;
 use Brotkrueml\JobRouterConnector\Service\KeyGenerator;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Tester\CommandTester;
 
-class GenerateKeyCommandTest extends TestCase
+final class GenerateKeyCommandTest extends TestCase
 {
     private CommandTester $commandTester;
     private KeyGenerator&Stub $keyGeneratorStub;
@@ -31,9 +32,7 @@ class GenerateKeyCommandTest extends TestCase
         $this->commandTester = new CommandTester($command);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function returnSuccessIfKeyWasGeneratedSuccessfully(): void
     {
         $this->keyGeneratorStub
@@ -45,9 +44,7 @@ class GenerateKeyCommandTest extends TestCase
         self::assertSame(0, $this->commandTester->getStatusCode());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function returnErrorIfKeyGenerationThrowsException(): void
     {
         $this->keyGeneratorStub

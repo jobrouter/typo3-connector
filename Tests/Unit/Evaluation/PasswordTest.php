@@ -13,17 +13,14 @@ namespace Brotkrueml\JobRouterConnector\Tests\Unit\Evaluation;
 
 use Brotkrueml\JobRouterConnector\Evaluation\Password;
 use Brotkrueml\JobRouterConnector\Service\Crypt;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-class PasswordTest extends TestCase
+final class PasswordTest extends TestCase
 {
     private Password $subject;
-
-    /**
-     * @var MockObject&Crypt
-     */
-    private MockObject $cryptMock;
+    private Crypt&MockObject $cryptMock;
 
     protected function setUp(): void
     {
@@ -32,9 +29,7 @@ class PasswordTest extends TestCase
         $this->subject = new Password($this->cryptMock);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function evaluateFieldValueReturnsObfuscatedValueWhenAlreadyObfuscated(): void
     {
         $value = Password::OBFUSCATED_VALUE;
@@ -44,9 +39,7 @@ class PasswordTest extends TestCase
         self::assertSame($value, $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function evaluateFieldValueWithValueNotObfuscatedReturnsEncryptedValue(): void
     {
         $encryptedValue = 'encrypted-value';
@@ -62,9 +55,7 @@ class PasswordTest extends TestCase
         self::assertSame($encryptedValue, $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function deevaluateFieldValueReturnsEmptyStringWhenGivenValueIsEmptyString(): void
     {
         $actual = $this->subject->deevaluateFieldValue([
@@ -74,9 +65,7 @@ class PasswordTest extends TestCase
         self::assertSame('', $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function deevaluateFieldValueReturnsObfuscatedValueWhenGivenValueIsNotEmpty(): void
     {
         $actual = $this->subject->deevaluateFieldValue([

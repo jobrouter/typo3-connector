@@ -16,6 +16,7 @@ use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
 use Brotkrueml\JobRouterConnector\Exception\CryptException;
 use Brotkrueml\JobRouterConnector\RestClient\RestClientFactory;
 use Brotkrueml\JobRouterConnector\Service\Crypt;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
@@ -32,9 +33,7 @@ final class RestClientFactoryTest extends TestCase
         $this->subject = new RestClientFactory($this->connectionRepositoryStub, $this->cryptServiceStub);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createThrowsAuthenticationExceptionWhenPasswordCannotBeDecrypted(): void
     {
         $this->expectException(CryptException::class);

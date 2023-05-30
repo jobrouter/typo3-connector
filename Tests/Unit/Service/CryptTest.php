@@ -15,12 +15,12 @@ use Brotkrueml\JobRouterConnector\Exception\CryptException;
 use Brotkrueml\JobRouterConnector\Service\Crypt;
 use Brotkrueml\JobRouterConnector\Service\FileService;
 use org\bovigo\vfs\vfsStream;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Brotkrueml\JobRouterConnector\Service\Crypt
- */
-class CryptTest extends TestCase
+#[CoversClass(Crypt::class)]
+final class CryptTest extends TestCase
 {
     private ?Crypt $subject = null;
 
@@ -29,9 +29,7 @@ class CryptTest extends TestCase
         vfsStream::setup('project-dir');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateKeyReturnsAKey(): void
     {
         $subject = new Crypt(new FileService());
@@ -43,9 +41,7 @@ class CryptTest extends TestCase
         self::assertSame(32, \strlen($actualBase64Decoded));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function encryptAndDecrypt(): void
     {
         $this->initialiseSubjectWithKeyPath();
@@ -58,9 +54,7 @@ class CryptTest extends TestCase
         self::assertSame($value, $actualDecrypted);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function encryptShouldThrowExceptionIfKeyDoesNotExist(): void
     {
         $this->expectException(CryptException::class);
@@ -71,9 +65,7 @@ class CryptTest extends TestCase
         $this->subject->encrypt('some-value');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function decryptThrowsExceptionOnNotBase64EncodedValueGiven(): void
     {
         $this->expectException(CryptException::class);
@@ -84,9 +76,7 @@ class CryptTest extends TestCase
         $this->subject->decrypt('some-value');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function decryptThrowsExceptionOnDecryptionFailure(): void
     {
         $this->expectException(CryptException::class);

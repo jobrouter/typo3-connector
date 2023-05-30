@@ -12,13 +12,12 @@ declare(strict_types=1);
 namespace Brotkrueml\JobRouterConnector\Tests\Unit\Exception;
 
 use Brotkrueml\JobRouterConnector\Exception\ConnectionNotFoundException;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 final class ConnectionNotFoundExceptionTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function forUid(): void
     {
         $actual = ConnectionNotFoundException::forUid(42);

@@ -17,10 +17,11 @@ use Brotkrueml\JobRouterConnector\Service\Crypt;
 use Brotkrueml\JobRouterConnector\Service\FileService;
 use Brotkrueml\JobRouterConnector\Service\KeyGenerator;
 use org\bovigo\vfs\vfsStream;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
-class KeyGeneratorTest extends TestCase
+final class KeyGeneratorTest extends TestCase
 {
     private string $keyPath;
     private FileService&Stub $fileServiceStub;
@@ -37,9 +38,7 @@ class KeyGeneratorTest extends TestCase
         $this->subject = new KeyGenerator($this->cryptStub, $this->fileServiceStub);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateAndStoreKeyThrowsExceptionWhenKeyFilePathIsNotDefinedCorrectly(): void
     {
         $this->expectException(KeyGenerationException::class);
@@ -53,9 +52,7 @@ class KeyGeneratorTest extends TestCase
         $this->subject->generateAndStoreKey();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateAndStoreKeyThrowsExceptionIfKeyAlreadyExists(): void
     {
         $this->expectException(KeyGenerationException::class);
@@ -71,9 +68,7 @@ class KeyGeneratorTest extends TestCase
         $this->subject->generateAndStoreKey();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateAndStoreKeyThrowsExceptionIfKeyCannotBeWritten(): void
     {
         $this->expectException(KeyGenerationException::class);
@@ -91,9 +86,7 @@ class KeyGeneratorTest extends TestCase
         $this->subject->generateAndStoreKey();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateAndStoreKeyIsSuccessful(): void
     {
         $this->fileServiceStub

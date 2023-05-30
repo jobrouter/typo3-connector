@@ -13,6 +13,7 @@ namespace Brotkrueml\JobRouterConnector\Tests\Functional\Domain\Repository;
 
 use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
 use Brotkrueml\JobRouterConnector\Exception\ConnectionNotFoundException;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Database\Connection as DatabaseConnection;
 use TYPO3\CMS\Core\Database\Query\Restriction\HiddenRestriction;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
@@ -34,9 +35,7 @@ final class ConnectionRepositoryTest extends FunctionalTestCase
         $this->subject = new ConnectionRepository($this->getConnectionPool());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function findAllWhenNoRecordsAvailable(): void
     {
         $actual = $this->subject->findAll();
@@ -44,9 +43,7 @@ final class ConnectionRepositoryTest extends FunctionalTestCase
         self::assertSame([], $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function findAll(): void
     {
         $this->importCSVDataSet(__DIR__ . '/../../Fixtures/tx_jobrouterconnector_domain_model_connection.csv');
@@ -58,9 +55,7 @@ final class ConnectionRepositoryTest extends FunctionalTestCase
         self::assertSame(1, $actual[0]->uid);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function findAllWithHidden(): void
     {
         $this->importCSVDataSet(__DIR__ . '/../../Fixtures/tx_jobrouterconnector_domain_model_connection.csv');
@@ -73,9 +68,7 @@ final class ConnectionRepositoryTest extends FunctionalTestCase
         self::assertSame(2, $actual[1]->uid);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function findByUidReturnsRecord(): void
     {
         $this->importCSVDataSet(__DIR__ . '/../../Fixtures/tx_jobrouterconnector_domain_model_connection.csv');
@@ -85,9 +78,7 @@ final class ConnectionRepositoryTest extends FunctionalTestCase
         self::assertSame(1, $actual->uid);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function findByUidWithDisabledRecordThrowsException(): void
     {
         $this->expectException(ConnectionNotFoundException::class);
@@ -97,9 +88,7 @@ final class ConnectionRepositoryTest extends FunctionalTestCase
         $this->subject->findByUid(2);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function findByUidWithHiddenReturnsDisabledRecord(): void
     {
         $this->importCSVDataSet(__DIR__ . '/../../Fixtures/tx_jobrouterconnector_domain_model_connection.csv');
@@ -109,9 +98,7 @@ final class ConnectionRepositoryTest extends FunctionalTestCase
         self::assertSame(2, $actual->uid);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function findByHandleReturnsRecord(): void
     {
         $this->importCSVDataSet(__DIR__ . '/../../Fixtures/tx_jobrouterconnector_domain_model_connection.csv');
@@ -121,9 +108,7 @@ final class ConnectionRepositoryTest extends FunctionalTestCase
         self::assertSame(1, $actual->uid);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function findByUidWithNotExistingHandleThrowsException(): void
     {
         $this->expectException(ConnectionNotFoundException::class);
@@ -131,9 +116,7 @@ final class ConnectionRepositoryTest extends FunctionalTestCase
         $this->subject->findByHandle('nonexisting');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function updateJobRouterVersion(): void
     {
         $this->importCSVDataSet(__DIR__ . '/../../Fixtures/tx_jobrouterconnector_domain_model_connection.csv');
@@ -156,9 +139,7 @@ final class ConnectionRepositoryTest extends FunctionalTestCase
         self::assertSame('2023.1.0', $updatedVersion);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function updateJobRouterVersionForDisabledRecord(): void
     {
         $this->importCSVDataSet(__DIR__ . '/../../Fixtures/tx_jobrouterconnector_domain_model_connection.csv');
