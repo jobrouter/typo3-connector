@@ -11,12 +11,12 @@ declare(strict_types=1);
 
 namespace Brotkrueml\JobRouterConnector\Controller;
 
-use Brotkrueml\JobRouterClient\Exception\HttpException;
 use Brotkrueml\JobRouterConnector\Domain\Dto\ConnectionTestResult;
 use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
 use Brotkrueml\JobRouterConnector\Exception\ConnectionNotFoundException;
 use Brotkrueml\JobRouterConnector\Extension;
 use Brotkrueml\JobRouterConnector\RestClient\RestClientFactoryInterface;
+use JobRouter\AddOn\RestClient\Exception\HttpException;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;

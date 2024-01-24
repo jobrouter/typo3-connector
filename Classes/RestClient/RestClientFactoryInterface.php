@@ -11,8 +11,8 @@ declare(strict_types=1);
 
 namespace Brotkrueml\JobRouterConnector\RestClient;
 
-use Brotkrueml\JobRouterClient\Client\ClientInterface;
 use Brotkrueml\JobRouterConnector\Domain\Entity\Connection;
+use JobRouter\AddOn\RestClient\Client\ClientInterface;
 
 interface RestClientFactoryInterface
 {

@@ -11,16 +11,16 @@ declare(strict_types=1);
 
 namespace Brotkrueml\JobRouterConnector\RestClient;
 
-use Brotkrueml\JobRouterClient\Client\ClientInterface;
-use Brotkrueml\JobRouterClient\Client\RestClient;
-use Brotkrueml\JobRouterClient\Configuration\ClientConfiguration;
-use Brotkrueml\JobRouterClient\Configuration\ClientOptions;
-use Brotkrueml\JobRouterClient\Exception\ExceptionInterface;
 use Brotkrueml\JobRouterConnector\Domain\Entity\Connection;
 use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
 use Brotkrueml\JobRouterConnector\Exception\CryptException;
 use Brotkrueml\JobRouterConnector\Extension;
 use Brotkrueml\JobRouterConnector\Service\Crypt;
+use JobRouter\AddOn\RestClient\Client\ClientInterface;
+use JobRouter\AddOn\RestClient\Client\RestClient;
+use JobRouter\AddOn\RestClient\Configuration\ClientConfiguration;
+use JobRouter\AddOn\RestClient\Configuration\ClientOptions;
+use JobRouter\AddOn\RestClient\Exception\ExceptionInterface;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 final class RestClientFactory implements RestClientFactoryInterface

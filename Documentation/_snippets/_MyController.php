@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Brotkrueml\JobRouterClient\Exception\ExceptionInterface;
+use JobRouter\AddOn\RestClient\Exception\ExceptionInterface;
 use Brotkrueml\JobRouterConnector\Domain\Entity\Connection;
 use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
 use Brotkrueml\JobRouterConnector\Exception\ConnectionNotFoundException;

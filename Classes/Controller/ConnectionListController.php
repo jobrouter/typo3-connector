@@ -11,11 +11,11 @@ declare(strict_types=1);
 
 namespace Brotkrueml\JobRouterConnector\Controller;
 
-use Brotkrueml\JobRouterClient\Information\Version;
 use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
 use Brotkrueml\JobRouterConnector\Exception\KeyFileException;
 use Brotkrueml\JobRouterConnector\Extension;
 use Brotkrueml\JobRouterConnector\Service\FileService;
+use JobRouter\AddOn\RestClient\Information\Version;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Backend\Routing\UriBuilder;
