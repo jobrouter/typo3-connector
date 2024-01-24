@@ -29,7 +29,7 @@
 		"typo3/cms-frontend": "^11.5.4 || ^12.4"
 	},
 	"require-dev": {
-		"brotkrueml/coding-standards": "~4.0.0",
+		"brotkrueml/coding-standards": "~5.1.0",
 		"codeception/codeception": "^5.0",
 		"codeception/module-asserts": "^3.0",
 		"codeception/module-webdriver": "^4.0",

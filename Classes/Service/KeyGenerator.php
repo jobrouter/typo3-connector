@@ -18,8 +18,7 @@ class KeyGenerator
     public function __construct(
         private readonly Crypt $crypt,
         private readonly FileService $fileService,
-    ) {
-    }
+    ) {}
 
     public function generateAndStoreKey(): void
     {

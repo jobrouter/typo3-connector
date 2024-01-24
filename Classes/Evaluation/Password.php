@@ -22,8 +22,7 @@ final class Password
 
     public function __construct(
         private readonly Crypt $cryptService,
-    ) {
-    }
+    ) {}
 
     public function evaluateFieldValue(string $value): string
     {

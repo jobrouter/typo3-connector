@@ -25,8 +25,7 @@ final class Connection
         public string $proxy,
         public string $jobrouterVersion,
         public bool $disabled,
-    ) {
-    }
+    ) {}
 
     /**
      * @param array<string, mixed> $data

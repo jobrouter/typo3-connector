@@ -52,7 +52,7 @@ final class ConnectionTestControllerTest extends TestCase
         $languageServiceStub = $this->createStub(LanguageService::class);
         $languageServiceStub
             ->method('sL')
-            ->willReturnCallback(static fn (string $key): string => $key);
+            ->willReturnCallback(static fn(string $key): string => $key);
 
         $GLOBALS['LANG'] = $languageServiceStub;
     }

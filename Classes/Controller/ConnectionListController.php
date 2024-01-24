@@ -43,8 +43,7 @@ final class ConnectionListController
         private readonly ModuleTemplateFactory $moduleTemplateFactory,
         private readonly PageRenderer $pageRenderer,
         private readonly UriBuilder $uriBuilder,
-    ) {
-    }
+    ) {}
 
     public function handleRequest(ServerRequestInterface $request): ResponseInterface
     {

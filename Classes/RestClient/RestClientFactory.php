@@ -30,8 +30,7 @@ final class RestClientFactory implements RestClientFactoryInterface
     public function __construct(
         private readonly ConnectionRepository $connectionRepository,
         private readonly Crypt $cryptService,
-    ) {
-    }
+    ) {}
 
     /**
      * Creates the Rest client for the given connection

@@ -35,8 +35,7 @@ final class ConnectionTestController
         private readonly RestClientFactoryInterface $restClientFactory,
         private readonly ResponseFactoryInterface $responseFactory,
         private readonly StreamFactoryInterface $streamFactory,
-    ) {
-    }
+    ) {}
 
     public function __invoke(ServerRequestInterface $request): ResponseInterface
     {

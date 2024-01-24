@@ -20,8 +20,7 @@ class Crypt
 {
     public function __construct(
         private readonly FileService $fileService,
-    ) {
-    }
+    ) {}
 
     public function encrypt(string $value): string
     {

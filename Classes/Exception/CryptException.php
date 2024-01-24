@@ -11,6 +11,4 @@ declare(strict_types=1);
 
 namespace Brotkrueml\JobRouterConnector\Exception;
 
-final class CryptException extends \RuntimeException
-{
-}
+final class CryptException extends \RuntimeException {}

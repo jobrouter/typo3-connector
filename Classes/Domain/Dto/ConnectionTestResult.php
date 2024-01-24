@@ -18,8 +18,7 @@ final class ConnectionTestResult
 {
     public function __construct(
         private readonly string $errorMessage,
-    ) {
-    }
+    ) {}
 
     public function toJson(): string
     {
