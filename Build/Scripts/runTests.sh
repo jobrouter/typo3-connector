@@ -55,10 +55,6 @@ Options:
             - lint: PHP linting
             - unit (default): PHP unit tests
 
-    -t <11|12>
-        Only with -s composerInstall|acceptance
-        TYPO3 core major version the extension is embedded in for testing.
-
     -d <mariadb|mssql|postgres|sqlite>
         Only with -s functional
         Specifies on which DBMS tests are performed
@@ -67,10 +63,11 @@ Options:
             - postgres: use postgres
             - sqlite: use sqlite
 
-    -p <8.1|8.2>
+    -p <8.1|8.2|8.3>
         Specifies the PHP minor version to be used
             - 8.1 (default): use PHP 8.1
             - 8.2: use PHP 8.2
+            - 8.3: use PHP 8.3
 
     -e "<phpunit or codeception options>"
         Only with -s acceptance|functional|unit

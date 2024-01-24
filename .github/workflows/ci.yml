@@ -67,9 +67,9 @@ jobs:
       matrix:
         include:
           - php-versions: '8.1'
-            typo3-versions: '11'
+            typo3-versions: '^11'
           - php-versions: '8.2'
-            typo3-versions: '12'
+            typo3-versions: '^12'
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -77,10 +77,10 @@ jobs:
           fetch-depth: 1
       - name: Install composer dependencies
         run: |
-          ./Build/Scripts/runTests.sh -s composerInstall -p ${{ matrix.php-versions }} -t ${{ matrix.typo3-versions }}
+          composer require typo3/cms-core:${{ matrix.typo3-versions }}
       - name: Run acceptance tests
         run: |
-          ./Build/Scripts/runTests.sh -s acceptance -p ${{ matrix.php-versions }} -t ${{ matrix.typo3-versions }}
+          ./Build/Scripts/runTests.sh -s acceptance -p ${{ matrix.php-versions }}
       - name: Archive acceptance tests results
         uses: actions/upload-artifact@v2
         with:
