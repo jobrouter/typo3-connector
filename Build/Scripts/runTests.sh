@@ -159,14 +159,8 @@ while getopts ":s:d:p:e:t:xy:nhuvf" OPT; do
             ;;
         p)
             PHP_VERSION=${OPTARG}
-            if ! [[ ${PHP_VERSION} =~ ^(8.1|8.2)$ ]]; then
+            if ! [[ ${PHP_VERSION} =~ ^(8.1|8.2|8.3)$ ]]; then
                 INVALID_OPTIONS+=("p ${OPTARG}")
-            fi
-            ;;
-        t)
-            TYPO3=${OPTARG}
-            if ! [[ ${TYPO3} =~ ^(11|12)$ ]]; then
-                INVALID_OPTIONS+=("t ${OPTARG}")
             fi
             ;;
         e)
