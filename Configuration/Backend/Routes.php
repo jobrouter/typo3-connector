@@ -9,8 +9,8 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-use Brotkrueml\JobRouterConnector\Controller\ConnectionListController;
-use Brotkrueml\JobRouterConnector\Extension;
+use JobRouter\AddOn\Typo3Connector\Controller\ConnectionListController;
+use JobRouter\AddOn\Typo3Connector\Extension;
 
 return [
     Extension::MODULE_NAME => [

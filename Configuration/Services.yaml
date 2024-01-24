@@ -4,25 +4,25 @@ services:
     autoconfigure: true
     public: false
 
-  Brotkrueml\JobRouterConnector\:
+  JobRouter\AddOn\Typo3Connector\:
     resource: '../Classes/*'
     exclude: '../Classes/{Domain/Entity,Domain/Model,Exception,Extension.php}'
 
-  Brotkrueml\JobRouterConnector\Utility\FileUtility:
+  JobRouter\AddOn\Typo3Connector\Utility\FileUtility:
     public: true
 
-  Brotkrueml\JobRouterConnector\Controller\ConnectionListController:
+  JobRouter\AddOn\Typo3Connector\Controller\ConnectionListController:
     tags: [ 'backend.controller' ]
 
-  Brotkrueml\JobRouterConnector\Controller\ConnectionTestController:
+  JobRouter\AddOn\Typo3Connector\Controller\ConnectionTestController:
     tags: [ 'backend.controller' ]
 
-  Brotkrueml\JobRouterConnector\Command\GenerateKeyCommand:
+  JobRouter\AddOn\Typo3Connector\Command\GenerateKeyCommand:
     tags:
       - name: 'console.command'
         command: 'jobrouter:connector:generatekey'
         description: 'Generates a random key for encrypting and decrypting connection passwords'
         schedulable: false
 
-  Brotkrueml\JobRouterConnector\Evaluation\Password:
+  JobRouter\AddOn\Typo3Connector\Evaluation\Password:
     public: true

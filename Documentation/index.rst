@@ -45,6 +45,7 @@ Connect TYPO3 with the JobRouter® digitalisation platform
    usage
    developer
    changelog
+   upgrade
    copyright
 
 .. _brotkrueml/typo3-jobrouter-connector: https://packagist.org/packages/brotkrueml/typo3-jobrouter-connector

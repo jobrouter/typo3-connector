@@ -9,11 +9,11 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\JobRouterConnector\Tests\Unit\Service;
+namespace JobRouter\AddOn\Typo3Connector\Tests\Unit\Service;
 
-use Brotkrueml\JobRouterConnector\Exception\CryptException;
-use Brotkrueml\JobRouterConnector\Service\Crypt;
-use Brotkrueml\JobRouterConnector\Service\FileService;
+use JobRouter\AddOn\Typo3Connector\Exception\CryptException;
+use JobRouter\AddOn\Typo3Connector\Service\Crypt;
+use JobRouter\AddOn\Typo3Connector\Service\FileService;
 use org\bovigo\vfs\vfsStream;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;

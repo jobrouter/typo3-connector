@@ -9,10 +9,10 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\JobRouterConnector\Tests\Unit\Evaluation;
+namespace JobRouter\AddOn\Typo3Connector\Tests\Unit\Evaluation;
 
-use Brotkrueml\JobRouterConnector\Evaluation\Password;
-use Brotkrueml\JobRouterConnector\Service\Crypt;
+use JobRouter\AddOn\Typo3Connector\Evaluation\Password;
+use JobRouter\AddOn\Typo3Connector\Service\Crypt;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;

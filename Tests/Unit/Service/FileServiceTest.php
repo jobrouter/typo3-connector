@@ -9,10 +9,10 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\JobRouterConnector\Tests\Unit\Service;
+namespace JobRouter\AddOn\Typo3Connector\Tests\Unit\Service;
 
-use Brotkrueml\JobRouterConnector\Exception\KeyFileException;
-use Brotkrueml\JobRouterConnector\Service\FileService;
+use JobRouter\AddOn\Typo3Connector\Exception\KeyFileException;
+use JobRouter\AddOn\Typo3Connector\Service\FileService;
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;

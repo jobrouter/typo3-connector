@@ -9,9 +9,9 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\JobRouterConnector\Hooks;
+namespace JobRouter\AddOn\Typo3Connector\Hooks;
 
-use Brotkrueml\JobRouterConnector\Evaluation\Password;
+use JobRouter\AddOn\Typo3Connector\Evaluation\Password;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 
 /**

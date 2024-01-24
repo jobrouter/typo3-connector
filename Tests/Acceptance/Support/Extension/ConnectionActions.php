@@ -9,12 +9,12 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\JobRouterConnector\Tests\Acceptance\Support\Extension;
+namespace JobRouter\AddOn\Typo3Connector\Tests\Acceptance\Support\Extension;
 
-use Brotkrueml\JobRouterConnector\Exception\KeyFileException;
-use Brotkrueml\JobRouterConnector\Service\Crypt;
-use Brotkrueml\JobRouterConnector\Service\FileService;
-use Brotkrueml\JobRouterConnector\Service\KeyGenerator;
+use JobRouter\AddOn\Typo3Connector\Exception\KeyFileException;
+use JobRouter\AddOn\Typo3Connector\Service\Crypt;
+use JobRouter\AddOn\Typo3Connector\Service\FileService;
+use JobRouter\AddOn\Typo3Connector\Service\KeyGenerator;
 use Psr\Http\Client\ClientInterface;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Http\Client\GuzzleClientFactory;

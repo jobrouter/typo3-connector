@@ -9,7 +9,7 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-use Brotkrueml\JobRouterConnector\Controller\ConnectionTestController;
+use JobRouter\AddOn\Typo3Connector\Controller\ConnectionTestController;
 
 return [
     'jobrouter_connection_test' => [

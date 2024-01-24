@@ -9,9 +9,9 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\JobRouterConnector\Tests\Unit\Exception;
+namespace JobRouter\AddOn\Typo3Connector\Tests\Unit\Exception;
 
-use Brotkrueml\JobRouterConnector\Exception\ConnectionNotFoundException;
+use JobRouter\AddOn\Typo3Connector\Exception\ConnectionNotFoundException;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 

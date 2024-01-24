@@ -9,18 +9,18 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\JobRouterConnector\RestClient;
+namespace JobRouter\AddOn\Typo3Connector\RestClient;
 
-use Brotkrueml\JobRouterConnector\Domain\Entity\Connection;
-use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
-use Brotkrueml\JobRouterConnector\Exception\CryptException;
-use Brotkrueml\JobRouterConnector\Extension;
-use Brotkrueml\JobRouterConnector\Service\Crypt;
 use JobRouter\AddOn\RestClient\Client\ClientInterface;
 use JobRouter\AddOn\RestClient\Client\RestClient;
 use JobRouter\AddOn\RestClient\Configuration\ClientConfiguration;
 use JobRouter\AddOn\RestClient\Configuration\ClientOptions;
 use JobRouter\AddOn\RestClient\Exception\ExceptionInterface;
+use JobRouter\AddOn\Typo3Connector\Domain\Entity\Connection;
+use JobRouter\AddOn\Typo3Connector\Domain\Repository\ConnectionRepository;
+use JobRouter\AddOn\Typo3Connector\Exception\CryptException;
+use JobRouter\AddOn\Typo3Connector\Extension;
+use JobRouter\AddOn\Typo3Connector\Service\Crypt;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 final class RestClientFactory implements RestClientFactoryInterface

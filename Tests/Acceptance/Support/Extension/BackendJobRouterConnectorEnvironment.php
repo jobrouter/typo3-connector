@@ -9,7 +9,7 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\JobRouterConnector\Tests\Acceptance\Support\Extension;
+namespace JobRouter\AddOn\Typo3Connector\Tests\Acceptance\Support\Extension;
 
 use TYPO3\TestingFramework\Core\Acceptance\Extension\BackendEnvironment;
 

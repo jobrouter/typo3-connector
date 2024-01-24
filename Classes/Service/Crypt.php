@@ -9,9 +9,9 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\JobRouterConnector\Service;
+namespace JobRouter\AddOn\Typo3Connector\Service;
 
-use Brotkrueml\JobRouterConnector\Exception\CryptException;
+use JobRouter\AddOn\Typo3Connector\Exception\CryptException;
 
 /**
  * @internal

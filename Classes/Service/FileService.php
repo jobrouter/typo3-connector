@@ -9,10 +9,10 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\JobRouterConnector\Service;
+namespace JobRouter\AddOn\Typo3Connector\Service;
 
-use Brotkrueml\JobRouterConnector\Exception\KeyFileException;
-use Brotkrueml\JobRouterConnector\Extension;
+use JobRouter\AddOn\Typo3Connector\Exception\KeyFileException;
+use JobRouter\AddOn\Typo3Connector\Extension;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Utility\GeneralUtility;

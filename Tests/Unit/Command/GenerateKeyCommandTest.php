@@ -9,11 +9,11 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\JobRouterConnector\Tests\Unit\Command;
+namespace JobRouter\AddOn\Typo3Connector\Tests\Unit\Command;
 
-use Brotkrueml\JobRouterConnector\Command\GenerateKeyCommand;
-use Brotkrueml\JobRouterConnector\Exception\KeyGenerationException;
-use Brotkrueml\JobRouterConnector\Service\KeyGenerator;
+use JobRouter\AddOn\Typo3Connector\Command\GenerateKeyCommand;
+use JobRouter\AddOn\Typo3Connector\Exception\KeyGenerationException;
+use JobRouter\AddOn\Typo3Connector\Service\KeyGenerator;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;

@@ -9,9 +9,9 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\JobRouterConnector\Tests\Unit\Domain\Entity;
+namespace JobRouter\AddOn\Typo3Connector\Tests\Unit\Domain\Entity;
 
-use Brotkrueml\JobRouterConnector\Domain\Entity\Connection;
+use JobRouter\AddOn\Typo3Connector\Domain\Entity\Connection;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 

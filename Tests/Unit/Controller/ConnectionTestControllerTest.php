@@ -9,14 +9,14 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\JobRouterConnector\Tests\Unit\Controller;
+namespace JobRouter\AddOn\Typo3Connector\Tests\Unit\Controller;
 
-use Brotkrueml\JobRouterConnector\Controller\ConnectionTestController;
-use Brotkrueml\JobRouterConnector\Domain\Entity\Connection;
-use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
-use Brotkrueml\JobRouterConnector\Exception\ConnectionNotFoundException;
-use Brotkrueml\JobRouterConnector\RestClient\RestClientFactoryInterface;
 use JobRouter\AddOn\RestClient\Exception\HttpException;
+use JobRouter\AddOn\Typo3Connector\Controller\ConnectionTestController;
+use JobRouter\AddOn\Typo3Connector\Domain\Entity\Connection;
+use JobRouter\AddOn\Typo3Connector\Domain\Repository\ConnectionRepository;
+use JobRouter\AddOn\Typo3Connector\Exception\ConnectionNotFoundException;
+use JobRouter\AddOn\Typo3Connector\RestClient\RestClientFactoryInterface;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;

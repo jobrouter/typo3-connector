@@ -9,10 +9,10 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\JobRouterConnector\Tests\Unit\Hooks;
+namespace JobRouter\AddOn\Typo3Connector\Tests\Unit\Hooks;
 
-use Brotkrueml\JobRouterConnector\Evaluation\Password;
-use Brotkrueml\JobRouterConnector\Hooks\DropObfuscatedPasswordInConnection;
+use JobRouter\AddOn\Typo3Connector\Evaluation\Password;
+use JobRouter\AddOn\Typo3Connector\Hooks\DropObfuscatedPasswordInConnection;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\DataHandling\DataHandler;

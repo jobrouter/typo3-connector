@@ -9,10 +9,10 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\JobRouterConnector\RestClient;
+namespace JobRouter\AddOn\Typo3Connector\RestClient;
 
-use Brotkrueml\JobRouterConnector\Domain\Entity\Connection;
 use JobRouter\AddOn\RestClient\Client\ClientInterface;
+use JobRouter\AddOn\Typo3Connector\Domain\Entity\Connection;
 
 interface RestClientFactoryInterface
 {

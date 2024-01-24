@@ -9,11 +9,11 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\JobRouterConnector\Tests\Acceptance\Support;
+namespace JobRouter\AddOn\Typo3Connector\Tests\Acceptance\Support;
 
-use Brotkrueml\JobRouterConnector\Tests\Acceptance\Support\_generated\BackendTesterActions;
-use Brotkrueml\JobRouterConnector\Tests\Acceptance\Support\Extension\ConnectionActions;
 use Codeception\Util\Locator;
+use JobRouter\AddOn\Typo3Connector\Tests\Acceptance\Support\_generated\BackendTesterActions;
+use JobRouter\AddOn\Typo3Connector\Tests\Acceptance\Support\Extension\ConnectionActions;
 use TYPO3\TestingFramework\Core\Acceptance\Step\FrameSteps;
 
 /**

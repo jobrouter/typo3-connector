@@ -3,10 +3,10 @@
 declare(strict_types=1);
 
 use JobRouter\AddOn\RestClient\Exception\ExceptionInterface;
-use Brotkrueml\JobRouterConnector\Domain\Entity\Connection;
-use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
-use Brotkrueml\JobRouterConnector\Exception\ConnectionNotFoundException;
-use Brotkrueml\JobRouterConnector\RestClient\RestClientFactory;
+use JobRouter\AddOn\Typo3Connector\Domain\Entity\Connection;
+use JobRouter\AddOn\Typo3Connector\Domain\Repository\ConnectionRepository;
+use JobRouter\AddOn\Typo3Connector\Exception\ConnectionNotFoundException;
+use JobRouter\AddOn\Typo3Connector\RestClient\RestClientFactory;
 use Psr\Http\Message\ResponseInterface;
 
 final class MyController

@@ -51,12 +51,12 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Brotkrueml\\JobRouterConnector\\": "Classes"
+			"JobRouter\\AddOn\\Typo3Connector\\": "Classes"
 		}
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"Brotkrueml\\JobRouterConnector\\Tests\\": "Tests"
+			"JobRouter\\AddOn\\Typo3Connector\\Tests\\": "Tests"
 		}
 	},
 	"config": {

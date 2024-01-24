@@ -9,7 +9,7 @@
 
 return [
     'ctrl' => [
-        'title' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection',
+        'title' => \JobRouter\AddOn\Typo3Connector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection',
         'label' => 'name',
         'descriptionColumn' => 'description',
         'tstamp' => 'tstamp',
@@ -20,7 +20,7 @@ return [
         ],
         'rootLevel' => 1,
         'searchFields' => 'name,handle,base_url,username,description',
-        'iconfile' => 'EXT:' . \Brotkrueml\JobRouterConnector\Extension::KEY . '/Resources/Public/Icons/tx_jobrouterconnector_domain_model_connection.svg',
+        'iconfile' => 'EXT:' . \JobRouter\AddOn\Typo3Connector\Extension::KEY . '/Resources/Public/Icons/tx_jobrouterconnector_domain_model_connection.svg',
         'hideTable' => true,
     ],
     'columns' => [
@@ -39,7 +39,7 @@ return [
         ],
 
         'name' => [
-            'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.name',
+            'label' => \JobRouter\AddOn\Typo3Connector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.name',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -49,7 +49,7 @@ return [
             ],
         ],
         'handle' => [
-            'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.handle',
+            'label' => \JobRouter\AddOn\Typo3Connector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.handle',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -59,7 +59,7 @@ return [
             ],
         ],
         'base_url' => [
-            'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.base_url',
+            'label' => \JobRouter\AddOn\Typo3Connector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.base_url',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -69,7 +69,7 @@ return [
             ],
         ],
         'username' => [
-            'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.username',
+            'label' => \JobRouter\AddOn\Typo3Connector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.username',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -79,16 +79,16 @@ return [
             ],
         ],
         'password' => [
-            'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.password',
+            'label' => \JobRouter\AddOn\Typo3Connector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.password',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim,nospace,' . \Brotkrueml\JobRouterConnector\Evaluation\Password::class,
+                'eval' => 'trim,nospace,' . \JobRouter\AddOn\Typo3Connector\Evaluation\Password::class,
                 'required' => true,
             ],
         ],
         'timeout' => [
-            'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.timeout',
+            'label' => \JobRouter\AddOn\Typo3Connector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.timeout',
             'config' => [
                 'type' => 'number',
                 'size' => 5,
@@ -104,7 +104,7 @@ return [
             ],
         ],
         'verify' => [
-            'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.verify',
+            'label' => \JobRouter\AddOn\Typo3Connector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.verify',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -117,7 +117,7 @@ return [
             ],
         ],
         'proxy' => [
-            'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.proxy',
+            'label' => \JobRouter\AddOn\Typo3Connector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.proxy',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -126,8 +126,8 @@ return [
             ],
         ],
         'jobrouter_version' => [
-            'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.jobrouter_version',
-            'description' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.jobrouter_version.description',
+            'label' => \JobRouter\AddOn\Typo3Connector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.jobrouter_version',
+            'description' => \JobRouter\AddOn\Typo3Connector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.jobrouter_version.description',
             'config' => [
                 'type' => 'input',
                 'size' => 10,
@@ -136,7 +136,7 @@ return [
             ],
         ],
         'description' => [
-            'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.description',
+            'label' => \JobRouter\AddOn\Typo3Connector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.description',
             'config' => [
                 'type' => 'text',
                 'rows' => 5,
@@ -150,7 +150,7 @@ return [
                 --palette--;;system,
                 --palette--;;credentials,
                 --palette--;;options,
-                --div--;' . \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':tab.information,
+                --div--;' . \JobRouter\AddOn\Typo3Connector\Extension::LANGUAGE_PATH_DATABASE . ':tab.information,
                 jobrouter_version,
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
                 disabled,
@@ -161,15 +161,15 @@ return [
     ],
     'palettes' => [
         'credentials' => [
-            'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':palette.credentials',
+            'label' => \JobRouter\AddOn\Typo3Connector\Extension::LANGUAGE_PATH_DATABASE . ':palette.credentials',
             'showitem' => 'username, password',
         ],
         'options' => [
-            'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':palette.options',
+            'label' => \JobRouter\AddOn\Typo3Connector\Extension::LANGUAGE_PATH_DATABASE . ':palette.options',
             'showitem' => 'timeout, verify, --linebreak--, proxy',
         ],
         'system' => [
-            'label' => \Brotkrueml\JobRouterConnector\Extension::LANGUAGE_PATH_DATABASE . ':palette.system',
+            'label' => \JobRouter\AddOn\Typo3Connector\Extension::LANGUAGE_PATH_DATABASE . ':palette.system',
             'showitem' => 'name, handle, base_url',
         ],
     ],

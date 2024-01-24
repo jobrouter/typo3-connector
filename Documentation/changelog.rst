@@ -16,6 +16,7 @@ Changed
 
 
 * JobRouter REST Client in version 3 is required
+* Namespace from ``Brotkrueml\JobRouterConnector`` to ``JobRouter\Addon\Typo3Connector``
 
 `2.0.0 <https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v1.2.0...v2.0.0>`_ - 2023-05-31
 -----------------------------------------------------------------------------------------------------------

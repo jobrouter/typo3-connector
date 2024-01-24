@@ -1,9 +1,9 @@
 <?php
 
-use Brotkrueml\JobRouterConnector\Controller\ConnectionListController;
-use Brotkrueml\JobRouterConnector\Evaluation\Password;
-use Brotkrueml\JobRouterConnector\Extension;
-use Brotkrueml\JobRouterConnector\Hooks\DropObfuscatedPasswordInConnection;
+use JobRouter\AddOn\Typo3Connector\Controller\ConnectionListController;
+use JobRouter\AddOn\Typo3Connector\Evaluation\Password;
+use JobRouter\AddOn\Typo3Connector\Extension;
+use JobRouter\AddOn\Typo3Connector\Hooks\DropObfuscatedPasswordInConnection;
 use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 

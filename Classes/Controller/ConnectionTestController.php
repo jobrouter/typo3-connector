@@ -9,14 +9,14 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\JobRouterConnector\Controller;
+namespace JobRouter\AddOn\Typo3Connector\Controller;
 
-use Brotkrueml\JobRouterConnector\Domain\Dto\ConnectionTestResult;
-use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
-use Brotkrueml\JobRouterConnector\Exception\ConnectionNotFoundException;
-use Brotkrueml\JobRouterConnector\Extension;
-use Brotkrueml\JobRouterConnector\RestClient\RestClientFactoryInterface;
 use JobRouter\AddOn\RestClient\Exception\HttpException;
+use JobRouter\AddOn\Typo3Connector\Domain\Dto\ConnectionTestResult;
+use JobRouter\AddOn\Typo3Connector\Domain\Repository\ConnectionRepository;
+use JobRouter\AddOn\Typo3Connector\Exception\ConnectionNotFoundException;
+use JobRouter\AddOn\Typo3Connector\Extension;
+use JobRouter\AddOn\Typo3Connector\RestClient\RestClientFactoryInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;

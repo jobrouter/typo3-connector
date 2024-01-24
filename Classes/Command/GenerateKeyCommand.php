@@ -9,10 +9,10 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\JobRouterConnector\Command;
+namespace JobRouter\AddOn\Typo3Connector\Command;
 
-use Brotkrueml\JobRouterConnector\Exception\KeyGenerationException;
-use Brotkrueml\JobRouterConnector\Service\KeyGenerator;
+use JobRouter\AddOn\Typo3Connector\Exception\KeyGenerationException;
+use JobRouter\AddOn\Typo3Connector\Service\KeyGenerator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;

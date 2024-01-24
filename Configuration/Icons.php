@@ -9,7 +9,7 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-use Brotkrueml\JobRouterConnector\Extension;
+use JobRouter\AddOn\Typo3Connector\Extension;
 use TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider;
 
 return [

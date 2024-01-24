@@ -9,13 +9,13 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Brotkrueml\JobRouterConnector\Controller;
+namespace JobRouter\AddOn\Typo3Connector\Controller;
 
-use Brotkrueml\JobRouterConnector\Domain\Repository\ConnectionRepository;
-use Brotkrueml\JobRouterConnector\Exception\KeyFileException;
-use Brotkrueml\JobRouterConnector\Extension;
-use Brotkrueml\JobRouterConnector\Service\FileService;
 use JobRouter\AddOn\RestClient\Information\Version;
+use JobRouter\AddOn\Typo3Connector\Domain\Repository\ConnectionRepository;
+use JobRouter\AddOn\Typo3Connector\Exception\KeyFileException;
+use JobRouter\AddOn\Typo3Connector\Extension;
+use JobRouter\AddOn\Typo3Connector\Service\FileService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Backend\Routing\UriBuilder;

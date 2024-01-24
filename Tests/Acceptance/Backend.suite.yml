@@ -16,7 +16,7 @@ modules:
 
 extensions:
   enabled:
-    - Brotkrueml\JobRouterConnector\Tests\Acceptance\Support\Extension\BackendJobRouterConnectorEnvironment
+    - JobRouter\AddOn\Typo3Connector\Tests\Acceptance\Support\Extension\BackendJobRouterConnectorEnvironment
 
 groups:
   AcceptanceTests-Job-*: AcceptanceTests-Job-*
