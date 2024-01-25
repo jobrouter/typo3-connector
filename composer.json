@@ -1,5 +1,5 @@
 {
-	"name": "brotkrueml/typo3-jobrouter-connector",
+	"name": "jobrouter/typo3-connector",
 	"description": "Connect TYPO3 with the JobRouter® digitalisation platform",
 	"license": "GPL-2.0-or-later",
 	"type": "typo3-cms-extension",
@@ -15,8 +15,8 @@
 		}
 	],
 	"support": {
-		"issues": "https://github.com/brotkrueml/typo3-jobrouter-connector/issues",
-		"source": "https://github.com/brotkrueml/typo3-jobrouter-connector",
+		"issues": "https://github.com/jobrouter/typo3-connector/issues",
+		"source": "https://github.com/jobrouter/typo3-connector",
 		"docs": "https://typo3-jobrouter.readthedocs.io/projects/connector/"
 	},
 	"require": {
@@ -46,8 +46,8 @@
 		"typo3/testing-framework": "^7.0"
 	},
 	"suggest": {
-		"brotkrueml/typo3-jobrouter-data": "Connect JobRouter® JobData tables with TYPO3",
-		"brotkrueml/typo3-jobrouter-process": "Connect JobRouter® processes with TYPO3"
+		"jobrouter/typo3-data": "Connect JobRouter® JobData tables with TYPO3",
+		"jobrouter/typo3-process": "Connect JobRouter® processes with TYPO3"
 	},
 	"autoload": {
 		"psr-4": {
