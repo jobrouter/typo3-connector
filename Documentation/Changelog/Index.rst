@@ -8,8 +8,8 @@ All notable changes to this project will be documented in this file.
 The format is based on `Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`_\ ,
 and this project adheres to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 
-`Unreleased <https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v2.0.0...HEAD>`_
--------------------------------------------------------------------------------------------------
+`Unreleased <https://github.com/jobrouter/typo3-connector/compare/v2.0.0...HEAD>`_
+--------------------------------------------------------------------------------------
 
 Changed
 ^^^^^^^
@@ -18,8 +18,8 @@ Changed
 * JobRouter REST Client in version 3 is required
 * Namespace from ``Brotkrueml\JobRouterConnector`` to ``JobRouter\Addon\Typo3Connector``
 
-`2.0.0 <https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v1.2.0...v2.0.0>`_ - 2023-05-31
------------------------------------------------------------------------------------------------------------
+`2.0.0 <https://github.com/jobrouter/typo3-connector/compare/v1.2.0...v2.0.0>`_ - 2023-05-31
+------------------------------------------------------------------------------------------------
 
 Added
 ^^^^^
@@ -42,8 +42,8 @@ Removed
 * Compatibility with TYPO3 v10 (#6)
 * Compatibility with PHP 7.4 and 8.0
 
-`1.2.0 <https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v1.1.0...v1.2.0>`_ - 2022-05-27
------------------------------------------------------------------------------------------------------------
+`1.2.0 <https://github.com/jobrouter/typo3-connector/compare/v1.1.0...v1.2.0>`_ - 2022-05-27
+------------------------------------------------------------------------------------------------
 
 Added
 ^^^^^
@@ -57,8 +57,8 @@ Removed
 
 * Compatibility with PHP 7.3
 
-`1.1.0 <https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v1.0.0...v1.1.0>`_ - 2021-11-21
------------------------------------------------------------------------------------------------------------
+`1.1.0 <https://github.com/jobrouter/typo3-connector/compare/v1.0.0...v1.1.0>`_ - 2021-11-21
+------------------------------------------------------------------------------------------------
 
 Added
 ^^^^^
@@ -72,8 +72,8 @@ Removed
 
 * Compatibility with PHP 7.2
 
-`1.0.0 <https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.12.3...v1.0.0>`_ - 2021-03-14
-------------------------------------------------------------------------------------------------------------
+`1.0.0 <https://github.com/jobrouter/typo3-connector/compare/v0.12.3...v1.0.0>`_ - 2021-03-14
+-------------------------------------------------------------------------------------------------
 
 Added
 ^^^^^
@@ -81,8 +81,8 @@ Added
 
 * Extension usable in non-composer installations
 
-`0.12.3 <https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.12.2...v0.12.3>`_ - 2021-02-06
---------------------------------------------------------------------------------------------------------------
+`0.12.3 <https://github.com/jobrouter/typo3-connector/compare/v0.12.2...v0.12.3>`_ - 2021-02-06
+---------------------------------------------------------------------------------------------------
 
 Added
 ^^^^^
@@ -96,8 +96,8 @@ Changed
 
 * Raise minimum required version to TYPO3 10.4.11
 
-`0.12.2 <https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.12.1...v0.12.2>`_ - 2020-11-25
---------------------------------------------------------------------------------------------------------------
+`0.12.2 <https://github.com/jobrouter/typo3-connector/compare/v0.12.1...v0.12.2>`_ - 2020-11-25
+---------------------------------------------------------------------------------------------------
 
 Changed
 ^^^^^^^
@@ -105,8 +105,8 @@ Changed
 
 * Make ConnectionRepository extendable and mockable
 
-`0.12.1 <https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.12.0...v0.12.1>`_ - 2020-11-01
---------------------------------------------------------------------------------------------------------------
+`0.12.1 <https://github.com/jobrouter/typo3-connector/compare/v0.12.0...v0.12.1>`_ - 2020-11-01
+---------------------------------------------------------------------------------------------------
 
 Added
 ^^^^^
@@ -114,8 +114,8 @@ Added
 
 * Acceptance tests
 
-`0.12.0 <https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.11.0...v0.12.0>`_ - 2020-10-18
---------------------------------------------------------------------------------------------------------------
+`0.12.0 <https://github.com/jobrouter/typo3-connector/compare/v0.11.0...v0.12.0>`_ - 2020-10-18
+---------------------------------------------------------------------------------------------------
 
 Changed
 ^^^^^^^
@@ -129,8 +129,8 @@ Removed
 
 * Log table (is now part of the new base extension)
 
-`0.11.0 <https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.10.1...v0.11.0>`_ - 2020-07-23
---------------------------------------------------------------------------------------------------------------
+`0.11.0 <https://github.com/jobrouter/typo3-connector/compare/v0.10.1...v0.11.0>`_ - 2020-07-23
+---------------------------------------------------------------------------------------------------
 
 Added
 ^^^^^
@@ -144,8 +144,8 @@ Updated
 
 * JobRouter Client to version 1.0
 
-`0.10.1 <https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.10.0...v0.10.1>`_ - 2020-07-03
---------------------------------------------------------------------------------------------------------------
+`0.10.1 <https://github.com/jobrouter/typo3-connector/compare/v0.10.0...v0.10.1>`_ - 2020-07-03
+---------------------------------------------------------------------------------------------------
 
 Fixed
 ^^^^^
@@ -160,8 +160,8 @@ Changed
 * Relax PHP requirements (>= PHP 7.2)
 * Use JS API from TYPO3 for connection check
 
-`0.10.0 <https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.9.0...v0.10.0>`_ - 2020-04-21
--------------------------------------------------------------------------------------------------------------
+`0.10.0 <https://github.com/jobrouter/typo3-connector/compare/v0.9.0...v0.10.0>`_ - 2020-04-21
+--------------------------------------------------------------------------------------------------
 
 Added
 ^^^^^
@@ -181,8 +181,8 @@ Removed
 
 * Support for TYPO3 v9 LTS
 
-`0.9.0 <https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.8.0...v0.9.0>`_ - 2020-02-22
------------------------------------------------------------------------------------------------------------
+`0.9.0 <https://github.com/jobrouter/typo3-connector/compare/v0.8.0...v0.9.0>`_ - 2020-02-22
+------------------------------------------------------------------------------------------------
 
 Added
 ^^^^^
@@ -197,8 +197,8 @@ Updated
 
 * JobRouter Client to version 0.9
 
-`0.8.0 <https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.7.0...v0.8.0>`_ - 2020-02-09
------------------------------------------------------------------------------------------------------------
+`0.8.0 <https://github.com/jobrouter/typo3-connector/compare/v0.7.0...v0.8.0>`_ - 2020-02-09
+------------------------------------------------------------------------------------------------
 
 Added
 ^^^^^
@@ -206,8 +206,8 @@ Added
 
 * Log table for usage in dependent extensions
 
-`0.7.0 <https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.6.0...v0.7.0>`_ - 2020-01-27
------------------------------------------------------------------------------------------------------------
+`0.7.0 <https://github.com/jobrouter/typo3-connector/compare/v0.6.0...v0.7.0>`_ - 2020-01-27
+------------------------------------------------------------------------------------------------
 
 Added
 ^^^^^
@@ -221,8 +221,8 @@ Updated
 
 * JobRouter Client to version 0.8
 
-`0.6.0 <https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.5.0...v0.6.0>`_ - 2020-01-11
------------------------------------------------------------------------------------------------------------
+`0.6.0 <https://github.com/jobrouter/typo3-connector/compare/v0.5.0...v0.6.0>`_ - 2020-01-11
+------------------------------------------------------------------------------------------------
 
 Updated
 ^^^^^^^
@@ -230,8 +230,8 @@ Updated
 
 * JobRouter Client to version 0.7
 
-`0.5.0 <https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.4.0...v0.5.0>`_ - 2020-01-02
------------------------------------------------------------------------------------------------------------
+`0.5.0 <https://github.com/jobrouter/typo3-connector/compare/v0.4.0...v0.5.0>`_ - 2020-01-02
+------------------------------------------------------------------------------------------------
 
 Changed
 ^^^^^^^
@@ -245,8 +245,8 @@ Updated
 
 * JobRouter Client to version 0.6
 
-`0.4.0 <https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.3.0...v0.4.0>`_ - 2019-11-24
------------------------------------------------------------------------------------------------------------
+`0.4.0 <https://github.com/jobrouter/typo3-connector/compare/v0.3.0...v0.4.0>`_ - 2019-11-24
+------------------------------------------------------------------------------------------------
 
 Added
 ^^^^^
@@ -260,8 +260,8 @@ Updated
 
 * JobRouter Client to version 0.5
 
-`0.3.0 <https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.2.0...v0.3.0>`_ - 2019-10-25
------------------------------------------------------------------------------------------------------------
+`0.3.0 <https://github.com/jobrouter/typo3-connector/compare/v0.2.0...v0.3.0>`_ - 2019-10-25
+------------------------------------------------------------------------------------------------
 
 Updated
 ^^^^^^^
@@ -269,8 +269,8 @@ Updated
 
 * JobRouter Client to version 0.4
 
-`0.2.0 <https://github.com/brotkrueml/typo3-jobrouter-connector/compare/v0.1.0...v0.2.0>`_ - 2019-08-27
------------------------------------------------------------------------------------------------------------
+`0.2.0 <https://github.com/jobrouter/typo3-connector/compare/v0.1.0...v0.2.0>`_ - 2019-08-27
+------------------------------------------------------------------------------------------------
 
 Changed
 ^^^^^^^
@@ -279,7 +279,7 @@ Changed
 * Pass connection model to Rest service
 * Move Connections module from tools to own JobRouter module group
 
-`0.1.0 <https://github.com/brotkrueml/typo3-jobrouter-connector/releases/tag/v0.1.0>`_ - 2019-08-22
--------------------------------------------------------------------------------------------------------
+`0.1.0 <https://github.com/jobrouter/typo3-connector/releases/tag/v0.1.0>`_ - 2019-08-22
+--------------------------------------------------------------------------------------------
 
 Initial preview release
