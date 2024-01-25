@@ -5,7 +5,6 @@
     bootstrap="../.Build/vendor/autoload.php"
     cacheResult="false"
     executionOrder="random"
-    testdox="true"
 >
     <coverage/>
     <testsuites>
