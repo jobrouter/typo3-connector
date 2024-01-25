@@ -1,9 +1,8 @@
 .Build
 .idea
-.scannerwork
 Build/testing-docker/.env
 /composer.lock
-Documentation/_build/
+Documentation-GENERATED-temp
 Resources/Private/PHP/*.phar
 Resources/Private/PHP/vendor/
 Tests/Acceptance/Support/_generated/

@@ -1,4 +1,4 @@
-.. include:: _includes.rst.txt
+.. include:: /Includes.rst.txt
 
 .. _start:
 
@@ -10,7 +10,7 @@ TYPO3 JobRouter Connector
    `jobrouter_connector`_
 
 :Package name:
-   `brotkrueml/typo3-jobrouter-connector`_
+   `jobrouter/typo3-connector`_
 
 :Version:
    |release|
@@ -19,7 +19,7 @@ TYPO3 JobRouter Connector
    en
 
 :Author:
-   `Chris Müller`_
+   Chris Müller, JobRouter AG
 
 :License:
    This document is published under the `Creative Commons BY 4.0`_ license.
@@ -37,18 +37,15 @@ Connect TYPO3 with the JobRouter® digitalisation platform
 
 .. toctree::
    :maxdepth: 2
-   :numbered: 1
 
-   introduction
-   installation
-   configuration
-   usage
-   developer
-   changelog
-   upgrade
-   copyright
+   Introduction/Index
+   Installation/Index
+   Configuration/Index
+   Usage/Index
+   Developer/Index
+   Changelog/Index
+   Upgrade/Index
 
-.. _brotkrueml/typo3-jobrouter-connector: https://packagist.org/packages/brotkrueml/typo3-jobrouter-connector
-.. _Chris Müller: https://github.com/brotkrueml
+.. _jobrouter/typo3-connector: https://packagist.org/packages/jobrouter/typo3-connector
 .. _Creative Commons BY 4.0: https://creativecommons.org/licenses/by/4.0/
 .. _jobrouter_connector:  https://extensions.typo3.org/extension/jobrouter_connector

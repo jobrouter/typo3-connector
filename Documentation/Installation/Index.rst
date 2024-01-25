@@ -1,4 +1,4 @@
-.. include:: _includes.rst.txt
+.. include:: /Includes.rst.txt
 .. highlight:: bash
 
 .. _installation:
@@ -67,7 +67,7 @@ Installation in Extension Manager
 =================================
 
 You can also install the extension from the `TYPO3 Extension Repository (TER)`_.
-See :ref:`t3start:extensions_legacy_management` for a manual how to
+See :ref:`t3start:extensions-legacy-management` for a manual how to
 install an extension.
 
 

@@ -1,4 +1,4 @@
-.. include:: _includes.rst.txt
+.. include:: /Includes.rst.txt
 
 .. _developer:
 
@@ -14,9 +14,8 @@ Create own logic
 
 You can use the TYPO3 JobRouter Connector as a starting point for your own
 logic, for example, to synchronise JobData tables or retrieve archive documents.
-Since this extension relies on the :doc:`JobRouter Client
-<jobrouter-client:introduction>` library, you can get a :php:`RestClient`
-object to call the JobRouter® REST API.
+Since this extension relies on the `JobRouter REST Client`_ library, you can get
+a :php:`RestClient` object to call the JobRouter® REST API.
 
 Example
 -------
@@ -24,7 +23,7 @@ Example
 To simplify the creation of this client object, a factory method is available.
 Let's have a look at an example in the TYPO3 context:
 
-.. literalinclude:: _snippets/_MyController.php
+.. literalinclude:: _MyController.php
    :caption: EXT:my_extension/Classes/Controller/MyController.php
    :linenos:
 
@@ -43,9 +42,12 @@ Explanation:
    the call the authentication is done immediately, so an exception can be
    thrown if a HTTP error occurs or the authentication failed. With the client
    object you can make the calls to the REST API. Have a look at the
-   :doc:`JobRouter Client examples <jobrouter-client:usage>`.
+   `JobRouter REST Client examples`_.
 
 .. note::
-
    Have a look at :ref:`additional TYPO3 extensions <what-does-it-do>` for
    synchronising JobData tables or starting process instances from TYPO3.
+
+
+.. _JobRouter REST Client: https://github.com/jobrouter/php-rest-client
+.. _JobRouter REST Client examples: https://github.com/jobrouter/php-rest-client/blob/main/docs/usage.md

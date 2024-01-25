@@ -1,4 +1,4 @@
-.. include:: _includes.rst.txt
+.. include:: /Includes.rst.txt
 
 .. _configuration:
 
@@ -19,7 +19,7 @@ To configure the extension, go to
 :guilabel:`Configure extension` button. Open the :guilabel:`jobrouter_connector`
 configuration:
 
-.. figure:: _images/extension-configuration.png
+.. figure:: /Images/extension-configuration.png
    :alt: Extension configuration of jobrouter_connector
 
    Extension configuration

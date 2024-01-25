@@ -1,4 +1,4 @@
-.. include:: _includes.rst.txt
+.. include:: /Includes.rst.txt
 
 .. _usage:
 
@@ -23,7 +23,7 @@ The connections to JobRouter® installations are managed in the backend module
 On your first visit after installing the extension you should see the following
 screen:
 
-.. figure:: _images/no-connections-found.png
+.. figure:: /Images/no-connections-found.png
    :alt: Initial Connections module screen
 
    Initial Connections module screen
@@ -41,7 +41,7 @@ Create a connection
 To create a new connection, click on the :guilabel:`+ Add connection` button in
 the upper menu bar, which displays a form:
 
-.. figure:: _images/create-connection.png
+.. figure:: /Images/create-connection.png
    :alt: Create a connection
 
    Create a connection
@@ -131,7 +131,7 @@ Connection list
 After creating one or more connections, you will see a list of connections when
 calling the module:
 
-.. figure:: _images/connection-list.png
+.. figure:: /Images/connection-list.png
    :alt: Connection list
 
    Connection list
@@ -141,7 +141,7 @@ in the name.
 
 There are three buttons available for each connection:
 
-.. image:: _images/connection-buttons.png
+.. image:: /Images/connection-buttons.png
 
 - You can edit a connection with the pencil.
 - Click on the bug icon to test a connection. This will also update the
