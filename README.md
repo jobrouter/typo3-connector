@@ -21,5 +21,6 @@ connections from TYPO3 to JobRouter®.
 [Documentation](https://typo3-jobrouter.readthedocs.io/projects/connector/) |
 [Translation](https://crowdin.com/project/typo3-extension-jobrouterconne) |
 [Changelog](https://github.com/jobrouter/typo3-connector/blob/main/CHANGELOG.md) |
+[Issue Tracker](https://github.com/jobrouter/typo3-connector/issues) |
 [Extension in TER](https://extensions.typo3.org/extension/jobrouter_connector/) |
 [Extension on JobRouter Marketplace](https://marketplace.jobrouter.com/en/product/typo3-jobrouter-connector/)

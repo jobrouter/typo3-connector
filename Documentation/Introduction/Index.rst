@@ -25,6 +25,10 @@ functionality:
 
 This extension uses the `JobRouter Client`_ library.
 
+.. note::
+   If you find a bug or want to propose a feature, please use the
+   `issue tracker on GitHub`_.
+
 
 .. _release-management:
 
@@ -44,6 +48,7 @@ The changes between the different versions can be found in the
 :ref:`changelog <changelog>`.
 
 
+.. _issue tracker on GitHub: https://github.com/jobrouter/typo3-connector/issues
 .. _JobRouter®: https://www.jobrouter.com/
 .. _JobRouter Client: https://github.com/jobrouter/php-rest-client
 .. _semantic versioning: https://semver.org/
