@@ -1,11 +1,16 @@
 <?php
 
+use JobRouter\AddOn\RestClient\Client\RestClient;
+use JobRouter\AddOn\Typo3Connector\Extension;
+use TYPO3\CMS\Core\Core\Environment;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+
 defined('TYPO3') || die();
 
-TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptSetup(
-    '@import "EXT:' . JobRouter\AddOn\Typo3Connector\Extension::KEY . '/Configuration/TypoScript/"'
+ExtensionManagementUtility::addTypoScriptSetup(
+    '@import "EXT:' . Extension::KEY . '/Configuration/TypoScript/"'
 );
 
-if (! TYPO3\CMS\Core\Core\Environment::isComposerMode() && ! class_exists(JobRouter\AddOn\RestClient\Client\RestClient::class)) {
-    @include 'phar://' . TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath(JobRouter\AddOn\Typo3Connector\Extension::KEY) . 'Resources/Private/PHP/jobrouter-client.phar/vendor/autoload.php';
+if (! Environment::isComposerMode() && ! class_exists(RestClient::class)) {
+    @include 'phar://' . ExtensionManagementUtility::extPath(Extension::KEY) . 'Resources/Private/PHP/jobrouter-client.phar/vendor/autoload.php';
 }
