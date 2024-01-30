@@ -55,7 +55,7 @@ Installation via Composer
 The recommended way to install this extension is by using Composer. In your
 Composer-based TYPO3 project root, just type::
 
-   composer req brotkrueml/typo3-jobrouter-connector
+   composer req jobrouter/typo3-connector
 
 and the recent version will be installed.
 
