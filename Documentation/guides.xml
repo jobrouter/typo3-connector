@@ -7,8 +7,8 @@
 >
     <project
         title="TYPO3 JobRouter Connector"
-        release="main"
-        version="main"
+        release="3.0.0-dev"
+        version="3.0"
         copyright="since 2019 Chris Müller, since 2024 JobRouter AG"
     />
     <extension
