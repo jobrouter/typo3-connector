@@ -22,7 +22,7 @@
 	"require": {
 		"php": ">=8.1",
 		"ext-sodium": "*",
-		"brotkrueml/jobrouter-client": "^3.0@dev",
+		"jobrouter/rest-client": "^3.0@dev",
 		"typo3/cms-backend": "^11.5.4 || ^12.4",
 		"typo3/cms-core": "^11.5.4 || ^12.4",
 		"typo3/cms-fluid": "^11.5.4 || ^12.4",
