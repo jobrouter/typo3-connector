@@ -1,8 +1,0 @@
-version: 2
-sphinx:
-    configuration: Documentation/conf.py
-formats: []
-python:
-    version: 3
-    install:
-        - requirements: Documentation/requirements.txt

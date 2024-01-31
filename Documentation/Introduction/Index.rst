@@ -20,8 +20,8 @@ The TYPO3 JobRouter Connector is a base extension for defining connections
 from TYPO3 to JobRouter®. Other extensions rely on this extension to add further
 functionality:
 
-- :doc:`Connect JobData tables with TYPO3 <typo3-jobrouter-data:introduction>`
-- :doc:`Connect JobRouter® processes with TYPO3 <typo3-jobrouter-process:introduction>`
+- :ref:`Connect JobData tables with TYPO3 <ext_jobrouter_data:introduction>`
+- :ref:`Connect JobRouter® processes with TYPO3 <ext_jobrouter_process:introduction>`
 
 This extension uses the `JobRouter Client`_ library.
 

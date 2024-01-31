@@ -17,7 +17,7 @@
 	"support": {
 		"issues": "https://github.com/jobrouter/typo3-connector/issues",
 		"source": "https://github.com/jobrouter/typo3-connector",
-		"docs": "https://typo3-jobrouter.readthedocs.io/projects/connector/"
+		"docs": "https://docs.typo3.org/p/jobrouter/typo3-connector/main/en-us/"
 	},
 	"require": {
 		"php": ">=8.1",
