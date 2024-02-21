@@ -4,7 +4,7 @@
 	"description": "Dependencies for TYPO3 legacy installation",
 	"require": {
 		"php": "8.1.*",
-		"brotkrueml/jobrouter-client": "2.0.0"
+		"brotkrueml/jobrouter-client": "3.0.0"
 	},
 	"replace": {
 		"psr/http-client": "*",
