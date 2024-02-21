@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.0] - 2024-02-21
+
 ### Changed
 - JobRouter REST Client in version 3 is required
 - Namespace from `Brotkrueml\JobRouterConnector` to `JobRouter\Addon\Typo3Connector`
@@ -158,7 +160,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 Initial preview release
 
 
-[Unreleased]: https://github.com/jobrouter/typo3-connector/compare/v2.0.0...HEAD
+[Unreleased]: https://github.com/jobrouter/typo3-connector/compare/v3.0.0...HEAD
+[3.0.0]: https://github.com/jobrouter/typo3-connector/compare/v2.0.0...v3.0.0
 [2.0.0]: https://github.com/jobrouter/typo3-connector/compare/v1.2.0...v2.0.0
 [1.2.0]: https://github.com/jobrouter/typo3-connector/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/jobrouter/typo3-connector/compare/v1.0.0...v1.1.0
