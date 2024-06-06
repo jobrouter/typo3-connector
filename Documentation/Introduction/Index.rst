@@ -21,7 +21,7 @@ functionality:
 - :ref:`Connect JobData tables with TYPO3 <ext_jobrouter_data:introduction>`
 - :ref:`Connect JobRouter® processes with TYPO3 <ext_jobrouter_process:introduction>`
 
-This extension uses the `JobRouter Client`_ library.
+This extension uses the `JobRouter REST Client`_ library.
 
 .. note::
    If you find a bug or want to propose a feature, please use the
@@ -48,5 +48,5 @@ The changes between the different versions can be found in the
 
 .. _issue tracker on GitHub: https://github.com/jobrouter/typo3-connector/issues
 .. _JobRouter®: https://www.jobrouter.com/
-.. _JobRouter Client: https://github.com/jobrouter/php-rest-client
+.. _JobRouter REST Client: https://github.com/jobrouter/php-rest-client
 .. _semantic versioning: https://semver.org/
