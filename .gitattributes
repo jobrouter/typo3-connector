@@ -7,6 +7,7 @@
 /.gitattributes export-ignore
 /.github/ export-ignore
 /.gitignore export-ignore
+/.noai export-ignore
 /.phive export-ignore
 /.phpstorm.meta.php export-ignore
 /ecs.php export-ignore
