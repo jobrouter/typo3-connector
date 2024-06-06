@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.1] - 2024-06-06
+
 ### Fixed
 - Wrong namespace in upgrade section of documentation
 
@@ -163,7 +165,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 Initial preview release
 
 
-[Unreleased]: https://github.com/jobrouter/typo3-connector/compare/v3.0.0...HEAD
+[Unreleased]: https://github.com/jobrouter/typo3-connector/compare/v3.0.1...HEAD
+[3.0.1]: https://github.com/jobrouter/typo3-connector/compare/v3.0.0...v3.0.1
 [3.0.0]: https://github.com/jobrouter/typo3-connector/compare/v2.0.0...v3.0.0
 [2.0.0]: https://github.com/jobrouter/typo3-connector/compare/v1.2.0...v2.0.0
 [1.2.0]: https://github.com/jobrouter/typo3-connector/compare/v1.1.0...v1.2.0
