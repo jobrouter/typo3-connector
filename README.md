@@ -15,8 +15,8 @@ connections from TYPO3 to JobRouter®.
 | Latest release | TYPO3       | PHP   | Updates will contain                           |
 |----------------|-------------|-------|------------------------------------------------|
 | 3.x            | 11,5 / 12.4 | ≥ 8.1 | Features, bug and security fixes               |
-| 2.x            | 11.5 / 12.4 | ≥ 8.1 | Security fixes                                 |
-| 1.x            | 10.4 / 11.5 | ≥ 7.4 | Security fixes, end of life expected: Oct 2024 |
+| 2.x            | 11.5 / 12.4 | ≥ 8.1 | Security fixes, end of life expected: Dec 2024 |
+| 1.x            | 10.4 / 11.5 | ≥ 7.4 | Security fixes, end of life expected: Dec 2024 |
 
 [Documentation](https://docs.typo3.org/p/jobrouter/typo3-connector/main/en-us/) |
 [Translation](https://crowdin.com/project/typo3-extension-jobrouterconne) |
