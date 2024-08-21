@@ -16,7 +16,6 @@ use JobRouter\AddOn\Typo3Connector\Exception\KeyGenerationException;
 use JobRouter\AddOn\Typo3Connector\Service\Crypt;
 use JobRouter\AddOn\Typo3Connector\Service\FileService;
 use JobRouter\AddOn\Typo3Connector\Service\KeyGenerator;
-use org\bovigo\vfs\vfsStream;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
@@ -30,8 +29,7 @@ final class KeyGeneratorTest extends TestCase
 
     protected function setUp(): void
     {
-        vfsStream::setup('project-dir');
-        $this->keyPath = vfsStream::url('project-dir') . '/.key';
+        $this->keyPath = \tempnam(\sys_get_temp_dir(), 'keygeneratortest-');
         $this->fileServiceStub = $this->createStub(FileService::class);
         $this->cryptStub = $this->createStub(Crypt::class);
 
@@ -74,7 +72,7 @@ final class KeyGeneratorTest extends TestCase
         $this->expectException(KeyGenerationException::class);
         $this->expectExceptionCode(1603475037);
 
-        $baseDir = vfsStream::url('project-dir') . '/some_folder';
+        $baseDir = \sys_get_temp_dir() . '/keygeneratortest-' . \uniqid();
         \mkdir($baseDir);
         \chmod($baseDir, 0444);
 
@@ -89,10 +87,12 @@ final class KeyGeneratorTest extends TestCase
     #[Test]
     public function generateAndStoreKeyIsSuccessful(): void
     {
+        $keyPath = \sys_get_temp_dir() . '/keygeneratortest-' . \uniqid();
+
         $this->fileServiceStub
             ->method('getAbsoluteKeyPath')
             ->with(false)
-            ->willReturn($this->keyPath);
+            ->willReturn($keyPath);
 
         $this->cryptStub
             ->method('generateKey')
@@ -100,7 +100,7 @@ final class KeyGeneratorTest extends TestCase
 
         $this->subject->generateAndStoreKey();
 
-        self::assertFileExists($this->keyPath);
-        self::assertStringEqualsFile($this->keyPath, 'some key');
+        self::assertFileExists($keyPath);
+        self::assertStringEqualsFile($keyPath, 'some key');
     }
 }
