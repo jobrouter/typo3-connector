@@ -13,9 +13,6 @@ namespace JobRouter\AddOn\Typo3Connector\Tests\Unit\Service;
 
 use JobRouter\AddOn\Typo3Connector\Exception\KeyFileException;
 use JobRouter\AddOn\Typo3Connector\Service\FileService;
-use org\bovigo\vfs\vfsStream;
-use org\bovigo\vfs\vfsStreamDirectory;
-use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -24,18 +21,18 @@ use TYPO3\CMS\Core\Core\ApplicationContext;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-#[RunTestsInSeparateProcesses]
 final class FileServiceTest extends TestCase
 {
-    protected const ROOT_DIR = 'project-dir';
-
-    protected vfsStreamDirectory $root;
-    protected FileService $subject;
+    private FileService $subject;
+    private string $rootDir;
 
     protected function setUp(): void
     {
-        $this->root = vfsStream::setup(self::ROOT_DIR);
         $this->subject = new FileService();
+        $this->rootDir = \sys_get_temp_dir() . '/fileservicetest';
+        if (! \is_dir($this->rootDir)) {
+            \mkdir($this->rootDir);
+        }
     }
 
     #[Test]
@@ -84,18 +81,20 @@ final class FileServiceTest extends TestCase
 
         $actual = $this->subject->getAbsoluteKeyPath(false);
 
-        self::assertSame('vfs://' . self::ROOT_DIR . '/.non-existing-file', $actual);
+        self::assertSame($this->rootDir . '/.non-existing-file', $actual);
     }
 
     #[Test]
     public function getAbsoluteKeyPathReturnsPathCorrectly(): void
     {
-        \touch(vfsStream::url(self::ROOT_DIR) . '/.jobrouter-key');
+        $keyFile = '.jobrouter-key-' . \uniqid();
+        $keyFilePath = $this->rootDir . '/' . $keyFile;
+        \touch($keyFilePath);
 
         GeneralUtility::addInstance(
             ExtensionConfiguration::class,
             $this->getExtensionConfigurationMock(
-                '.jobrouter-key',
+                $keyFile,
             ),
         );
 
@@ -103,26 +102,30 @@ final class FileServiceTest extends TestCase
 
         $actual = $this->subject->getAbsoluteKeyPath();
 
-        self::assertSame('vfs://' . self::ROOT_DIR . '/.jobrouter-key', $actual);
+        self::assertSame($keyFilePath, $actual);
+
+        \unlink($keyFilePath);
     }
 
     #[Test]
     public function getAbsoluteKeyPathReturnsPathCorrectlyIfNotInComposerMode(): void
     {
-        \touch(vfsStream::url(self::ROOT_DIR) . '/.jobrouter-key');
+        $keyFile = '.jobrouter-key-' . \uniqid();
+        $keyFilePath = $this->rootDir . '/' . $keyFile;
+        \touch($keyFilePath);
 
         GeneralUtility::addInstance(
             ExtensionConfiguration::class,
             $this->getExtensionConfigurationMock(
-                '.jobrouter-key',
+                $keyFile,
             ),
         );
 
-        $this->initializeEnvironment(false, vfsStream::url(self::ROOT_DIR) . '/some-folder');
+        $this->initializeEnvironment(false, $this->rootDir . '/some-folder-' . \uniqid());
 
         $actual = $this->subject->getAbsoluteKeyPath();
 
-        self::assertSame('vfs://' . self::ROOT_DIR . '/.jobrouter-key', $actual);
+        self::assertSame($keyFilePath, $actual);
     }
 
     protected function getExtensionConfigurationMock(mixed $returnedKeyPath): MockObject
@@ -144,7 +147,7 @@ final class FileServiceTest extends TestCase
             new ApplicationContext('Testing'),
             false,
             $isComposerMode,
-            $projectPath ?: vfsStream::url(self::ROOT_DIR),
+            $projectPath ?: $this->rootDir,
             '',
             '',
             '',
