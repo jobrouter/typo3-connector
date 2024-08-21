@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace JobRouter\AddOn\Typo3Connector\Service;
 
 use JobRouter\AddOn\Typo3Connector\Exception\CryptException;
+use JobRouter\AddOn\Typo3Connector\Exception\KeyFileException;
 
 /**
  * @internal
@@ -79,7 +80,18 @@ class Crypt
 
     private function getKey(): string
     {
-        $key = \file_get_contents($this->fileService->getAbsoluteKeyPath());
+        $filePath = $this->fileService->getAbsoluteKeyPath();
+        if (! \is_file($filePath)) {
+            throw new KeyFileException(
+                \sprintf(
+                    'File with path "%s" does not exist',
+                    $filePath,
+                ),
+                1724241293,
+            );
+        }
+
+        $key = \file_get_contents($filePath);
         if ($key === false) {
             throw new CryptException(
                 'The key could not be retrieved!',
