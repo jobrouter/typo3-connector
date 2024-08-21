@@ -14,7 +14,6 @@ namespace JobRouter\AddOn\Typo3Connector\Tests\Unit\Service;
 use JobRouter\AddOn\Typo3Connector\Exception\CryptException;
 use JobRouter\AddOn\Typo3Connector\Service\Crypt;
 use JobRouter\AddOn\Typo3Connector\Service\FileService;
-use org\bovigo\vfs\vfsStream;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -23,11 +22,6 @@ use PHPUnit\Framework\TestCase;
 final class CryptTest extends TestCase
 {
     private ?Crypt $subject = null;
-
-    protected function setUp(): void
-    {
-        vfsStream::setup('project-dir');
-    }
 
     #[Test]
     public function generateKeyReturnsAKey(): void
@@ -90,7 +84,11 @@ final class CryptTest extends TestCase
 
     protected function initialiseSubjectWithKeyPath(bool $fileShouldExist = true): void
     {
-        $keyPath = vfsStream::url('project-dir') . '/.jobrouter-key';
+        if ($fileShouldExist) {
+            $keyPath = \tempnam(\sys_get_temp_dir(), 'crypttest-');
+        } else {
+            $keyPath = \sys_get_temp_dir() . '/non-existing-' . \uniqid();
+        }
 
         $fileServiceMock = $this->createMock(FileService::class);
         $fileServiceMock
