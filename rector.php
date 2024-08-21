@@ -3,8 +3,7 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
-use Rector\EarlyReturn\Rector\If_\ChangeAndIfToEarlyReturnRector;
-use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
+use Rector\DeadCode\Rector\ClassMethod\RemoveUnusedPublicMethodParameterRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\PostRector\Rector\NameImportingPostRector;
 
@@ -33,12 +32,10 @@ return RectorConfig::configure()
     ])
     ->withRootFiles()
     ->withSkip([
-        __DIR__ . '/Tests/Acceptance/*',
-        AddLiteralSeparatorToNumberRector::class,
-        ChangeAndIfToEarlyReturnRector::class => [
-            __DIR__ . '/ext_localconf.php',
-        ],
         NameImportingPostRector::class => [
             __DIR__ . '/Configuration/TCA/*',
+        ],
+        RemoveUnusedPublicMethodParameterRector::class => [
+            __DIR__ . '/Classes/Hooks/DropObfuscatedPasswordInConnection.php',
         ],
     ]);
