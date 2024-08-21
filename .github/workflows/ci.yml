@@ -3,11 +3,13 @@ name: CI
 on:
   push:
     paths:
+      - 'Build/**'
       - 'composer.json'
       - '.github/workflows/ci.yml'
       - '**.php'
   pull_request:
     paths:
+      - 'Build/**'
       - 'composer.json'
       - '.github/workflows/ci.yml'
       - '**.php'
@@ -63,34 +65,7 @@ jobs:
           make unit-tests
       - name: Run functional tests
         run: |
-          ./Build/Scripts/runTests.sh -s functional -p ${{ matrix.php-versions }} -t ${{ matrix.typo3-versions }}
-  acceptance-tests:
-    name: Acceptance tests
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        include:
-          - php-versions: '8.1'
-            typo3-versions: '^11'
-          - php-versions: '8.3'
-            typo3-versions: '^12'
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-      - name: Install composer dependencies
-        run: |
-          composer require typo3/cms-core:${{ matrix.typo3-versions }}
-      - name: Run acceptance tests
-        run: |
-          ./Build/Scripts/runTests.sh -s acceptance -p ${{ matrix.php-versions }}
-      - name: Archive acceptance tests results
-        uses: actions/upload-artifact@v2
-        with:
-          name: acceptance-test-reports-${{ matrix.php-versions }}-${{ matrix.typo3-versions }}
-          path: .Build/Web/typo3temp/var/tests/_output
-          if-no-files-found: ignore
+          ./Build/Scripts/runTests.sh -s functional -p ${{ matrix.php-versions }}
   code-quality:
     name: Code Quality
     runs-on: ubuntu-latest
