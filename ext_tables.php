@@ -1,43 +1,9 @@
 <?php
 
-use JobRouter\AddOn\Typo3Connector\Controller\ConnectionListController;
 use JobRouter\AddOn\Typo3Connector\Evaluation\Password;
-use JobRouter\AddOn\Typo3Connector\Extension;
 use JobRouter\AddOn\Typo3Connector\Hooks\DropObfuscatedPasswordInConnection;
-use TYPO3\CMS\Core\Information\Typo3Version;
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 defined('TYPO3') || die();
-
-if ((new Typo3Version())->getMajorVersion() === 11) {
-    // Register "JobRouter" module group
-    ExtensionManagementUtility::addModule(
-        'jobrouter',
-        '',
-        'before:tools',
-        null,
-        [
-            'iconIdentifier' => 'jobrouter-modulegroup',
-            'labels' => 'LLL:EXT:' . Extension::KEY . '/Resources/Private/Language/BackendModuleGroup.xlf',
-        ]
-    );
-
-    // Add "Connections" module
-    ExtensionManagementUtility::addModule(
-        'jobrouter',
-        'connections',
-        'top',
-        '',
-        [
-            'routeTarget' => ConnectionListController::class . '::handleRequest',
-            'access' => 'admin',
-            'name' => Extension::MODULE_NAME,
-            'iconIdentifier' => 'jobrouter-module-connector',
-            'labels' => Extension::LANGUAGE_PATH_BACKEND_MODULE,
-            'workspaces' => 'online',
-        ]
-    );
-}
 
 // Encrypt for form field connection password
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tce']['formevals'][Password::class] = '';
