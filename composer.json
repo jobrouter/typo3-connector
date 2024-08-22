@@ -22,11 +22,11 @@
 	"require": {
 		"php": ">=8.1",
 		"ext-sodium": "*",
-		"jobrouter/rest-client": "^3.0",
-		"typo3/cms-backend": "^12.4.9",
-		"typo3/cms-core": "^12.4.9",
-		"typo3/cms-fluid": "^12.4.9",
-		"typo3/cms-frontend": "^12.4.9"
+		"jobrouter/rest-client": "^3.1@dev",
+		"typo3/cms-backend": "^12.4.9 || ^13.2",
+		"typo3/cms-core": "^12.4.9 || ^13.2",
+		"typo3/cms-fluid": "^12.4.9 || ^13.2",
+		"typo3/cms-frontend": "^12.4.9 || ^13.2"
 	},
 	"require-dev": {
 		"brotkrueml/coding-standards": "~5.1.0",
