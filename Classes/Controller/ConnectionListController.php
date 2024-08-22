@@ -24,13 +24,10 @@ use TYPO3\CMS\Backend\Template\Components\ButtonBar;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
-use TYPO3\CMS\Core\Http\HtmlResponse;
 use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Imaging\IconFactory;
 use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Page\PageRenderer;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
  * @internal
@@ -38,9 +35,6 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
 #[AsController]
 final class ConnectionListController
 {
-    private ModuleTemplate $moduleTemplate;
-    private StandaloneView $view;
-
     public function __construct(
         private readonly ConnectionRepository $connectionRepository,
         private readonly FileService $fileService,
@@ -52,7 +46,7 @@ final class ConnectionListController
 
     public function handleRequest(ServerRequestInterface $request): ResponseInterface
     {
-        $this->moduleTemplate = $this->moduleTemplateFactory->create($request);
+        $view = $this->moduleTemplateFactory->create($request);
 
         $this->pageRenderer->addInlineLanguageLabelFile(
             \str_replace('LLL:', '', Extension::LANGUAGE_PATH_BACKEND_MODULE),
@@ -62,25 +56,15 @@ final class ConnectionListController
             '@jobrouter/connector/connection-check.js',
         );
 
-        $this->initializeView();
-        $this->configureDocHeader($request->getAttribute('normalizedParams')?->getRequestUri() ?? '');
-        $this->listAction();
+        $this->configureDocHeader($view, $request->getAttribute('normalizedParams')?->getRequestUri() ?? '');
+        $this->listAction($view);
 
-        $this->moduleTemplate->setContent($this->view->render());
-
-        return new HtmlResponse($this->moduleTemplate->renderContent());
+        return $view->renderResponse('Backend/List');
     }
 
-    private function initializeView(): void
+    private function configureDocHeader(ModuleTemplate $view, string $requestUri): void
     {
-        $this->view = GeneralUtility::makeInstance(StandaloneView::class);
-        $this->view->setTemplate('List');
-        $this->view->setTemplateRootPaths(['EXT:' . Extension::KEY . '/Resources/Private/Templates/Backend']);
-    }
-
-    private function configureDocHeader(string $requestUri): void
-    {
-        $buttonBar = $this->moduleTemplate->getDocHeaderComponent()->getButtonBar();
+        $buttonBar = $view->getDocHeaderComponent()->getButtonBar();
 
         $newButton = $buttonBar->makeLinkButton()
             ->setHref((string)$this->uriBuilder->buildUriFromRoute(
@@ -111,7 +95,7 @@ final class ConnectionListController
         }
     }
 
-    private function listAction(): void
+    private function listAction(ModuleTemplate $view): void
     {
         $connections = [];
         try {
@@ -122,7 +106,7 @@ final class ConnectionListController
             $keyFileExists = false;
         }
 
-        $this->view->assignMultiple([
+        $view->assignMultiple([
             'connections' => $connections,
             'keyFileExists' => $keyFileExists,
             'clientVersion' => (new Version())->getVersion(),

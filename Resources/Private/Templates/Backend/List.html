@@ -5,34 +5,38 @@
     data-namespace-typo3-fluid="true"
 >
 
-<h1><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:heading_text"/></h1>
+<f:layout name="Module"/>
 
-<f:if condition="{keyFileExists}">
-    <f:then>
-        <f:if condition="{connections -> f:count()}">
-            <f:then>
-                <f:render section="table" arguments="{_all}" />
-            </f:then>
-            <f:else>
-                <f:be.infobox state="-1" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:connections_not_found.title')}">
-                    <p><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:connections_not_found.message"/></p>
-                    <be:link.newRecord class="btn btn-primary" table="tx_jobrouterconnector_domain_model_connection" returnUrl="{f:be.uri(route: 'jobrouter_connections')}">
-                        <f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:connection_create"/>
-                    </be:link.newRecord>
-                </f:be.infobox>
-            </f:else>
-        </f:if>
-    </f:then>
-    <f:else>
-        <f:be.infobox state="2" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:keyfile_not_exists.title')}">
-            <p><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:keyfile_not_exists.message"/></p>
-        </f:be.infobox>
-    </f:else>
-</f:if>
-<p class="text-end">
-    <f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:client_version"/>:
-    {clientVersion}
-</p>
+<f:section name="Content">
+    <h1><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:heading_text"/></h1>
+
+    <f:if condition="{keyFileExists}">
+        <f:then>
+            <f:if condition="{connections -> f:count()}">
+                <f:then>
+                    <f:render section="table" arguments="{_all}" />
+                </f:then>
+                <f:else>
+                    <f:be.infobox state="-1" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:connections_not_found.title')}">
+                        <p><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:connections_not_found.message"/></p>
+                        <be:link.newRecord class="btn btn-primary" table="tx_jobrouterconnector_domain_model_connection" returnUrl="{f:be.uri(route: 'jobrouter_connections')}">
+                            <f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:connection_create"/>
+                        </be:link.newRecord>
+                    </f:be.infobox>
+                </f:else>
+            </f:if>
+        </f:then>
+        <f:else>
+            <f:be.infobox state="2" title="{f:translate(key: 'LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:keyfile_not_exists.title')}">
+                <p><f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:keyfile_not_exists.message"/></p>
+            </f:be.infobox>
+        </f:else>
+    </f:if>
+    <p class="text-end">
+        <f:translate key="LLL:EXT:jobrouter_connector/Resources/Private/Language/BackendModule.xlf:client_version"/>:
+        {clientVersion}
+    </p>
+</f:section>
 
 <f:section name="table">
     <table class="table table-striped table-hover">
