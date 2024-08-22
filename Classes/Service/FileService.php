@@ -15,18 +15,19 @@ use JobRouter\AddOn\Typo3Connector\Exception\KeyFileException;
 use JobRouter\AddOn\Typo3Connector\Extension;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Core\Environment;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * @internal
  */
 class FileService
 {
+    public function __construct(
+        private readonly ExtensionConfiguration $extensionConfiguration,
+    ) {}
+
     public function getAbsoluteKeyPath(bool $errorOnNonExistingFile = true): string
     {
-        $configuration = GeneralUtility::makeInstance(ExtensionConfiguration::class);
-        $keyPath = $configuration->get(Extension::KEY, 'keyPath');
-
+        $keyPath = $this->extensionConfiguration->get(Extension::KEY, 'keyPath');
         if (! $keyPath) {
             throw new KeyFileException(
                 'The key file path is not defined correctly in the extension configuration!',

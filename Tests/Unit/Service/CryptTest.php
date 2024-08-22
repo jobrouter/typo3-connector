@@ -17,6 +17,7 @@ use JobRouter\AddOn\Typo3Connector\Service\FileService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 
 #[CoversClass(Crypt::class)]
 final class CryptTest extends TestCase
@@ -26,7 +27,7 @@ final class CryptTest extends TestCase
     #[Test]
     public function generateKeyReturnsAKey(): void
     {
-        $subject = new Crypt(new FileService());
+        $subject = new Crypt(new FileService($this->createStub(ExtensionConfiguration::class)));
 
         $actual = $subject->generateKey();
         $actualBase64Decoded = \base64_decode($actual);
