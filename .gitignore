@@ -4,5 +4,4 @@
 Documentation-GENERATED-temp
 Resources/Private/PHP/*.phar
 Resources/Private/PHP/vendor/
-Tests/Acceptance/Support/_generated/
 tools/
