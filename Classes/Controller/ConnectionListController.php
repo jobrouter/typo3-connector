@@ -18,6 +18,7 @@ use JobRouter\AddOn\Typo3Connector\Extension;
 use JobRouter\AddOn\Typo3Connector\Service\FileService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Backend\Attribute\AsController;
 use TYPO3\CMS\Backend\Routing\UriBuilder;
 use TYPO3\CMS\Backend\Template\Components\ButtonBar;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
@@ -31,6 +32,10 @@ use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
+/**
+ * @internal
+ */
+#[AsController]
 final class ConnectionListController
 {
     private ModuleTemplate $moduleTemplate;

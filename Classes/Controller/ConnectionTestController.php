@@ -21,11 +21,13 @@ use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
+use TYPO3\CMS\Backend\Attribute\AsController;
 use TYPO3\CMS\Core\Localization\LanguageService;
 
 /**
  * @internal
  */
+#[AsController]
 final class ConnectionTestController
 {
     private const ERROR_MESSAGE_MAX_LENGTH = 1000;

@@ -11,12 +11,6 @@ services:
   JobRouter\AddOn\Typo3Connector\Utility\FileUtility:
     public: true
 
-  JobRouter\AddOn\Typo3Connector\Controller\ConnectionListController:
-    tags: [ 'backend.controller' ]
-
-  JobRouter\AddOn\Typo3Connector\Controller\ConnectionTestController:
-    tags: [ 'backend.controller' ]
-
   JobRouter\AddOn\Typo3Connector\Command\GenerateKeyCommand:
     tags:
       - name: 'console.command'
