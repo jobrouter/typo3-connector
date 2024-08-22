@@ -8,9 +8,6 @@ services:
     resource: '../Classes/*'
     exclude: '../Classes/{Domain/Dto,Domain/Entity,Exception,Extension.php}'
 
-  JobRouter\AddOn\Typo3Connector\Utility\FileUtility:
-    public: true
-
   JobRouter\AddOn\Typo3Connector\Command\GenerateKeyCommand:
     tags:
       - name: 'console.command'
