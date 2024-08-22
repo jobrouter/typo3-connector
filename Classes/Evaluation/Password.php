@@ -12,10 +12,12 @@ declare(strict_types=1);
 namespace JobRouter\AddOn\Typo3Connector\Evaluation;
 
 use JobRouter\AddOn\Typo3Connector\Service\Crypt;
+use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 
 /**
  * @internal
  */
+#[Autoconfigure(public: true)]
 final class Password
 {
     public const OBFUSCATED_VALUE = '********';
