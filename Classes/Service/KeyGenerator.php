@@ -53,6 +53,7 @@ class KeyGenerator
     private function writeKey(string $path, string $key): void
     {
         \set_error_handler(static function (int $severity, string $message, string $file, int $line): never {
+            \restore_error_handler();
             throw new \ErrorException($message, $severity, $severity, $file, $line);
         });
 
