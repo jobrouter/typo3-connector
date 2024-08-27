@@ -33,17 +33,17 @@ final class Connection
     public static function fromArray(array $data): self
     {
         return new self(
-            (int)$data['uid'],
+            (int) $data['uid'],
             $data['name'],
             $data['handle'],
             $data['base_url'],
             $data['username'],
             $data['password'],
-            (int)$data['timeout'],
-            (bool)$data['verify'],
+            (int) $data['timeout'],
+            (bool) $data['verify'],
             $data['proxy'],
             $data['jobrouter_version'],
-            (bool)$data['disabled'],
+            (bool) $data['disabled'],
         );
     }
 }

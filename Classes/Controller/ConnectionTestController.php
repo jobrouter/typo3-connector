@@ -46,7 +46,7 @@ final class ConnectionTestController
             return $this->buildResponse('Request has no valid body!');
         }
 
-        $connectionId = (int)($body['connectionId'] ?? 0);
+        $connectionId = (int) ($body['connectionId'] ?? 0);
         try {
             $connection = $this->connectionRepository->findByUid($connectionId, true);
         } catch (ConnectionNotFoundException) {

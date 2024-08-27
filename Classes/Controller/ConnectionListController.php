@@ -70,13 +70,13 @@ final class ConnectionListController
         $buttonBar = $view->getDocHeaderComponent()->getButtonBar();
 
         $newButton = $buttonBar->makeLinkButton()
-            ->setHref((string)$this->uriBuilder->buildUriFromRoute(
+            ->setHref((string) $this->uriBuilder->buildUriFromRoute(
                 'record_edit',
                 [
                     'edit' => [
                         'tx_jobrouterconnector_domain_model_connection' => ['new'],
                     ],
-                    'returnUrl' => (string)$this->uriBuilder->buildUriFromRoute(Extension::MODULE_NAME),
+                    'returnUrl' => (string) $this->uriBuilder->buildUriFromRoute(Extension::MODULE_NAME),
                 ],
             ))
             ->setTitle($languageService->sL(Extension::LANGUAGE_PATH_BACKEND_MODULE . ':action.add_connection'))
