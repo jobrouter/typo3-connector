@@ -30,8 +30,8 @@ final class KeyGeneratorTest extends TestCase
     protected function setUp(): void
     {
         $this->keyPath = \tempnam(\sys_get_temp_dir(), 'keygeneratortest-');
-        $this->fileServiceStub = $this->createStub(FileService::class);
-        $this->cryptStub = $this->createStub(Crypt::class);
+        $this->fileServiceStub = self::createStub(FileService::class);
+        $this->cryptStub = self::createStub(Crypt::class);
 
         $this->subject = new KeyGenerator($this->cryptStub, $this->fileServiceStub);
     }

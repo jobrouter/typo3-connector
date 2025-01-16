@@ -27,7 +27,7 @@ final class CryptTest extends TestCase
     #[Test]
     public function generateKeyReturnsAKey(): void
     {
-        $subject = new Crypt(new FileService($this->createStub(ExtensionConfiguration::class)));
+        $subject = new Crypt(new FileService(self::createStub(ExtensionConfiguration::class)));
 
         $actual = $subject->generateKey();
         $actualBase64Decoded = \base64_decode($actual);

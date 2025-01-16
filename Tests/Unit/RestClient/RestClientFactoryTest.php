@@ -28,8 +28,8 @@ final class RestClientFactoryTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->connectionRepositoryStub = $this->createStub(ConnectionRepository::class);
-        $this->cryptServiceStub = $this->createStub(Crypt::class);
+        $this->connectionRepositoryStub = self::createStub(ConnectionRepository::class);
+        $this->cryptServiceStub = self::createStub(Crypt::class);
         $this->subject = new RestClientFactory($this->connectionRepositoryStub, $this->cryptServiceStub);
     }
 

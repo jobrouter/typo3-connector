@@ -37,7 +37,7 @@ final class ConnectionTestControllerTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->connectionRepositoryStub = $this->createStub(ConnectionRepository::class);
+        $this->connectionRepositoryStub = self::createStub(ConnectionRepository::class);
         $this->restClientFactoryMock = $this->createMock(RestClientFactoryInterface::class);
 
         $this->subject = new ConnectionTestController(
@@ -47,9 +47,9 @@ final class ConnectionTestControllerTest extends TestCase
             new StreamFactory(),
         );
 
-        $this->requestStub = $this->createStub(ServerRequestInterface::class);
+        $this->requestStub = self::createStub(ServerRequestInterface::class);
 
-        $languageServiceStub = $this->createStub(LanguageService::class);
+        $languageServiceStub = self::createStub(LanguageService::class);
         $languageServiceStub
             ->method('sL')
             ->willReturnCallback(static fn(string $key): string => $key);

@@ -26,7 +26,7 @@ final class GenerateKeyCommandTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->keyGeneratorStub = $this->createStub(KeyGenerator::class);
+        $this->keyGeneratorStub = self::createStub(KeyGenerator::class);
 
         $command = new GenerateKeyCommand($this->keyGeneratorStub);
         $this->commandTester = new CommandTester($command);

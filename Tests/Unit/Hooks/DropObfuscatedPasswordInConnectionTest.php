@@ -33,7 +33,7 @@ final class DropObfuscatedPasswordInConnectionTest extends TestCase
             'password' => 'some password',
         ];
 
-        $this->subject->processDatamap_preProcessFieldArray($incomingFieldArray, 'some_table', 0, $this->createStub(DataHandler::class));
+        $this->subject->processDatamap_preProcessFieldArray($incomingFieldArray, 'some_table', 0, self::createStub(DataHandler::class));
 
         self::assertSame([
             'password' => 'some password',
@@ -48,7 +48,7 @@ final class DropObfuscatedPasswordInConnectionTest extends TestCase
             'another' => 'field',
         ];
 
-        $this->subject->processDatamap_preProcessFieldArray($incomingFieldArray, 'tx_jobrouterconnector_domain_model_connection', 0, $this->createStub(DataHandler::class));
+        $this->subject->processDatamap_preProcessFieldArray($incomingFieldArray, 'tx_jobrouterconnector_domain_model_connection', 0, self::createStub(DataHandler::class));
 
         self::assertSame([
             'another' => 'field',
@@ -63,7 +63,7 @@ final class DropObfuscatedPasswordInConnectionTest extends TestCase
             'another' => 'field',
         ];
 
-        $this->subject->processDatamap_preProcessFieldArray($incomingFieldArray, 'tx_jobrouterconnector_domain_model_connection', 0, $this->createStub(DataHandler::class));
+        $this->subject->processDatamap_preProcessFieldArray($incomingFieldArray, 'tx_jobrouterconnector_domain_model_connection', 0, self::createStub(DataHandler::class));
 
         self::assertSame([
             'password' => 'some password',
