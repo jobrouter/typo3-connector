@@ -17,8 +17,7 @@ Requirements
 ============
 
 .. note::
-   The extension in version |release| supports TYPO3 v12 LTS and TYPO3 v13. Use
-   an older version for compatibility with TYPO3 v11 LTS and TYPO3 v10 LTS.
+   The extension in version |release| supports TYPO3 v12 LTS and TYPO3 v13 LTS.
 
 In addition to the TYPO3 requirements this extension needs the following PHP
 extensions: `curl` and `sodium`.
