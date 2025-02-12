@@ -3,7 +3,7 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2019-08-14T13:32:12Z" product-name="jobrouter_connector">
 		<header/>
 		<body>
-			<trans-unit id="keyPath" resname="keyPath">
+			<trans-unit id="keyPath">
 				<source><![CDATA[File name for holding the crypt key (relative to the project path)]]></source>
 			</trans-unit>
 		</body>

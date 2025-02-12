@@ -3,52 +3,52 @@
 	<file source-language="en" datatype="plaintext" original="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf" date="2025-02-12T18:23:31Z" product-name="jobrouter_connector">
 		<header/>
 		<body>
-			<trans-unit id="palette.credentials" resname="palette.credentials">
+			<trans-unit id="palette.credentials">
 				<source><![CDATA[Credentials]]></source>
 			</trans-unit>
-			<trans-unit id="palette.options" resname="palette.options">
+			<trans-unit id="palette.options">
 				<source><![CDATA[Options]]></source>
 			</trans-unit>
-			<trans-unit id="palette.system" resname="palette.system">
+			<trans-unit id="palette.system">
 				<source><![CDATA[System]]></source>
 			</trans-unit>
-			<trans-unit id="tab.information" resname="tab.information">
+			<trans-unit id="tab.information">
 				<source><![CDATA[Information]]></source>
 			</trans-unit>
-			<trans-unit id="tx_jobrouterconnector_domain_model_connection" resname="tx_jobrouterconnector_domain_model_connection">
+			<trans-unit id="tx_jobrouterconnector_domain_model_connection">
 				<source><![CDATA[JobRouter Connection]]></source>
 			</trans-unit>
-			<trans-unit id="tx_jobrouterconnector_domain_model_connection.base_url" resname="tx_jobrouterconnector_domain_model_connection.base_url">
+			<trans-unit id="tx_jobrouterconnector_domain_model_connection.base_url">
 				<source><![CDATA[Base URL]]></source>
 			</trans-unit>
-			<trans-unit id="tx_jobrouterconnector_domain_model_connection.description" resname="tx_jobrouterconnector_domain_model_connection.description">
+			<trans-unit id="tx_jobrouterconnector_domain_model_connection.description">
 				<source><![CDATA[Description]]></source>
 			</trans-unit>
-			<trans-unit id="tx_jobrouterconnector_domain_model_connection.handle" resname="tx_jobrouterconnector_domain_model_connection.handle">
+			<trans-unit id="tx_jobrouterconnector_domain_model_connection.handle">
 				<source><![CDATA[Handle]]></source>
 			</trans-unit>
-			<trans-unit id="tx_jobrouterconnector_domain_model_connection.jobrouter_version" resname="tx_jobrouterconnector_domain_model_connection.jobrouter_version">
+			<trans-unit id="tx_jobrouterconnector_domain_model_connection.jobrouter_version">
 				<source><![CDATA[JobRouter Version]]></source>
 			</trans-unit>
-			<trans-unit id="tx_jobrouterconnector_domain_model_connection.jobrouter_version.description" resname="tx_jobrouterconnector_domain_model_connection.jobrouter_version.description">
+			<trans-unit id="tx_jobrouterconnector_domain_model_connection.jobrouter_version.description">
 				<source><![CDATA[The version is automatically detected when a connection is established and therefore cannot be changed.]]></source>
 			</trans-unit>
-			<trans-unit id="tx_jobrouterconnector_domain_model_connection.name" resname="tx_jobrouterconnector_domain_model_connection.name">
+			<trans-unit id="tx_jobrouterconnector_domain_model_connection.name">
 				<source><![CDATA[Name]]></source>
 			</trans-unit>
-			<trans-unit id="tx_jobrouterconnector_domain_model_connection.password" resname="tx_jobrouterconnector_domain_model_connection.password">
+			<trans-unit id="tx_jobrouterconnector_domain_model_connection.password">
 				<source><![CDATA[Password]]></source>
 			</trans-unit>
-			<trans-unit id="tx_jobrouterconnector_domain_model_connection.proxy" resname="tx_jobrouterconnector_domain_model_connection.proxy">
+			<trans-unit id="tx_jobrouterconnector_domain_model_connection.proxy">
 				<source><![CDATA[Proxy URL]]></source>
 			</trans-unit>
-			<trans-unit id="tx_jobrouterconnector_domain_model_connection.timeout" resname="tx_jobrouterconnector_domain_model_connection.timeout">
+			<trans-unit id="tx_jobrouterconnector_domain_model_connection.timeout">
 				<source><![CDATA[Timeout]]></source>
 			</trans-unit>
-			<trans-unit id="tx_jobrouterconnector_domain_model_connection.username" resname="tx_jobrouterconnector_domain_model_connection.username">
+			<trans-unit id="tx_jobrouterconnector_domain_model_connection.username">
 				<source><![CDATA[Username]]></source>
 			</trans-unit>
-			<trans-unit id="tx_jobrouterconnector_domain_model_connection.verify" resname="tx_jobrouterconnector_domain_model_connection.verify">
+			<trans-unit id="tx_jobrouterconnector_domain_model_connection.verify">
 				<source><![CDATA[Verify TLS certificate]]></source>
 			</trans-unit>
 		</body>
