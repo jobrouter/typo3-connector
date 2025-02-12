@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file source-language="en" datatype="plaintext" original="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf" date="2023-04-24T08:19:24Z" product-name="jobrouter_connector">
+	<file source-language="en" datatype="plaintext" original="LLL:EXT:jobrouter_connector/Resources/Private/Language/Database.xlf" date="2025-02-12T18:23:31Z" product-name="jobrouter_connector">
 		<header/>
 		<body>
 			<trans-unit id="palette.credentials" resname="palette.credentials">
@@ -9,7 +9,7 @@
 			<trans-unit id="palette.options" resname="palette.options">
 				<source><![CDATA[Options]]></source>
 			</trans-unit>
-			<trans-unit id="palette.options" resname="palette.system">
+			<trans-unit id="palette.system" resname="palette.system">
 				<source><![CDATA[System]]></source>
 			</trans-unit>
 			<trans-unit id="tab.information" resname="tab.information">
