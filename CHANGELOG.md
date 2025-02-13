@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.0.1] - 2025-02-13
+
 ### Fixed
 - Wrong/missing label for palettes in backend form
 
@@ -176,7 +178,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 Initial preview release
 
 
-[Unreleased]: https://github.com/jobrouter/typo3-connector/compare/v4.0.0...HEAD
+[Unreleased]: https://github.com/jobrouter/typo3-connector/compare/v4.0.1...HEAD
+[4.0.1]: https://github.com/jobrouter/typo3-connector/compare/v4.0.0...v4.0.1
 [4.0.0]: https://github.com/jobrouter/typo3-connector/compare/v3.0.1...v4.0.0
 [3.0.1]: https://github.com/jobrouter/typo3-connector/compare/v3.0.0...v3.0.1
 [3.0.0]: https://github.com/jobrouter/typo3-connector/compare/v2.0.0...v3.0.0
