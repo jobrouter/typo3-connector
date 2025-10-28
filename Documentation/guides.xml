@@ -9,7 +9,7 @@
         title="TYPO3 JobRouter Connector"
         release="4.0.1"
         version="4.0"
-        copyright="since 2019 Chris Müller, since 2024 JobRouter AG"
+        copyright="since 2019 Chris Müller, since 2024 JobRouter GmbH"
     />
     <extension
         class="\T3Docs\Typo3DocsTheme\DependencyInjection\Typo3DocsThemeExtension"

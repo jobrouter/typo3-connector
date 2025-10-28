@@ -17,7 +17,7 @@ TYPO3 JobRouter Connector
    en
 
 :Author:
-   Chris Müller, JobRouter AG
+   Chris Müller, JobRouter GmbH
 
 :License:
    This document is published under the `Creative Commons BY 4.0`_ license.
