@@ -6,6 +6,7 @@ use Rector\Config\RectorConfig;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUnusedPublicMethodParameterRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\PostRector\Rector\NameImportingPostRector;
+use Rector\TypeDeclaration\Rector\StmtsAwareInterface\SafeDeclareStrictTypesRector;
 
 return RectorConfig::configure()
     ->withPaths([
@@ -38,4 +39,7 @@ return RectorConfig::configure()
         RemoveUnusedPublicMethodParameterRector::class => [
             __DIR__ . '/Classes/Hooks/DropObfuscatedPasswordInConnection.php',
         ],
+        SafeDeclareStrictTypesRector::class => [
+            __DIR__ . '/ext_emconf.php',
+        ]
     ]);
