@@ -17,6 +17,7 @@
         edit-on-github-branch="main"
         project-issues="https://github.com/jobrouter/typo3-connector/issues"
         project-repository="https://github.com/jobrouter/typo3-connector"
+        interlink-shortcode="jobrouter/typo3-connector"
         typo3-core-preferred="stable"
     />
 
