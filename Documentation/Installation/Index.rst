@@ -17,7 +17,7 @@ Requirements
 ============
 
 .. note::
-   The extension in version |release| supports TYPO3 v12 LTS and TYPO3 v13 LTS.
+   The extension in version |release| supports TYPO3 v13 LTS.
 
 In addition to the TYPO3 requirements this extension needs the following PHP
 extensions: `curl` and `sodium`.
@@ -31,6 +31,8 @@ Version matrix
 =================== ========== ===========
 JobRouter Connector PHP        TYPO3
 =================== ========== ===========
+5.0                 8.2 - 8.5  13.4
+------------------- ---------- -----------
 4.0                 8.1 - 8.4  12.4 / 13.4
 ------------------- ---------- -----------
 3.0                 8.1 - 8.3  11.5 / 12.4
