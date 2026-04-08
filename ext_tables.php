@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use JobRouter\AddOn\Typo3Connector\Evaluation\Password;
 use JobRouter\AddOn\Typo3Connector\Hooks\DropObfuscatedPasswordInConnection;
 

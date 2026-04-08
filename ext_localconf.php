@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use JobRouter\AddOn\RestClient\Client\RestClient;
 use JobRouter\AddOn\Typo3Connector\Extension;
 use TYPO3\CMS\Core\Core\Environment;
