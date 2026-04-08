@@ -17,20 +17,21 @@ use JobRouter\AddOn\Typo3Connector\Exception\CryptException;
 use JobRouter\AddOn\Typo3Connector\RestClient\RestClientFactory;
 use JobRouter\AddOn\Typo3Connector\Service\Crypt;
 use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 final class RestClientFactoryTest extends TestCase
 {
     private ConnectionRepository&Stub $connectionRepositoryStub;
-    private Crypt&Stub $cryptServiceStub;
+    private Crypt&MockObject $cryptServiceMock;
     private RestClientFactory $subject;
 
     protected function setUp(): void
     {
         $this->connectionRepositoryStub = self::createStub(ConnectionRepository::class);
-        $this->cryptServiceStub = self::createStub(Crypt::class);
-        $this->subject = new RestClientFactory($this->connectionRepositoryStub, $this->cryptServiceStub);
+        $this->cryptServiceMock = self::createMock(Crypt::class);
+        $this->subject = new RestClientFactory($this->connectionRepositoryStub, $this->cryptServiceMock);
     }
 
     #[Test]
@@ -56,7 +57,8 @@ final class RestClientFactoryTest extends TestCase
             'disabled' => false,
         ]);
 
-        $this->cryptServiceStub
+        $this->cryptServiceMock
+            ->expects(self::once())
             ->method('decrypt')
             ->with('some password')
             ->willThrowException($cryptException);

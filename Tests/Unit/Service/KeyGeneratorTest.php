@@ -17,23 +17,24 @@ use JobRouter\AddOn\Typo3Connector\Service\Crypt;
 use JobRouter\AddOn\Typo3Connector\Service\FileService;
 use JobRouter\AddOn\Typo3Connector\Service\KeyGenerator;
 use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 final class KeyGeneratorTest extends TestCase
 {
     private string $keyPath;
-    private FileService&Stub $fileServiceStub;
+    private FileService&MockObject $fileServiceMock;
     private Crypt&Stub $cryptStub;
     private KeyGenerator $subject;
 
     protected function setUp(): void
     {
         $this->keyPath = \tempnam(\sys_get_temp_dir(), 'keygeneratortest-');
-        $this->fileServiceStub = self::createStub(FileService::class);
+        $this->fileServiceMock = self::createMock(FileService::class);
         $this->cryptStub = self::createStub(Crypt::class);
 
-        $this->subject = new KeyGenerator($this->cryptStub, $this->fileServiceStub);
+        $this->subject = new KeyGenerator($this->cryptStub, $this->fileServiceMock);
     }
 
     #[Test]
@@ -42,7 +43,8 @@ final class KeyGeneratorTest extends TestCase
         $this->expectException(KeyGenerationException::class);
         $this->expectExceptionCode(1603474945);
 
-        $this->fileServiceStub
+        $this->fileServiceMock
+            ->expects(self::once())
             ->method('getAbsoluteKeyPath')
             ->with(false)
             ->willThrowException(new KeyFileException());
@@ -56,7 +58,8 @@ final class KeyGeneratorTest extends TestCase
         $this->expectException(KeyGenerationException::class);
         $this->expectExceptionCode(1603474997);
 
-        $this->fileServiceStub
+        $this->fileServiceMock
+            ->expects(self::once())
             ->method('getAbsoluteKeyPath')
             ->with(false)
             ->willReturn($this->keyPath);
@@ -76,7 +79,8 @@ final class KeyGeneratorTest extends TestCase
         \mkdir($baseDir);
         \chmod($baseDir, 0444);
 
-        $this->fileServiceStub
+        $this->fileServiceMock
+            ->expects(self::once())
             ->method('getAbsoluteKeyPath')
             ->with(false)
             ->willReturn($baseDir . '/.key');
@@ -89,7 +93,8 @@ final class KeyGeneratorTest extends TestCase
     {
         $keyPath = \sys_get_temp_dir() . '/keygeneratortest-' . \uniqid();
 
-        $this->fileServiceStub
+        $this->fileServiceMock
+            ->expects(self::once())
             ->method('getAbsoluteKeyPath')
             ->with(false)
             ->willReturn($keyPath);

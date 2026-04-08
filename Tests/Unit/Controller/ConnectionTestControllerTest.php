@@ -17,6 +17,7 @@ use JobRouter\AddOn\Typo3Connector\Domain\Entity\Connection;
 use JobRouter\AddOn\Typo3Connector\Domain\Repository\ConnectionRepository;
 use JobRouter\AddOn\Typo3Connector\Exception\ConnectionNotFoundException;
 use JobRouter\AddOn\Typo3Connector\RestClient\RestClientFactoryInterface;
+use PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -30,18 +31,18 @@ use TYPO3\CMS\Core\Localization\LanguageService;
 #[RunTestsInSeparateProcesses]
 final class ConnectionTestControllerTest extends TestCase
 {
-    private ConnectionRepository&Stub $connectionRepositoryStub;
+    private ConnectionRepository&MockObject $connectionRepositoryMock;
     private RestClientFactoryInterface&MockObject $restClientFactoryMock;
     private ServerRequestInterface&Stub $requestStub;
     private ConnectionTestController $subject;
 
     protected function setUp(): void
     {
-        $this->connectionRepositoryStub = self::createStub(ConnectionRepository::class);
+        $this->connectionRepositoryMock = self::createMock(ConnectionRepository::class);
         $this->restClientFactoryMock = $this->createMock(RestClientFactoryInterface::class);
 
         $this->subject = new ConnectionTestController(
-            $this->connectionRepositoryStub,
+            $this->connectionRepositoryMock,
             $this->restClientFactoryMock,
             new ResponseFactory(),
             new StreamFactory(),
@@ -63,6 +64,7 @@ final class ConnectionTestControllerTest extends TestCase
     }
 
     #[Test]
+    #[AllowMockObjectsWithoutExpectations]
     public function invokeReturnsResponseWithErrorWhenRequestHasInvalidBody(): void
     {
         $this->requestStub
@@ -79,6 +81,7 @@ final class ConnectionTestControllerTest extends TestCase
     }
 
     #[Test]
+    #[AllowMockObjectsWithoutExpectations]
     public function invokeReturnsResponseWithErrorWhenIdentifierCannotBeFoundInRepository(): void
     {
         $this->requestStub
@@ -86,7 +89,8 @@ final class ConnectionTestControllerTest extends TestCase
             ->willReturn([
                 'connectionId' => '42',
             ]);
-        $this->connectionRepositoryStub
+        $this->connectionRepositoryMock
+            ->expects(self::once())
             ->method('findByUid')
             ->with(42, true)
             ->willThrowException(new ConnectionNotFoundException());
@@ -110,7 +114,8 @@ final class ConnectionTestControllerTest extends TestCase
             ]);
 
         $connection = $this->getConnectionEntity();
-        $this->connectionRepositoryStub
+        $this->connectionRepositoryMock
+            ->expects(self::once())
             ->method('findByUid')
             ->with(42, true)
             ->willReturn($connection);
@@ -139,7 +144,8 @@ final class ConnectionTestControllerTest extends TestCase
             ]);
 
         $connection = $this->getConnectionEntity();
-        $this->connectionRepositoryStub
+        $this->connectionRepositoryMock
+            ->expects(self::once())
             ->method('findByUid')
             ->with(42, true)
             ->willReturn($connection);
@@ -169,7 +175,8 @@ final class ConnectionTestControllerTest extends TestCase
             ]);
 
         $connection = $this->getConnectionEntity();
-        $this->connectionRepositoryStub
+        $this->connectionRepositoryMock
+            ->expects(self::once())
             ->method('findByUid')
             ->with(42, true)
             ->willReturn($connection);
@@ -199,7 +206,8 @@ final class ConnectionTestControllerTest extends TestCase
             ]);
 
         $connection = $this->getConnectionEntity();
-        $this->connectionRepositoryStub
+        $this->connectionRepositoryMock
+            ->expects(self::once())
             ->method('findByUid')
             ->with(42, true)
             ->willReturn($connection);

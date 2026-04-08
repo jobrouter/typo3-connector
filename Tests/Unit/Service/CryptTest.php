@@ -14,6 +14,7 @@ namespace JobRouter\AddOn\Typo3Connector\Tests\Unit\Service;
 use JobRouter\AddOn\Typo3Connector\Exception\CryptException;
 use JobRouter\AddOn\Typo3Connector\Service\Crypt;
 use JobRouter\AddOn\Typo3Connector\Service\FileService;
+use PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -37,6 +38,7 @@ final class CryptTest extends TestCase
     }
 
     #[Test]
+    #[AllowMockObjectsWithoutExpectations]
     public function encryptAndDecrypt(): void
     {
         $this->initialiseSubjectWithKeyPath();
@@ -50,6 +52,7 @@ final class CryptTest extends TestCase
     }
 
     #[Test]
+    #[AllowMockObjectsWithoutExpectations]
     public function encryptShouldThrowExceptionIfKeyDoesNotExist(): void
     {
         $this->expectException(CryptException::class);
@@ -61,6 +64,7 @@ final class CryptTest extends TestCase
     }
 
     #[Test]
+    #[AllowMockObjectsWithoutExpectations]
     public function decryptThrowsExceptionOnNotBase64EncodedValueGiven(): void
     {
         $this->expectException(CryptException::class);
@@ -72,6 +76,7 @@ final class CryptTest extends TestCase
     }
 
     #[Test]
+    #[AllowMockObjectsWithoutExpectations]
     public function decryptThrowsExceptionOnDecryptionFailure(): void
     {
         $this->expectException(CryptException::class);

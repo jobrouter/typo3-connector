@@ -13,6 +13,7 @@ namespace JobRouter\AddOn\Typo3Connector\Tests\Unit\Evaluation;
 
 use JobRouter\AddOn\Typo3Connector\Evaluation\Password;
 use JobRouter\AddOn\Typo3Connector\Service\Crypt;
+use PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -30,6 +31,7 @@ final class PasswordTest extends TestCase
     }
 
     #[Test]
+    #[AllowMockObjectsWithoutExpectations]
     public function evaluateFieldValueReturnsObfuscatedValueWhenAlreadyObfuscated(): void
     {
         $value = Password::OBFUSCATED_VALUE;
@@ -46,6 +48,7 @@ final class PasswordTest extends TestCase
         $cleartextValue = 'cleartext-value';
 
         $this->cryptMock
+            ->expects(self::once())
             ->method('encrypt')
             ->with($cleartextValue)
             ->willReturn($encryptedValue);
@@ -56,6 +59,7 @@ final class PasswordTest extends TestCase
     }
 
     #[Test]
+    #[AllowMockObjectsWithoutExpectations]
     public function deevaluateFieldValueReturnsEmptyStringWhenGivenValueIsEmptyString(): void
     {
         $actual = $this->subject->deevaluateFieldValue([
@@ -66,6 +70,7 @@ final class PasswordTest extends TestCase
     }
 
     #[Test]
+    #[AllowMockObjectsWithoutExpectations]
     public function deevaluateFieldValueReturnsObfuscatedValueWhenGivenValueIsNotEmpty(): void
     {
         $actual = $this->subject->deevaluateFieldValue([
