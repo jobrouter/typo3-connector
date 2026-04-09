@@ -24,10 +24,8 @@ use TYPO3\CMS\Backend\Template\Components\ButtonBar;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
-use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Imaging\IconFactory;
 use TYPO3\CMS\Core\Imaging\IconSize;
-use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Core\Page\PageRenderer;
 
@@ -69,9 +67,6 @@ final readonly class ConnectionListController
     {
         $languageService = $this->languageServiceFactory->createFromUserPreferences($this->getBackendUser());
 
-        // @todo remove switch when compatibility with TYPO3 v12 is removed
-        $iconSize = (new Typo3Version())->getMajorVersion() === 12 ? Icon::SIZE_SMALL : IconSize::SMALL;
-
         $buttonBar = $view->getDocHeaderComponent()->getButtonBar();
 
         $newButton = $buttonBar->makeLinkButton()
@@ -86,13 +81,13 @@ final readonly class ConnectionListController
             ))
             ->setTitle($languageService->sL(Extension::LANGUAGE_PATH_BACKEND_MODULE . ':action.add_connection'))
             ->setShowLabelText(true)
-            ->setIcon($this->iconFactory->getIcon('actions-add', $iconSize));
+            ->setIcon($this->iconFactory->getIcon('actions-add', IconSize::SMALL));
         $buttonBar->addButton($newButton);
 
         $reloadButton = $buttonBar->makeLinkButton()
             ->setHref($requestUri)
             ->setTitle($languageService->sL('LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.reload'))
-            ->setIcon($this->iconFactory->getIcon('actions-refresh', $iconSize));
+            ->setIcon($this->iconFactory->getIcon('actions-refresh', IconSize::SMALL));
         $buttonBar->addButton($reloadButton, ButtonBar::BUTTON_POSITION_RIGHT);
 
         if ($this->getBackendUser()->mayMakeShortcut()) {
