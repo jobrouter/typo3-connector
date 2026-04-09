@@ -62,7 +62,7 @@ jobs:
           make tests-php-unit
       - name: Run functional tests
         run: |
-          ./Build/Scripts/runTests.sh -s functional -p ${{ matrix.php-versions }}
+          ./Build/Scripts/runTests.sh -b docker -s functional -p ${{ matrix.php-versions }}
   code-quality:
     name: Code Quality
     runs-on: ubuntu-latest
