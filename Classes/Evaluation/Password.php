@@ -18,12 +18,12 @@ use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
  * @internal
  */
 #[Autoconfigure(public: true)]
-final class Password
+final readonly class Password
 {
     public const OBFUSCATED_VALUE = '********';
 
     public function __construct(
-        private readonly Crypt $cryptService,
+        private Crypt $cryptService,
     ) {}
 
     public function evaluateFieldValue(string $value): string

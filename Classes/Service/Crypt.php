@@ -17,10 +17,10 @@ use JobRouter\AddOn\Typo3Connector\Exception\KeyFileException;
 /**
  * @internal
  */
-class Crypt
+readonly class Crypt
 {
     public function __construct(
-        private readonly FileService $fileService,
+        private FileService $fileService,
     ) {}
 
     public function encrypt(string $value): string

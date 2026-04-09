@@ -35,16 +35,16 @@ use TYPO3\CMS\Core\Page\PageRenderer;
  * @internal
  */
 #[AsController]
-final class ConnectionListController
+final readonly class ConnectionListController
 {
     public function __construct(
-        private readonly ConnectionRepository $connectionRepository,
-        private readonly FileService $fileService,
-        private readonly IconFactory $iconFactory,
-        private readonly LanguageServiceFactory $languageServiceFactory,
-        private readonly ModuleTemplateFactory $moduleTemplateFactory,
-        private readonly PageRenderer $pageRenderer,
-        private readonly UriBuilder $uriBuilder,
+        private ConnectionRepository $connectionRepository,
+        private FileService $fileService,
+        private IconFactory $iconFactory,
+        private LanguageServiceFactory $languageServiceFactory,
+        private ModuleTemplateFactory $moduleTemplateFactory,
+        private PageRenderer $pageRenderer,
+        private UriBuilder $uriBuilder,
     ) {}
 
     public function handleRequest(ServerRequestInterface $request): ResponseInterface

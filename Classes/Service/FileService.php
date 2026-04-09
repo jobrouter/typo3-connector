@@ -19,10 +19,10 @@ use TYPO3\CMS\Core\Core\Environment;
 /**
  * @internal
  */
-class FileService
+readonly class FileService
 {
     public function __construct(
-        private readonly ExtensionConfiguration $extensionConfiguration,
+        private ExtensionConfiguration $extensionConfiguration,
     ) {}
 
     public function getAbsoluteKeyPath(bool $errorOnNonExistingFile = true): string

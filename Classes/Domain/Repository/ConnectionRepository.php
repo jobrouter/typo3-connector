@@ -17,12 +17,12 @@ use TYPO3\CMS\Core\Database\Connection as DatabaseConnection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\Restriction\HiddenRestriction;
 
-class ConnectionRepository
+readonly class ConnectionRepository
 {
     private const TABLE_NAME = 'tx_jobrouterconnector_domain_model_connection';
 
     public function __construct(
-        private readonly ConnectionPool $connectionPool,
+        private ConnectionPool $connectionPool,
     ) {}
 
     /**

@@ -17,7 +17,7 @@ use TYPO3\CMS\Core\DataHandling\DataHandler;
 /**
  * @internal
  */
-final class DropObfuscatedPasswordInConnection
+final readonly class DropObfuscatedPasswordInConnection
 {
     /**
      * @param array<string, mixed> $incomingFieldArray

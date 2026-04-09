@@ -13,11 +13,11 @@ namespace JobRouter\AddOn\Typo3Connector\Service;
 
 use JobRouter\AddOn\Typo3Connector\Exception\KeyGenerationException;
 
-class KeyGenerator
+readonly class KeyGenerator
 {
     public function __construct(
-        private readonly Crypt $crypt,
-        private readonly FileService $fileService,
+        private Crypt $crypt,
+        private FileService $fileService,
     ) {}
 
     public function generateAndStoreKey(): void
