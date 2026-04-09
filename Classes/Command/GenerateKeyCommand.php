@@ -13,14 +13,21 @@ namespace JobRouter\AddOn\Typo3Connector\Command;
 
 use JobRouter\AddOn\Typo3Connector\Exception\KeyGenerationException;
 use JobRouter\AddOn\Typo3Connector\Service\KeyGenerator;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use TYPO3\CMS\Core\Attribute\AsNonSchedulableCommand;
 
 /**
  * @internal
  */
+#[AsCommand(
+    name: 'jobrouter:connector:generatekey',
+    description: 'Generates a random key for encrypting and decrypting connection passwords',
+)]
+#[AsNonSchedulableCommand]
 final class GenerateKeyCommand extends Command
 {
     public function __construct(

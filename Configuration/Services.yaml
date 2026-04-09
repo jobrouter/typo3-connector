@@ -7,10 +7,3 @@ services:
   JobRouter\AddOn\Typo3Connector\:
     resource: '../Classes/*'
     exclude: '../Classes/{Domain/Dto,Domain/Entity,Exception,Extension.php}'
-
-  JobRouter\AddOn\Typo3Connector\Command\GenerateKeyCommand:
-    tags:
-      - name: 'console.command'
-        command: 'jobrouter:connector:generatekey'
-        description: 'Generates a random key for encrypting and decrypting connection passwords'
-        schedulable: false
