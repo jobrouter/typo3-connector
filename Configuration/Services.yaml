@@ -1,9 +1,0 @@
-services:
-  _defaults:
-    autowire: true
-    autoconfigure: true
-    public: false
-
-  JobRouter\AddOn\Typo3Connector\:
-    resource: '../Classes/*'
-    exclude: '../Classes/{Domain/Dto,Domain/Entity,Exception,Extension.php}'
