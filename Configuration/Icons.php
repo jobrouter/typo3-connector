@@ -11,8 +11,9 @@ declare(strict_types=1);
 
 use JobRouter\AddOn\Typo3Connector\Extension;
 use TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider;
+use TYPO3\CMS\Core\Information\Typo3Version;
 
-return [
+$icons = [
     'jobrouter-modulegroup' => [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:' . Extension::KEY . '/Resources/Public/Icons/modulegroup-jobrouter.svg',
@@ -22,3 +23,11 @@ return [
         'source' => 'EXT:' . Extension::KEY . '/Resources/Public/Icons/module-connector.svg',
     ],
 ];
+
+// @todo Remove, once compatibility with TYPO3 v13 is removed
+if ((new Typo3Version())->getMajorVersion() < 14) {
+    $icons['jobrouter-modulegroup']['source'] = 'EXT:' . Extension::KEY . '/Resources/Public/Icons/modulegroup-jobrouter-v13.svg';
+    $icons['jobrouter-module-connector']['source'] = 'EXT:' . Extension::KEY . '/Resources/Public/Icons/module-connector-v13.svg';
+}
+
+return $icons;
