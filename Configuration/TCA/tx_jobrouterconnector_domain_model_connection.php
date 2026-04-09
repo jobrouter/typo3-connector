@@ -21,7 +21,6 @@ return [
             'disabled' => 'disabled',
         ],
         'rootLevel' => 1,
-        'searchFields' => 'name,handle,base_url,username,description',
         'iconfile' => 'EXT:' . \JobRouter\AddOn\Typo3Connector\Extension::KEY . '/Resources/Public/Icons/tx_jobrouterconnector_domain_model_connection.svg',
         'hideTable' => true,
     ],
@@ -48,6 +47,7 @@ return [
                 'max' => 255,
                 'eval' => 'trim',
                 'required' => true,
+                'searchable' => true,
             ],
         ],
         'handle' => [
@@ -58,6 +58,7 @@ return [
                 'max' => 30,
                 'eval' => 'alphanum_x,trim,unique',
                 'required' => true,
+                'searchable' => true,
             ],
         ],
         'base_url' => [
@@ -68,6 +69,7 @@ return [
                 'max' => 255,
                 'eval' => 'trim,nospace',
                 'required' => true,
+                'searchable' => true,
             ],
         ],
         'username' => [
@@ -78,6 +80,7 @@ return [
                 'max' => 50,
                 'eval' => 'trim,nospace',
                 'required' => true,
+                'searchable' => true,
             ],
         ],
         'password' => [
@@ -87,6 +90,7 @@ return [
                 'size' => 30,
                 'eval' => 'trim,nospace,' . \JobRouter\AddOn\Typo3Connector\Evaluation\Password::class,
                 'required' => true,
+                'searchable' => false,
             ],
         ],
         'timeout' => [
@@ -125,6 +129,7 @@ return [
                 'size' => 30,
                 'max' => 255,
                 'eval' => 'trim',
+                'searchable' => true,
             ],
         ],
         'jobrouter_version' => [
@@ -135,6 +140,7 @@ return [
                 'size' => 10,
                 'max' => 10,
                 'readOnly' => true,
+                'searchable' => false,
             ],
         ],
         'description' => [
@@ -143,6 +149,7 @@ return [
                 'type' => 'text',
                 'rows' => 5,
                 'cols' => 30,
+                'searchable' => true,
             ],
         ],
     ],
