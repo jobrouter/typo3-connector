@@ -25,20 +25,6 @@ return [
         'hideTable' => true,
     ],
     'columns' => [
-        'disabled' => [
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.enabled',
-            'config' => [
-                'type' => 'check',
-                'renderType' => 'checkboxToggle',
-                'items' => [
-                    [
-                        'label' => '',
-                        'invertStateDisplay' => true,
-                    ],
-                ],
-            ],
-        ],
-
         'name' => [
             'label' => \JobRouter\AddOn\Typo3Connector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.name',
             'config' => [
@@ -141,15 +127,6 @@ return [
                 'max' => 10,
                 'readOnly' => true,
                 'searchable' => false,
-            ],
-        ],
-        'description' => [
-            'label' => \JobRouter\AddOn\Typo3Connector\Extension::LANGUAGE_PATH_DATABASE . ':tx_jobrouterconnector_domain_model_connection.description',
-            'config' => [
-                'type' => 'text',
-                'rows' => 5,
-                'cols' => 30,
-                'searchable' => true,
             ],
         ],
     ],

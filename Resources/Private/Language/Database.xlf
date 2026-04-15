@@ -21,9 +21,6 @@
 			<trans-unit id="tx_jobrouterconnector_domain_model_connection.base_url">
 				<source><![CDATA[Base URL]]></source>
 			</trans-unit>
-			<trans-unit id="tx_jobrouterconnector_domain_model_connection.description">
-				<source><![CDATA[Description]]></source>
-			</trans-unit>
 			<trans-unit id="tx_jobrouterconnector_domain_model_connection.handle">
 				<source><![CDATA[Handle]]></source>
 			</trans-unit>
