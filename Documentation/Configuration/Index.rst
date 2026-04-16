@@ -13,8 +13,8 @@ Extension configuration
 =======================
 
 To configure the extension, go to
-:guilabel:`Admin Tools > Settings > Extension Configuration` and click on the
-:guilabel:`Configure extension` button. Open the :guilabel:`jobrouter_connector`
+:guilabel:`System > Settings > Extension Configuration` and click on the
+:guilabel:`Configure extensions ...` button. Open the :guilabel:`jobrouter_connector`
 configuration:
 
 .. figure:: /Images/extension-configuration.png

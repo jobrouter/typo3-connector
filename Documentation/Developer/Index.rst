@@ -27,14 +27,14 @@ Let's have a look at an example in the TYPO3 context:
 
 Explanation:
 
-#. Line 29: Retrieve the :php:`Connection` entity class with handle `example`,
+#. Line 23: Retrieve the :php:`Connection` entity class with handle `example`,
    which holds the base URL of the JobRouter® installation and the credentials.
    Of course, the connection must be registered first in the
    :guilabel:`Connections` :ref:`module <usage-module>`.
-#. Lines 30-32: It can be the case that there is no connection entity available:
+#. Lines 24-26: It can be the case that there is no connection entity available:
    There is no connection with handle `example` or the connection is disabled.
    So you have to consider this case.
-#. Line 35: Create the REST client with the :php:`create()` method of the
+#. Line 29: Create the REST client with the :php:`create()` method of the
    :php:`RestClientFactory`. The first argument is the :php:`Connection` model,
    the second argument the optional lifetime of the authentication token. With
    the call the authentication is done immediately, so an exception can be

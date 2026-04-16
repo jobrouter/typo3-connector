@@ -18,8 +18,9 @@ The connections to JobRouter® installations are managed in the backend module
 .. note::
    The module is only available in the live workspace.
 
-On your first visit after installing the extension you should see the following
-screen:
+On your first visit after installing the extension and
+:ref:`generating the key <configuration-key-generation>` you should see the
+following screen:
 
 .. figure:: /Images/no-connections-found.png
    :alt: Initial Connections module screen

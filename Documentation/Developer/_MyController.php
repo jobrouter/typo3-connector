@@ -9,18 +9,12 @@ use JobRouter\AddOn\Typo3Connector\Exception\ConnectionNotFoundException;
 use JobRouter\AddOn\Typo3Connector\RestClient\RestClientFactory;
 use Psr\Http\Message\ResponseInterface;
 
-final class MyController
+final readonly class MyController
 {
-    private ConnectionRepository $connectionRepository;
-    private RestClientFactory $restClientFactory;
-
     public function __construct(
-        ConnectionRepository $connectionRepository,
-        RestClientFactory $restClientFactory,
-    ) {
-        $this->connectionRepository = $connectionRepository;
-        $this->restClientFactory = $restClientFactory;
-    }
+        private ConnectionRepository $connectionRepository,
+        private RestClientFactory $restClientFactory,
+    ) {}
 
     public function myAction(): ResponseInterface
     {
