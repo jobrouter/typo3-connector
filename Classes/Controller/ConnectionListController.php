@@ -26,6 +26,7 @@ use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
 use TYPO3\CMS\Core\Imaging\IconFactory;
 use TYPO3\CMS\Core\Imaging\IconSize;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Core\Page\PageRenderer;
 
@@ -84,11 +85,15 @@ final readonly class ConnectionListController
             ->setIcon($this->iconFactory->getIcon('actions-add', IconSize::SMALL));
         $buttonBar->addButton($newButton);
 
-        $reloadButton = $buttonBar->makeLinkButton()
-            ->setHref($requestUri)
-            ->setTitle($languageService->sL('LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.reload'))
-            ->setIcon($this->iconFactory->getIcon('actions-refresh', IconSize::SMALL));
-        $buttonBar->addButton($reloadButton, ButtonBar::BUTTON_POSITION_RIGHT);
+        // @todo Remove when compatibility with TYPO3 v13 is removed
+        if ((new Typo3Version())->getMajorVersion() < 14) {
+            // Reload button is available in TYPO3 v14 by default
+            $reloadButton = $buttonBar->makeLinkButton()
+                ->setHref($requestUri)
+                ->setTitle($languageService->sL('LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.reload'))
+                ->setIcon($this->iconFactory->getIcon('actions-refresh', IconSize::SMALL));
+            $buttonBar->addButton($reloadButton, ButtonBar::BUTTON_POSITION_RIGHT);
+        }
 
         if ($this->getBackendUser()->mayMakeShortcut()) {
             $shortcutButton = $buttonBar->makeShortcutButton()
