@@ -22,11 +22,11 @@ If applicable, add screenshots to help explain your problem.
 
 ### Environment
 
-- JobRouter TYPO3 Connector version(s): [e.g. 3.0.0]
-- JobRouter version(s): [e.g. 2023.1.2]
-- TYPO3 version(s): [e.g. 11.5.34, 12.4.10]
+- JobRouter TYPO3 Connector version(s): [e.g. 5.0.0]
+- JobRouter version(s): [e.g. 2026.1.2]
+- TYPO3 version(s): [e.g. 13.4.28, 14.3.0]
 - Is your TYPO3 installation set up with Composer (Composer Mode): [yes, no]
-- OS: [e.g. OSX 10.13.4, Windows 11, Debian 12]
+- OS: [e.g. OSX 10.13.4, Windows 11, Debian 13]
 
 ### Possible Solution
 
