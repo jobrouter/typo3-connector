@@ -11,12 +11,13 @@ declare(strict_types=1);
 
 use JobRouter\AddOn\Typo3Connector\Extension;
 use TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider;
+use TYPO3\CMS\Core\Imaging\IconProvider\SvgSpriteIconProvider;
 use TYPO3\CMS\Core\Information\Typo3Version;
 
 $icons = [
-    'actions-jobrouter' => [
-        'provider' => SvgIconProvider::class,
-        'source' => 'EXT:' . Extension::KEY . '/Resources/Public/Icons/actions-jobrouter.svg',
+    'jobrouter-actions-jobrouter' => [
+        'provider' => SvgSpriteIconProvider::class,
+        'sprite' => 'EXT:' . Extension::KEY . '/Resources/Public/Icons/actions-jobrouter.svg#jobrouter-actions-jobrouter',
     ],
     'jobrouter-modulegroup' => [
         'provider' => SvgIconProvider::class,
