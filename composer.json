@@ -70,6 +70,11 @@
 			"dev-main": "5.0.x-dev"
 		},
 		"typo3/cms": {
+			"Package": {
+				"providesPackages": {
+					"jobrouter/rest-client": ""
+				}
+			},
 			"extension-key": "jobrouter_connector",
 			"version": "5.0.0-dev",
 			"web-dir": ".Build/Web"
