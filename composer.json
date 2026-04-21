@@ -23,10 +23,10 @@
 		"php": ">=8.2",
 		"ext-sodium": "*",
 		"jobrouter/rest-client": "^3.2",
-		"typo3/cms-backend": "^13.4 || ^14.2",
-		"typo3/cms-core": "^13.4 || ^14.2",
-		"typo3/cms-fluid": "^13.4 || ^14.2",
-		"typo3/cms-frontend": "^13.4 || ^14.2"
+		"typo3/cms-backend": "^13.4 || ^14.3",
+		"typo3/cms-core": "^13.4 || ^14.3",
+		"typo3/cms-fluid": "^13.4 || ^14.3",
+		"typo3/cms-frontend": "^13.4 || ^14.3"
 	},
 	"require-dev": {
 		"brotkrueml/coding-standards": "~6.3.1",
