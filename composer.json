@@ -76,7 +76,7 @@
 				}
 			},
 			"extension-key": "jobrouter_connector",
-			"version": "5.0.0-dev",
+			"version": "5.0.0",
 			"web-dir": ".Build/Web"
 		}
 	}
