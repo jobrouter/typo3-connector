@@ -1,5 +1,7 @@
 name: CI
 
+permissions: {}
+
 on:
   push:
     paths:
@@ -13,6 +15,10 @@ on:
       - 'composer.json'
       - '.github/workflows/ci.yml'
       - '**.php'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
@@ -38,22 +44,26 @@ jobs:
             typo3-versions: '13'
           - php-versions: '8.5'
             typo3-versions: '14'
+    env:
+      PHP_VERSION: ${{ matrix.php-versions }}
+      TYPO3_VERSION: ${{ matrix.typo3-versions }}
     steps:
       - name: Check out repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           fetch-depth: 1
+          persist-credentials: false
       - name: Setup PHP version
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # 2.37.1
         with:
-          php-version: ${{ matrix.php-versions }}
+          php-version: ${{ env.PHP_VERSION }}
           extensions: fileinfo gd intl json mbstring mysqli openssl pcre pdo session sodium xml zip zlib
       - name: Get Composer Cache Directory
         id: composer-cache
         run: |
           echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
       - name: Cache composer dependencies
-        uses: actions/cache@v5
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
@@ -61,7 +71,7 @@ jobs:
       - name: Install composer dependencies
         run: |
           composer remove ergebnis/composer-normalize --dev --no-update
-          composer require typo3/cms-core=^${{ matrix.typo3-versions }} --no-progress --prefer-dist --optimize-autoloader
+          composer require typo3/cms-core="^$TYPO3_VERSION" --no-progress --prefer-dist --optimize-autoloader
       - name: Run PHP linter
         run: |
           make lint-php
@@ -70,17 +80,18 @@ jobs:
           make tests-php-unit
       - name: Run functional tests
         run: |
-          ./Build/Scripts/runTests.sh -b docker -s functional -p ${{ matrix.php-versions }}
+          ./Build/Scripts/runTests.sh -b docker -s functional -p "$PHP_VERSION"
   code-quality:
     name: Code Quality
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           fetch-depth: 1
+          persist-credentials: false
       - name: Setup PHP version
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # 2.37.1
         with:
           php-version: 8.2
           coverage: xdebug
@@ -90,14 +101,13 @@ jobs:
         run: |
           echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
       - name: Cache composer dependencies
-        uses: actions/cache@v5
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: ${{ runner.os }}-composer-
       - name: Install composer dependencies
         run: |
-          composer --version
           composer update --no-progress --prefer-dist --optimize-autoloader
       - name: Normalize composer.json
         run: |
