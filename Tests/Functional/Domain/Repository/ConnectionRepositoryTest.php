@@ -148,13 +148,16 @@ final class ConnectionRepositoryTest extends FunctionalTestCase
 
         self::assertSame(1, $actual);
 
-        $queryBuilder = $this->getConnectionPool()->getQueryBuilderForTable('tx_jobrouterconnector_domain_model_connection');
-        $queryBuilder->getRestrictions()->removeByType(HiddenRestriction::class);
+        $queryBuilder = $this->getConnectionPool()
+            ->getQueryBuilderForTable('tx_jobrouterconnector_domain_model_connection');
+        $queryBuilder->getRestrictions()
+            ->removeByType(HiddenRestriction::class);
         $updatedVersion = $queryBuilder
             ->select('jobrouter_version')
             ->from('tx_jobrouterconnector_domain_model_connection')
             ->where(
-                $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter(2, DatabaseConnection::PARAM_INT)),
+                $queryBuilder->expr()
+                    ->eq('uid', $queryBuilder->createNamedParameter(2, DatabaseConnection::PARAM_INT)),
             )
             ->executeQuery()
             ->fetchOne();

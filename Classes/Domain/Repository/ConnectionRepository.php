@@ -32,7 +32,8 @@ readonly class ConnectionRepository
     {
         $queryBuilder = $this->connectionPool->getQueryBuilderForTable(self::TABLE_NAME);
         if ($withDisabled) {
-            $queryBuilder->getRestrictions()->removeByType(HiddenRestriction::class);
+            $queryBuilder->getRestrictions()
+                ->removeByType(HiddenRestriction::class);
         }
 
         $result = $queryBuilder
@@ -54,14 +55,16 @@ readonly class ConnectionRepository
     {
         $queryBuilder = $this->connectionPool->getQueryBuilderForTable(self::TABLE_NAME);
         if ($withDisabled) {
-            $queryBuilder->getRestrictions()->removeByType(HiddenRestriction::class);
+            $queryBuilder->getRestrictions()
+                ->removeByType(HiddenRestriction::class);
         }
 
         $row = $queryBuilder
             ->select('*')
             ->from(self::TABLE_NAME)
             ->where(
-                $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($uid, DatabaseConnection::PARAM_INT)),
+                $queryBuilder->expr()
+                    ->eq('uid', $queryBuilder->createNamedParameter($uid, DatabaseConnection::PARAM_INT)),
             )
             ->executeQuery()
             ->fetchAssociative();
@@ -81,7 +84,8 @@ readonly class ConnectionRepository
             ->select('*')
             ->from(self::TABLE_NAME)
             ->where(
-                $queryBuilder->expr()->eq('handle', $queryBuilder->createNamedParameter($handle)),
+                $queryBuilder->expr()
+                    ->eq('handle', $queryBuilder->createNamedParameter($handle)),
             )
             ->executeQuery()
             ->fetchAssociative();

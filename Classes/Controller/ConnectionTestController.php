@@ -51,7 +51,8 @@ final readonly class ConnectionTestController
             $connection = $this->connectionRepository->findByUid($connectionId, true);
         } catch (ConnectionNotFoundException) {
             return $this->buildResponse(\sprintf(
-                $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_BACKEND_MODULE . ':connection_not_found'),
+                $this->getLanguageService()
+                    ->sL(Extension::LANGUAGE_PATH_BACKEND_MODULE . ':connection_not_found'),
                 $connectionId,
             ));
         }
@@ -62,7 +63,8 @@ final readonly class ConnectionTestController
         } catch (HttpException $e) {
             return $this->buildResponse(\sprintf(
                 "%s: %d\n%s",
-                $this->getLanguageService()->sL(Extension::LANGUAGE_PATH_BACKEND_MODULE . ':returned_http_status_code'),
+                $this->getLanguageService()
+                    ->sL(Extension::LANGUAGE_PATH_BACKEND_MODULE . ':returned_http_status_code'),
                 $e->getCode(),
                 \substr($e->getMessage(), 0, self::ERROR_MESSAGE_MAX_LENGTH),
             ));

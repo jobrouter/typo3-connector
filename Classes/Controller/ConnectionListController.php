@@ -68,7 +68,8 @@ final readonly class ConnectionListController
     {
         $languageService = $this->languageServiceFactory->createFromUserPreferences($this->getBackendUser());
 
-        $buttonBar = $view->getDocHeaderComponent()->getButtonBar();
+        $buttonBar = $view->getDocHeaderComponent()
+            ->getButtonBar();
 
         $newButton = $buttonBar->makeLinkButton()
             ->setHref((string) $this->uriBuilder->buildUriFromRoute(

@@ -72,11 +72,13 @@ final class ConnectionTestControllerTest extends TestCase
             ->willReturn(null);
 
         $actual = $this->subject->__invoke($this->requestStub);
-        $actual->getBody()->rewind();
+        $actual->getBody()
+            ->rewind();
 
         self::assertJsonStringEqualsJsonString(
             '{"error": "Request has no valid body!"}',
-            $actual->getBody()->getContents(),
+            $actual->getBody()
+                ->getContents(),
         );
     }
 
@@ -96,11 +98,13 @@ final class ConnectionTestControllerTest extends TestCase
             ->willThrowException(new ConnectionNotFoundException());
 
         $actual = $this->subject->__invoke($this->requestStub);
-        $actual->getBody()->rewind();
+        $actual->getBody()
+            ->rewind();
 
         self::assertJsonStringEqualsJsonString(
             '{"error": "LLL:EXT:jobrouter_connector\/Resources\/Private\/Language\/BackendModule.xlf:connection_not_found"}',
-            $actual->getBody()->getContents(),
+            $actual->getBody()
+                ->getContents(),
         );
     }
 
@@ -126,11 +130,13 @@ final class ConnectionTestControllerTest extends TestCase
             ->with($connection, 10);
 
         $actual = $this->subject->__invoke($this->requestStub);
-        $actual->getBody()->rewind();
+        $actual->getBody()
+            ->rewind();
 
         self::assertJsonStringEqualsJsonString(
             '{"check": "ok"}',
-            $actual->getBody()->getContents(),
+            $actual->getBody()
+                ->getContents(),
         );
     }
 
@@ -157,11 +163,13 @@ final class ConnectionTestControllerTest extends TestCase
             ->willThrowException(new HttpException('some message', 500));
 
         $actual = $this->subject->__invoke($this->requestStub);
-        $actual->getBody()->rewind();
+        $actual->getBody()
+            ->rewind();
 
         self::assertJsonStringEqualsJsonString(
             '{"error": "LLL:EXT:jobrouter_connector\/Resources\/Private\/Language\/BackendModule.xlf:returned_http_status_code: 500\nsome message"}',
-            $actual->getBody()->getContents(),
+            $actual->getBody()
+                ->getContents(),
         );
     }
 
@@ -188,11 +196,13 @@ final class ConnectionTestControllerTest extends TestCase
             ->willThrowException(new \Exception('some message'));
 
         $actual = $this->subject->__invoke($this->requestStub);
-        $actual->getBody()->rewind();
+        $actual->getBody()
+            ->rewind();
 
         self::assertJsonStringEqualsJsonString(
             '{"error": "some message"}',
-            $actual->getBody()->getContents(),
+            $actual->getBody()
+                ->getContents(),
         );
     }
 
@@ -219,7 +229,8 @@ final class ConnectionTestControllerTest extends TestCase
             ->willThrowException(new \Exception(\str_pad('', 2000, 'a')));
 
         $actual = $this->subject->__invoke($this->requestStub);
-        $actual->getBody()->rewind();
+        $actual->getBody()
+            ->rewind();
         $contents = \json_decode($actual->getBody()->getContents(), true, 512, \JSON_THROW_ON_ERROR);
 
         self::assertSame(1000, \strlen((string) $contents['error']));
